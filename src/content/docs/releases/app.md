@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.21.0
+
+*2026-11-01*
+
+- `codeflower tunnel pair` no longer leaves the app running in the background: if it had to start the app to answer the pairing, it quits it again once the browser paired. On a cluster, this keeps the login node from holding the tunnel, so your jobs can take it over. Add `--keep-running` to keep your computer reachable from paired browsers afterwards.
+
 ## v0.20.0
 
 *2026-11-01*

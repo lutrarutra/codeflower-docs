@@ -10,7 +10,7 @@ sidebar:
 
 Pair a browser or phone with this computer: open the printed link there (or scan the QR code). The link works once, for 10 minutes. Compare the key fingerprint the page shows with the one printed here.
 
-It does what pairing needs first: signs this computer in to the tunnel, turns remote access on, and starts code flower client in the background unless it runs. The client keeps the tunnel connected and shows paired browsers every sandbox on this computer, also those "codeflower run" and "interactive" start (which start the client themselves once this computer is signed in). Open it here with "codeflower client"; it quits when you quit it there or sign out.
+It does what pairing needs first: signs this computer in to the tunnel, turns remote access on, and starts code flower client in the background unless it runs, since the client answers the pairing. A client it started quits once the browser paired: "codeflower run" and "interactive" start one themselves while their sandbox runs, and on a cluster that shares the config directory between nodes, a client left running would hold the tunnel (only one computer connects it at a time). --keep-running keeps it, so paired browsers reach this computer until you quit it ("codeflower client" opens it here) or sign out; so does --no-wait, as the link needs it.
 
 With "tunnel: &#123;hardened: true&#125;" name the sandboxes (by name or ID, as "codeflower tunnel status" lists them) the browser may use; it sees no others.
 
@@ -25,9 +25,10 @@ codeflower tunnel pair [sandbox…] [flags]
 
 | Flag | Default | Description |
 | --- | --- | --- |
+| `--keep-running` |  | keep the client that pairing starts running afterwards, so paired browsers reach this computer |
 | `--name string` |  | when signing in: this computer's name in your account (default: its host name) |
 | `--no-browser` |  | when signing in: print the approval page's address instead of opening a browser |
-| `--no-wait` |  | print the link and return instead of waiting for the browser to pair |
+| `--no-wait` |  | print the link and return instead of waiting for the browser to pair (keeps the client running) |
 | `--url string` |  | when signing in: the tunnel to use, saved in config.yaml (default https://tunnels.codeflower.app) |
 
 ## Inherited flags

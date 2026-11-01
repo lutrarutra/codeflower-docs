@@ -33,7 +33,9 @@ The hosted tunnel is `https://tunnels.codeflower.app`; you can also [run your ow
    to it.
 </Steps>
 
-Pairing also starts the app in the background on your computer if it is not running, to keep the tunnel connected.
+Pairing starts the app in the background on your computer if it is not running, since the app answers the
+pairing, and quits it again once the browser paired. To keep your computer reachable from then on, pair with
+`--keep-running`, or keep the app open (`codeflower client`).
 `codeflower run` and `interactive` print a tunnel link to their chat (with a QR code) when this computer is signed
 in; `--no-tunnel` keeps a sandbox off the tunnel.
 
