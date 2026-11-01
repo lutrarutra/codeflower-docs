@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.0
+
+*2026-11-01*
+
+- **A rail of sandboxes.** The window lists the running sandboxes in a rail on the left, by two letters and grouped by computer, with a count of the chats that finished or wait for you. Choosing one shows its chats and folders in the sidebar, which <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>B</kbd> folds away.
+- **+** in the rail opens *New sandbox*, which starts a sandbox on a computer or connects one running elsewhere by its `codeflower://` line, in place of *Add remote sandbox*. The computers button at the bottom of the rail opens what was *Server*.
+- Runs sandbox 0.17.0, which brings the Single-cell best practices book as a skill.
+
 ## v0.18.0
 
 *2026-11-01*

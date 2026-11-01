@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.17.0
+
+*2026-11-01*
+
+- Agents get the [Single-cell best practices](https://www.sc-best-practices.org/) book as a skill: every chapter with its references, to look up and cite when analysing single-cell or spatial omics data.
+- The page comes from ui 0.12.0.
+
 ## v0.16.0
 
 *2026-11-01*

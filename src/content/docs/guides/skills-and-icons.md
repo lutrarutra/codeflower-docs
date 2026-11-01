@@ -28,7 +28,8 @@ Each folder can be one skill (it has a `SKILL.md`) or a folder of skills.
     query.py
 ```
 
-The sandbox also brings its own skills: reports (storyteller), the icon gallery, MCP setup, and, when isolated,
+The sandbox also brings its own skills: reports (storyteller), the icon gallery, MCP setup, the
+[Single-cell best practices](https://www.sc-best-practices.org/) book with its references, and, when isolated,
 the network allowlist.
 
 ## Icons for figures

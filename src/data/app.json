@@ -1,7 +1,7 @@
 {
   "clientPort": "7720",
   "image": "ghcr.io/lutrarutra/codeflower-sandbox",
-  "imageTag": "0.16.0",
+  "imageTag": "0.17.0",
   "tunnelURL": "https://tunnels.codeflower.app",
-  "version": "v0.18.0"
+  "version": "v0.19.0"
 }

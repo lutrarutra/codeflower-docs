@@ -18,7 +18,7 @@ The hosted tunnel is `https://tunnels.codeflower.app`; you can also [run your ow
    ```sh
    codeflower tunnel pair
    ```
-   or, in the app's window under *Server*, use *Remote access* → *Pair a browser or phone*.
+   or, in the app's window under the computers button at the bottom of the rail, use *Remote access* → *Pair a browser or phone*.
 
 2. **The first time, sign this computer in.** It asks whether the tunnel should pass only through **EU
    datacenters** (saved as `tunnel.eu_only` in config.yaml), then shows a code and opens the tunnel's approval page.
@@ -47,15 +47,14 @@ your computer.
 Pair the same browser with each of your computers: run `codeflower tunnel pair` on each and open its link. From then
 on, **any of their links shows the sandboxes of all of them**, in one page:
 
-- The sidebar lists the sandboxes under a heading per computer. Chats from different computers open side by side
-  in the tabs, and *Focus* keeps them all in one list, in the order they need you.
-- *Server* shows one computer at a time; choose which on top.
+- The rail lists the sandboxes by computer, each with its name and color over its sandboxes. Chats from different
+  computers open side by side in the tabs, and *Focus* keeps them all in one list, in the order they need you.
+- The computers page (the button at the bottom of the rail) shows one computer at a time; choose which on top.
 - The page comes from one of your computers. As it opens, it moves once to the computer running the **newest code
   flower**, keeping where you were, because a newer page can use older apps. To stay on the computer whose link you
-  opened, tick *Keep … 's page* at the bottom of the sidebar. The house icon in the sidebar marks the computer the
-  page comes from.
-- A computer that is off, asleep or not answering stays listed, greyed, with its open chats; they come back when it
-  does. Focus's *next* skips its chats meanwhile.
+  opened, tick *Keep … 's page* at the bottom of the sidebar, which also names the computer the page comes from.
+- A computer that is off, asleep or not answering leaves the rail, and the computers button says so; its open
+  chats stay in their tabs and come back when it does. Focus's *next* skips its chats meanwhile.
 - If the computer the page comes from stops, the page offers to open from another one.
 - Only computers that are paired with this browser **and** on the tunnel account you are signed in with show up.
   A computer running an older code flower than the page can use shows a note to update it.
@@ -68,8 +67,8 @@ for the page itself.
 It can use your sandboxes' chats, which means running code in them, and stop sandboxes. It cannot add sandboxes by
 address, quit the app, or change remote access. Two settings in [config.yaml](/reference/config/) change this:
 
-- `tunnel.manage: true`: paired browsers may also start sandboxes and browse folders. Without it, *Server* shows
-  starting as locked, with this setting.
+- `tunnel.manage: true`: paired browsers may also start sandboxes and browse folders. Without it, the computer is
+  greyed out with a lock in *New sandbox*, which shows this setting.
 - `tunnel.hardened: true`: each browser is limited to the sandboxes you choose when pairing it, and on Linux
   (kernel 6.7 or newer) the part of the app that talks to the tunnel runs as a separate, confined process. With it,
   `codeflower tunnel pair SANDBOX…` names the sandboxes.

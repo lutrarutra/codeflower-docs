@@ -9,29 +9,36 @@ one is taken). Started again while it runs, it opens the running one.
 
 ## Sandboxes here and elsewhere
 
-- **Server** shows this computer: which container engines are ready, the sandbox image, the start form, and
-  [remote access](/guides/remote-access/). See the [quickstart](/start/quickstart-app/). Each sandbox running
-  there shows whether its agent is signed in, with *Sign in…*, and *Plugins…* for the agent's own plugins.
-- **Add remote sandbox** (in the sidebar) connects to a sandbox running elsewhere, e.g. a cluster job, by the
-  `codeflower://` line it printed. The app remembers it, and relays the connection so the token never reaches the
-  browser. A sandbox's own link (`http://127.0.0.1:7720/#add=…`) does the same in one click.
-- Choosing a sandbox shows its chats, *New chat*, *Sign in…*, and *Open in VS Code instead*. Manage it (rename,
-  change its address or token, remove it) from its menu.
+- The **rail** on the left lists the sandboxes that run, each by two letters (from its name, else its project),
+  grouped by the computer they run on. Hover one for its name, where it runs and what it does; a number on it
+  counts the chats that finished or wait for you.
+- **+** at the end of the rail opens *New sandbox*: *Start a new one* (the agent, folders and network; see the
+  [quickstart](/start/quickstart-app/)), or *Connect one running elsewhere*, e.g. a cluster job, by the
+  `codeflower://` line it printed. The app remembers a connected sandbox, and relays the connection so the token
+  never reaches the browser; it shows under *Elsewhere* in the rail. A sandbox's own link
+  (`http://127.0.0.1:7720/#add=…`) opens the dialog with its line filled in.
+- Choosing a sandbox in the rail shows its chats and folders in the sidebar, with *Stop*, *Manage* (rename,
+  change its address or token, remove it; also a right click in the rail) and *Details* (its sign-in, *Plugins…*
+  and *Open in VS Code instead*).
+- The **computers** button at the bottom of the rail shows each computer: which container engines are ready,
+  the sandbox image, every sandbox there, stopped ones too, and [remote access](/guides/remote-access/). A dot on
+  it means some sandboxes or computers are not in the rail, because they stopped or do not answer.
 
 With `--connect-only` (or `client.connect_only: true` in [config.yaml](/reference/config/)) the app never starts
 sandboxes, e.g. on a cluster's login node.
 
 ## The page
 
-- The sidebar folds to a rail with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>B</kbd> and can be resized.
+- The sidebar folds away with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>B</kbd>, leaving the rail, and can be resized.
 - Chats, folders and files open in tabs, in groups you can split and drag, like an editor. The layout is
   remembered.
 - *Files* under a sandbox browses its folders, where you upload and download. See
   [Files and previews](/guides/files-and-previews/).
-- A chat that finished or waits for you while you look elsewhere is marked in the sidebar, and a note at the top
-  of the page opens it.
-- Opened [through the tunnel](/guides/remote-access/#several-computers) with several paired computers, the sidebar
-  lists the sandboxes under a heading per computer, and *Server* has a switch on top for the computer it shows.
+- A chat that finished or waits for you while you look elsewhere is counted on its sandbox in the rail, and a
+  note at the top of the page opens it. *Focus*, at the top of the rail, lists the chats of every sandbox, those
+  that need you first.
+- Opened [through the tunnel](/guides/remote-access/#several-computers) with several paired computers, the rail
+  names each computer over its sandboxes, and the computers page has a switch on top for the computer it shows.
 
 ## Tray and notifications
 

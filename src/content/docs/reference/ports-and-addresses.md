@@ -5,7 +5,7 @@ description: The addresses and links code flower prints and opens.
 
 | Address | What |
 | --- | --- |
-| `codeflower://HOST:PORT?token=TOKEN` | a sandbox; paste into VS Code or the app's *Add remote sandbox*. Anyone with it controls the agent |
+| `codeflower://HOST:PORT?token=TOKEN` | a sandbox; paste into VS Code or the app's *New sandbox* → *Connect one running elsewhere*. Anyone with it controls the agent |
 | `http://127.0.0.1:7720/?key=…` | the app's window, served only to this computer (another port when 7720 is taken) |
 | `http://127.0.0.1:7720/#add=codeflower%3A%2F%2F…` | adds a sandbox to the running app, in one click |
 | `vscode://codeflower.codeflower/connect?address=codeflower://…` | connects VS Code to a sandbox, after asking |
