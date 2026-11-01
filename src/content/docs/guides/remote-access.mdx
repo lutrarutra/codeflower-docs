@@ -68,7 +68,8 @@ for the page itself.
 It can use your sandboxes' chats, which means running code in them, and stop sandboxes. It cannot add sandboxes by
 address, quit the app, or change remote access. Two settings in [config.yaml](/reference/config/) change this:
 
-- `tunnel.manage: true`: paired browsers may also start sandboxes and browse folders.
+- `tunnel.manage: true`: paired browsers may also start sandboxes and browse folders. Without it, *Server* shows
+  starting as locked, with this setting.
 - `tunnel.hardened: true`: each browser is limited to the sandboxes you choose when pairing it, and on Linux
   (kernel 6.7 or newer) the part of the app that talks to the tunnel runs as a separate, confined process. With it,
   `codeflower tunnel pair SANDBOX…` names the sandboxes.

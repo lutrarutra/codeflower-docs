@@ -51,7 +51,12 @@
   --sl-color-green-low: var(--cf-green-soft);
   --sl-color-green: var(--cf-green);
   --sl-color-green-high: color-mix(in oklab, var(--cf-green) 60%, var(--cf-ink));
+}
 
+/* Type and layout, kept off the theme selectors above: a :root[data-theme]
+   rule outranks Starlight's html:not([data-has-sidebar]) and would narrow the
+   splash page in the light theme only. */
+:root {
   --sl-font: 'DM Sans Variable';
   --sl-content-width: 48rem;
 }

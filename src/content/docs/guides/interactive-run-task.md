@@ -21,9 +21,46 @@ codeflower interactive --agent codex -p study42 -i ~/data/study42 -o ~/results/s
 Prints the `codeflower://` address to paste into VS Code or the app's window, and keeps running until
 <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
+### A browser, directly
+
 With `--server`, the sandbox also serves the chat page itself and prints a link (`http://HOST:PORT/?key=…`) that
-opens it in any browser that can reach the machine, e.g. through `ssh -L`. Anyone with that link controls the
-agent, and plain HTTP carries it unencrypted: prefer `--host 127.0.0.1` with an SSH tunnel on shared networks.
+opens it in any browser that can reach the machine. Anyone with that link controls the agent.
+
+The page, and that sandbox's connection for VS Code, are **plain HTTP**: the key and the chats cross the network
+unencrypted. Other sandboxes use TLS, but a browser cannot check a certificate the sandbox made itself, so this mode
+is meant for a TLS reverse proxy in front, or for `ssh -L`. With an SSH tunnel:
+
+```sh
+codeflower interactive --server --host 127.0.0.1 --port 8800 -p study42   # on the server
+ssh -L 8800:127.0.0.1:8800 server.example.org                             # on your computer
+```
+
+then open the printed link with `localhost:8800`. Behind nginx with a certificate for `chat.example.org`:
+
+```sh
+codeflower interactive --server --host 127.0.0.1 --port 8800 --advertise-host chat.example.org -p study42
+```
+
+```nginx
+server {
+  listen 443 ssl;
+  server_name chat.example.org;
+  ssl_certificate     /etc/letsencrypt/live/chat.example.org/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/chat.example.org/privkey.pem;
+
+  location / {
+    proxy_pass http://127.0.0.1:8800;
+    # The sandbox answers only its advertised name, and the chat's WebSocket only from its own page.
+    proxy_set_header Host $host;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 1d;
+  }
+}
+```
+
+Open the printed link with `https://chat.example.org/` in place of `http://chat.example.org:8800/`.
 
 ## run
 

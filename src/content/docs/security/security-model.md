@@ -30,11 +30,17 @@ controls the agent**.
 
 - Docker and Podman publish the port on `127.0.0.1` only.
 - Apptainer (clusters) listens on the node's network, so other users of the cluster network can reach the port. The
-  token protects it, but the connection is **not encrypted**: use it inside the cluster's network, keep job logs
-  private, and do not expose the port to the internet.
+  token protects it, and the connection is **encrypted with TLS**: the sandbox makes a new certificate each time it
+  starts, and the line carries its fingerprint (`fp=…`). VS Code and the app accept only that certificate, so
+  nobody on the network can read the chats or the token, or stand in for the sandbox. Keep job logs private all
+  the same: the line in them is the key.
 - The app's window is served only to your computer, behind a secret in its address, and refuses other host names.
-  It keeps the sandboxes' tokens itself: they never reach the browser.
-- `--server` pages are plain HTTP; on shared networks bind to `127.0.0.1` and use `ssh -L`.
+  The page keeps the secret in the browser's storage for that address and sends it with each request, never as a
+  cookie: browsers send cookies to every port of a computer, so a server a sandbox or another user starts on
+  `127.0.0.1` would receive them. It keeps the sandboxes' tokens itself.
+- `--server` pages are **plain HTTP**, and so is that sandbox's connection for VS Code: they are meant for a TLS
+  reverse proxy in front (see [Running a task](/guides/interactive-run-task/#a-browser-directly)), or `ssh -L` with
+  `--host 127.0.0.1`. VS Code and the app mark such sandboxes *unencrypted*.
 
 VS Code keeps the addresses you connected in its secret storage; the app keeps them in a private file.
 
@@ -56,6 +62,12 @@ not read or take over:
   it comes from one of them and reaches the others' sandboxes with the same pairings. This gives the page nothing a
   page from one computer could not already reach: every pairing of a browser is kept in the same place. Pair a
   browser only with computers you trust alike.
+- **The browser's key cannot be copied.** It can be used by the pages while they run, but not read out of the
+  browser, so it cannot be taken elsewhere.
+- **Account changes are confirmed.** Deleting the account or a computer, approving a new computer, adding or removing
+  a passkey and signing out everywhere ask for your passkey again (or, without one, to sign in again with GitHub or
+  Google), so a page running in the browser cannot do them with your session alone. The approval page shows when
+  and from which address a computer asked: approve only a code you just asked for yourself.
 
 What the tunnel's operator **can** see: your account's display name and sign-in identities, your computers' names,
 regions, public keys and when they were online, how many sandboxes they run, the IP addresses of browsers, and the
@@ -79,7 +91,7 @@ built into the app; [self-hosting](/guides/self-host-tunnel/) removes the third 
 | Pairing link | 10 minutes, once | — |
 | Paired browser | until revoked | `tunnel revoke`, `rotate`, `logout`, or *Unpair*; `tunnel off` stops all at once |
 | Computer's tunnel sign-in | until revoked | `tunnel logout`, or revoke it on the tunnel's account page |
-| Tunnel session in a browser | 14 days | sign out in that browser |
+| Tunnel session in a browser | 14 days | sign out in that browser, or *Sign out everywhere else* on the account page |
 
 Revoking a browser closes its open pages within a second.
 

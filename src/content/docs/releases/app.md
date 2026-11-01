@@ -7,6 +7,21 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.18.0
+
+*2026-11-01*
+
+:::caution
+Update the VS Code extension to 0.13.0 as well: older extensions cannot connect to sandboxes from this release, which use TLS.
+:::
+
+- **Encrypted connections to sandboxes.** The app and VS Code reach a sandbox over TLS, checked against the certificate fingerprint in its `codeflower://` line (`fp=…`), so nobody on the network can read your chats or stand in for the sandbox. Sandboxes started with `--server` stay plain HTTP, for a [reverse proxy](/guides/interactive-run-task/#a-browser-directly) in front.
+- The app's page keeps its secret in the browser instead of a cookie, which every program listening on your computer could have received.
+- A sandbox's token no longer appears in its log on the app's page.
+- Sandboxes run in your computer's time zone instead of UTC.
+- The tunnel is reached only over https.
+- Runs sandbox 0.16.0.
+
 ## v0.17.0
 
 *2026-11-01*

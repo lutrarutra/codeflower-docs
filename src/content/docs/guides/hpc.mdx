@@ -69,7 +69,8 @@ With `client.connect_only: true` in [config.yaml](/reference/config/), the app o
 sandboxes and never starts one there.
 
 **A browser, directly.** `codeflower interactive --server` makes the sandbox serve its chat page and print a link.
-It is plain HTTP: on a shared network add `--host 127.0.0.1` and reach it with `ssh -L`.
+It is plain HTTP, and so is that sandbox's connection for VS Code: add `--host 127.0.0.1` and reach it with `ssh -L`,
+or put a TLS reverse proxy in front ([how](/guides/interactive-run-task/#a-browser-directly)).
 
 **Your phone.** See [Remote access](/guides/remote-access/).
 
@@ -77,8 +78,9 @@ It is plain HTTP: on a shared network add `--host 127.0.0.1` and reach it with `
 
 - Address the sandbox prints: the node's IPv4 address with Apptainer. `--advertise-host` changes it; `--host` and
   `--port` change where it listens.
-- The connection between your window and the sandbox is not encrypted; only the token protects it. Use it on the
-  cluster's internal network, not across the internet. See the [security model](/security/security-model/).
+- The connection between your window and the sandbox is encrypted with TLS, pinned to the certificate whose
+  fingerprint the line carries (`fp=…`); the token protects it. Sandboxes started with `--server` are the exception:
+  plain HTTP. See the [security model](/security/security-model/).
 - Apptainer does not enforce `--cpus` and `--memory`: the job's allocation is the limit.
 - A project folder on a shared filesystem can be used from any node, but a chat is open in one sandbox at a time;
   another sandbox shows it read-only.

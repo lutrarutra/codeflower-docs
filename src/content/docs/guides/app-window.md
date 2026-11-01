@@ -10,7 +10,8 @@ one is taken). Started again while it runs, it opens the running one.
 ## Sandboxes here and elsewhere
 
 - **Server** shows this computer: which container engines are ready, the sandbox image, the start form, and
-  [remote access](/guides/remote-access/). See the [quickstart](/start/quickstart-app/).
+  [remote access](/guides/remote-access/). See the [quickstart](/start/quickstart-app/). Each sandbox running
+  there shows whether its agent is signed in, with *Sign in…*, and *Plugins…* for the agent's own plugins.
 - **Add remote sandbox** (in the sidebar) connects to a sandbox running elsewhere, e.g. a cluster job, by the
   `codeflower://` line it printed. The app remembers it, and relays the connection so the token never reaches the
   browser. A sandbox's own link (`http://127.0.0.1:7720/#add=…`) does the same in one click.

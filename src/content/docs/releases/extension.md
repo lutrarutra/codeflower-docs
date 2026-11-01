@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.13.0
+
+*2026-11-01*
+
+- Connects to sandboxes over TLS, checked against the certificate fingerprint in their line; a sandbox without one is marked *unencrypted* in the sidebar. Needed for sandboxes from app 0.18.0.
+- Links an agent asks you to open must be web pages, and the dialog shows where they go.
+
 ## v0.12.1
 
 *2026-11-01*

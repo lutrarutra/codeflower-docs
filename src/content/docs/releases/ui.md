@@ -7,6 +7,17 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.11.0
+
+*2026-11-01*
+
+- Connections to sandboxes are encrypted when their line has a fingerprint; the page marks a sandbox without one as unencrypted.
+- Links an agent asks you to open must be web pages, and the dialog shows where they go.
+- An interactive report that loads another page in its place is stopped. For a sandbox with an isolated network, reports open without their scripts unless you ask.
+- Through the tunnel, the browser's key can no longer be read out of the browser.
+- The agent's sign-in and plugins appear in each sandbox's card under Server, and starting sandboxes through the tunnel shows as locked, with the setting that allows it.
+- Reports in the chat use the brand's fonts.
+
 ## v0.10.0
 
 *2026-11-01*
