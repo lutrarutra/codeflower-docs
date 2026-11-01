@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.0
+
+*2026-11-01*
+
+- **The tunnel follows your batch jobs.** With a home folder shared between computers, as on a cluster, the tunnel is no longer tied to the node that signed in. A job on any node connects it by itself, so you sign in and pair once, and your browsers stay paired. One computer connects at a time: the next takes over when the previous one's app quits, or 90 seconds after its job was killed.
+- On a cluster, the app no longer forgets sandboxes started on other nodes.
+
 ## v0.19.0
 
 *2026-11-01*

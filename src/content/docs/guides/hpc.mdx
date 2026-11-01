@@ -72,7 +72,10 @@ sandboxes and never starts one there.
 It is plain HTTP, and so is that sandbox's connection for VS Code: add `--host 127.0.0.1` and reach it with `ssh -L`,
 or put a TLS reverse proxy in front ([how](/guides/interactive-run-task/#a-browser-directly)).
 
-**Your phone.** See [Remote access](/guides/remote-access/).
+**Your phone, or any browser, through the tunnel.** Sign in and pair once, on the login node or in a job
+([Remote access](/guides/remote-access/)). From then on, each `codeflower interactive` job, on whichever node it
+lands, connects the tunnel itself and prints the sandbox's address through it in the job's log. One job holds the
+tunnel at a time; the next one takes over once it ends.
 
 ## Good to know
 

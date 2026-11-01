@@ -94,8 +94,9 @@ computer itself, never through the tunnel. On the tunnel's account page you see 
 
 - Private browsing windows do not work: the page needs a service worker, which they do not allow.
 - Signing in again (`tunnel login`) replaces this computer's connection: browsers must pair again.
-- Each computer signs in separately. With a home folder shared between machines (a cluster), use it from the machine
-  that signed in.
+- Each computer signs in separately. A home folder shared between machines (a cluster's) is one computer to the
+  tunnel, connected from one machine at a time: the one whose app runs. When it quits (or its job ends), the next
+  machine to start a sandbox takes over, within 90 seconds if the job was killed; browsers stay paired.
 - At least one paired computer must be on, with the app running, for the page to load; each computer's sandboxes
   show while it is.
 
