@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.8.0
+
+*2026-11-01*
+
+- The chat's colours and fonts are now shared with this documentation site. The chat looks as before.
+
 ## v0.7.0
 
 *2026-11-01*
