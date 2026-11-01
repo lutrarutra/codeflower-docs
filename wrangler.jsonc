@@ -1,0 +1,11 @@
+// Cloudflare deploys the built site (dist/) as static assets, no Worker code:
+// its build runs `npm run build`, then `npx wrangler deploy`.
+{
+  "name": "codeflower-docs",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "docs.codeflower.app", "custom_domain": true }]
+}

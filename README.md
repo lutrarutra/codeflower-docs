@@ -3,8 +3,9 @@
 The user documentation of code flower, at [docs.codeflower.app](https://docs.codeflower.app): installing,
 running sandboxes on a workstation or cluster, VS Code and the app, remote access, configuration and security.
 
-Built with [Astro Starlight](https://starlight.astro.build) and deployed by Cloudflare Pages on every push to
-`main` (build `npm run build`, output `dist`).
+Built with [Astro Starlight](https://starlight.astro.build) and deployed by Cloudflare on every push to `main`:
+its build runs `npm run build`, then `npx wrangler deploy`, which uploads `dist/` as static assets
+(`wrangler.jsonc`).
 
 ## Writing
 
