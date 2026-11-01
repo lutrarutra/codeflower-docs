@@ -167,6 +167,28 @@
       "description": "The MCP servers given to the agent of every sandbox, by name.",
       "type": "object"
     },
+    "plugins": {
+      "additionalProperties": {
+        "items": {
+          "additionalProperties": false,
+          "description": "One of an agent's own plugins under plugins: (docs/plugins.md).",
+          "properties": {
+            "enabled": {
+              "description": "Defaults to true; a project can switch an entry off.",
+              "type": "boolean"
+            },
+            "source": {
+              "description": "Agent-neutral: marketplace:NAME@CATALOG, github:OWNER/REPO[#REF], git:URL[#REF], npm:PACKAGE@VERSION, url:https://….zip|.tgz[#sha256=…] or path:/absolute; each agent takes the kinds its descriptor names.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "description": "The agents' own plugins every sandbox gets, by agent id.",
+      "type": "object"
+    },
     "skills": {
       "description": "More folders of skills, mounted read-only in every sandbox besides \u003cconfig dir\u003e/skills; relative paths are in the config directory.",
       "items": {

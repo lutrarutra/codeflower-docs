@@ -22,6 +22,11 @@
       "palette": false
     },
     {
+      "id": "codeflower.plugins",
+      "title": "Plugins…",
+      "palette": false
+    },
+    {
       "id": "codeflower.reconnectWorker",
       "title": "Reconnect",
       "palette": false

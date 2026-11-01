@@ -2,7 +2,7 @@
 title: "codeflower tunnel pair"
 description: "Pair a browser: prints a link (and a QR code) to open there"
 sidebar:
-  order: 14
+  order: 21
   label: "tunnel pair"
 ---
 

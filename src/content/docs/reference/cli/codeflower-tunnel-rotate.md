@@ -2,7 +2,7 @@
 title: "codeflower tunnel rotate"
 description: "Give this computer a new key; every browser must pair again"
 sidebar:
-  order: 16
+  order: 23
   label: "tunnel rotate"
 ---
 

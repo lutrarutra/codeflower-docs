@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.9.0
+
+*2026-11-01*
+
+- A Plugins view for the agent's own plugins, in VS Code and the app's window.
+- The Focus view of the app's window.
+- The file editor fills its tab, with line numbers at the edge, as in VS Code.
+
 ## v0.8.0
 
 *2026-11-01*

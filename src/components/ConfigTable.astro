@@ -12,7 +12,7 @@ type Node = {
 };
 type Row = { key: string; type: string; description: string; group: boolean };
 
-const placeholders: Record<string, string> = { agents: '<agent>', mcp_servers: '<name>' };
+const placeholders: Record<string, string> = { agents: '<agent>', mcp_servers: '<name>', plugins: '<agent>' };
 
 function typeName(node: Node): string {
   if (node.type === 'array') return `list of ${typeName(node.items ?? {})}s`;
@@ -26,11 +26,16 @@ function rows(node: Node, prefix: string): Row[] {
   for (const [name, child] of Object.entries(node.properties ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
     const key = prefix + name;
     const entries = typeof child.additionalProperties === 'object' ? child.additionalProperties : undefined;
-    if (child.properties) {
+    const by = (placeholders[name] ?? '<key>').slice(1, -1);
+    if (entries?.type === 'array' && entries.items?.properties) {
+      // A list per key, e.g. plugins: each agent's list of entries.
+      out.push({ key, type: `section, a list by ${by}`, description: child.description ?? '', group: true });
+      out.push(...rows(entries.items, `${key}.${placeholders[name] ?? '<key>'}[].`));
+    } else if (child.properties) {
       out.push({ key, type: 'section', description: child.description ?? '', group: true });
       out.push(...rows(child, key + '.'));
     } else if (entries?.properties) {
-      out.push({ key, type: 'section, by ' + placeholders[name].slice(1, -1), description: child.description ?? '', group: true });
+      out.push({ key, type: `section, by ${by}`, description: child.description ?? '', group: true });
       out.push(...rows(entries, `${key}.${placeholders[name] ?? '<key>'}.`));
     } else {
       out.push({ key, type: typeName(child), description: child.description ?? '', group: false });
