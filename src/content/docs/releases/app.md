@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.17.0
+
+*2026-11-01*
+
+- **All your computers in one page.** Opened through the [tunnel](/guides/remote-access/#several-computers), the page shows the sandboxes of every computer the browser is paired with, side by side in the tabs and in Focus. It opens from the computer with the newest code flower, and offers another computer when one is off.
+- Opening the page through the tunnel again is faster: the browser keeps the page's code.
+- Runs sandbox 0.15.1.
+
 ## v0.16.0
 
 *2026-11-01*

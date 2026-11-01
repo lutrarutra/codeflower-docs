@@ -42,6 +42,27 @@ Signing in to the tunnel alone gives no access. A browser needs **both** your tu
 your computer.
 :::
 
+## Several computers
+
+Pair the same browser with each of your computers: run `codeflower tunnel pair` on each and open its link. From then
+on, **any of their links shows the sandboxes of all of them**, in one page:
+
+- The sidebar lists the sandboxes under a heading per computer. Chats from different computers open side by side
+  in the tabs, and *Focus* keeps them all in one list, in the order they need you.
+- *Server* shows one computer at a time; choose which on top.
+- The page comes from one of your computers. As it opens, it moves once to the computer running the **newest code
+  flower**, keeping where you were, because a newer page can use older apps. To stay on the computer whose link you
+  opened, tick *Keep … 's page* at the bottom of the sidebar. The house icon in the sidebar marks the computer the
+  page comes from.
+- A computer that is off, asleep or not answering stays listed, greyed, with its open chats; they come back when it
+  does. Focus's *next* skips its chats meanwhile.
+- If the computer the page comes from stops, the page offers to open from another one.
+- Only computers that are paired with this browser **and** on the tunnel account you are signed in with show up.
+  A computer running an older code flower than the page can use shows a note to update it.
+
+The page keeps the code it loaded from each computer in the browser, so opening it again only asks your computer
+for the page itself.
+
 ## What a paired browser can do
 
 It can use your sandboxes' chats, which means running code in them, and stop sandboxes. It cannot add sandboxes by
@@ -51,6 +72,8 @@ address, quit the app, or change remote access. Two settings in [config.yaml](/r
 - `tunnel.hardened: true`: each browser is limited to the sandboxes you choose when pairing it, and on Linux
   (kernel 6.7 or newer) the part of the app that talks to the tunnel runs as a separate, confined process. With it,
   `codeflower tunnel pair SANDBOX…` names the sandboxes.
+
+Each computer applies its own settings to its own sandboxes, also when the page comes from another computer.
 
 ## Managing it
 
@@ -73,6 +96,7 @@ computer itself, never through the tunnel. On the tunnel's account page you see 
 - Signing in again (`tunnel login`) replaces this computer's connection: browsers must pair again.
 - Each computer signs in separately. With a home folder shared between machines (a cluster), use it from the machine
   that signed in.
-- Your computer must be on and the app running for the page to load.
+- At least one paired computer must be on, with the app running, for the page to load; each computer's sandboxes
+  show while it is.
 
 How the encryption works, and what the tunnel's operator can see: [Security model](/security/security-model/#remote-access).

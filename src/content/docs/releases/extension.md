@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.12.1
+
+*2026-11-01*
+
+- Maintenance release.
+
 ## v0.12.0
 
 *2026-11-01*

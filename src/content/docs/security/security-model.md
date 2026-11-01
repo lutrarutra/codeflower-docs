@@ -52,7 +52,10 @@ not read or take over:
   pairing link carries a one-time secret in the part of the URL browsers never send to servers; it expires after 10
   minutes.
 - **The page comes from your computer.** After pairing, the app's page itself is loaded from your computer through
-  the encrypted channel, not from the tunnel.
+  the encrypted channel, not from the tunnel. With [several computers](/guides/remote-access/#several-computers),
+  it comes from one of them and reaches the others' sandboxes with the same pairings. This gives the page nothing a
+  page from one computer could not already reach: every pairing of a browser is kept in the same place. Pair a
+  browser only with computers you trust alike.
 
 What the tunnel's operator **can** see: your account's display name and sign-in identities, your computers' names,
 regions, public keys and when they were online, how many sandboxes they run, the IP addresses of browsers, and the
@@ -60,7 +63,8 @@ timing and size of traffic. **Not** your pages, chats, files, pairing secrets or
 the connection passes only through EU datacenters.
 
 **The trust that remains.** The small bootstrap code a browser runs before it reaches your computer is served by the
-tunnel. A compromised tunnel could serve different code there. `codeflower tunnel verify` compares it with hashes
+tunnel, and it handles the browser's keys. A compromised tunnel could serve different code there, which could leak
+them. `codeflower tunnel verify` compares it with hashes
 built into the app; [self-hosting](/guides/self-host-tunnel/) removes the third party.
 
 **A paired browser has full use of your chats**, which run code in your sandboxes. Pair only your own devices;

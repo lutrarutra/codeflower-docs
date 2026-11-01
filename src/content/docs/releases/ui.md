@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.10.0
+
+*2026-11-01*
+
+- Through the tunnel, the app's page shows the sandboxes of every paired computer, grouped by computer in the sidebar; chats from all of them open side by side and in Focus. A computer that stops answering keeps its sandboxes and chats listed, greyed, until it is back.
+- Focus connects to the next chat's sandbox ahead, and a chat whose connection was closed reconnects as soon as you look at it.
+
 ## v0.9.0
 
 *2026-11-01*

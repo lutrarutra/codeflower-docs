@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.15.1
+
+*2026-11-01*
+
+- Maintenance release: the page `--server` serves comes from ui 0.10.0.
+
 ## v0.15.0
 
 *2026-11-01*

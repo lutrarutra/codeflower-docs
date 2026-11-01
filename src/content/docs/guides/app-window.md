@@ -29,6 +29,8 @@ sandboxes, e.g. on a cluster's login node.
   [Files and previews](/guides/files-and-previews/).
 - A chat that finished or waits for you while you look elsewhere is marked in the sidebar, and a note at the top
   of the page opens it.
+- Opened [through the tunnel](/guides/remote-access/#several-computers) with several paired computers, the sidebar
+  lists the sandboxes under a heading per computer, and *Server* has a switch on top for the computer it shows.
 
 ## Tray and notifications
 
