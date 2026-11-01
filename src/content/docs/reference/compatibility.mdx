@@ -1,0 +1,14 @@
+---
+title: Compatibility
+description: Which sandbox image, chat and agents each app release runs.
+---
+
+import Compatibility from '../../../components/Compatibility.astro';
+
+Each app release runs the sandbox image it was made and tested with, and the image brings the chat page (ui),
+storyteller and the agents. The extension updates on its own: the column shows the release current when the app was
+shipped. The tunnel accepts connections by protocol version.
+
+<Compatibility />
+
+To run another image with an app, use `--image-tag` (see [Container engines](/guides/engines/#the-sandbox-image)).

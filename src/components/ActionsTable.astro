@@ -1,0 +1,21 @@
+---
+// The chat actions in the sandbox image (src/data/actions.json).
+import actions from '../data/actions.json';
+---
+
+<table>
+  <thead>
+    <tr><th>Action</th><th>What it asks</th><th>While the agent works</th></tr>
+  </thead>
+  <tbody>
+    {
+      actions.map((action) => (
+        <tr>
+          <td><strong>{action.title}</strong></td>
+          <td>{action.description}</td>
+          <td>{action.mode === 'interrupt' ? 'stops the turn and runs now' : 'queued until the turn ends'}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

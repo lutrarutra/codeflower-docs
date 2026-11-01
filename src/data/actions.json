@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Generate report",
+    "description": "Write a report from this chat's existing results.",
+    "mode": "queue"
+  },
+  {
+    "title": "Update report",
+    "description": "Bring an existing report up to date.",
+    "mode": "queue"
+  },
+  {
+    "title": "Answer report comments",
+    "description": "Work through open comments on reports.",
+    "mode": "queue"
+  },
+  {
+    "title": "Methods section",
+    "description": "Write a reproducible methods section for this work.",
+    "mode": "queue"
+  },
+  {
+    "title": "Checkpoint",
+    "description": "Save progress and stop for direction.",
+    "mode": "queue"
+  },
+  {
+    "title": "Wrap up",
+    "description": "Stop the current step and preserve progress.",
+    "mode": "interrupt"
+  }
+]

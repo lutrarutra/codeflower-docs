@@ -1,0 +1,21 @@
+---
+// The allowlist presets, from the app (src/data/presets.json).
+import presets from '../data/presets.json';
+---
+
+<table>
+  <thead>
+    <tr><th>Line</th><th>Service</th><th>Hosts</th></tr>
+  </thead>
+  <tbody>
+    {
+      presets.map((preset) => (
+        <tr>
+          <td><code>@{preset.name}</code></td>
+          <td>{preset.description}{preset.uploads && <em> (also accepts uploads)</em>}</td>
+          <td>{preset.hosts.map((host, i) => <>{i > 0 && ' '}<code>{host}</code></>)}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

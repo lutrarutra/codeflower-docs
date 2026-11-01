@@ -1,0 +1,41 @@
+---
+title: 'Quickstart: the app window'
+description: Start a sandbox and chat with its agent from the app's window, no terminal needed.
+sidebar:
+  order: 3
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+The quickest way in: the app's window starts a sandbox with a few clicks and hosts the chat in your browser.
+
+<Steps>
+1. **Open the window.** Start *code flower* from the applications or Start menu, or run:
+   ```sh
+   codeflower client
+   ```
+   It opens a page in your browser at `http://127.0.0.1:7720/`, served only to this computer. On Windows,
+   macOS and many Linux desktops it also adds an icon to the tray or menu bar.
+
+2. **Start a sandbox.** Under *Server*, choose:
+   - the **agent**: Claude Code, Codex, DeepSeek Harness or OpenCode
+   - **Input data** folders (read-only), **Output folders** (read-write), and optionally **Code** folders
+     (repositories the agent may change) and **Skills**, with *Add folder…*
+   - whether to **Isolate the network** (see [Network isolation](/guides/network-isolation/))
+   - under *Advanced*, the **Project name**: chats, logins and installed software are kept per project
+
+   Then *Start sandbox*. The first start downloads the sandbox image, which takes a few minutes.
+
+3. **Sign in the agent.** The first time in a project, the sandbox says it is not signed in. Choose *Sign in…*
+   and use your subscription or an API key. See [Signing in agents](/guides/sign-in/).
+
+4. **Chat.** Choose *New chat* and describe what you want, e.g. *"Explore the dataset in /data/input and
+   suggest an analysis plan."* Files the agent shows open in tabs beside the chat.
+</Steps>
+
+## Next
+
+- [Chatting](/guides/chatting/): modes, the `!` shell, queueing messages, permissions.
+- [Files and previews](/guides/files-and-previews/): upload data, download results, comment on figures.
+- [Remote access](/guides/remote-access/): open the same page from your phone.
+- [The app window](/guides/app-window/): everything else the window does.

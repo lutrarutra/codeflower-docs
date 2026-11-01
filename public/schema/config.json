@@ -1,0 +1,203 @@
+{
+  "$id": "https://docs.codeflower.app/schema/config.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The content of config.yaml; every field is optional.",
+  "properties": {
+    "agents": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "description": "Holds the defaults for one agent.",
+        "properties": {
+          "api_key": {
+            "description": "The agent's API key, written here. Set at most one of api_key, api_key_env and api_key_file; config.yaml must then not be readable by other users. A subscription login in the project is kept.",
+            "type": "string"
+          },
+          "api_key_env": {
+            "description": "The environment variable on this computer that holds the agent's API key.",
+            "type": "string"
+          },
+          "api_key_file": {
+            "description": "A file on this computer that holds the agent's API key.",
+            "type": "string"
+          },
+          "effort": {
+            "description": "The reasoning effort `codeflower task` asks for (the agent's thought level, e.g. low, medium or high).",
+            "type": "string"
+          },
+          "model": {
+            "description": "The model `codeflower task` asks the agent for, as the agent names it; the task stops when the agent has no such model.",
+            "type": "string"
+          },
+          "options": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Other settings of the agent for `codeflower task`, by the ids the agent gives them (as with `--option ID=VALUE`).",
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "description": "Settings of each agent, by its id.",
+      "propertyNames": {
+        "enum": [
+          "claude",
+          "codex",
+          "dsh",
+          "opencode"
+        ]
+      },
+      "type": "object"
+    },
+    "client": {
+      "additionalProperties": false,
+      "description": "Configures codeflower client.",
+      "properties": {
+        "connect_only": {
+          "description": "Never start sandboxes here, e.g. on a login node.",
+          "type": "boolean"
+        },
+        "notifications": {
+          "description": "Tell the desktop when a chat waits for an answer or ends its turn (default true).",
+          "type": "boolean"
+        },
+        "tray": {
+          "description": "Show an icon in the system tray or menu bar where there is one (default true).",
+          "type": "boolean"
+        },
+        "wrap_up_minutes": {
+          "description": "How long quitting waits at most for the chats in the client's sandboxes to wrap up (default 10).",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "engine": {
+      "description": "Auto, docker, podman or apptainer, for the sandboxes the command line starts when neither --engine nor $CODEFLOWER_ENGINE is set.",
+      "type": "string"
+    },
+    "icons": {
+      "additionalProperties": false,
+      "description": "Configures the icon gallery.",
+      "properties": {
+        "folder": {
+          "description": "Replaces \u003cconfig dir\u003e/icons; \"off\" mounts no gallery.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "image": {
+      "description": "The sandbox image (a Docker/Podman image name or an Apptainer .sif file) for the sandboxes the command line starts when neither --image nor $CODEFLOWER_IMAGE is set.",
+      "type": "string"
+    },
+    "images": {
+      "additionalProperties": false,
+      "description": "Configures the image model codeflower-sketch generates icons with.",
+      "properties": {
+        "api_key": {
+          "description": "The provider's API key, written here (at most one of api_key, api_key_env and api_key_file).",
+          "type": "string"
+        },
+        "api_key_env": {
+          "description": "The environment variable on this computer that holds the key.",
+          "type": "string"
+        },
+        "api_key_file": {
+          "description": "A file on this computer that holds the key.",
+          "type": "string"
+        },
+        "model": {
+          "description": "Replaces the provider's default model.",
+          "type": "string"
+        },
+        "provider": {
+          "description": "Openai or google. An isolated sandbox may reach its API.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "isolate_network": {
+      "description": "Start the command line's sandboxes as with --isolate-network.",
+      "type": "boolean"
+    },
+    "mcp_servers": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "description": "A Model Context Protocol server the agent of every sandbox may use: a command that runs in the sandbox (stdio), or a server at a URL.",
+        "properties": {
+          "args": {
+            "description": "The command's arguments.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "command": {
+            "description": "The program that runs the server in the sandbox (stdio).",
+            "type": "string"
+          },
+          "env": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Environment variables for the command.",
+            "type": "object"
+          },
+          "headers": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "HTTP headers sent to a server at a URL, e.g. Authorization.",
+            "type": "object"
+          },
+          "transport": {
+            "description": "Of a server at a URL: http (streamable HTTP, the default) or sse, which Codex and dsh do not support.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The address of a server that runs elsewhere, instead of a command.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "description": "The MCP servers given to the agent of every sandbox, by name.",
+      "type": "object"
+    },
+    "skills": {
+      "description": "More folders of skills, mounted read-only in every sandbox besides \u003cconfig dir\u003e/skills; relative paths are in the config directory.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "tunnel": {
+      "additionalProperties": false,
+      "description": "Configures remote access through a code flower tunnel (`codeflower tunnel login`).",
+      "properties": {
+        "eu_only": {
+          "description": "Routes the tunnel only through EU datacenters. Unset until the first `codeflower tunnel login` asks.",
+          "type": "boolean"
+        },
+        "hardened": {
+          "description": "Limits each paired browser to the workers chosen when pairing, and runs the connector as a separate, confined process.",
+          "type": "boolean"
+        },
+        "manage": {
+          "description": "Lets remote browsers browse folders, start sandboxes and forget them; without it they use and stop existing sandboxes only.",
+          "type": "boolean"
+        },
+        "url": {
+          "description": "The tunnel; the hosted one when empty.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "code flower config.yaml",
+  "type": "object"
+}

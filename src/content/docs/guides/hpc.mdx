@@ -1,0 +1,84 @@
+---
+title: HPC clusters
+description: Run sandboxes as batch jobs with Apptainer, and reach them from VS Code, the app or a browser.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+On a cluster, a sandbox is a batch job: Apptainer runs it on a compute node, and you chat with it from VS Code
+(over Remote-SSH to the login node), from the app on your computer, or from a browser.
+
+## Set up once
+
+<Steps>
+1. [Install the app](/start/install/) in your home directory on the cluster.
+2. Load Apptainer and check:
+   ```sh
+   module load apptainer   # the module's name varies per site
+   codeflower check
+   ```
+3. Download the sandbox image **on the login node**, as compute nodes often have no internet:
+   ```sh
+   codeflower pull --engine apptainer
+   ```
+   This also downloads Claude Code. Set `CODEFLOWER_IMAGE_DIR` to keep images on a project or scratch
+   filesystem shared by your group.
+4. Sign the agent in once, from an interactive session (see below), so batch jobs start signed in.
+</Steps>
+
+## Start a sandbox as a job
+
+```sh
+mkdir -p ~/.codeflower-logs && chmod 700 ~/.codeflower-logs
+sbatch --cpus-per-task=8 --mem=32G --time=8:00:00 --signal=B:TERM@120 \
+  --output=$HOME/.codeflower-logs/%j.out \
+  --wrap "codeflower interactive --agent claude -p study42 \
+          --input /data/study42 --output ~/results/study42"
+```
+
+The job's log shows the sandbox's address, `codeflower://10.20.3.17:41234?token=…` (the node's address), and a
+link that adds it to the app on your computer.
+
+:::caution[Keep job logs private]
+Anyone with the address controls the agent. Keep the log folder readable only by you, as above. The same address
+is also written to a private file in the project's `instances/` folder, for scripts.
+:::
+
+- `--signal=B:TERM@120` lets the sandbox shut down cleanly before the job's time runs out.
+- **15 minutes before the job ends**, chats that are still working are told to wrap up: stop starting new work,
+  save progress and write down what is left. Your windows show a warning.
+- The agent is told what the job may use (CPUs, memory, GPUs, when it ends), read from Slurm, PBS, LSF, Grid
+  Engine or HTCondor.
+
+For unattended work, use [`codeflower task`](/guides/interactive-run-task/#task) in the job instead.
+
+## Connect to it
+
+**VS Code over Remote-SSH.** Connect VS Code to the login node. The extension runs there, so it can reach compute
+nodes: *Connect to worker…* and paste the address.
+
+**The app on your computer.** If the app on your computer can reach compute nodes (e.g. on the site's VPN), paste
+the address into *Add remote sandbox* in its sidebar. Otherwise run the app on the login node and open its page through SSH:
+
+```sh
+ssh -L 7720:127.0.0.1:7720 login.cluster.example
+codeflower client --no-browser       # on the login node; prints the page's address
+```
+
+With `client.connect_only: true` in [config.yaml](/reference/config/), the app on a login node only connects to
+sandboxes and never starts one there.
+
+**A browser, directly.** `codeflower interactive --server` makes the sandbox serve its chat page and print a link.
+It is plain HTTP: on a shared network add `--host 127.0.0.1` and reach it with `ssh -L`.
+
+**Your phone.** See [Remote access](/guides/remote-access/).
+
+## Good to know
+
+- Address the sandbox prints: the node's IPv4 address with Apptainer. `--advertise-host` changes it; `--host` and
+  `--port` change where it listens.
+- The connection between your window and the sandbox is not encrypted; only the token protects it. Use it on the
+  cluster's internal network, not across the internet. See the [security model](/security/security-model/).
+- Apptainer does not enforce `--cpus` and `--memory`: the job's allocation is the limit.
+- A project folder on a shared filesystem can be used from any node, but a chat is open in one sandbox at a time;
+  another sandbox shows it read-only.

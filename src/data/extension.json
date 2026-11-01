@@ -1,0 +1,68 @@
+{
+  "id": "codeflower.codeflower",
+  "commands": [
+    {
+      "id": "codeflower.connectWorker",
+      "title": "Connect to worker…",
+      "palette": true
+    },
+    {
+      "id": "codeflower.refresh",
+      "title": "Refresh",
+      "palette": true
+    },
+    {
+      "id": "codeflower.newSession",
+      "title": "New session",
+      "palette": false
+    },
+    {
+      "id": "codeflower.signIn",
+      "title": "Sign in…",
+      "palette": false
+    },
+    {
+      "id": "codeflower.reconnectWorker",
+      "title": "Reconnect",
+      "palette": false
+    },
+    {
+      "id": "codeflower.removeWorker",
+      "title": "Remove worker",
+      "palette": false
+    },
+    {
+      "id": "codeflower.showAttention",
+      "title": "Show the session that needs attention",
+      "palette": true
+    },
+    {
+      "id": "codeflower.openSession",
+      "title": "Open session",
+      "palette": false
+    },
+    {
+      "id": "codeflower.renameSession",
+      "title": "Rename",
+      "palette": false
+    },
+    {
+      "id": "codeflower.deleteSession",
+      "title": "Delete",
+      "palette": false
+    },
+    {
+      "id": "codeflower.openFile",
+      "title": "Show",
+      "palette": false
+    }
+  ],
+  "settings": [
+    {
+      "key": "codeflower.reports.openInteractive",
+      "type": "boolean",
+      "default": true,
+      "description": "Open storyteller reports in their interactive tab (charts, explorers, comments) when the agent shows them or you open one from the chat. Other HTML files open in the static preview."
+    }
+  ]
+}

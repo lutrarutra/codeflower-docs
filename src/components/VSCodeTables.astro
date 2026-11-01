@@ -1,0 +1,41 @@
+---
+// The extension's commands and settings (src/data/extension.json).
+import extension from '../data/extension.json';
+---
+
+<h2 id="commands">Commands</h2>
+<table>
+  <thead>
+    <tr><th>Command</th><th>id</th><th>In the command palette</th></tr>
+  </thead>
+  <tbody>
+    {
+      extension.commands.map((command) => (
+        <tr>
+          <td>{command.title}</td>
+          <td><code>{command.id}</code></td>
+          <td>{command.palette ? 'yes' : 'no (in the worker list)'}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+
+<h2 id="settings">Settings</h2>
+<table>
+  <thead>
+    <tr><th>Setting</th><th>Type</th><th>Default</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    {
+      extension.settings.map((setting) => (
+        <tr>
+          <td><code>{setting.key}</code></td>
+          <td>{setting.type}</td>
+          <td><code>{JSON.stringify(setting.default)}</code></td>
+          <td>{setting.description}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

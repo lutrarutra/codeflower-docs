@@ -1,0 +1,57 @@
+---
+title: config.yaml
+description: Every setting of the code flower app, its sandboxes and remote access.
+---
+
+import ConfigTable from '../../../components/ConfigTable.astro';
+
+The app's settings are in `config.yaml` in its config directory: `~/.codeflower`, or the folder given with
+`--config` or `CODEFLOWER_CONFIG`. Every key is optional; without the file, everything has its default. Unknown keys
+are an error, so a typo does not go unnoticed. On a cluster, it is the file on the cluster, where `codeflower` runs.
+
+```yaml
+# ~/.codeflower/config.yaml
+# yaml-language-server: $schema=https://docs.codeflower.app/schema/config.json
+engine: apptainer
+skills: [~/lab-skills]
+agents:
+  claude:
+    api_key_env: ANTHROPIC_API_KEY
+  codex:
+    model: gpt-6.1-sol
+    effort: high
+client:
+  wrap_up_minutes: 15
+tunnel:
+  eu_only: true
+mcp_servers:
+  docs:
+    url: https://mcp.example.org/mcp
+```
+
+:::tip[Autocomplete in your editor]
+The `# yaml-language-server` line gives completion and checks in editors with the YAML language server, e.g. VS
+Code's YAML extension. The schema is at [/schema/config.json](/schema/config.json).
+:::
+
+When the file holds a secret (`api_key`, or MCP `env` or `headers`), it must not be readable by other users:
+`chmod 600 ~/.codeflower/config.yaml`.
+
+## All keys
+
+<ConfigTable />
+
+Some keys apply to part of the app only:
+
+- `engine`, `image` and `isolate_network` apply to the sandboxes the command line starts (`interactive`, `run`,
+  `task`). The app's window has its own choices in its start form.
+- `agents.<agent>.model`, `effort` and `options` apply to [`codeflower task`](/guides/interactive-run-task/#task).
+
+## Next to config.yaml
+
+| Path | What |
+| --- | --- |
+| `skills/` | [skills](/guides/skills-and-icons/) mounted read-only in every sandbox |
+| `icons/` | the [icon gallery](/guides/skills-and-icons/#icons-for-figures) |
+| `tunnel/` | this computer's [remote access](/guides/remote-access/) keys and paired browsers (private) |
+| `client.json`, `client.log` | the running app's address and its log |

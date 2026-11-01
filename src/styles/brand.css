@@ -1,0 +1,91 @@
+/* code flower's look on Starlight: the shared tokens (codeflower-ui's
+   theme/tokens.css) mapped onto Starlight's variables. The tokens switch with
+   data-theme themselves, so one mapping serves both themes. Starlight's styles
+   are in cascade layers; these unlayered rules win over them. */
+@import 'codeflower-ui/theme/fonts.css';
+@import 'codeflower-ui/theme/tokens.css';
+
+:root,
+:root[data-theme='light'],
+::backdrop {
+  /* Starlight's scale runs from the strongest text ("white") to the page
+     ("black") in both themes. */
+  --sl-color-white: var(--cf-ink);
+  --sl-color-gray-1: var(--cf-ink);
+  --sl-color-gray-2: color-mix(in oklab, var(--cf-ink) 88%, var(--cf-paper));
+  --sl-color-gray-3: var(--cf-muted);
+  --sl-color-gray-4: color-mix(in oklab, var(--cf-muted) 70%, var(--cf-paper));
+  --sl-color-gray-5: var(--cf-line);
+  --sl-color-gray-6: var(--cf-sunken);
+  --sl-color-gray-7: var(--cf-card);
+  --sl-color-black: var(--cf-paper);
+
+  --sl-color-accent-low: var(--cf-indigo-soft);
+  --sl-color-accent: var(--cf-indigo);
+  --sl-color-accent-high: color-mix(in oklab, var(--cf-indigo) 65%, var(--cf-ink));
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: var(--cf-indigo);
+  --sl-color-text-invert: var(--cf-on-accent);
+  --sl-color-bg: var(--cf-paper);
+  --sl-color-bg-nav: var(--cf-paper);
+  --sl-color-bg-sidebar: var(--cf-sunken);
+  --sl-color-bg-inline-code: var(--cf-code);
+  --sl-color-bg-accent: var(--cf-indigo);
+  --sl-color-hairline-light: var(--cf-soft-line);
+  --sl-color-hairline: var(--cf-line);
+  --sl-color-hairline-shade: var(--cf-line);
+
+  /* Asides: note teal, tip violet, caution yellow, danger red. */
+  --sl-color-blue-low: var(--cf-teal-soft);
+  --sl-color-blue: var(--cf-teal);
+  --sl-color-blue-high: color-mix(in oklab, var(--cf-teal) 60%, var(--cf-ink));
+  --sl-color-purple-low: var(--cf-violet-soft);
+  --sl-color-purple: var(--cf-violet);
+  --sl-color-purple-high: color-mix(in oklab, var(--cf-violet) 60%, var(--cf-ink));
+  --sl-color-orange-low: var(--cf-yellow-soft);
+  --sl-color-orange: var(--cf-orange);
+  --sl-color-orange-high: color-mix(in oklab, var(--cf-orange) 50%, var(--cf-ink));
+  --sl-color-red-low: var(--cf-pink-soft);
+  --sl-color-red: var(--cf-red);
+  --sl-color-red-high: color-mix(in oklab, var(--cf-red) 60%, var(--cf-ink));
+  --sl-color-green-low: var(--cf-green-soft);
+  --sl-color-green: var(--cf-green);
+  --sl-color-green-high: color-mix(in oklab, var(--cf-green) 60%, var(--cf-ink));
+
+  --sl-font: 'DM Sans Variable';
+  --sl-content-width: 48rem;
+}
+
+/* Headings in Fredoka, like the app's titles. */
+h1,
+.sl-markdown-content :is(h2, h3, h4),
+.site-title {
+  font-family: 'Fredoka Variable', 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Rounded, quiet surfaces like the chat's cards. */
+.sl-markdown-content :not(pre) > code {
+  border-radius: 0.375rem;
+  padding: 0.1em 0.35em;
+}
+.starlight-aside {
+  border-radius: 0.75rem;
+  border-inline-start-width: 0;
+}
+.sl-markdown-content table {
+  border-radius: 0.75rem;
+}
+.card,
+.sl-link-card {
+  border-radius: 1rem !important;
+  background: var(--cf-card);
+  box-shadow: var(--cf-elevation);
+}
+
+/* The tulip on a paper tile in dark themes, as the chat shows it. */
+[data-theme='dark'] .tulip {
+  background: #f6efd9;
+  border-radius: 28%;
+}

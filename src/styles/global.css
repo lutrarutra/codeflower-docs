@@ -1,0 +1,32 @@
+/* Tailwind for the site's own components and the ui components it reuses,
+   layered after Starlight's styles. No preflight: Starlight has its reset. */
+@layer starlight, theme, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@source '../components';
+@source '../../node_modules/codeflower-ui/src/chat/lib';
+
+@theme inline {
+  --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fredoka Variable', 'Trebuchet MS', sans-serif;
+  --color-paper: var(--cf-paper);
+  --color-sunken: var(--cf-sunken);
+  --color-card: var(--cf-card);
+  --color-ink: var(--cf-ink);
+  --color-muted: var(--cf-muted);
+  --color-line: var(--cf-line);
+  --color-soft-line: var(--cf-soft-line);
+  --color-code: var(--cf-code);
+  --color-indigo: var(--cf-indigo);
+  --color-indigo-soft: var(--cf-indigo-soft);
+  --color-teal: var(--cf-teal);
+  --color-teal-soft: var(--cf-teal-soft);
+  --color-pink: var(--cf-pink);
+  --color-pink-soft: var(--cf-pink-soft);
+  --color-yellow: var(--cf-yellow);
+  --color-yellow-soft: var(--cf-yellow-soft);
+  --color-green: var(--cf-green);
+  --color-green-soft: var(--cf-green-soft);
+  --color-violet: var(--cf-violet);
+  --color-violet-soft: var(--cf-violet-soft);
+}

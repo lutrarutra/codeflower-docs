@@ -1,0 +1,78 @@
+---
+title: Remote access
+description: Reach the app on your computer, and its sandboxes, from any browser or phone through the end-to-end encrypted tunnel.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+The **tunnel** lets a browser or phone anywhere open the app's page on your computer, with its sandboxes and
+chats, without opening ports or a VPN. Everything between the paired browser and your computer is
+**end-to-end encrypted**: the tunnel only relays it and cannot read it.
+
+The hosted tunnel is `https://tunnels.codeflower.app`; you can also [run your own](/guides/self-host-tunnel/).
+
+## Pair a phone or browser
+
+<Steps>
+1. On your computer, run:
+   ```sh
+   codeflower tunnel pair
+   ```
+   or, in the app's window under *Server*, use *Remote access* → *Pair a browser or phone*.
+
+2. **The first time, sign this computer in.** It asks whether the tunnel should pass only through **EU
+   datacenters** (saved as `tunnel.eu_only` in config.yaml), then shows a code and opens the tunnel's approval page.
+   Sign in there with **GitHub** (two-factor authentication required), **Google**, or a **passkey**, check the
+   code and the computer's name, and approve.
+
+3. **Open the pairing link** on the phone or browser: scan the QR code, or open the printed link. It works once,
+   for 10 minutes. Sign in to the tunnel there with the same account, check that the **key fingerprint** matches
+   the one your computer printed, and name the device.
+
+4. The page opens: your sandboxes and their chats, as in the app's window. Add it to your home screen to get back
+   to it.
+</Steps>
+
+Pairing also starts the app in the background on your computer if it is not running, to keep the tunnel connected.
+`codeflower run` and `interactive` print a tunnel link to their chat (with a QR code) when this computer is signed
+in; `--no-tunnel` keeps a sandbox off the tunnel.
+
+:::note[Two locks]
+Signing in to the tunnel alone gives no access. A browser needs **both** your tunnel account and a pairing made on
+your computer.
+:::
+
+## What a paired browser can do
+
+It can use your sandboxes' chats, which means running code in them, and stop sandboxes. It cannot add sandboxes by
+address, quit the app, or change remote access. Two settings in [config.yaml](/reference/config/) change this:
+
+- `tunnel.manage: true`: paired browsers may also start sandboxes and browse folders.
+- `tunnel.hardened: true`: each browser is limited to the sandboxes you choose when pairing it, and on Linux
+  (kernel 6.7 or newer) the part of the app that talks to the tunnel runs as a separate, confined process. With it,
+  `codeflower tunnel pair SANDBOX…` names the sandboxes.
+
+## Managing it
+
+| Command | Does |
+| --- | --- |
+| `codeflower tunnel status` | the connection, this computer's key, paired browsers, sandboxes |
+| `codeflower tunnel devices` | lists paired browsers |
+| `codeflower tunnel revoke DEVICE` | unpairs one (by name, or the start of its fingerprint); its open pages close at once |
+| `codeflower tunnel off` / `on` | turns remote access off at once (pairings are kept) and on again |
+| `codeflower tunnel rotate` | gives this computer a new key: every browser must pair again |
+| `codeflower tunnel logout` | signs this computer out and forgets all pairings |
+| `codeflower tunnel verify` | checks the code the tunnel serves to browsers against the hashes built into the app |
+
+The app's *Remote access* card does the same: pair, list and *Unpair* browsers, *Sign out*. These work only on the
+computer itself, never through the tunnel. On the tunnel's account page you see your computers and can revoke one.
+
+## Good to know
+
+- Private browsing windows do not work: the page needs a service worker, which they do not allow.
+- Signing in again (`tunnel login`) replaces this computer's connection: browsers must pair again.
+- Each computer signs in separately. With a home folder shared between machines (a cluster), use it from the machine
+  that signed in.
+- Your computer must be on and the app running for the page to load.
+
+How the encryption works, and what the tunnel's operator can see: [Security model](/security/security-model/#remote-access).

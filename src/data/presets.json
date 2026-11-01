@@ -1,0 +1,93 @@
+[
+  {
+    "name": "pypi",
+    "description": "pip and uv (PyPI)",
+    "hosts": [
+      "pypi.org",
+      "files.pythonhosted.org"
+    ]
+  },
+  {
+    "name": "conda",
+    "description": "conda and mamba (conda-forge, bioconda, Anaconda)",
+    "hosts": [
+      "conda.anaconda.org",
+      "repo.anaconda.com"
+    ]
+  },
+  {
+    "name": "cran",
+    "description": "R packages from CRAN and Posit Package Manager",
+    "hosts": [
+      "cloud.r-project.org",
+      "cran.r-project.org",
+      "packagemanager.posit.co"
+    ]
+  },
+  {
+    "name": "bioconductor",
+    "description": "R packages from Bioconductor",
+    "hosts": [
+      "bioconductor.org"
+    ]
+  },
+  {
+    "name": "npm",
+    "description": "npm packages",
+    "hosts": [
+      "registry.npmjs.org"
+    ]
+  },
+  {
+    "name": "huggingface",
+    "description": "Hugging Face models and datasets",
+    "hosts": [
+      "huggingface.co",
+      "*.huggingface.co",
+      "*.hf.co"
+    ],
+    "uploads": true
+  },
+  {
+    "name": "github",
+    "description": "git clone and release downloads from GitHub",
+    "hosts": [
+      "github.com",
+      "codeload.github.com",
+      "objects.githubusercontent.com",
+      "raw.githubusercontent.com"
+    ],
+    "uploads": true
+  },
+  {
+    "name": "ncbi",
+    "description": "NCBI: E-utilities, Datasets, GEO, SRA and the FTP site over HTTPS",
+    "hosts": [
+      "*.ncbi.nlm.nih.gov"
+    ]
+  },
+  {
+    "name": "ensembl",
+    "description": "Ensembl: REST API, BioMart and downloads",
+    "hosts": [
+      "ensembl.org",
+      "*.ensembl.org"
+    ]
+  },
+  {
+    "name": "uniprot",
+    "description": "UniProt: REST API and downloads",
+    "hosts": [
+      "uniprot.org",
+      "*.uniprot.org"
+    ]
+  },
+  {
+    "name": "ebi",
+    "description": "EMBL-EBI: ENA, Expression Atlas, PDBe and the FTP site over HTTPS",
+    "hosts": [
+      "www.ebi.ac.uk",
+      "ftp.ebi.ac.uk"
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+---
+// The site title: ui's tulip (the chat's own component) and the wordmark.
+import Tulip from 'codeflower-ui/chat/lib/Tulip.svelte';
+---
+
+<a href="/" class="site-title">
+  <Tulip size={30} />
+  <span>code flower</span>
+  <span class="badge">docs</span>
+</a>
+
+<style>
+  .site-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--cf-ink);
+    font-size: var(--sl-text-h4);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .badge {
+    font-family: var(--__sl-font);
+    font-size: var(--sl-text-2xs);
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--cf-indigo-soft);
+    color: var(--cf-indigo);
+  }
+</style>

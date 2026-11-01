@@ -1,0 +1,42 @@
+---
+title: code flower
+description: AI agents for data analysis, in a sandbox that sees only the folders you give it, on your computer or an HPC cluster.
+template: splash
+hero:
+  tagline: Let Claude Code, Codex, DeepSeek Harness or OpenCode analyse your data, in a container that sees only the folders you give it. On your computer, on a cluster, and from your phone.
+  actions:
+    - text: Get started
+      link: /start/introduction/
+      icon: right-arrow
+    - text: Install
+      link: /start/install/
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Safe by default" icon="seti:lock">
+    The agent runs only inside a container. It sees only the folders you mount, and your data can be
+    mounted read-only. Cut its network down to an allowlist when you need to.
+  </Card>
+  <Card title="Your agent, your login" icon="puzzle">
+    Claude Code, Codex, DeepSeek Harness or OpenCode, signed in with your own subscription or an API key.
+  </Card>
+  <Card title="Where your data is" icon="laptop">
+    Docker or Podman on a workstation, Apptainer on an HPC cluster as a Slurm job. Same commands everywhere.
+  </Card>
+  <Card title="Reports, not just chats" icon="document">
+    The agent writes its findings as interactive HTML reports you can comment on, and keeps your
+    project's environment for next time.
+  </Card>
+</CardGrid>
+
+## Pick your path
+
+<CardGrid>
+  <LinkCard title="On my computer, with the app window" href="/start/quickstart-app/" description="Start a sandbox with a few clicks and chat in the browser." />
+  <LinkCard title="From the terminal and VS Code" href="/start/quickstart-vscode/" description="codeflower interactive, then chat in VS Code." />
+  <LinkCard title="On an HPC cluster" href="/guides/hpc/" description="Apptainer, Slurm jobs, offline compute nodes." />
+  <LinkCard title="From my phone, anywhere" href="/guides/remote-access/" description="Pair a browser through the end-to-end encrypted tunnel." />
+</CardGrid>

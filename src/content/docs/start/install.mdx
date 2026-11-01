@@ -1,0 +1,84 @@
+---
+title: Install
+description: Install the codeflower app, a container engine, and optionally the VS Code extension.
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+You need the **codeflower app**, and a **container engine** to run sandboxes: Docker or Podman on a
+workstation, Apptainer on a cluster. The **VS Code extension** is optional.
+
+## The app
+
+<Tabs syncKey="os">
+  <TabItem label="Linux and macOS">
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/lutrarutra/codeflower-app/main/install.sh | sh
+    ```
+    It installs `codeflower` into `~/.local/bin` (Linux and macOS, Intel and ARM), and on a Linux desktop
+    adds *code flower* to the applications menu. This also works on clusters, in your home directory.
+  </TabItem>
+  <TabItem label="Windows">
+    In PowerShell:
+    ```powershell
+    irm https://raw.githubusercontent.com/lutrarutra/codeflower-app/main/install.ps1 | iex
+    ```
+    It installs into `%LOCALAPPDATA%\Programs\codeflower`, adds it to your PATH, and adds *code flower* to the
+    Start menu.
+  </TabItem>
+  <TabItem label="macOS app">
+    Download `codeflower-<version>-macos.dmg` from the
+    [releases](https://github.com/lutrarutra/codeflower-app/releases). The app is not signed yet: right-click
+    it and choose *Open* the first time.
+  </TabItem>
+</Tabs>
+
+The scripts check the release's checksum and show a usage notice that you confirm with `y`.
+`CODEFLOWER_INSTALL_DIR` chooses another folder and `CODEFLOWER_VERSION=vX.Y.Z` another release.
+
+The [releases](https://github.com/lutrarutra/codeflower-app/releases) also have plain binaries
+(`codeflower-<version>-<os>-<arch>.tar.gz`, `.zip` on Windows). They are not signed yet: on Windows choose
+*More info → Run anyway* the first time.
+
+## A container engine
+
+code flower uses whichever engine it finds, in this order: **Docker**, **Podman**, **Apptainer**. Ask it what it
+sees:
+
+```sh
+codeflower check
+```
+
+It says which engines are ready, whether the sandbox image is downloaded, and how to set up what is missing.
+On a cluster, that usually means `module load apptainer`. See [Container engines](/guides/engines/).
+
+## The VS Code extension (optional)
+
+<Steps>
+1. Download `codeflower-<version>.vsix` from the
+   [extension's releases](https://github.com/lutrarutra/codeflower-vsc-extension/releases).
+2. In VS Code: *Extensions → ⋯ → Install from VSIX…*, or:
+   ```sh
+   code --install-extension codeflower-<version>.vsix
+   ```
+</Steps>
+
+With Remote-SSH, VS Code installs it on the remote machine, where it connects to sandboxes on the cluster.
+See [VS Code](/guides/vscode/).
+
+## Updating
+
+```sh
+codeflower update          # download the latest release and replace this program
+codeflower update --check  # only say whether there is a newer one
+```
+
+The macOS app updates by downloading the new `.dmg`. Each app release uses the sandbox image it was made for, and
+downloads it on first use. See [Compatibility](/reference/compatibility/).
+
+## Uninstalling
+
+Delete the `codeflower` program (on Windows, its folder and the Start menu entry). Your projects stay in
+`~/codeflower`, and the settings in `~/.codeflower`. See [Files and folders](/reference/files-and-folders/).

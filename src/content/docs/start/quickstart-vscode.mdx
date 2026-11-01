@@ -1,0 +1,43 @@
+---
+title: 'Quickstart: terminal and VS Code'
+description: Start a sandbox from the command line and chat with it in VS Code.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+1. **Check the machine** can run sandboxes:
+   ```sh
+   codeflower check
+   ```
+
+2. **Start a sandbox** for a project, with your data read-only and a folder for results:
+   ```sh
+   codeflower interactive --agent claude -p study42 \
+     --input ~/data/study42 --output ~/results/study42
+   ```
+   Leave out `--agent` to be asked. The sandbox prints its address:
+   ```
+   codeflower://127.0.0.1:41234?token=…
+   ```
+   Anyone with this line can control the agent, so treat it like a password.
+
+3. **Connect VS Code.** In the *code flower* view in the activity bar, choose *Connect to worker…* (the **+**)
+   (or run **code flower: Connect to worker** from the command palette) and paste the line. If the app's window
+   is running, the sandbox also prints a link that opens it there, and an *Open in VS Code* link.
+
+4. **Sign in** when VS Code offers it, the first time in a project. See [Signing in agents](/guides/sign-in/).
+
+5. **Chat.** Choose *New session* (the speech bubbles next to the worker).
+</Steps>
+
+Press <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal to stop the sandbox. Its chats, logins and installed software stay
+in the project, `~/codeflower/projects/study42`, for next time.
+
+## Next
+
+- [Interactive, run and task](/guides/interactive-run-task/): start with a first prompt, or let the agent work alone.
+- [HPC clusters](/guides/hpc/): the same, as a Slurm job.
+- [VS Code](/guides/vscode/): the worker tree, reports and Remote-SSH.

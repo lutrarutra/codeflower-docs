@@ -1,0 +1,36 @@
+---
+// What each app release pins. compatibility.json is appended by the ship skill
+// (never regenerated); the current row comes from versions.json.
+import versions from '../data/versions.json';
+import history from '../data/compatibility.json';
+
+type Row = typeof versions;
+const rows: Row[] = [versions, ...(history as Row[]).filter((row) => row.app !== versions.app)];
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>App</th><th>Sandbox image</th><th>ui</th><th>storyteller</th><th>Extension</th><th>Tunnel protocol</th>
+      <th>Claude Code SDK</th><th>Codex</th><th>DeepSeek Harness</th><th>OpenCode</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      rows.map((row) => (
+        <tr>
+          <td><strong>{row.app}</strong></td>
+          <td><code>{row.sandboxImage.split(':').pop()}</code></td>
+          <td>{row.ui}</td>
+          <td>{row.storyteller}</td>
+          <td>{row.extension}</td>
+          <td>{row.tunnelProtocol}</td>
+          <td>{row.claudeAgentSdk}</td>
+          <td>{row.agents.codex}</td>
+          <td>{row.agents.dsh}</td>
+          <td>{row.agents.opencode}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

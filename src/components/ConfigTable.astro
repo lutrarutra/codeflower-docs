@@ -1,0 +1,67 @@
+---
+// Every key of config.yaml, flattened from the generated JSON Schema
+// (public/schema/config.json, written from the app's config.go).
+import schema from '../../public/schema/config.json';
+
+type Node = {
+  type?: string;
+  description?: string;
+  properties?: Record<string, Node>;
+  additionalProperties?: Node | boolean;
+  items?: Node;
+};
+type Row = { key: string; type: string; description: string; group: boolean };
+
+const placeholders: Record<string, string> = { agents: '<agent>', mcp_servers: '<name>' };
+
+function typeName(node: Node): string {
+  if (node.type === 'array') return `list of ${typeName(node.items ?? {})}s`;
+  if (node.type === 'object' && !node.properties && typeof node.additionalProperties === 'object')
+    return `map of ${typeName(node.additionalProperties)}s`;
+  return node.type ?? '';
+}
+
+function rows(node: Node, prefix: string): Row[] {
+  const out: Row[] = [];
+  for (const [name, child] of Object.entries(node.properties ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
+    const key = prefix + name;
+    const entries = typeof child.additionalProperties === 'object' ? child.additionalProperties : undefined;
+    if (child.properties) {
+      out.push({ key, type: 'section', description: child.description ?? '', group: true });
+      out.push(...rows(child, key + '.'));
+    } else if (entries?.properties) {
+      out.push({ key, type: 'section, by ' + placeholders[name].slice(1, -1), description: child.description ?? '', group: true });
+      out.push(...rows(entries, `${key}.${placeholders[name] ?? '<key>'}.`));
+    } else {
+      out.push({ key, type: typeName(child), description: child.description ?? '', group: false });
+    }
+  }
+  return out;
+}
+
+const table = rows(schema as Node, '');
+const agents = (schema as any).properties.agents.propertyNames?.enum ?? [];
+---
+
+<table class="config-table">
+  <thead>
+    <tr><th>Key</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    {
+      table.map((row) => (
+        <tr class:list={[{ group: row.group }]} id={'key-' + row.key.replace(/[^a-z0-9]+/gi, '-')}>
+          <td><code>{row.key}</code></td>
+          <td>{row.type}</td>
+          <td>{row.description}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+<p>Agent ids: {agents.map((id: string, i: number) => <>{i > 0 && ', '}<code>{id}</code></>)}.</p>
+
+<style>
+  .config-table td:first-child { white-space: nowrap; }
+  .config-table tr.group td { background: var(--cf-sunken); font-weight: 600; }
+</style>
