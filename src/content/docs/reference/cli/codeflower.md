@@ -23,6 +23,8 @@ codeflower
 
 ## Commands
 
+- [`codeflower attach`](/reference/cli/codeflower-attach/): Open a sandbox's chat in the agent's own terminal UI
+- [`codeflower chats`](/reference/cli/codeflower-chats/): List a sandbox's chats, for codeflower attach
 - [`codeflower check`](/reference/cli/codeflower-check/): Check that this machine can run sandboxes, and how to set it up
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them
 - [`codeflower interactive`](/reference/cli/codeflower-interactive/): Start an interactive sandbox (worker) to use from VS Code
@@ -30,5 +32,7 @@ codeflower
 - [`codeflower pull`](/reference/cli/codeflower-pull/): Download or update the sandbox image
 - [`codeflower run`](/reference/cli/codeflower-run/): Start a task in a session you can continue from VS Code
 - [`codeflower task`](/reference/cli/codeflower-task/): Let the agent work on a task by itself, then stop
+- [`codeflower terminals`](/reference/cli/codeflower-terminals/): List the agent's terminal UIs running in a sandbox, or quit one
+- [`codeflower tui`](/reference/cli/codeflower-tui/): Work with the agent in its own terminal UI, in a sandbox that ends with it
 - [`codeflower tunnel`](/reference/cli/codeflower-tunnel/): Use code flower from anywhere through a code flower tunnel
 - [`codeflower update`](/reference/cli/codeflower-update/): Download the latest release and replace this program with it

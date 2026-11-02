@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.14.0
+
+*2026-11-02*
+
+- The chat improvements of ui 0.13.0: long chats load as you scroll, images show as thumbnails (also microscopy TIFFs), tool calls show how long they take, and a plan to approve opens beside its chat to read and edit.
+- A chat open in the agent's [terminal UI](/guides/terminal-ui/) says so.
+- *Connect to worker* also takes the `vscode://` link the worker prints.
+
 ## v0.13.1
 
 *2026-11-01*

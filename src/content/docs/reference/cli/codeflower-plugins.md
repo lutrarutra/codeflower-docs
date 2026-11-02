@@ -2,7 +2,7 @@
 title: "codeflower plugins"
 description: "List, add, remove and fetch the agents' own plugins in a project"
 sidebar:
-  order: 5
+  order: 7
   label: "plugins"
 ---
 

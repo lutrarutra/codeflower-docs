@@ -2,7 +2,7 @@
 title: "codeflower update"
 description: "Download the latest release and replace this program with it"
 sidebar:
-  order: 26
+  order: 30
   label: "update"
 ---
 

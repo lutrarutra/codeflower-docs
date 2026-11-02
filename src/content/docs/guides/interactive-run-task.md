@@ -118,3 +118,6 @@ that project is signed in. In an interactive terminal, `task` can sign in by its
 :::
 
 The finished task is a chat of the project: open it later in VS Code or the app to ask about the results.
+
+To work in the agent's own terminal UI instead, in a sandbox that ends with it, see
+[`codeflower tui`](/guides/terminal-ui/#a-sandbox-for-one-terminal-ui).

@@ -56,6 +56,9 @@ You can open the same sandbox, and the same chat, in VS Code and in the app's wi
 same time. Messages from either take turns; a permission request shows in all of them, and the first answer
 counts. **The agent keeps working when you close every window**: reopen the chat later to see what it did.
 
+A chat can also be open in the agent's own [terminal UI](/guides/terminal-ui/) (`codeflower attach`), which the page
+follows; the chat says so while it is.
+
 ## Sessions
 
 Each chat is saved in the project, named after its first message. Rename or delete it from the sandbox's list (a

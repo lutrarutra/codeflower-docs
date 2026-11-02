@@ -2,7 +2,7 @@
 title: "codeflower check"
 description: "Check that this machine can run sandboxes, and how to set it up"
 sidebar:
-  order: 2
+  order: 4
   label: "check"
 ---
 
@@ -23,4 +23,4 @@ codeflower check [flags]
 | --- | --- | --- |
 | `--engine string` | `auto` | engine to check: auto, docker, podman, or apptainer |
 | `--image string` |  | sandbox image to look for |
-| `--image-tag string` |  | build of the published image to use instead of 0.17.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image-tag string` |  | build of the published image to use instead of 0.18.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |

@@ -63,6 +63,7 @@ export default defineConfig({
             'guides/vscode',
             'guides/app-window',
             'guides/chatting',
+            'guides/terminal-ui',
             'guides/files-and-previews',
             'guides/reports',
             'guides/sign-in',

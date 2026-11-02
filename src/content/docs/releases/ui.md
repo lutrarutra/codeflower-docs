@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.13.0
+
+*2026-11-02*
+
+- Long chats open with their newest messages and load earlier ones as you scroll up.
+- Images in chats show as thumbnails, including microscopy TIFFs, and large images open in a preview instead of failing.
+- Tool calls show how long they take, and a running one how long it has been going.
+- A plan Claude Code asks to approve opens beside its chat, to read and edit before you answer; approved plans no longer show as "Not allowed".
+- A chat open in the agent's [terminal UI](/guides/terminal-ui/) says so, with the command to open it there, and links from the terminal open their file beside the chat.
+
 ## v0.12.0
 
 *2026-11-01*

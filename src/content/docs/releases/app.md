@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.22.0
+
+*2026-11-02*
+
+- **The agent's own terminal UI.** [`codeflower attach`](/guides/terminal-ui/) opens a chat of a running sandbox in Claude Code's, Codex's or OpenCode's terminal UI, while the app's page and VS Code follow it. `~s` switches chats, `~.` detaches and leaves it running, and `~l`/`~o` open the images and reports the agent showed in your browser. `codeflower chats` and `codeflower terminals` list a sandbox's chats and the terminal UIs running on them.
+- `codeflower tui` starts a sandbox that only runs the agent's terminal UI, in your terminal, and ends with it; `--continue` and `--resume` open earlier chats of the project.
+- When a folder you mount is reached through a link (a home folder on `/gpfs`, say), the agent knows both paths, so it understands the one you and your files use.
+- The window's page has the chat improvements of ui 0.13.0, and sandboxes run image 0.18.0.
+
 ## v0.21.0
 
 *2026-11-01*

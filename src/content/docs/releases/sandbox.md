@@ -7,6 +7,19 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.18.0
+
+*2026-11-02*
+
+- Chats can be opened in the agent's own terminal UI with [`codeflower attach`](/guides/terminal-ui/): OpenCode and Codex share the chat live with the page and VS Code, and Claude Code takes it over while its terminal UI runs, with the page following along. Files the agent shows come as links that open beside the chat in your browser; `codeflower-open FILE` gives one yourself.
+- Agents know where the mounted folders are on your computer: `codeflower-path` translates paths either way, so they understand paths from your notes, sample sheets and data files, and tell you where results are on your computer.
+- Claude Code writes its plans to `plans/` in the workspace, and the plan it asks to approve opens beside the chat, to read and edit before you answer.
+- Images in chats are thumbnails the sandbox draws, including microscopy TIFFs, which previews now show too.
+- Long chats open with their newest messages and load earlier ones as you scroll up.
+- The worker's start message gives a link that connects VS Code on the same computer, or over Remote-SSH, in one click.
+- Files in the project's private state stay hidden when the project folder is reached through a link.
+- The page comes from ui 0.13.0.
+
 ## v0.17.0
 
 *2026-11-01*
