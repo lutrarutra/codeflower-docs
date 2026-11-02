@@ -14,7 +14,7 @@ It is built for (data) scientists, on workstations and on HPC clusters.
 ## How it fits together
 
 1. **You start a sandbox** with the `codeflower` app: from its window (`codeflower client`), or from the command
-   line (`codeflower interactive`), on your computer or as a cluster job. The app downloads the sandbox image
+   line (`codeflower sandbox`), on your computer or as a cluster job. The app downloads the sandbox image
    once and starts it with your folders mounted.
 2. **You connect a window to it.** The app's own page in your browser, VS Code with the code flower extension, or
    both at once. A sandbox prints a `codeflower://` address that any of them can open.

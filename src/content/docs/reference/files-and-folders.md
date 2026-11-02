@@ -9,7 +9,7 @@ description: Where code flower keeps projects, images, settings and state on you
 | --- | --- |
 | `~/codeflower/projects/NAME/` | a [project](/guides/projects-and-folders/): chats, sign-ins, environment, workspace (private to you) |
 | `~/codeflower/projects/NAME.allowed-hosts.txt` | the project's [network allowlist](/guides/network-isolation/#the-allowlist-file) |
-| `~/codeflower/projects/NAME/tasks/ID/` | a [task](/guides/interactive-run-task/#task)'s runs, for `--continue` |
+| `~/codeflower/projects/NAME/tasks/ID/` | a [task](/guides/sandbox-run-task/#task)'s runs, for `--continue` |
 | `~/codeflower/images/` | Apptainer images (`CODEFLOWER_IMAGE_DIR`) |
 | `~/codeflower/agents/` | Claude Code, downloaded for the sandbox (`CODEFLOWER_AGENTS_DIR`) |
 | `~/.codeflower/` | the config directory: [config.yaml](/reference/config/), `skills/`, `icons/`, `tunnel/` |

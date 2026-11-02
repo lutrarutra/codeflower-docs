@@ -15,7 +15,7 @@ import { Steps } from '@astrojs/starlight/components';
 
 2. **Start a sandbox** for a project, with your data read-only and a folder for results:
    ```sh
-   codeflower interactive --agent claude -p study42 \
+   codeflower sandbox --agent claude -p study42 \
      --input ~/data/study42 --output ~/results/study42
    ```
    Leave out `--agent` to be asked. The sandbox prints its address:
@@ -38,6 +38,6 @@ in the project, `~/codeflower/projects/study42`, for next time.
 
 ## Next
 
-- [Interactive, run and task](/guides/interactive-run-task/): start with a first prompt, or let the agent work alone.
+- [Sandbox, run and task](/guides/sandbox-run-task/): start with a first prompt, or let the agent work alone.
 - [HPC clusters](/guides/hpc/): the same, as a Slurm job.
 - [VS Code](/guides/vscode/): the worker tree, reports and Remote-SSH.

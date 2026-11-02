@@ -34,7 +34,7 @@ Ask in plain words, or use the chat's *Tools* menu:
 | Answer report comments | works through open comments on reports |
 | Methods section | writes a reproducible methods section |
 
-[`codeflower task`](/guides/interactive-run-task/#task) builds a report by itself, as `report.html` in the first
+[`codeflower task`](/guides/sandbox-run-task/#task) builds a report by itself, as `report.html` in the first
 output folder.
 
 ## Reading and commenting

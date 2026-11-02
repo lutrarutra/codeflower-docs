@@ -14,7 +14,7 @@ network of its own: the app is its only way out, and lets it reach only
 Everything else is refused, and the app prints what it refused.
 
 ```sh
-codeflower interactive --isolate-network -p study42 -i ~/data/study42 -o ~/results/study42
+codeflower sandbox --isolate-network -p study42 -i ~/data/study42 -o ~/results/study42
 ```
 
 In the app's window, tick *Isolate the network* when starting. `isolate_network: true` in

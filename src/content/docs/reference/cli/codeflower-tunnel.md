@@ -14,7 +14,7 @@ Reach code flower client on this computer from any browser or phone, through a c
 codeflower tunnel pair     pair a browser: open the link it prints there
 ```
 
-Pairing signs this computer in when needed ("codeflower tunnel login") and starts code flower client in the background, which keeps the tunnel connected and lists every sandbox on this computer: those it starts, and those "codeflower run" and "interactive" start in a terminal (they start the client themselves while this computer is signed in and remote access is on).
+Pairing signs this computer in when needed ("codeflower tunnel login") and starts code flower client in the background, which keeps the tunnel connected and lists every sandbox on this computer: those it starts, and those "codeflower run" and "codeflower sandbox" start in a terminal (they start the client themselves while this computer is signed in and remote access is on).
 
 Everything between a paired browser and this computer is end-to-end encrypted; the tunnel cannot read it. Signing in to the tunnel alone does not give access: a browser must also be paired here.
 

@@ -1,21 +1,21 @@
 ---
-title: Interactive, run and task
+title: Sandbox, run and task
 description: Three ways to start a sandbox from the command line, from chatting to unattended batch jobs.
 ---
 
 | Command | Starts | Then |
 | --- | --- | --- |
-| [`codeflower interactive`](/reference/cli/codeflower-interactive/) | a sandbox | you connect and chat |
+| [`codeflower sandbox`](/reference/cli/codeflower-sandbox/) | a sandbox | you connect and chat |
 | [`codeflower run TASK`](/reference/cli/codeflower-run/) | a sandbox and a chat with TASK as its first message | the agent starts at once; you connect to follow and continue |
 | [`codeflower task TASK`](/reference/cli/codeflower-task/) | a sandbox that works on TASK by itself, no window | it stops when done, and leaves a report |
 
 All three take the same [folders and project](/guides/projects-and-folders/) flags, `--agent`, `--engine`,
 `--image` and the [network](/guides/network-isolation/) flags.
 
-## interactive
+## sandbox
 
 ```sh
-codeflower interactive --agent codex -p study42 -i ~/data/study42 -o ~/results/study42
+codeflower sandbox --agent codex -p study42 -i ~/data/study42 -o ~/results/study42
 ```
 
 Prints the `codeflower://` address to paste into VS Code or the app's window, and keeps running until
@@ -31,14 +31,14 @@ unencrypted. Other sandboxes use TLS, but a browser cannot check a certificate t
 is meant for a TLS reverse proxy in front, or for `ssh -L`. With an SSH tunnel:
 
 ```sh
-codeflower interactive --server --host 127.0.0.1 --port 8800 -p study42   # on the server
+codeflower sandbox --server --host 127.0.0.1 --port 8800 -p study42   # on the server
 ssh -L 8800:127.0.0.1:8800 server.example.org                             # on your computer
 ```
 
 then open the printed link with `localhost:8800`. Behind nginx with a certificate for `chat.example.org`:
 
 ```sh
-codeflower interactive --server --host 127.0.0.1 --port 8800 --advertise-host chat.example.org -p study42
+codeflower sandbox --server --host 127.0.0.1 --port 8800 --advertise-host chat.example.org -p study42
 ```
 
 ```nginx
@@ -113,7 +113,7 @@ A continued task keeps its project, agent, folders, network and report settings.
 | 1 | any other error |
 
 :::tip[Sign in first]
-A batch job cannot answer a sign-in. Run `codeflower interactive -p PROJECT` once, sign in, and every task of
+A batch job cannot answer a sign-in. Run `codeflower sandbox -p PROJECT` once, sign in, and every task of
 that project is signed in. In an interactive terminal, `task` can sign in by itself when needed.
 :::
 

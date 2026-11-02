@@ -2,7 +2,7 @@
 title: "codeflower plugins add"
 description: "Add a plugin to a project; it is fetched before the next start"
 sidebar:
-  order: 8
+  order: 7
   label: "plugins add"
 ---
 

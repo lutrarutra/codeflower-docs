@@ -2,7 +2,7 @@
 title: "codeflower plugins disable"
 description: "Switch a plugin off for a project, also one from the config"
 sidebar:
-  order: 9
+  order: 8
   label: "plugins disable"
 ---
 

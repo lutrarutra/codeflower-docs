@@ -39,7 +39,7 @@ controls the agent**.
   cookie: browsers send cookies to every port of a computer, so a server a sandbox or another user starts on
   `127.0.0.1` would receive them. It keeps the sandboxes' tokens itself.
 - `--server` pages are **plain HTTP**, and so is that sandbox's connection for VS Code: they are meant for a TLS
-  reverse proxy in front (see [Running a task](/guides/interactive-run-task/#a-browser-directly)), or `ssh -L` with
+  reverse proxy in front (see [Running a task](/guides/sandbox-run-task/#a-browser-directly)), or `ssh -L` with
   `--host 127.0.0.1`. VS Code and the app mark such sandboxes *unencrypted*.
 
 VS Code keeps the addresses you connected in its secret storage; the app keeps them in a private file.

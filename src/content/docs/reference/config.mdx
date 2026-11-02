@@ -43,9 +43,9 @@ When the file holds a secret (`api_key`, or MCP `env` or `headers`), it must not
 
 Some keys apply to part of the app only:
 
-- `engine`, `image` and `isolate_network` apply to the sandboxes the command line starts (`interactive`, `run`,
+- `engine`, `image` and `isolate_network` apply to the sandboxes the command line starts (`sandbox`, `run`,
   `task`). The app's window has its own choices in its start form.
-- `agents.<agent>.model`, `effort` and `options` apply to [`codeflower task`](/guides/interactive-run-task/#task).
+- `agents.<agent>.model`, `effort` and `options` apply to [`codeflower task`](/guides/sandbox-run-task/#task).
 
 ## Next to config.yaml
 

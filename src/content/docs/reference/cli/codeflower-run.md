@@ -2,7 +2,7 @@
 title: "codeflower run"
 description: "Start a task in a session you can continue from VS Code"
 sidebar:
-  order: 15
+  order: 14
   label: "run"
 ---
 
@@ -46,8 +46,8 @@ codeflower run (TASK | --prompt FILE) [flags]
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
 | `--host string` | `0.0.0.0` | interface the worker listens on |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.1, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.20.1, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.2, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.20.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agent's service and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |

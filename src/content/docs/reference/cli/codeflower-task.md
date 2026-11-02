@@ -20,7 +20,7 @@ The task's folder, PROJECT/tasks/ID, is printed when the task starts. --continue
 
 --output-mode auto uses an attached progress view in a terminal and raw output when redirected; choose raw or attached to override it.
 
-If the agent offers terminal sign-in and the task does not read standard input, "codeflower task" signs in when needed in an interactive terminal, then continues the task. Batch runs and tasks read from standard input still need sign-in beforehand; use "codeflower interactive" once and sign in there. The run is a session of the project, so VS Code lists it afterwards and can continue it.
+If the agent offers terminal sign-in and the task does not read standard input, "codeflower task" signs in when needed in an interactive terminal, then continues the task. Batch runs and tasks read from standard input still need sign-in beforehand; use "codeflower sandbox" once and sign in there. The run is a session of the project, so VS Code lists it afterwards and can continue it.
 
 Exit status: 0 done, 2 not done (the agent judged it impossible, it ran out of rounds or time, or the report failed its check), 3 not signed in, 130 interrupted or timed out, 1 other errors.
 
@@ -59,8 +59,8 @@ codeflower task (TASK | --prompt FILE) | task --continue TASK_DIR [FOLLOW_UP | -
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--effort string` |  | how hard the model thinks, e.g. low, medium, high or max (default: the agent's) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.1, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.20.1, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.2, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.20.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agent's service and the hosts in the allowlist (Linux) |
 | `--max-rounds int` | `3` | how often the agent is sent back to work when it has not finished (a continued task: the same as before) |

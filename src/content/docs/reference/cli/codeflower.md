@@ -10,7 +10,7 @@ sidebar:
 
 Start code flower sandboxes for Claude Code, Codex, DeepSeek Harness, or OpenCode.
 
-Run "codeflower interactive" for a sandbox to work with from VS Code, "codeflower run TASK" to start an initial task in a session you can continue there, or "codeflower task" to let the agent work on a task by itself.
+Run "codeflower sandbox" for a sandbox to work with from VS Code, "codeflower run TASK" to start an initial task in a session you can continue there, or "codeflower task" to let the agent work on a task by itself.
 
 New to the command line? Run "codeflower client" for a window that starts a sandbox with a few clicks, or connects to one running elsewhere. Run "codeflower check" to see whether this machine can run sandboxes.
 
@@ -27,10 +27,10 @@ codeflower
 - [`codeflower chats`](/reference/cli/codeflower-chats/): List a sandbox's chats, for codeflower attach
 - [`codeflower check`](/reference/cli/codeflower-check/): Check that this machine can run sandboxes, and how to set it up
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them
-- [`codeflower interactive`](/reference/cli/codeflower-interactive/): Start an interactive sandbox (worker) to use from VS Code
 - [`codeflower plugins`](/reference/cli/codeflower-plugins/): List, add, remove and fetch the agents' own plugins in a project
 - [`codeflower pull`](/reference/cli/codeflower-pull/): Download or update the sandbox image
 - [`codeflower run`](/reference/cli/codeflower-run/): Start a task in a session you can continue from VS Code
+- [`codeflower sandbox`](/reference/cli/codeflower-sandbox/): Start a sandbox (worker) to use from VS Code or the browser
 - [`codeflower task`](/reference/cli/codeflower-task/): Let the agent work on a task by itself, then stop
 - [`codeflower terminals`](/reference/cli/codeflower-terminals/): List the agent's terminal UIs running in a sandbox, or quit one
 - [`codeflower tui`](/reference/cli/codeflower-tui/): Work with the agent in its own terminal UI, in a sandbox that ends with it

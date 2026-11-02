@@ -10,9 +10,9 @@ sidebar:
 
 Start a sandbox for a project and open the agent's own terminal UI in it, in this terminal: Claude Code's, Codex's or OpenCode's. The sandbox ends when the terminal UI does (quit it, e.g. /exit or Ctrl+C there), and nothing else runs: no worker for VS Code or the app's page, no port, nothing to connect to.
 
-Folders, network isolation, skills, the config's MCP servers and plugins, and the project work as for "codeflower interactive", and the agent signs in in its own terminal UI, into the project (so a sandbox of the same project is signed in too). The chats are the agent's own, kept in the project: open the last one again with --continue, or choose one with --resume. They are not in the chat list of the app's page or VS Code.
+Folders, network isolation, skills, the config's MCP servers and plugins, and the project work as for "codeflower sandbox", and the agent signs in in its own terminal UI, into the project (so a sandbox of the same project is signed in too). The chats are the agent's own, kept in the project: open the last one again with --continue, or choose one with --resume. They are not in the chat list of the app's page or VS Code.
 
-Files the agent shows (codeflower-show) have no page to open in here; to see them in the app, use "codeflower interactive" and "codeflower attach" instead.
+Files the agent shows (codeflower-show) have no page to open in here; to see them in the app, use "codeflower sandbox" and "codeflower attach" instead.
 
 
 ## Usage
@@ -42,8 +42,8 @@ codeflower tui [flags]
 | `--continue` |  | open the agent's last chat in the project |
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.1, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.20.1, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.20.2, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.20.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agent's service and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |

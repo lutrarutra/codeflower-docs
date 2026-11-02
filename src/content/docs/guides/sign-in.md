@@ -43,7 +43,7 @@ agents:
 ## Where logins are kept
 
 In the project's folder, in each agent's own files (e.g. `harness/claude` for Claude Code). Signing in once per
-project is enough for every later sandbox of that project, including [batch tasks](/guides/interactive-run-task/#task).
+project is enough for every later sandbox of that project, including [batch tasks](/guides/sandbox-run-task/#task).
 The agents never see your API keys as environment variables.
 
 To sign a project out, delete that agent's folder in the project (e.g. `harness/claude`) while no sandbox of the

@@ -37,7 +37,7 @@ The sandbox sees only the folders you give it. Each is mounted in a subfolder na
 Each flag can be given several times. When two folders have the same name, the second one gets `-2`, and so on.
 
 ```sh
-codeflower interactive -p study42 \
+codeflower sandbox -p study42 \
   -i ~/data/study42/raw -i /shared/reference/genomes \
   -o ~/results/study42 \
   -c ~/src/study42-pipeline

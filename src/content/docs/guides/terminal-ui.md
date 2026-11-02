@@ -15,7 +15,7 @@ DeepSeek Harness has no terminal UI.
 
 ## Open a chat in the terminal
 
-Start a sandbox as usual, e.g. with [`codeflower interactive`](/guides/interactive-run-task/) or from the app's
+Start a sandbox as usual, e.g. with [`codeflower sandbox`](/guides/sandbox-run-task/) or from the app's
 window, then, on the same computer:
 
 ```sh
@@ -94,8 +94,8 @@ codeflower tui --agent claude --project study42 --resume=3f2a…
 is no port, no link and no page, and nothing can connect to it. It stops, and its container is removed, when you quit
 the terminal UI (`/exit`, or <kbd>Ctrl</kbd>+<kbd>C</kbd> the way the agent takes it).
 
-- **Same flags as `interactive`.** It takes the [folders and project](/guides/projects-and-folders/), engine and
-  [network](/guides/network-isolation/) flags of `codeflower interactive`, and the same default project.
+- **Same flags as `sandbox`.** It takes the [folders and project](/guides/projects-and-folders/), engine and
+  [network](/guides/network-isolation/) flags of `codeflower sandbox`, and the same default project.
 - **Signing in.** Sign in in the terminal UI itself, e.g. Claude Code's `/login`. The login is kept in the project,
   so the project's other sandboxes are signed in too.
 - **Your chats.** They are the agent's own, kept in the project: `--continue` opens the last one, `--resume` a list
@@ -103,7 +103,7 @@ the terminal UI (`/exit`, or <kbd>Ctrl</kbd>+<kbd>C</kbd> the way the agent take
   again, with your folders and its id. They are not in the chat list of the page or VS Code.
 - **From your config.** Claude Code gets the [MCP servers](/guides/mcp/) from your config; Codex and OpenCode do not
   yet. Plugins and an API key from your config work for all three.
-- **Not here.** There is nothing to show files in: use `codeflower interactive` and `codeflower attach` for that.
+- **Not here.** There is nothing to show files in: use `codeflower sandbox` and `codeflower attach` for that.
 
 ## Troubleshooting
 

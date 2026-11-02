@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.2
+
+*2026-11-02*
+
+- Tasks that need a sign-in tell you to sign in with `codeflower sandbox` (app 0.25.0), the new name of `codeflower interactive`.
+
 ## v0.20.1
 
 *2026-11-02*
@@ -56,7 +62,7 @@ Update the VS Code extension to 0.13.0 as well: older extensions cannot connect 
 :::
 
 - Sandboxes serve TLS with a certificate the app makes for each start, and their `codeflower://` line carries its fingerprint, which VS Code and the app check.
-- The page `--server` serves takes its key as a bearer token instead of a cookie, and says on start that it is plain HTTP, meant for a TLS [reverse proxy](/guides/interactive-run-task/#a-browser-directly) or `ssh -L`.
+- The page `--server` serves takes its key as a bearer token instead of a cookie, and says on start that it is plain HTTP, meant for a TLS [reverse proxy](/guides/sandbox-run-task/#a-browser-directly) or `ssh -L`.
 - The page comes from ui 0.11.0.
 
 ## v0.15.1

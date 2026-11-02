@@ -214,5 +214,23 @@
       "dsh": "0.1.6-alpha.2",
       "opencode": "1.19.5"
     }
+  },
+  {
+    "app": "v0.25.0",
+    "sandbox": "v0.20.2",
+    "sandboxImage": "ghcr.io/lutrarutra/codeflower-sandbox:0.20.2",
+    "ui": "v0.15.0",
+    "storyteller": "v0.3.0",
+    "extension": "v0.16.1",
+    "tunnel": "dev",
+    "tunnelProtocol": 1,
+    "claudeAgentSdk": "0.3.310",
+    "agents": {
+      "claude": "0.98.0",
+      "codex": "0.164.0",
+      "codexAcp": "2.3.0",
+      "dsh": "0.1.6-alpha.2",
+      "opencode": "1.19.5"
+    }
   }
 ]

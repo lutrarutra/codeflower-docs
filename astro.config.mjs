@@ -50,7 +50,7 @@ export default defineConfig({
           label: 'Running sandboxes',
           items: [
             'guides/projects-and-folders',
-            'guides/interactive-run-task',
+            'guides/sandbox-run-task',
             'guides/engines',
             'guides/hpc',
             'guides/network-isolation',

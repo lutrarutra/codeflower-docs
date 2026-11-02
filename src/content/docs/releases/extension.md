@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.16.1
+
+*2026-11-02*
+
+- The Workers view, while empty, says to start a worker with `codeflower sandbox` (app 0.25.0), the new name of `codeflower interactive`.
+
 ## v0.16.0
 
 *2026-11-02*

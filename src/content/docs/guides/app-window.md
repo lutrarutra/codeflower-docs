@@ -72,7 +72,7 @@ Over SSH, the app shows no tray icon or notifications.
 
 ## Running in the background
 
-When this computer is signed in to [remote access](/guides/remote-access/), `codeflower run` and `interactive`
-start the app in the background if it is not running, so paired phones and browsers can reach their sandboxes.
-Open it with `codeflower client`; it quits when you quit it there or sign out of the tunnel. `tunnel pair` starts
-it too, but only until the browser paired, unless you add `--keep-running`.
+When this computer is signed in to [remote access](/guides/remote-access/), `codeflower run` and
+`codeflower sandbox` start the app in the background if it is not running, so paired phones and browsers can reach
+their sandboxes. Open it with `codeflower client`; it quits when you quit it there or sign out of the tunnel.
+`tunnel pair` starts it too, but only until the browser paired, unless you add `--keep-running`.

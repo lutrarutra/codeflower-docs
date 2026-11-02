@@ -10,7 +10,7 @@ sidebar:
 
 Pair a browser or phone with this computer: open the printed link there (or scan the QR code). The link works once, for 10 minutes. Compare the key fingerprint the page shows with the one printed here.
 
-It does what pairing needs first: signs this computer in to the tunnel, turns remote access on, and starts code flower client in the background unless it runs, since the client answers the pairing. A client it started quits once the browser paired: "codeflower run" and "interactive" start one themselves while their sandbox runs, and on a cluster that shares the config directory between nodes, a client left running would hold the tunnel (only one computer connects it at a time). --keep-running keeps it, so paired browsers reach this computer until you quit it ("codeflower client" opens it here) or sign out; so does --no-wait, as the link needs it.
+It does what pairing needs first: signs this computer in to the tunnel, turns remote access on, and starts code flower client in the background unless it runs, since the client answers the pairing. A client it started quits once the browser paired: "codeflower run" and "codeflower sandbox" start one themselves while their sandbox runs, and on a cluster that shares the config directory between nodes, a client left running would hold the tunnel (only one computer connects it at a time). --keep-running keeps it, so paired browsers reach this computer until you quit it ("codeflower client" opens it here) or sign out; so does --no-wait, as the link needs it.
 
 With "tunnel: &#123;hardened: true&#125;" name the sandboxes (by name or ID, as "codeflower tunnel status" lists them) the browser may use; it sees no others.
 
