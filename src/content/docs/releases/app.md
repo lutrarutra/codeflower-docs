@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.0
+
+*2026-11-02*
+
+- When `codeflower tui` ends, it prints the `codeflower` command that opens the same chat again, with your folders and the chat's id, in place of the agent's own command, which only works inside the sandbox.
+- An id is given to `codeflower tui` as `--resume=ID`; the examples now say so.
+- Sandboxes run image 0.20.0.
+
 ## v0.23.0
 
 *2026-11-02*

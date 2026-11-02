@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.0
+
+*2026-11-02*
+
+- At the end of `codeflower tui`, the sandbox finds the chat the agent's terminal UI used (Claude Code, Codex or OpenCode), so the app can say how to open it again.
+
 ## v0.19.0
 
 *2026-11-02*

@@ -87,7 +87,7 @@ To get a link for a file yourself, run `codeflower-open FILE` with the terminal 
 codeflower tui --agent claude --input ~/data/study42
 codeflower tui --agent codex --project study42 --continue     # the last chat again
 codeflower tui --agent opencode --project study42 --resume    # choose a chat
-codeflower tui --agent claude --project study42 --resume 3f2a…
+codeflower tui --agent claude --project study42 --resume=3f2a…
 ```
 
 `codeflower tui` is for quick work in the terminal: a sandbox with the agent's terminal UI and nothing else. There
@@ -99,7 +99,8 @@ the terminal UI (`/exit`, or <kbd>Ctrl</kbd>+<kbd>C</kbd> the way the agent take
 - **Signing in.** Sign in in the terminal UI itself, e.g. Claude Code's `/login`. The login is kept in the project,
   so the project's other sandboxes are signed in too.
 - **Your chats.** They are the agent's own, kept in the project: `--continue` opens the last one, `--resume` a list
-  or one by id. They are not in the chat list of the page or VS Code.
+  or one by id (`--resume=ID`). When the terminal UI ends, code flower prints the command that opens the chat
+  again, with your folders and its id. They are not in the chat list of the page or VS Code.
 - **From your config.** Claude Code gets the [MCP servers](/guides/mcp/) from your config; Codex and OpenCode do not
   yet. Plugins and an API key from your config work for all three.
 - **Not here.** There is nothing to show files in: use `codeflower interactive` and `codeflower attach` for that.
