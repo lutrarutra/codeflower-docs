@@ -36,7 +36,8 @@ sandboxes, e.g. on a cluster's login node.
   [Files and previews](/guides/files-and-previews/).
 - A chat that finished or waits for you while you look elsewhere is counted on its sandbox in the rail, and a
   note at the top of the page opens it. *Focus*, at the top of the rail, lists the chats of every sandbox, those
-  that need you first.
+  that need you first. Its chat shows only the answers, the steps folded, until you show them with the eye
+  button (see [Only the answers](/guides/chatting/#only-the-answers)).
 - Opened [through the tunnel](/guides/remote-access/#several-computers) with several paired computers, the rail
   names each computer over its sandboxes, and the computers page has a switch on top for the computer it shows.
 

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.1
+
+*2026-11-02*
+
+- The chat page served with `--server` folds turns to their answers with the eye button (ui 0.15.0).
+
 ## v0.20.0
 
 *2026-11-02*

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.16.0
+
+*2026-11-02*
+
+- The chat's eye button (ui 0.15.0) folds each turn to your message and the agent's answer. VS Code keeps the choice for all chats.
+
 ## v0.15.0
 
 *2026-11-02*

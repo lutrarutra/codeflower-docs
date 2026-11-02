@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.15.0
+
+*2026-11-02*
+
+- **Only the answers.** The eye button in a chat's header folds each turn to your message and the agent's final reply. While the agent works, a spinner shows how long it has been at it and what it does now; *Worked 4m 12s · 23 steps* above the reply opens its thinking and tool calls. Files it showed, your shell commands and a stopped turn stay in sight.
+
 ## v0.14.0
 
 *2026-11-02*

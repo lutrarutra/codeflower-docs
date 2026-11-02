@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.1
+
+*2026-11-02*
+
+- The window's page folds each turn to your message and the agent's answer with the eye button (ui 0.15.0). Focus folds them unless you show them, the chat tabs show them unless you fold them.
+- Sandboxes run image 0.20.1.
+
 ## v0.24.0
 
 *2026-11-02*

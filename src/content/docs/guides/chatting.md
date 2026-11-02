@@ -15,6 +15,17 @@ The chat is the same in VS Code and in the app's window.
   and keeps going (steering); with the others, its turn stops first.
 - *Stop* ends the agent's turn. Queued messages go back into the box.
 
+## Only the answers
+
+The eye button in the chat's header folds each turn to your message and the agent's final reply. While the
+agent works, a spinner shows how long it has been at it, with a faint line saying what it does now (the
+command it runs, *Thinking…*, the latest line it writes). When it is done, *Worked 4m 12s · 23 steps* above
+the reply opens to its thinking and tool calls. Files it showed you, your own shell commands and a turn that
+stopped stay in sight, and permission requests and questions show above the box as always.
+
+Chats show every step unless you fold them; in the app's [Focus](/guides/app-window/) the steps are folded
+unless you show them. Each keeps your choice: the app's window in the browser, VS Code for all its chats.
+
 ## Slash commands
 
 Type <kbd>/</kbd> for the agent's own commands (e.g. `/compact`). <kbd>Enter</kbd> runs the highlighted one,
