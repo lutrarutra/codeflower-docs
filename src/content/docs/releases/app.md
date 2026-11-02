@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.0
+
+*2026-11-02*
+
+- The window's page shows subagents in chats of their own (ui 0.14.0): a card for each in the chat that started it, a badge of the running ones, and each subagent's chat in a tab of its own, loaded when opened.
+- Sandboxes run image 0.19.0.
+
 ## v0.22.0
 
 *2026-11-02*

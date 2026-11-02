@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.0
+
+*2026-11-02*
+
+- Subagents run in chats of their own: Claude Code's and Codex's subagents no longer show their work in the chat that started them, and each one's chat is recorded beside it, opened only when you ask, and deleted with it. Their permission requests and questions come to the chat you work in.
+- The default model of Claude Code's subagents, and the model and effort of Codex's, can be set per project from the chat's **More** menu; Codex takes them at its next start. OpenCode and DeepSeek Harness keep showing subagents as tool calls for now.
+- The page comes from ui 0.14.0.
+
 ## v0.18.0
 
 *2026-11-02*

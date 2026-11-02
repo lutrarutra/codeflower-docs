@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.14.0
+
+*2026-11-02*
+
+- **Subagents in chats of their own.** A chat no longer fills with its subagents' tool calls and messages. Each subagent shows as a card where it started, in one row: its name, model, effort and usage as the agent reports them, how long it runs or ran, how it ended, and buttons to open its chat or stop it.
+- A badge below the composer counts the running subagents and lists them with the latest ended ones.
+- A subagent's chat opens in a tab of its own, read-only: its task and its work, live while it runs. It loads only when you open it.
+- A subagent's permission requests and questions show in its parent's chat, saying which subagent asks.
+- Under **More**, the default model and effort of subagents ("Same as main" by default), where the agent takes them.
+
 ## v0.13.0
 
 *2026-11-02*
