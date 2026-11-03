@@ -15,13 +15,15 @@ The chat is the same in VS Code and in the app's window.
   and keeps going (steering); with the others, its turn stops first.
 - *Stop* ends the agent's turn. Queued messages go back into the box.
 
-## Only the answers
+## Only the messages
 
-The eye button in the chat's header folds each turn to your message and the agent's final reply. While the
-agent works, a spinner shows how long it has been at it, with a faint line saying what it does now (the
-command it runs, *Thinking…*, the latest line it writes). When it is done, *Worked 4m 12s · 23 steps* above
-the reply opens to its thinking and tool calls. Files it showed you, your own shell commands and a turn that
-stopped stay in sight, and permission requests and questions show above the box as always.
+The eye button in the chat's header folds each turn to your message and the agent's messages to you, so
+replies it writes along the way stay in sight too. Its thinking and tool calls between two messages fold into
+one row, such as *4 steps*, in their place, which opens to them; when a turn has only one such row, it says how
+long the turn took (*Worked 4m 12s · 23 steps*). While the agent works, a spinner shows how long it has been at
+it, with a faint line saying what it does now (the command it runs, *Thinking…*, *Writing…*). Files it showed
+you, your own shell commands and a turn that stopped stay in sight, and permission requests and questions show
+above the box as always.
 
 Chats show every step unless you fold them; in the app's [Focus](/guides/app-window/) the steps are folded
 unless you show them. Each keeps your choice: the app's window in the browser, VS Code for all its chats.
@@ -41,13 +43,25 @@ after 15 minutes.
 
 The bar under the box shows what the agent offers: its **mode** (e.g. for Claude Code: ask before edits, accept
 edits, plan, auto), **model**, **reasoning effort**, and more under *More settings*. <kbd>Shift</kbd>+<kbd>Tab</kbd> cycles
-through the modes. What each agent offers is its own: code flower shows its choices as they are.
+through the modes. What each agent offers is its own: code flower shows its choices as they are. A long list, such as
+OpenCode's hundreds of models, has a search box (every word you type must match; <kbd>Enter</kbd> takes the first
+match). Pin the models you use with the pin beside each: pinned ones come first, for every chat of that agent.
+
+With OpenCode, each mode (build, plan) keeps its own model: the model you choose is the one for the chat's mode, and
+switching modes switches to that mode's model. New chats start on build's. The choices are saved in the project, in
+`codeflower-models.json` beside OpenCode's `opencode.jsonc`, so OpenCode's [terminal UI](/guides/terminal-ui/) uses them
+too, from the sandbox's next start. A model you set for a mode in `opencode.jsonc` yourself
+(`"agent": {"plan": {"model": "…"}}`) comes first in the terminal UI.
+
+With DeepSeek Harness, new chats start on the model you chose last in the project, and each chat keeps its own. Before
+you choose one, a project with only an OpenAI-compatible endpoint starts on the endpoint's first model.
 
 ## Permissions and questions
 
 When the agent asks before doing something, a card shows what it wants to do, with its options (allow once,
 always, …) and *Cancel*. With DeepSeek Harness, a switch in the bar allows all of its requests in that chat
-(on by default). Questions the agent asks you (e.g. multiple choice) appear as forms. While the agent
+(on by default). Questions the agent asks you (e.g. multiple choice) appear as forms. A subagent's requests and
+questions show in its parent's chat too, marked as the subagent's, and the subagent waits until you answer. While the agent
 waits for you, the chat and the sandbox are marked, and VS Code's status bar says *An agent needs you*.
 
 ## Actions

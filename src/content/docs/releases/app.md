@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.26.0
+
+*2026-11-03*
+
+- Codex can sandbox its own commands in Docker and Podman containers: the app lets it create the user namespaces it needs, and nothing more.
+- OpenCode offers OpenCode Zen's free models again.
+- `--host` no longer makes Docker and Podman sandboxes unreachable: it applies to Apptainer, and Docker and Podman always publish on 127.0.0.1.
+- The app's window takes ui 0.16.0: folded turns keep the agent's messages in sight, model search and pins, *Open in Focus* and *Older chats*.
+- Sandboxes run image 0.21.0.
+
 ## v0.25.0
 
 *2026-11-02*

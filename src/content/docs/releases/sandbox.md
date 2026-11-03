@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.21.0
+
+*2026-11-03*
+
+- With OpenCode, each mode (build, plan) keeps its own model: switching modes switches to that mode's model, and new chats start on build's. OpenCode's terminal UI uses the same choices from the sandbox's next start ([Chatting](/guides/chatting/)).
+- OpenCode offers OpenCode Zen's free models again (`"disabled_providers": ["opencode"]` in `opencode.jsonc` turns them off), and counts keys saved with `opencode auth login` as signed in.
+- With DeepSeek Harness, new chats start on the model you chose last in the project, or, with only an OpenAI-compatible endpoint, on its first model, instead of failing on DeepSeek's without a DeepSeek key.
+- DeepSeek Harness's commands that exit with an error show as failed, and its file and search tools name the file or what they search for.
+- Codex runs with its newer subagents (multi-agent v2).
+- A stopped OpenCode turn no longer resets the chat's context size.
+- The chat page served with `--server` takes ui 0.16.0.
+
 ## v0.20.2
 
 *2026-11-02*

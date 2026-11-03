@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.17.0
+
+*2026-11-03*
+
+- Chats take ui 0.16.0: folded turns keep the agent's messages in sight, long model lists have a search box, and permission cards say more about what the agent wants to do.
+- Models you pin in the model picker come first in every chat of that agent; VS Code remembers them.
+- A new OpenCode chat shows its slash commands from the start.
+
 ## v0.16.1
 
 *2026-11-02*

@@ -65,6 +65,9 @@ What you type in the terminal shows in the page's chat as from the terminal, and
 page says on a chat when its terminal UI runs, and how to open it. Codex uses the approval mode chosen in the page for
 the terminal's turns too.
 
+The turns you start in OpenCode's terminal UI are left out of the chat's token counts in the page and VS Code: OpenCode
+does not report their usage to code flower. The terminal UI shows them itself.
+
 ### Images and reports
 
 The agent shows files with `codeflower-show`, and they open in the [page](/guides/files-and-previews/). In the terminal

@@ -7,6 +7,17 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.16.0
+
+*2026-11-03*
+
+- **Only the messages.** Folded turns now keep every message the agent writes along the way in its place, so answers it gives mid-turn stay in sight. The steps between two messages fold into one row, such as *4 steps* ([Only the messages](/guides/chatting/#only-the-messages)).
+- Long lists in the settings bar, such as OpenCode's hundreds of models, have a search box. Pin the models you use: pinned ones come first, for every chat of that agent.
+- A permission card says what the agent wants to do when the agent names only the tool call (DeepSeek Harness), shows the command itself rather than "Run command" (Codex), and shows Codex's plan to review.
+- In the app's window, the pulse button in a chat's header opens it in Focus, and *Older chats* at the bottom of Focus finds the chats it does not list.
+- Errors and lost connections show a wilted flower with what went wrong: a file that cannot be shown, a sandbox or computer that does not answer, a chat whose sandbox is not connected.
+- A new OpenCode chat shows its slash commands from the start.
+
 ## v0.15.0
 
 *2026-11-02*

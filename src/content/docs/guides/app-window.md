@@ -36,8 +36,10 @@ sandboxes, e.g. on a cluster's login node.
   [Files and previews](/guides/files-and-previews/).
 - A chat that finished or waits for you while you look elsewhere is counted on its sandbox in the rail, and a
   note at the top of the page opens it. *Focus*, at the top of the rail, lists the chats of every sandbox, those
-  that need you first. Its chat shows only the answers, the steps folded, until you show them with the eye
-  button (see [Only the answers](/guides/chatting/#only-the-answers)).
+  that need you first, then those changed in the last hours and those you pinned; *Older chats* at the bottom
+  finds the rest. The pulse button in a chat's header opens that chat in Focus. Its chat shows only the agent's
+  messages, the steps folded, until you show them with the eye button (see
+  [Only the messages](/guides/chatting/#only-the-messages)).
 - Opened [through the tunnel](/guides/remote-access/#several-computers) with several paired computers, the rail
   names each computer over its sandboxes, and the computers page has a switch on top for the computer it shows.
 
