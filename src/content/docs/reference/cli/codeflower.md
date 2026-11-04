@@ -32,7 +32,7 @@ codeflower
 - [`codeflower run`](/reference/cli/codeflower-run/): Start a task in a session you can continue from VS Code
 - [`codeflower sandbox`](/reference/cli/codeflower-sandbox/): Start a sandbox (worker) to use from VS Code or the browser
 - [`codeflower task`](/reference/cli/codeflower-task/): Let the agent work on a task by itself, then stop
-- [`codeflower terminals`](/reference/cli/codeflower-terminals/): List the agent's terminal UIs running in a sandbox, or quit one
+- [`codeflower terminals`](/reference/cli/codeflower-terminals/): List the agent's terminal UIs and the shells running in a sandbox, or quit one
 - [`codeflower tui`](/reference/cli/codeflower-tui/): Work with the agent in its own terminal UI, in a sandbox that ends with it
 - [`codeflower tunnel`](/reference/cli/codeflower-tunnel/): Use code flower from anywhere through a code flower tunnel
 - [`codeflower update`](/reference/cli/codeflower-update/): Download the latest release and replace this program with it

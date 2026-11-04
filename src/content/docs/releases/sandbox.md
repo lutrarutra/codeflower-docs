@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.22.0
+
+*2026-11-04*
+
+- Every agent of the image runs in one sandbox, side by side; each chat is one agent's, and an agent that cannot start (Claude Code without its download) is shown as unavailable while the others run.
+- R 4.5 is installed, with ggplot2, ragg, svglite, patchwork, renv, pak, BiocManager and remotes. Packages you install go to the project's R library; `codeflower-env-export` records it as an renv lockfile ([Inside the sandbox](/guides/inside-the-sandbox/)).
+- Before the first figure, the agent asks which plotting library you want (matplotlib, seaborn, Plotly, ggplot2…).
+- The agent works as a general assistant: on a greeting it looks at what you mounted, says what it probably is, and offers next steps (analysis, coding or troubleshooting) instead of proposing a workflow you did not ask for.
+- The chat page can open a terminal into the sandbox.
+- For DeepSeek Harness with an OpenAI-compatible endpoint, sign-in can test the endpoint and the key, list the endpoint's models with their context windows and abilities, and edit what was saved.
+- The chat page served with `--server` takes ui 0.17.0.
+
 ## v0.21.0
 
 *2026-11-03*

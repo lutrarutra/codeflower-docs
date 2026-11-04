@@ -31,7 +31,7 @@ codeflower attach [SANDBOX] [CHAT] [flags]
   codeflower attach
   codeflower attach study42 --last
   codeflower attach study42 "PCA of batch 3"
-  codeflower attach study42 --new
+  codeflower attach study42 --new --agent codex
   ssh -t login-node codeflower attach study42 --last
 ```
 
@@ -39,6 +39,7 @@ codeflower attach [SANDBOX] [CHAT] [flags]
 
 | Flag | Default | Description |
 | --- | --- | --- |
+| `--agent string` |  | agent of a new chat: claude, codex or opencode (default: asked, unless only one has a terminal UI) |
 | `--config string` |  | config directory, whose running client's page the links open (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `--last` |  | open the chat that changed last |
 | `--links string` | `auto` | where the files the agent shows open: auto (this computer's page, through remote access over SSH), local, tunnel, or path (no links) |

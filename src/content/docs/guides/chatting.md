@@ -5,6 +5,13 @@ description: Talk to the agent, steer it while it works, run shell commands, ans
 
 The chat is the same in VS Code and in the app's window.
 
+## Choosing the agent
+
+Each chat is one agent's, and every agent runs in the sandbox. In the app's window, the row of agent logos above
+*New chat* chooses the agent of the next chat; it remembers your choice for the project. In VS Code, *New session*
+on a worker asks which agent, or start one from an agent's row under *Agents*. Chats of different agents run side
+by side, each with its own models, modes and settings; the chat's header shows its agent.
+
 ## Sending messages
 
 - <kbd>Enter</kbd> sends, <kbd>Shift</kbd>+<kbd>Enter</kbd> starts a new line. On a touch screen, <kbd>Enter</kbd>
@@ -55,6 +62,11 @@ too, from the sandbox's next start. A model you set for a mode in `opencode.json
 
 With DeepSeek Harness, new chats start on the model you chose last in the project, and each chat keeps its own. Before
 you choose one, a project with only an OpenAI-compatible endpoint starts on the endpoint's first model.
+
+DeepSeek Harness's picker offers DeepSeek's models when it has a DeepSeek key, and the endpoint's models you pinned or
+added at [sign-in](/guides/sign-in/), not every model the endpoint serves. The effort picker shows only for a model
+marked *thinks*, with the effort values given there. To change either, use *Edit keys and models…* on the sandbox's
+*Manage* page; the agent restarts with them.
 
 ## Permissions and questions
 

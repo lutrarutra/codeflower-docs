@@ -7,6 +7,22 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.27.0
+
+*2026-11-04*
+
+:::caution
+`codeflower sandbox` no longer takes `--agent`: every agent runs in the sandbox, and you choose one per chat. Remove `--agent` from `codeflower sandbox` commands in scripts and batch jobs. `run`, `task`, `tui` and `plugins fetch` keep it. This release needs sandbox image 0.22.0, which it pulls.
+:::
+
+- A sandbox runs every agent (Claude Code, Codex, DeepSeek Harness and OpenCode), and each chat is one agent's ([Chatting](/guides/chatting/#choosing-the-agent)). An isolated sandbox reaches all the agents' services, and API keys and plugins from the settings reach every agent.
+- `codeflower attach` asks which agent a new chat is for; `--agent` picks it with `--new`.
+- `--projects-dir` (`projects_dir:` in the settings) sets the folder of named projects, and `--env-dir` (`env_dir:`) keeps the projects' software environments and download caches elsewhere, for example on scratch ([Projects and folders](/guides/projects-and-folders/)).
+- Stopping a sandbox from the app's window works for Apptainer sandboxes started in a terminal, which used to keep running. A sandbox that does not stop in time is killed, and a second Ctrl+C kills it at once.
+- R packages installed in a project are kept per R version, with renv's cache in the project's environment.
+- The app's window takes ui 0.17.0: the agent switch for new chats, a terminal into the sandbox, and copying a file's sandbox or host path.
+- Sandboxes run image 0.22.0.
+
 ## v0.26.0
 
 *2026-11-03*

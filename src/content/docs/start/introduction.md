@@ -28,16 +28,17 @@ It is built for (data) scientists, on workstations and on HPC clusters.
 | Part | What it is |
 | --- | --- |
 | **The app** (`codeflower`) | One program for Linux, macOS and Windows: starts sandboxes, and its window (`codeflower client`) lists them and hosts the chat in your browser. |
-| **The sandbox** | A container image (Docker, Podman or Apptainer) with the agents, Python (conda, uv), Node and code flower's tools. One per project and agent. |
+| **The sandbox** | A container image (Docker, Podman or Apptainer) with the agents, Python (conda, uv), R, Node and code flower's tools. One per project and agent. |
 | **The VS Code extension** | Connects VS Code to sandboxes: chats, files and reports in tabs. Works over Remote-SSH. |
 | **The tunnel** | Optional. Lets a browser or phone reach the app on your computer from anywhere, end-to-end encrypted. |
 | **storyteller** | The library the agent writes its reports with. |
 
 ## Words used in these docs
 
-- **Sandbox** (or **worker**): one running container with one agent, for one project.
+- **Sandbox** (or **worker**): one running container for one project, with every agent in it.
 - **Project**: a named folder (`~/codeflower/projects/NAME`) that keeps a sandbox's chats, logins, software
   environment and workspace between runs. See [Projects and folders](/guides/projects-and-folders/).
-- **Chat** (or **session**): one conversation with the agent. A sandbox can have many.
+- **Chat** (or **session**): one conversation with one agent, which you choose when it starts. A sandbox can have
+  many, with different agents.
 
 Next: [install code flower](/start/install/).

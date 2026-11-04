@@ -8,7 +8,7 @@ Command-line flags win over these, and these over [config.yaml](/reference/confi
 | Variable | Used for |
 | --- | --- |
 | `CODEFLOWER_CONFIG` | the config directory (default `~/.codeflower`) |
-| `CODEFLOWER_AGENT` | the default `--agent` |
+| `CODEFLOWER_AGENT` | the default `--agent` of `run`, `task`, `tui` and `plugins` |
 | `CODEFLOWER_ENGINE` | the default `--engine`: `auto`, `docker`, `podman` or `apptainer` |
 | `CODEFLOWER_IMAGE` | the default `--image` |
 | `CODEFLOWER_IMAGE_TAG` | the default `--image-tag` |

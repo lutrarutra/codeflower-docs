@@ -12,14 +12,14 @@ one is taken). Started again while it runs, it opens the running one.
 - The **rail** on the left lists the sandboxes that run, each by two letters (from its name, else its project),
   grouped by the computer they run on. Hover one for its name, where it runs and what it does; a number on it
   counts the chats that finished or wait for you.
-- **+** at the end of the rail opens *New sandbox*: *Start a new one* (the agent, folders and network; see the
+- **+** at the end of the rail opens *New sandbox*: *Start a new one* (its folders and network; see the
   [quickstart](/start/quickstart-app/)), or *Connect one running elsewhere*, e.g. a cluster job, by the
   `codeflower://` line it printed. The app remembers a connected sandbox, and relays the connection so the token
   never reaches the browser; it shows under *Elsewhere* in the rail. A sandbox's own link
   (`http://127.0.0.1:7720/#add=…`) opens the dialog with its line filled in.
-- Choosing a sandbox in the rail shows its chats and folders in the sidebar, with *Stop*, *Manage* (rename,
-  change its address or token, remove it; also a right click in the rail) and *Details* (its sign-in, *Plugins…*
-  and *Open in VS Code instead*).
+- Choosing a sandbox in the rail shows its chats and folders in the sidebar, with *Stop* (which asks
+  first) and *Manage* (its sign-in, or for DeepSeek Harness *Edit keys and models…*; *Plugins…*; *Open in VS
+  Code instead*; and *Edit*: rename it, change its address or token, remove it, also a right click in the rail).
 - The **computers** button at the bottom of the rail shows each computer: which container engines are ready,
   the sandbox image, every sandbox there, stopped ones too, and [remote access](/guides/remote-access/). A dot on
   it means some sandboxes or computers are not in the rail, because they stopped or do not answer.

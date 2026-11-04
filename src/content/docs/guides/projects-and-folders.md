@@ -17,7 +17,50 @@ Every sandbox belongs to a **project**, chosen with `-p`/`--project` (default: `
 So the second run of a project starts where the first stopped: signed in, with the packages the agent installed.
 Use one project per study or dataset. Names may use letters, digits, `-`, `_` and `.` (at most 100 characters).
 
-`--state DIR` uses any directory as the project instead of a name under `~/codeflower/projects`.
+### Where the project is
+
+| Given | Project folder |
+| --- | --- |
+| nothing | `~/codeflower/projects/default` |
+| `-p NAME` | `~/codeflower/projects/NAME` |
+| `--projects-dir DIR` (or `projects_dir:` in the [settings](/reference/config/)) | `DIR/NAME`, or `DIR/default` |
+| `--state DIR` | `DIR` itself, whatever `--project` says |
+
+`--projects-dir` beats `projects_dir:`. The app window reads `projects_dir:` when it starts, so restart it after a
+change. Every sandbox started without `-p` belongs to the project `default`, sharing its chats, environment and
+workspace: give each study its own name so they do not mix.
+
+### Sandboxes of a project share it
+
+Every sandbox of a project, one after another or at the same time, on any computer that sees its folder, uses the
+same chats, workspace and software environment. That is how a later batch job finds the packages an earlier one
+installed.
+
+:::caution
+Do not let two sandboxes of a project install packages at the same time, e.g. two `conda install`s into the same
+environment: they can leave it broken. Several sandboxes using the environment at once is fine.
+:::
+
+### Environments on scratch
+
+Conda environments and download caches can grow to many gigabytes, more than a home quota on a cluster may allow.
+`--env-dir DIR` (or `env_dir:` in the settings; the flag beats the setting) keeps each project's software
+environment and caches in `DIR/NAME` instead, for example on scratch, while its chats, sign-ins and workspace stay
+in the project:
+
+```yaml
+# ~/.codeflower/config.yaml
+env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
+```
+
+- Inside the sandbox nothing changes: the agent installs with uv, pip, conda, R or npm as before.
+- The environment's recipe, which the agent writes with `codeflower-env-export`, stays in the project
+  (`env/exports`), so an environment that scratch's clean-up deleted can be rebuilt from it.
+- The folder must be visible wherever the project's sandboxes run, so a node's local disk will not do.
+- `NAME` is the name of the project's folder. Projects whose folders have the same name, e.g. `--state /a/study`
+  and `--state /b/study`, or `-p study` with two `--projects-dir`, share one environment there.
+- A project that already has an environment keeps it in the project folder, unused: delete `env/venv`,
+  `env/conda` and `cache/` there to free the space.
 
 :::note
 The project folder is only readable by you. It holds your agent sign-ins, so do not share it.

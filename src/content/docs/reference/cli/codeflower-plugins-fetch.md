@@ -21,20 +21,22 @@ codeflower plugins fetch [flags]
 
 | Flag | Default | Description |
 | --- | --- | --- |
-| `--agent string` |  | agent the sandbox runs: claude, codex, dsh, or opencode (or set $CODEFLOWER_AGENT; asked if left out) |
+| `--agent string` |  | agent whose plugins are fetched: claude, codex, dsh, opencode (or set $CODEFLOWER_AGENT; asked if left out) |
 | `--allowlist string` |  | file of hosts an isolated sandbox may reach, one per line (default: PROJECT.allowed-hosts.txt next to the project) |
 | `--bind stringArray` |  | more mounts: SOURCE[:TARGET[:ro\|rw]] (repeatable; default target /data/input/NAME, read-only) |
 | `-c, --code stringArray` |  | repository or package the agent develops, mounted read-write at /data/code/NAME (repeatable) |
 | `--config string` |  | config directory with config.yaml and skills (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.21.0, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.21.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--env-dir string` |  | folder for the projects' software environments and download caches, e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.22.0, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.22.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
-| `--isolate-network` |  | cut the sandbox off the network except for its agent's service and the hosts in the allowlist (Linux) |
+| `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `-o, --output stringArray` |  | folder for results, created if needed and mounted read-write at /data/output/NAME (repeatable) |
 | `-p, --project string` | `default` | project name: its sessions, logins and workspace live in ~/codeflower/projects/NAME |
+| `--projects-dir string` |  | folder of the projects started with --project (or projects_dir in the config; default ~/codeflower/projects) |
 | `-s, --skills stringArray` |  | folder with a skill (a SKILL.md) or with skill folders, mounted read-only at /data/skills/NAME (repeatable) |
 | `--state string` |  | project directory, instead of --project (created with owner-only permissions) |
 | `--time-limit string` |  | time the agent has, e.g. 8h or 1-12:00:00 (default: the batch job's time limit); reported, not enforced |

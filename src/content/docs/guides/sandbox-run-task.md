@@ -9,13 +9,14 @@ description: Three ways to start a sandbox from the command line, from chatting 
 | [`codeflower run TASK`](/reference/cli/codeflower-run/) | a sandbox and a chat with TASK as its first message | the agent starts at once; you connect to follow and continue |
 | [`codeflower task TASK`](/reference/cli/codeflower-task/) | a sandbox that works on TASK by itself, no window | it stops when done, and leaves a report |
 
-All three take the same [folders and project](/guides/projects-and-folders/) flags, `--agent`, `--engine`,
-`--image` and the [network](/guides/network-isolation/) flags.
+All three take the same [folders and project](/guides/projects-and-folders/) flags, `--engine`, `--image` and the
+[network](/guides/network-isolation/) flags. A sandbox runs every agent, and each chat is one agent's; `run` and
+`task` name the agent of their task with `--agent` (asked for on a terminal).
 
 ## sandbox
 
 ```sh
-codeflower sandbox --agent codex -p study42 -i ~/data/study42 -o ~/results/study42
+codeflower sandbox -p study42 -i ~/data/study42 -o ~/results/study42
 ```
 
 Prints the `codeflower://` address to paste into VS Code or the app's window, and keeps running until

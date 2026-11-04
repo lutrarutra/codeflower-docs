@@ -15,10 +15,10 @@ import { Steps } from '@astrojs/starlight/components';
 
 2. **Start a sandbox** for a project, with your data read-only and a folder for results:
    ```sh
-   codeflower sandbox --agent claude -p study42 \
+   codeflower sandbox -p study42 \
      --input ~/data/study42 --output ~/results/study42
    ```
-   Leave out `--agent` to be asked. The sandbox prints its address:
+   Every agent runs in it: Claude Code, Codex, DeepSeek Harness and OpenCode. The sandbox prints its address:
    ```
    codeflower://127.0.0.1:41234?token=…
    ```

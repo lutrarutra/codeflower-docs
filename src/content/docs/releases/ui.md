@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.17.0
+
+*2026-11-04*
+
+- **Agents per chat.** A row of agent logos above *New chat* chooses the agent of the next chat and remembers it for the project; chats show their agent's logo. Sign-in, plugins, usage and subagent settings are per agent, and the sandbox's page lists its agents ([Chatting](/guides/chatting/#choosing-the-agent)).
+- In the app's window, *Terminal* opens a shell in the sandbox in a tab beside the chats. It keeps running while the sandbox does, and closing its tab ends it.
+- The file tree's menu copies a file's path in the sandbox, or on the machine that runs the sandbox when it is in a mounted folder.
+- DeepSeek Harness's sign-in for an OpenAI-compatible endpoint tests the connection and the key, fetches the endpoint's models to pin (with a filter for long lists), adds models by hand, and sets each one's context window, image input and thinking. *Edit keys and models…* changes them later ([Sign in](/guides/sign-in/)).
+
 ## v0.16.0
 
 *2026-11-03*

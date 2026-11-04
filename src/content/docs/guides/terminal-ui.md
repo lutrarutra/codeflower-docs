@@ -23,9 +23,12 @@ codeflower chats study42                  # the sandbox's chats, numbered
 codeflower attach study42 --last          # the chat that changed last
 codeflower attach study42 2               # chat 2 of the list
 codeflower attach study42 "PCA of batch"  # the chat whose title starts so
-codeflower attach study42 --new           # a new chat
+codeflower attach study42 --new --agent codex   # a new chat with Codex
 codeflower attach                         # choose the sandbox and the chat from lists
 ```
+
+A sandbox's chats are every agent's: each opens in its own agent's terminal UI. A new chat asks which agent, unless
+`--agent` names it.
 
 - **Naming the sandbox.** You can use its project's name, its id as the app's page shows it (`local-1a2b3c4d`), a
   number from the list, or the `codeflower://` line it printed. With only one sandbox running you can leave it out.

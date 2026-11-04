@@ -60,6 +60,16 @@
       "id": "codeflower.openFile",
       "title": "Show",
       "palette": false
+    },
+    {
+      "id": "codeflower.copySandboxPath",
+      "title": "Copy Path (Sandbox)",
+      "palette": false
+    },
+    {
+      "id": "codeflower.copyHostPath",
+      "title": "Copy Path (Host)",
+      "palette": false
     }
   ],
   "settings": [

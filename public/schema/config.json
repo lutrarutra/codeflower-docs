@@ -77,6 +77,10 @@
       "description": "Auto, docker, podman or apptainer, for the sandboxes the command line starts when neither --engine nor $CODEFLOWER_ENGINE is set.",
       "type": "string"
     },
+    "env_dir": {
+      "description": "A folder for the projects' software environments and download caches, e.g. on scratch, when --env-dir is not given; each project gets a subfolder. Unset, they stay in the project.",
+      "type": "string"
+    },
     "icons": {
       "additionalProperties": false,
       "description": "Configures the icon gallery.",
@@ -188,6 +192,10 @@
       },
       "description": "The agents' own plugins every sandbox gets, by agent id.",
       "type": "object"
+    },
+    "projects_dir": {
+      "description": "The folder of projects started by name, when --projects-dir is not given (default ~/codeflower/projects). ~ and $VARIABLES are expanded in it and EnvDir, and relative paths are in the config directory.",
+      "type": "string"
     },
     "skills": {
       "description": "More folders of skills, mounted read-only in every sandbox besides \u003cconfig dir\u003e/skills; relative paths are in the config directory.",

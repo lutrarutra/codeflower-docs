@@ -7,7 +7,7 @@ description: Where code flower keeps projects, images, settings and state on you
 
 | Path | What |
 | --- | --- |
-| `~/codeflower/projects/NAME/` | a [project](/guides/projects-and-folders/): chats, sign-ins, environment, workspace (private to you) |
+| `~/codeflower/projects/NAME/` | a [project](/guides/projects-and-folders/): chats, sign-ins, environment, workspace (private to you); `--projects-dir` or `projects_dir:` moves it |
 | `~/codeflower/projects/NAME.allowed-hosts.txt` | the project's [network allowlist](/guides/network-isolation/#the-allowlist-file) |
 | `~/codeflower/projects/NAME/tasks/ID/` | a [task](/guides/sandbox-run-task/#task)'s runs, for `--continue` |
 | `~/codeflower/images/` | Apptainer images (`CODEFLOWER_IMAGE_DIR`) |
@@ -31,7 +31,10 @@ Windows:
 | --- | --- | --- |
 | `workspace/` | `/codeflower-state/workspace` | the agent's scripts, figures, results, draft reports |
 | `env/` | `/codeflower-state/env` | the software environment: venv, conda environments, R and npm packages |
-| `cache/` | | package download caches |
+| `cache/` | `/codeflower-state/cache` | package download caches |
+
+With `--env-dir DIR` (or `env_dir:`), `env/` and `cache/` are in `DIR/NAME/` instead, except `env/exports`, the
+environment's recipe, which stays in the project ([Environments on scratch](/guides/projects-and-folders/#environments-on-scratch)).
 | `sessions/` | | the chats |
 | `harness/<agent>/`, `dsh-home/` | | the agents' sign-ins and settings |
 | `instances/` | | the address of each running sandbox, in a private file, for scripts |

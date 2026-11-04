@@ -5,8 +5,9 @@ description: The agents code flower runs, how they sign in, and the services the
 
 import AgentsTable from '../../../components/AgentsTable.astro';
 
-Choose one per sandbox with `--agent ID` (or `CODEFLOWER_AGENT`), or in the app's start form. How to sign each in:
-[Signing in agents](/guides/sign-in/).
+Every sandbox runs all of them. Each chat is one agent's: choose it when the chat starts (the agent switch above
+*New chat* in the app's window, the pick in VS Code). `codeflower run`, `task` and `tui` take the agent with
+`--agent ID` (or `CODEFLOWER_AGENT`). How to sign each in: [Signing in agents](/guides/sign-in/).
 
 <AgentsTable />
 

@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.18.0
+
+*2026-11-04*
+
+- A worker lists its agents under *Agents*, with their logos and buttons for a new chat, sign-in and plugins. *New session* asks which agent when there is more than one.
+- Chats take ui 0.17.0: each chat shows its agent's logo, and sign-in, plugins and usage are per agent.
+- DeepSeek Harness's sign-in for an OpenAI-compatible endpoint offers the models the endpoint lists to pick from.
+- Files and folders in the worker's tree have *Copy Path (Sandbox)* and, in a mounted folder, *Copy Path (Host)*.
+
 ## v0.17.0
 
 *2026-11-03*

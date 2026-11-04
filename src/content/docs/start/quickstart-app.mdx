@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: the app window'
-description: Start a sandbox and chat with its agent from the app's window, no terminal needed.
+description: Start a sandbox and chat with its agents from the app's window, no terminal needed.
 sidebar:
   order: 3
 ---
@@ -18,18 +18,19 @@ The quickest way in: the app's window starts a sandbox with a few clicks and hos
    macOS and many Linux desktops it also adds an icon to the tray or menu bar.
 
 2. **Start a sandbox.** Choose **+** in the rail on the left, then under *Start a new one*:
-   - the **agent**: Claude Code, Codex, DeepSeek Harness or OpenCode
    - **Input data** folders (read-only), **Output folders** (read-write), and optionally **Code** folders
      (repositories the agent may change) and **Skills**, with *Add folder…*
    - whether to **Isolate the network** (see [Network isolation](/guides/network-isolation/))
    - under *Advanced*, the **Project name**: chats, logins and installed software are kept per project
 
-   Then *Start sandbox*. The first start downloads the sandbox image, which takes a few minutes.
+   Then *Start sandbox*. The first start downloads the sandbox image, which takes a few minutes. Every agent runs
+   in it: Claude Code, Codex, DeepSeek Harness and OpenCode.
 
-3. **Sign in the agent.** The first time in a project, the sandbox says it is not signed in. Choose *Sign in…*
-   and use your subscription or an API key. See [Signing in agents](/guides/sign-in/).
+3. **Sign in an agent.** The sandbox's card lists its agents; the first time in a project none is signed in.
+   Choose *Sign in…* on the one you want and use your subscription or an API key. See
+   [Signing in agents](/guides/sign-in/).
 
-4. **Chat.** Choose *New chat* and describe what you want, e.g. *"Explore the dataset in /data/input and
+4. **Chat.** Choose the agent with the logos above *New chat*, then *New chat*, and describe what you want, e.g. *"Explore the dataset in /data/input and
    suggest an analysis plan."* Files the agent shows open in tabs beside the chat.
 </Steps>
 

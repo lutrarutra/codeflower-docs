@@ -24,4 +24,5 @@ codeflower plugins disable SOURCE [flags]
 | `--agent string` |  | the agent whose plugins these are |
 | `--config string` |  | config directory with config.yaml (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `-p, --project string` | `default` | project name: its plugins live in ~/codeflower/projects/NAME/plugins |
+| `--projects-dir string` |  | folder of the projects started with --project (or projects_dir in the config; default ~/codeflower/projects) |
 | `--state string` |  | project directory, instead of --project |

@@ -8,24 +8,30 @@ description: What the agent finds in the sandbox, how it installs software, and 
 The sandbox image is Debian with:
 
 - **Python** with **conda** and **mamba** (conda-forge, from Miniforge), and **uv**
+- **R** 4.5 with **ggplot2** (and ragg, svglite and patchwork for figures), **pak**, **renv** and **BiocManager**
 - **Node.js**, **git**, **curl**, **ripgrep**, and build tools (a C/C++ compiler and make)
 - the agents: Claude Code (downloaded by the app, see [Container engines](/guides/engines/#claude-code)), Codex,
   DeepSeek Harness and OpenCode
 - [storyteller](/guides/reports/), for reports
 
-R, GPU tooling and other native libraries are not in the image: the agent installs what an analysis needs.
+GPU tooling and other native libraries are not in the image: the agent installs what an analysis needs.
 
 ## The project's environment
 
 The agent installs software into the **project**, not the image, so it is there next time:
 
 - a Python virtual environment (`pip`/`uv pip install`), which also sees the image's own Python packages
-- conda environments (`mamba create`), R libraries, npm and cargo packages
+- conda environments (`mamba create`), npm and cargo packages
+- an R library (`install.packages()`, `BiocManager::install()` or `remotes::install_github()`), and renv
+  environments when you want pinned R package versions
 - their download caches
 
-`codeflower-env-export` writes a readable recipe of everything installed (requirements files and conda
-`.yml`s), to recreate it elsewhere. Behind a [network allowlist](/guides/network-isolation/), installing needs
-`@pypi`, `@conda`, `@cran` or similar.
+`codeflower-env-export` writes a readable recipe of everything installed (requirements files, conda
+`.yml`s and an renv lockfile), to recreate it elsewhere. Behind a [network allowlist](/guides/network-isolation/), installing needs
+`@pypi`, `@conda`, `@cran`, `@bioconductor` or similar.
+
+Before it makes the first figures of an analysis, the agent asks which plotting library you want them in
+(matplotlib, Plotly, ggplot2 or another), unless you already said.
 
 ## Where the agent works
 
