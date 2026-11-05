@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.3
+
+*2026-11-05*
+
+- storyteller 0.5.0: agents build slides you can edit in PowerPoint, with native charts, diagrams and SVG figures.
+
 ## v0.23.2
 
 *2026-11-05*

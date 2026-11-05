@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.5.0
+
+*2026-11-05*
+
+- Slides you can edit in PowerPoint. `d.chart(...)` makes real PowerPoint charts (bar, horizontal bar, line, area, pie, scatter) whose data you can change with *Edit Data*. `d.flow(...)`, `d.cards(...)` and `d.callout(...)` draw a process, a grid of findings and a take-home message as ordinary shapes and text. All of them take the template's colours, in light and dark slides.
+- Matplotlib figures and SVG files go on slides as SVG, which PowerPoint can turn into shapes (*Convert to Shape*), their text included. Figures with thousands of points stay pictures, unless the points are drawn with `rasterized=True`.
+- Negative values in bar charts are drawn the right way.
+- In a narrow pane beside the chat, a report's or deck's buttons sit below its title, which no longer breaks mid-word.
+
 ## v0.4.0
 
 *2026-11-05*

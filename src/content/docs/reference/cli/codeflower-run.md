@@ -47,8 +47,8 @@ codeflower run (TASK | --prompt FILE) [flags]
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
 | `--env-dir string` |  | folder for the projects' software environments and download caches, e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
 | `--host string` | `0.0.0.0` | interface the worker listens on (Apptainer; Docker and Podman always publish on 127.0.0.1) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.23.2, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.23.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.23.3, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.23.3, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |

@@ -1,9 +1,9 @@
 {
-  "app": "v0.28.1",
-  "sandbox": "v0.23.2",
-  "sandboxImage": "ghcr.io/lutrarutra/codeflower-sandbox:0.23.2",
+  "app": "v0.28.2",
+  "sandbox": "v0.23.3",
+  "sandboxImage": "ghcr.io/lutrarutra/codeflower-sandbox:0.23.3",
   "ui": "v0.19.1",
-  "storyteller": "v0.4.0",
+  "storyteller": "v0.5.0",
   "extension": "v0.18.3",
   "tunnel": "dev",
   "tunnelProtocol": 1,

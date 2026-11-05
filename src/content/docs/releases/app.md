@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.2
+
+*2026-11-05*
+
+- Sandboxes run sandbox 0.23.3.
+
 ## v0.28.1
 
 *2026-11-05*
