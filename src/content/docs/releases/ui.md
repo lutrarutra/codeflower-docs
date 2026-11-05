@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.18.0
+
+*2026-11-04*
+
+- *New chat* opens a dialog: choose the agent by its logo and name, and give the chat a title if you want one; without it the chat is named after its first prompt. In Focus with several sandboxes ready, you pick the sandbox first.
+- Only agents that are signed in can start a chat. The others are greyed out, and the dialog sends you to *Manage* to sign them in.
+- A link an agent asks you to open, for example to sign in, names the agent that asks.
+- In the sign-in for an OpenAI-compatible endpoint, a checkbox chooses the models the chat's picker offers, and a pin puts a model at the top of the picker. With the key saved, the endpoint's models are listed at once.
+
 ## v0.17.0
 
 *2026-11-04*

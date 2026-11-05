@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.27.1
+
+*2026-11-04*
+
+- Rootless Podman starts sandboxes on machines without subuid and subgid ranges, as on many clusters, where the sandbox used to fail to start.
+- `codeflower check` shows Podman's version without its warnings about a missing systemd session.
+- The app's window takes ui 0.18.0: a *New chat* dialog to choose the agent and a title, and pinned models for OpenAI-compatible endpoints.
+- Uses sandbox image 0.22.1.
+
 ## v0.27.0
 
 *2026-11-04*

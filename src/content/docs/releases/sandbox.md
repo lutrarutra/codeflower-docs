@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.22.1
+
+*2026-11-04*
+
+- The page the sandbox serves with `--server` takes ui 0.18.0: a *New chat* dialog to choose the agent and a title, and pinned models for OpenAI-compatible endpoints.
+
 ## v0.22.0
 
 *2026-11-04*
