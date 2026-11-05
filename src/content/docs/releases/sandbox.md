@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.2
+
+*2026-11-05*
+
+- A message sent from a window just as Claude Code's terminal UI moved to another session (`/resume`, `/clear`) is answered in the chat, instead of being typed into the other session and cancelled.
+
+## v0.23.1
+
+*2026-11-05*
+
+- The page the sandbox serves with `--server` takes ui 0.19.1: what you are writing in a chat stays there as you switch views and chats.
+
 ## v0.23.0
 
 *2026-11-05*

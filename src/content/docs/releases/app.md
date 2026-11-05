@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.1
+
+*2026-11-05*
+
+- Sandboxes run sandbox 0.23.2.
+- The app's window takes ui 0.19.1: what you are writing in a chat stays there as you switch between Chat and Focus or between chats.
+- The install scripts find the latest release without GitHub's API, which refuses more than 60 lookups an hour from one address, as from a cluster's login nodes, where installing failed with "could not look up the latest release".
+
 ## v0.28.0
 
 *2026-11-05*

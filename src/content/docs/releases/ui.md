@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.1
+
+*2026-11-05*
+
+- What you are writing in a chat stays there when you switch between Chat and Focus or to another chat in the app's window, and is back when you return to that chat.
+
 ## v0.19.0
 
 *2026-11-05*
