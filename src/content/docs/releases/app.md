@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.0
+
+*2026-11-05*
+
+- Sandboxes run sandbox 0.23.0, in which agents can make PowerPoint slide decks you watch appear beside the chat.
+- The app's window takes ui 0.19.0: *Print / PDF* works for reports, a deck's slides download through your browser, and in Focus you step through the files shown beside a chat.
+
 ## v0.27.1
 
 *2026-11-04*

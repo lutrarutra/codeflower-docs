@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.0
+
+*2026-11-05*
+
+- Agents can make PowerPoint slide decks with storyteller 0.4.0, in code flower's look or your own template, and you watch the slides appear beside the chat. The image includes LibreOffice to draw them, which makes it about 300 MB larger.
+- The page the sandbox serves with `--server` takes ui 0.19.0: printing reports, downloading a deck's slides, and stepping through the files shown beside a chat.
+
 ## v0.22.1
 
 *2026-11-04*

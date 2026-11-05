@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.0
+
+*2026-11-05*
+
+- *Print / PDF* in a report open in the app's window prints the report; it did nothing before.
+- A storyteller deck's download button saves the `.pptx` through your browser.
+- In Focus, arrows in the header of the pane beside a chat step back and forth through the files shown there, with each file's place in the list. A file that went behind stays open, so an interactive report keeps its state.
+
 ## v0.18.0
 
 *2026-11-04*
