@@ -3,5 +3,5 @@
   "image": "ghcr.io/lutrarutra/codeflower-sandbox",
   "imageTag": "0.23.3",
   "tunnelURL": "https://tunnels.codeflower.app",
-  "version": "v0.28.2"
+  "version": "v0.28.3"
 }

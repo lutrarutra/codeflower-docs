@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.3
+
+*2026-11-11*
+
+- On macOS, the app finds Docker Desktop when it is running: it now uses the current Docker context, as the `docker` command does, instead of only `DOCKER_HOST` and `/var/run/docker.sock`. This also finds Colima and rootless Docker.
+
 ## v0.28.2
 
 *2026-11-05*
