@@ -7,6 +7,17 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.0
+
+*2026-11-11*
+
+- The + in the app window's rail starts a new chat: pick one of the sandboxes ready to chat, or make a new sandbox from the same dialog.
+- The Server view has a *Sandbox images* card: see which builds of the sandbox image are on the computer, which one the app uses by default and which are in use, download a release, and remove builds you no longer need. Downloads show a progress bar and keep going when you close the page.
+- A sandbox that is starting shows how long it has been starting, the image download's progress, and a warning when it has printed nothing for a while, with its log open, so you can tell a slow start from a stuck one.
+- A chat's Focus button also folds the sidebar, so the chat gets the room.
+- Chats whose connection to the agent dropped, for example after the computer slept, reconnect by themselves and pick up a turn that is still running.
+- Web links in chat messages open in a new tab.
+
 ## v0.19.1
 
 *2026-11-05*

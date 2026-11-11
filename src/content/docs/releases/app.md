@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.29.0
+
+*2026-11-11*
+
+- The app's window can list, download and remove builds of the sandbox image (*Sandbox images* in the Server view). A remote browser can download or remove images only with `tunnel: {manage: true}`.
+- While a sandbox starts, the window shows the image download's progress and when the sandbox last printed anything; progress lines no longer pile up in its log.
+- Sandboxes run sandbox 0.24.0, and the window is ui 0.20.0.
+
 ## v0.28.3
 
 *2026-11-11*

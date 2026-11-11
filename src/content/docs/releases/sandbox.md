@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.0
+
+*2026-11-11*
+
+- When Claude Code carries on by itself, for example after a background command it was waiting for finishes, the chat shows it as working, also in a window that reconnects.
+- A chat whose Claude Code process ended, for example out of memory on a cluster node, resumes with its settings at your next message, instead of failing every prompt. The turn that was running says what happened.
+- When Codex's server ends by itself, Codex restarts and its chats resume.
+- A sandbox says what it is doing while it starts (creating the Python environment, installing storyteller, describing the input data, starting the bridge).
+- The chat page served with `--server` is ui 0.20.0.
+
 ## v0.23.3
 
 *2026-11-05*
