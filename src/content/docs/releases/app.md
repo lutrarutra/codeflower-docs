@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.0
+
+*2026-11-12*
+
+- The window shows the commands agents run and lets you watch their output read-only, opens report figures over the whole window to comment on them, and has the other changes of ui 0.21.0.
+- Sandboxes run sandbox 0.25.0, and the window is ui 0.21.0.
+
 ## v0.29.0
 
 *2026-11-11*

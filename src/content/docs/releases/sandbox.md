@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.25.0
+
+*2026-11-12*
+
+- The bridge tells the windows which commands each chat's agent runs, and lets them watch a command's output live, read-only. Claude Code's foreground commands run through `codeflower-cmd` to show their output (unless you set `CLAUDE_CODE_SHELL_PREFIX` yourself); its background commands and Codex's commands stream their output too.
+- A window that opens a chat while Claude Code runs background tasks sees them.
+- Subagents that were still running end with their chat when the agent lets go of it, instead of showing as running for good.
+- A chat's title no longer takes the note windows add to a message sent while the agent works.
+- The image has storyteller 0.6.0, and the chat page served with `--server` is ui 0.21.0.
+
 ## v0.24.0
 
 *2026-11-11*

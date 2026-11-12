@@ -7,6 +7,20 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.21.0
+
+*2026-11-12*
+
+- The chat's footer shows the commands the agent is running. Click the terminal badge and *Connect* to watch a command's output live in a read-only tab beside the chat; closing the tab only stops watching. Commands whose output the agent does not stream are listed, with their output in the chat when they end.
+- The footer also shows the agent's other background tasks, and is more compact: the subagent, context and token counts are icons and numbers, with the details on hover.
+- A command's card in the chat shows the output the agent streams, such as Codex's, and its exit code when it failed.
+- A message you send while the agent works is marked for the agent as adding to its task, so it carries on with what it was doing (including waiting for background work) instead of treating your message as all there is left to do.
+- In the app's interactive report tab, clicking a figure opens it over the whole window to mark parts of it and send comments to the chat.
+- On touch screens the figure annotator has a move mode: drag to move, pinch to zoom, and switch to select mode to mark parts.
+- In Focus, settings or comments a report sends go into the chat beside it, and a subagent's chat opened from its parent stays in Focus.
+- The rail names sandbox groups in their own colour.
+- Typing into a terminal no longer fails when the window has chats with several agents.
+
 ## v0.20.0
 
 *2026-11-11*

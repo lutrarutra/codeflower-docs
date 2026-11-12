@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.0
+
+*2026-11-12*
+
+- In the code flower app, clicking a figure in a report opens it over the whole window, full size, so you can comment on its parts. Elsewhere, for example in a downloaded report, it opens in the report's own lightbox as before.
+- A report's buttons go below its title whenever its header is narrow, not only in a narrow window, and tables in a narrow pane scroll sideways instead of squeezing their cells to a character a line.
+
 ## v0.5.0
 
 *2026-11-05*

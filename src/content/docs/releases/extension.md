@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.0
+
+*2026-11-12*
+
+- The chat's footer shows the commands the agent runs; *Connect* opens one in a read-only VS Code terminal with its output live. Closing the terminal only stops watching the command.
+- The chat has the other changes of ui 0.21.0: the agent's background tasks in the footer, command output in tool cards, and messages sent while the agent works marked as adding to its task.
+
 ## v0.18.4
 
 *2026-11-11*
