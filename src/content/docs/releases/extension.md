@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.19.1
+
+*2026-11-13*
+
+- The chat has the changes of ui 0.22.0: background subagents' requests shown one after the other, a chat that waits only for one of them takes messages, and every file shown in the chat listed when it opens.
+
 ## v0.19.0
 
 *2026-11-12*

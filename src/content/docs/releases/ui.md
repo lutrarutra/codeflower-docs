@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.22.0
+
+*2026-11-13*
+
+- When sandboxes run but none is chosen, the app's page opens on a home view: the chats that wait for you or finished while you looked elsewhere, then each sandbox with its state and latest chats. The sidebar lists the sandboxes too, with how many chats need you in each.
+- When several background subagents ask for permission or an answer at once, the chat shows each request in turn, the oldest first, instead of losing the others.
+- A chat that waits only for a background subagent's request, after its turn has ended, no longer looks busy: you can send it a message.
+- The Shown pane lists every file the agent showed in the chat as soon as it opens, not only those in the part of the chat that is loaded.
+
 ## v0.21.0
 
 *2026-11-12*

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.1
+
+*2026-11-13*
+
+- The window opens on a home view of your sandboxes and their latest chats, with the chats that need you first, and has the other changes of ui 0.22.0.
+- Sandboxes run sandbox 0.26.0, where Claude Code's turns end while background subagents still run.
+
 ## v0.30.0
 
 *2026-11-12*

@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.26.0
+
+*2026-11-13*
+
+- Claude Code's turn ends when its answer is done, even while subagents it started in the background still run, so the chat no longer shows working all that time. Their permission requests come afterwards, and the chat takes messages meanwhile.
+- When a chat opens, the bridge sends every file the agent showed in it, so windows list them all without scrolling back.
+- The chat page served with `--server` is ui 0.22.0.
+
 ## v0.25.0
 
 *2026-11-12*
