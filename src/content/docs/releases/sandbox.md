@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.0
+
+*2026-11-13*
+
+- The sandbox reports a chat as working while its agent runs a background command or subagent, also after the turn that started it ended. You can still send such a chat a message.
+- The chat page served with `--server` is ui 0.25.0.
+
 ## v0.27.1
 
 *2026-11-13*

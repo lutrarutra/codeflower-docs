@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.25.0
+
+*2026-11-13*
+
+- A chat whose agent runs a background command or a background subagent shows as working, in Focus, the sidebar, the rail and its tab, also after its turn ended.
+- A chat is marked as finished only when a turn ended while you looked elsewhere and nothing of it still runs. Background work that ends, while the agent still works on its turn or after you saw the turn end, no longer marks it.
+
 ## v0.24.0
 
 *2026-11-13*

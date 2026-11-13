@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.0
+
+*2026-11-13*
+
+- The window has the changes of ui 0.25.0: chats show as working while their agent runs a background command or subagent, and background work that ends no longer marks a chat finished.
+- Sandboxes run sandbox 0.28.0.
+
 ## v0.30.4
 
 *2026-11-13*
