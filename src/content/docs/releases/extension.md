@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.1
+
+*2026-11-13*
+
+- The chat has the changes of ui 0.24.0: the figure annotator opens in move mode, and the usage line's numbers line up with their icons.
+
 ## v0.20.0
 
 *2026-11-13*

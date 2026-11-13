@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.4
+
+*2026-11-13*
+
+- The window has the changes of ui 0.24.0: with the sidebar folded, the rail lists the chats of the sandbox in front, or in Focus the chats of Focus's list, as numbered tiles that Alt+1 to Alt+9 open.
+- Sandboxes run sandbox 0.27.1.
+
 ## v0.30.3
 
 *2026-11-13*

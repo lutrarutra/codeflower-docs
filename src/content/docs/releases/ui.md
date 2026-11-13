@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.0
+
+*2026-11-13*
+
+- With the sidebar folded, the rail reaches the chats: the sandbox in front unfolds into a numbered tile for each of its latest chats, and in Focus the chats of Focus's list take the top of the rail. A tile's dot shows whether its chat works, waits for you or finished while you looked elsewhere; hover it for the title, and press Alt+1 to Alt+9 to open a tile by its number. Choosing a chat there in Focus keeps you in Focus.
+- The figure annotator opens in move mode with a mouse too, so you can look a figure over before selecting a part to comment on.
+- The numbers in the usage line under the message box line up with their icons.
+
 ## v0.23.0
 
 *2026-11-13*
