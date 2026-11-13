@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.26.0
+
+*2026-11-14*
+
+- With the sidebar folded, the rail shows the chats of the sandbox in front that work, wait for you or finished while you looked elsewhere, plus the one open. With none of those, it shows the latest three. A "…" button below them opens a menu of the other chats.
+- Pressing a tab's close button in the app's window closes the tab even when the mouse moves a little, instead of starting to drag the tab.
+
 ## v0.25.0
 
 *2026-11-13*

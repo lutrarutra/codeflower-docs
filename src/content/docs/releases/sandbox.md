@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.1
+
+*2026-11-14*
+
+- The chat page served with `--server` is ui 0.26.0.
+
 ## v0.28.0
 
 *2026-11-13*

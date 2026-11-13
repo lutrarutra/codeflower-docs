@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.1
+
+*2026-11-14*
+
+- The window has the changes of ui 0.26.0: with the sidebar folded, the rail shows the chats that work, wait for you or finished unseen, and a "…" menu lists the others. A tab's close button no longer starts a drag when the mouse moves a little.
+- Sandboxes run sandbox 0.28.1.
+
 ## v0.31.0
 
 *2026-11-13*
