@@ -18,9 +18,14 @@ by side, each with its own models, modes and settings; the chat's header shows i
   starts a new line and the *Send* button sends.
 - **While the agent works**, <kbd>Enter</kbd> **queues** your message: it is sent when the agent is done, one per
   turn. Queued messages show above the box, where you can edit one (click it), remove it, or send it now.
+- Queued messages wait in the sandbox, not in your window: they are still sent if you close the tab or your laptop,
+  and every window with the chat open shows the same queue.
+- If a turn ends without finishing normally (the agent refuses, hits its limit, or fails), the queue **pauses** so the
+  rest does not run unattended. It says why above the box; choose *Resume* to go on, or remove what you no longer want.
 - <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> **sends now**. With Claude Code and Codex, the agent reads it right away
   and keeps going (steering); with the others, its turn stops first.
-- *Stop* ends the agent's turn. Queued messages go back into the box.
+- *Stop* ends the agent's turn. Your queued messages go back into the box; queued actions and preview feedback stay,
+  paused, until you choose *Resume*.
 
 ## Only the messages
 

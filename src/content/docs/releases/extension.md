@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.20.0
+
+*2026-11-13*
+
+- Messages and preview feedback queued while the agent works wait in the sandbox, so they still run after VS Code closes, and the queue pauses with *Resume* after a turn that did not end normally (the changes of ui 0.23.0).
+
 ## v0.19.1
 
 *2026-11-13*

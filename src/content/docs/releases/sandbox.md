@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.27.0
+
+*2026-11-13*
+
+- The bridge keeps each chat's queued prompts and sends them one per turn, also while no window is open, so every window shows and changes the same queue. A turn that does not end normally pauses the queue until a window resumes it. The queue outlives windows and agent restarts.
+- The chat page served with `--server` is ui 0.23.0.
+
 ## v0.26.0
 
 *2026-11-13*

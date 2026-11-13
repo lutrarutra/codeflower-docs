@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.0
+
+*2026-11-13*
+
+- Messages, actions and preview feedback you queue while the agent works wait in the sandbox instead of your window: they are still sent if you close the tab or your laptop, and every window with the chat open shows the same queue.
+- When a turn ends without finishing normally (the agent refuses, hits its limit, fails, or you stop it), the queue pauses and says why above the box; choose *Resume* to go on. *Stop* still puts your own queued messages back in the box.
+
 ## v0.22.0
 
 *2026-11-13*

@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.3
+
+*2026-11-13*
+
+- The window has the changes of ui 0.23.0: queued messages wait in the sandbox, are shared by every window with the chat open, and pause with *Resume* after a turn that did not end normally.
+
+## v0.30.2
+
+*2026-11-13*
+
+- Sandboxes run sandbox 0.27.0, which keeps a chat's queued prompts in the sandbox.
+
 ## v0.30.1
 
 *2026-11-13*
