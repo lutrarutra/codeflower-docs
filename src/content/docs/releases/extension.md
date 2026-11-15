@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.21.0
+
+*2026-11-15*
+
+- The chat has the changes of ui 0.28.0, among them the model and effort in one menu, and figure comments over the figure.
+- A chat whose agent uses a browser has a button in its header that shows the browser in a tab beside the chat, where you can watch it, take it over and hand it back. The button says when the agent needs you in it.
+- A button in the chat's header opens a shell in its sandbox as a VS Code terminal; closing the terminal ends the shell.
+
 ## v0.20.4
 
 *2026-11-15*

@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.0
+
+*2026-11-15*
+
+- The window has the changes of ui 0.28.0: chats' browsers beside them, terminals in a panel at the foot, the model and effort in one menu, and a composer that fits a phone.
+- When an agent needs you in its chat's browser, the notification says so.
+- The `github` preset of an isolated sandbox also allows GitHub's release downloads (release-assets.githubusercontent.com), which failed before.
+- Sandboxes run sandbox 0.29.0.
+
 ## v0.32.0
 
 *2026-11-15*

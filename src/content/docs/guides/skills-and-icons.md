@@ -43,6 +43,12 @@ downloads icons: it tells you what to look for and gives you search links, and y
 into the sandbox (e.g. upload it to the workspace in the app's [Files](/guides/files-and-previews/#uploading-and-downloading)).
 The agent imports it with its credit (SciDraw drawings need their authors, license and DOI).
 
+Servier's slide kits give the most: each drawing in a kit becomes an SVG icon, named after its label on the slide,
+and keeps its PowerPoint shapes, so in slide decks it stays editable and recolourable. Download a kit from
+[the kits page](https://smart.servier.com/image-kits-by-category/), or all 49 at once with "Download all slide set"
+(about 4,000 icons; importing that zip takes several minutes, because LibreOffice in the sandbox converts each
+drawing).
+
 `icons.folder` in config.yaml moves the gallery; `off` turns it off.
 
 ### Generating icons

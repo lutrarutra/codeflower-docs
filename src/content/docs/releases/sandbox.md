@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.29.0
+
+*2026-11-15*
+
+- Each chat can have its own browser, a Chromium in the sandbox: the agent uses it (`codeflower-browser`) to check web apps it serves and pages that need a real browser, and you can watch it and take it over. When a page needs a password, a two-factor code or a captcha, the agent hands the browser to you instead of asking for your credentials. Logins stay in the chat's browser until the chat is deleted. The browser is downloaded on its first use in a project (about 115 MB); in an isolated sandbox that needs the `github` preset, or the agent asks you for the file.
+- Icons from Servier's slide kits: importing a kit (.pptx), or the zip of all kits, gives one SVG icon per drawing, named after its label, instead of only the kit's pictures. These icons go into slide decks as shapes you can edit and recolour.
+- Files the agent shows open in the chat they come from, in a window that has it open, even when another chat or window is in front.
+- The chat page served with `--server` is ui 0.28.0, and reports use storyteller 0.6.1.
+
 ## v0.28.2
 
 *2026-11-15*

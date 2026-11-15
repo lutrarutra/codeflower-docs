@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.0
+
+*2026-11-15*
+
+- A chat whose agent uses a browser shows it, live, in a tab beside the chat. You can take it over (click, type, scroll, go to an address, switch its tabs, answer its dialogs) and hand it back with a note for the agent. When the agent needs you in it, for a login, a two-factor code or a captcha, the chat waits for you, the browser comes to the front (in Focus, beside the chat), and the chat's header and notifications say so.
+- Terminals open in a panel across the foot of the window, as in VS Code, rather than beside the chat; you can still drag them anywhere. Ctrl+` shows the latest terminal or opens one, Ctrl+Shift+` opens a new one, and a button in the chat's header opens one in its sandbox.
+- The model and the effort share one button: its menu lists the models, with a slider for the effort at its foot that shows the levels the chosen model has. The menu is wider and as tall as the window allows, and opens with the chosen model in view.
+- On a phone or in a narrow side panel, the composer's controls stay on one line, showing their icons, and the line under it keeps the context, cost and quota, with what runs in the background at its right.
+- When you comment on a figure, the figure keeps the whole window and the comments float over it, from a Comments button that counts them.
+
 ## v0.27.0
 
 *2026-11-15*

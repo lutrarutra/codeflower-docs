@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.1
+
+*2026-11-15*
+
+- SVG figures sized in millimetres, centimetres or inches keep their size in reports and slides, and a figure with icons nested in it gets the size of the whole figure, not of one of its icons.
+
 ## v0.6.0
 
 *2026-11-12*
