@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.1
+
+*2026-11-15*
+
+- The chat page the sandbox serves has the changes of ui 0.29.0, and reports and decks use storyteller 0.6.2, which saves the order of moved parts.
+
 ## v0.30.0
 
 *2026-11-15*

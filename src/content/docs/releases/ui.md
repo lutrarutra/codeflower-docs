@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.29.0
+
+*2026-11-15*
+
+- When a turn ends because a step failed, for example a compaction that hit the session limit, that step shows after the folded steps, opened, so you see why the turn stopped without unfolding them.
+- In Focus, the Focus button in the rail becomes an Editor button that takes you back to the editor with Focus's chat in front.
+- In Focus on a phone, one button in the top bar switches between the chat and what its agent showed you (or its browser).
+
 ## v0.28.0
 
 *2026-11-15*

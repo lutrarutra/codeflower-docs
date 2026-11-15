@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.2
+
+*2026-11-15*
+
+- Parts of a report or deck moved with `move()` keep their new order when saved, also when another script rewrites one of them afterwards, and moving no longer overwrites what other scripts changed in the meantime.
+
 ## v0.6.1
 
 *2026-11-15*

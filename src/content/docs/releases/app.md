@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.2
+
+*2026-11-15*
+
+- Sandboxes run sandbox 0.30.1: the window has the changes of ui 0.29.0 (a way back from Focus to the editor, the chat-or-pane switch in the top bar on a phone, and the failed step that ended a turn in sight), and storyteller 0.6.2.
+
 ## v0.33.1
 
 *2026-11-15*

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.23.0
+
+*2026-11-15*
+
+- code flower's tabs come back when VS Code reloads the window or restarts: chats, file previews, interactive reports, browsers and plugin tabs, in their places. Until their sandbox is connected they say that they are connecting, or that the sandbox cannot be reached, with a button to try again, and they open as soon as it is.
+- The chat has the changes of ui 0.29.0, among them the failed step that ended a turn shown outside the folded steps.
+
 ## v0.22.0
 
 *2026-11-15*
