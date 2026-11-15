@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.27.0
+
+*2026-11-15*
+
+- Pages opened through the tunnel share one encrypted connection per computer for all their requests, instead of opening one per request, so they load and refresh with less waiting. Large uploads still get a connection of their own, and computers running an older app are reached as before.
+
 ## v0.26.0
 
 *2026-11-14*

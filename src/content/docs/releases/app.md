@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.32.0
+
+*2026-11-15*
+
+- Remote access serves a browser's requests over one shared encrypted connection, answering them as each is ready, when the browser asks for it (the tunnel's page does from now on). Older browsers are served as before.
+- Sandboxes run sandbox 0.28.2.
+
 ## v0.31.1
 
 *2026-11-14*

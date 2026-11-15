@@ -10,6 +10,10 @@ protocol 1.
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## 2026-11-15
+
+- The page opened through the tunnel sends all its requests to a computer over one encrypted connection, so it no longer opens a connection per request while it refreshes. This needs code flower app 0.32.0 on the computer; with an older one the page works as before.
+
 ## 2026-11-01
 
 - Deleting your account or a computer, approving a computer, and adding or removing a passkey ask for your passkey again (or to sign in again with GitHub or Google). The approval page shows when and from where a computer asked.
