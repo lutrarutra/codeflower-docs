@@ -10,6 +10,9 @@ The sandbox image is Debian with:
 - **Python** with **conda** and **mamba** (conda-forge, from Miniforge), and **uv**
 - **R** 4.5 with **ggplot2** (and ragg, svglite and patchwork for figures), **pak**, **renv** and **BiocManager**
 - **Node.js**, **git**, **curl**, **ripgrep**, and build tools (a C/C++ compiler and make)
+- command-line tools: jq, less, file, xxd, wget, rsync, tree, ncdu, sqlite3, bc, time, pigz, GNU parallel, tmux,
+  htop, lsof, strace, ping, dig, nc, and the editors nano and vim-tiny (`vi`, `vim`)
+- the system libraries common R packages need: HDF5, GLPK, GSL, cairo, udunits, SQLite and PostgreSQL
 - the agents: Claude Code (downloaded by the app, see [Container engines](/guides/engines/#claude-code)), Codex,
   DeepSeek Harness and OpenCode
 - [storyteller](/guides/reports/), for reports

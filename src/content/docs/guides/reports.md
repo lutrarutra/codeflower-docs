@@ -47,6 +47,9 @@ comments*. Comment on a figure from its preview tab instead (see [Files and prev
 Explorer settings and comments can also go to the chat through the preview's feedback box. Nothing goes to the
 agent until you send it.
 
+*Print / PDF* opens the print dialog, where you can also save the report as a PDF. VS Code cannot print from a
+tab, so there the button opens the report in your browser, which shows the dialog.
+
 ## Where reports go
 
 Drafts live in the agent's workspace (`reports/`). The agent copies a finished report to your output folder,

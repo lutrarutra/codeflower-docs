@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.0
+
+*2026-11-15*
+
+- More command-line tools in the sandbox, which agents and your shells could not install without root: jq, less, file, xxd, wget, rsync, tree, ncdu, sqlite3, bc, time, pigz, GNU parallel, tmux, htop, lsof, strace, the editors nano and vim (`vi`, `vim`), and ping, dig and nc to see why a host is out of reach in an isolated sandbox.
+- The system libraries common R packages need come with the image (HDF5, GLPK, GSL, cairo, udunits, SQLite and PostgreSQL clients), so packages such as hdf5r (for Seurat), igraph and units install.
+
 ## v0.29.0
 
 *2026-11-15*

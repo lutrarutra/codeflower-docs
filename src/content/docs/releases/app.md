@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.1
+
+*2026-11-15*
+
+- Sandboxes run sandbox 0.30.0, with more command-line tools and the system libraries common R packages need.
+
 ## v0.33.0
 
 *2026-11-15*

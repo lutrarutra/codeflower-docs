@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.22.0
+
+*2026-11-15*
+
+- The *Print / PDF* button of an interactive report works: VS Code cannot print from a tab, so it opens the report in your browser, which shows the print dialog, where you can also save it as a PDF.
+
 ## v0.21.0
 
 *2026-11-15*
