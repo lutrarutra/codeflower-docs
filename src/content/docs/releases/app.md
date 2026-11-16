@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.35.0
+
+*2026-11-16*
+
+- `codeflower sandbox` saves how it started a project, next to the project folder. `codeflower sandbox --continue PROJECT` starts the project again the same way, on the same port and with the same key, so VS Code and saved page links reconnect. Flags given with it change a setting or add folders, and `--new-key` makes old links stop working. See [Starting a project again](/guides/projects-and-folders/#starting-a-project-again).
+- New `codeflower projects` to list, show, copy, move and remove projects, with their settings, allowlist and environment on scratch.
+
 ## v0.34.0
 
 *2026-11-16*

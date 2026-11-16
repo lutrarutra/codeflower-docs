@@ -66,6 +66,57 @@ env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
 The project folder is only readable by you. It holds your agent sign-ins, so do not share it.
 :::
 
+### Starting a project again
+
+Each time `codeflower sandbox` starts a project, it saves how: the folders, engine, image, network, port, and the
+key and certificate its links carry. They go in `NAME.sandbox.yaml` next to the project folder. To start the
+project again the same way, name it:
+
+```sh
+codeflower sandbox -p study42 -i ~/data/study42/raw -o ~/results/study42 --isolate-network
+# … Ctrl+C, and later:
+codeflower sandbox --continue study42
+```
+
+`--continue` takes a project name, or the path of a project folder started with `--state`. The sandbox comes back
+on the same port, with the same key and certificate, so VS Code's saved connection and a saved page link
+(`--server`) connect again. On a cluster, a job on another node gets that node's address, so take the new link
+there.
+
+- **Flags given with `--continue`** replace a saved setting (`--port 8890`, `--engine apptainer`), or add folders
+  to the saved ones (`-i ~/data/study42/batch2`). Either way they are saved for next time.
+- **If the saved port is taken**, the sandbox does not start. Stop whatever uses the port, or give `--port 0` for
+  any free one.
+- **To change or remove a setting**, such as a folder you no longer need, edit the file while the sandbox is
+  stopped. It is YAML, and a comment explains each setting.
+- **`--new-key`** gives the project a new key and certificate, e.g. if a link leaked. Links saved before it stop
+  working.
+- Skills folders from `config.yaml` are not saved; the sandbox reads them from the config each time.
+
+:::caution
+The file is readable only by you, as the project folder is. It holds the key that connects to the sandbox: anyone
+who has it controls the agent. It is next to the project folder, not inside it, so the agent cannot change what
+its next sandbox mounts.
+:::
+
+### Managing projects
+
+`codeflower projects` lists projects and copies, moves or removes them. Each command includes the folder's
+settings, allowlist and [environment on scratch](#environments-on-scratch), and refuses while a sandbox uses the
+project.
+
+```sh
+codeflower projects list                     # name, running or stopped, when it last started
+codeflower projects show study42             # where its files are, and its saved folders and port
+codeflower projects copy study42 study42-v2  # try something without changing the original
+codeflower projects move study42 study42-old # rename it; also takes a folder elsewhere
+codeflower projects remove study42-v2        # asks first; --yes to skip the question
+```
+
+A copy gets its own key and certificate, so the original's links do not open it, and any free port. A moved
+project keeps its key and port. Removing a project deletes its chats, sign-ins, environment and workspace, but not
+your input, output or code folders.
+
 ## Your folders
 
 The sandbox sees only the folders you give it. Each is mounted in a subfolder named after it:

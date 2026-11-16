@@ -2,7 +2,7 @@
 title: "codeflower tui"
 description: "Work with the agent in its own terminal UI, in a sandbox that ends with it"
 sidebar:
-  order: 19
+  order: 25
   label: "tui"
 ---
 

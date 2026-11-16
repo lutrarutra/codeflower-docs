@@ -2,7 +2,7 @@
 title: "codeflower pull"
 description: "Download or update the sandbox image"
 sidebar:
-  order: 13
+  order: 19
   label: "pull"
 ---
 

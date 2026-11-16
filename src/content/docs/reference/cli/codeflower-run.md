@@ -2,7 +2,7 @@
 title: "codeflower run"
 description: "Start a task in a session you can continue from VS Code"
 sidebar:
-  order: 15
+  order: 21
   label: "run"
 ---
 

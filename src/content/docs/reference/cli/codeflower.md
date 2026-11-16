@@ -10,7 +10,7 @@ sidebar:
 
 Start code flower sandboxes for Claude Code, Codex, DeepSeek Harness, or OpenCode.
 
-Run "codeflower sandbox" for a sandbox to work with from VS Code, "codeflower run TASK" to start an initial task in a session you can continue there, or "codeflower task" to let the agent work on a task by itself.
+Run "codeflower sandbox" for a sandbox to work with from VS Code, "codeflower run TASK" to start an initial task in a session you can continue there, or "codeflower task" to let the agent work on a task by itself. "codeflower sandbox --continue PROJECT" starts a project again as it last started, and "codeflower projects" lists and manages projects.
 
 New to the command line? Run "codeflower client" for a window that starts a sandbox with a few clicks, or connects to one running elsewhere. Run "codeflower check" to see whether this machine can run sandboxes.
 
@@ -28,6 +28,7 @@ codeflower
 - [`codeflower check`](/reference/cli/codeflower-check/): Check that this machine can run sandboxes, and how to set it up
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them
 - [`codeflower plugins`](/reference/cli/codeflower-plugins/): List, add, remove and fetch the agents' own plugins in a project
+- [`codeflower projects`](/reference/cli/codeflower-projects/): List, show, copy, move or remove projects
 - [`codeflower pull`](/reference/cli/codeflower-pull/): Download or update the sandbox image
 - [`codeflower reproduce`](/reference/cli/codeflower-reproduce/): Rerun a pipeline archive in a new sandbox and compare its results
 - [`codeflower run`](/reference/cli/codeflower-run/): Start a task in a session you can continue from VS Code

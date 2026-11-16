@@ -2,7 +2,7 @@
 title: "codeflower task"
 description: "Let the agent work on a task by itself, then stop"
 sidebar:
-  order: 17
+  order: 23
   label: "task"
 ---
 

@@ -2,7 +2,7 @@
 title: "codeflower sandbox"
 description: "Start a sandbox (worker) to use from VS Code or the browser"
 sidebar:
-  order: 16
+  order: 22
   label: "sandbox"
 ---
 
@@ -15,6 +15,8 @@ Each folder is mounted in a subfolder named after it: data folders read-only in 
 With --isolate-network the sandbox has no network of its own: the app is its only way out, and lets it reach only the agents' services and the hosts in the allowlist file. Edit the file while the sandbox runs to allow more.
 
 It prints a link to open in the browser while "codeflower client" runs on your computer, which adds the sandbox there; or, in VS Code, run "code flower: Connect to worker" and paste the codeflower://… line. Sign in to the agents from the page's or VS Code's view of the sandbox; logins are kept in the project. Press Ctrl+C to stop.
+
+Each start saves how the project started in PROJECT.sandbox.yaml next to the project folder: its folders, engine, image, network, port and the key and TLS certificate that its links carry. "codeflower sandbox --continue PROJECT" starts it again with them, on the same port and with the same key, so VS Code and saved page links reconnect; it fails if that port is taken. Flags given with --continue replace the saved settings, or add folders to the saved ones, and are saved for next time. The file is YAML, readable only by you: edit it to change or remove a setting while the sandbox is stopped. --new-key makes the links saved before stop working. See "codeflower projects" to list, copy, move or remove projects.
 
 With --server the sandbox also serves its chat page on the same port and prints a link to it (http://HOST:PORT/?key=…), like Jupyter's: open it in any browser that reaches this machine, e.g. through ssh -L. Anyone with the link controls the agent, and plain HTTP carries the key and the chats unencrypted, so keep job logs private and prefer --host 127.0.0.1 with a tunnel on shared networks.
 
@@ -33,6 +35,8 @@ codeflower sandbox [flags]
   codeflower sandbox --input ~/data/study42 --output ~/results/study42
   codeflower sandbox --input ~/data/rna --input ~/data/atac --code ~/src/mypkg
   codeflower sandbox --project study42 --input /data/study42
+  codeflower sandbox --continue study42
+  codeflower sandbox --continue study42 --input ~/data/study42-batch2
   codeflower sandbox --input ~/data/study42 --skills ~/my-skills --isolate-network
   codeflower sandbox --image ./codeflower-sandbox.sif --state ~/cf/study42 --bind /data/ref:/reference
 ```
@@ -46,6 +50,7 @@ codeflower sandbox [flags]
 | `--bind stringArray` |  | more mounts: SOURCE[:TARGET[:ro\|rw]] (repeatable; default target /data/input/NAME, read-only) |
 | `-c, --code stringArray` |  | repository or package the agent develops, mounted read-write at /data/code/NAME (repeatable) |
 | `--config string` |  | config directory with config.yaml and skills (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
+| `--continue string` |  | start a project again with its saved settings: a project name, or a project folder (flags given replace settings, or add folders) |
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
 | `--env-dir string` |  | folder for the projects' software environments and download caches, e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
@@ -55,9 +60,10 @@ codeflower sandbox [flags]
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |
+| `--new-key` |  | give the project a new key and TLS certificate: links saved before no longer connect |
 | `--no-tunnel` |  | keep this sandbox from browsers paired through the tunnel (it does not start the client for the tunnel either) |
 | `-o, --output stringArray` |  | folder for results, created if needed and mounted read-write at /data/output/NAME (repeatable) |
-| `--port int` |  | port of the worker (and its page with --server) (default: any free port) |
+| `--port int` |  | port of the worker (and its page with --server) (default: any free port); fails if it is taken |
 | `-p, --project string` | `default` | project name: its sessions, logins and workspace live in ~/codeflower/projects/NAME |
 | `--projects-dir string` |  | folder of the projects started with --project (or projects_dir in the config; default ~/codeflower/projects) |
 | `--server` |  | also serve the chat page on the worker's port, and print a link to open it in a browser |
