@@ -52,7 +52,9 @@ the authors' run, plus installing the packages.
    showed for numbers in a table or pixels in a figure.
 
 Apart from the sandbox image, which your container engine keeps for the next run, nothing is kept outside the
-output folder: the project, the downloads and the environment are removed afterwards.
+output folder: the unpacked archive, the downloads, the project and the environment are removed when the run ends,
+also when it fails or you stop it with Ctrl-C. A run that is killed (the terminal closed, a batch job out of time)
+leaves its temporary folder and its container behind; the next `codeflower reproduce` removes them.
 
 ## The output folder
 
@@ -97,7 +99,7 @@ share of pixels that changed. Open the result in `results/` next to the paper's 
 | `--image IMAGE` | run another image than the archive's; results can differ |
 | `--cache DIR` | keep downloaded archives and data there for later runs |
 | `-v, --verbose` | show the sandbox's output, not only in `reproduce.log` |
-| `--keep-state` | keep the throwaway project, to look into a failure |
+| `--keep-state` | keep the run's temporary folder (the project, the unpacked archive), to look into a failure; its path is shown at the end |
 
 All options: [`codeflower reproduce`](/reference/cli/codeflower-reproduce/).
 
@@ -111,6 +113,7 @@ All options: [`codeflower reproduce`](/reference/cli/codeflower-reproduce/).
 | 3 | no container engine was found |
 | 4 | the environment could not be restored: a package no longer installs (try `--snapshot`) |
 | 5 | the pipeline failed: its steps' logs are in `logs/`, and the end of `reproduce.log` is shown |
+| 130 | stopped with Ctrl-C |
 
 In scripts or CI, test the status: `codeflower reproduce smith2026.tar.gz -o out && echo reproduced`.
 

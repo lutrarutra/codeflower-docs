@@ -26,11 +26,11 @@ No agent is involved and no sign-in is needed. In a new sandbox with a new, thro
    recorded one, exactly or within the tolerance its two runs showed.
 ```
 
-The output folder gets results/, logs/ (one per rule), the run's time and memory (run.json), the comparison (reproduce-report.md and .json) and everything the sandbox printed (reproduce.log; --verbose also shows it here).
+The output folder gets results/, logs/ (one per rule), the run's time and memory (run.json), the comparison (reproduce-report.md and .json) and everything the sandbox printed (reproduce.log; --verbose also shows it here). Nothing else stays on this computer: the unpacked archive, the downloads (unless --cache) and the throwaway project are removed when the run ends, also after a failure or Ctrl-C. A run that was killed leaves them in the temporary folder, and the next run removes them and its containers.
 
 The image is the archive's: pulled by its digest when it was published, or the local build it names. --image runs another one, which can change results.
 
-Exit status: 0 reproduced, 1 results differ, 2 the archive is not valid, 3 no container engine, 4 the environment could not be restored, 5 the pipeline failed.
+Exit status: 0 reproduced, 1 results differ, 2 the archive is not valid, 3 no container engine, 4 the environment could not be restored, 5 the pipeline failed, 130 stopped (Ctrl-C).
 
 
 ## Usage
@@ -57,7 +57,7 @@ codeflower reproduce ARCHIVE --output DIR [flags]
 | `--cpus int` |  | CPUs the sandbox may use (Docker and Podman) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
 | `--image string` |  | run this image instead of the archive's (a Docker/Podman image name, or an Apptainer .sif file) |
-| `--keep-state` |  | keep the throwaway project folder, to look into a failure |
+| `--keep-state` |  | keep the run's temporary folder (the throwaway project, the unpacked archive), to look into a failure |
 | `--memory string` |  | memory the sandbox may use, e.g. 16g (Docker and Podman) |
 | `-o, --output string` |  | folder for the results, logs and report (created) |
 | `--snapshot string` |  | restore the environment from this snapshot (NAME-env-ARCH.tar.gz, packed with the archive) instead of the lockfiles |

@@ -1,5 +1,5 @@
 {
-  "app": "v0.35.0",
+  "app": "v0.35.1",
   "sandbox": "v0.31.0",
   "sandboxImage": "ghcr.io/lutrarutra/codeflower-sandbox:0.31.0",
   "ui": "v0.30.0",

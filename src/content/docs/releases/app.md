@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.35.1
+
+*2026-11-16*
+
+- `codeflower reproduce` cleans up after itself: the unpacked archive, the downloads and the throwaway project are removed when it ends, also after a failure or Ctrl-C. A run that was killed leaves them, and its container, behind; the next run removes them. See [What happens](/guides/reproduce-an-analysis/#what-happens).
+- Stopping `codeflower reproduce` with Ctrl-C says so and exits with status 130, instead of reporting that the environment could not be restored.
+- On Apptainer, the archive's image no longer leaves a second copy in Apptainer's cache.
+
 ## v0.35.0
 
 *2026-11-16*
