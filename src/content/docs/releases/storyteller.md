@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.3
+
+*2026-11-16*
+
+- The skill describes the report tab's *Interactive* and *Static* views.
+
 ## v0.6.2
 
 *2026-11-15*

@@ -72,6 +72,10 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Reproducible pipelines',
+          items: ['guides/reproducible-pipelines', 'guides/reproduce-an-analysis'],
+        },
+        {
           label: 'Remote access',
           items: ['guides/remote-access', 'guides/self-host-tunnel'],
         },

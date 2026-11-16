@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.34.0
+
+*2026-11-16*
+
+- New `codeflower reproduce ARCHIVE --output DIR`: reruns a reproducible pipeline archive in a new sandbox and compares every result with the recorded one, with no agent and no sign-in. See [Reproduce an analysis](/guides/reproduce-an-analysis/).
+- Sandboxes run sandbox 0.31.0, with reproducible pipelines, and reports shown interactive in the file's own tab (ui 0.30.0).
+
 ## v0.33.2
 
 *2026-11-15*

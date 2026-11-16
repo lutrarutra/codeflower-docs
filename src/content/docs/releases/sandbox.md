@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.0
+
+*2026-11-16*
+
+- The agent can package an analysis as a reproducible pipeline: the chat action *Reproducible pipeline* builds a Snakemake workflow with pinned packages, the data bundled or with download links, seeded random steps and the expected results, tests the packed archive, and hands it over for `codeflower reproduce`. See [Reproducible pipelines](/guides/reproducible-pipelines/).
+- Snakemake is in the image.
+- The chat page shows reports interactive in the file's own tab (ui 0.30.0), and the report skill describes it (storyteller 0.6.3).
+
 ## v0.30.1
 
 *2026-11-15*

@@ -25,6 +25,11 @@
     "mode": "queue"
   },
   {
+    "title": "Reproducible pipeline",
+    "description": "Package this work as a pipeline anyone can rerun and verify.",
+    "mode": "queue"
+  },
+  {
     "title": "Wrap up",
     "description": "Stop the current step and preserve progress.",
     "mode": "interrupt"

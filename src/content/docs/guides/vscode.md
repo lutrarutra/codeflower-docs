@@ -42,9 +42,9 @@ agents are working.
 Sessions open as chat tabs; see [Chatting](/guides/chatting/). Files the agent shows, and paths you click in the
 chat, open in tabs beside it, where you can comment on them. See [Files and previews](/guides/files-and-previews/).
 
-[Reports](/guides/reports/) open in their interactive tab, with charts, explorers and comments.
-The setting `codeflower.reports.openInteractive` (default on) controls this; off, they open in the plain
-preview like other HTML files.
+[Reports](/guides/reports/) open shown **Interactive**, with charts, explorers and comments; the switch in the
+tab's header shows them **Static** or as **Code**. The setting `codeflower.reports.openInteractive` (default on)
+controls this; off, they open static like other HTML files.
 
 Uploading and downloading files is done in the app's window, not in VS Code.
 

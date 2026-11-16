@@ -39,7 +39,9 @@ output folder.
 
 ## Reading and commenting
 
-In VS Code and the app, a report opens in an **interactive tab**: charts, explorers and **comments** work there.
+In VS Code and the app, a report opens in a tab beside the chat, shown **Interactive**: charts, explorers and
+**comments** work there. The switch in the tab's header shows it **Static** (without its scripts) or as **Code**,
+in the same tab.
 Select text in the report and right-click to comment: a note for other readers, or a request for the agent.
 Comments are saved in the report file itself, so they travel with it. Then ask the agent to *Answer report
 comments*. Comment on a figure from its preview tab instead (see [Files and previews](/guides/files-and-previews/#feedback-on-a-figure)).

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.0
+
+*2026-11-16*
+
+- Reports show in their preview tab, with a switch between *Interactive* (charts, explorers, comments), *Static* and *Code*, instead of a separate interactive tab. `codeflower.reports.openInteractive` picks the view a report opens in.
+
 ## v0.23.0
 
 *2026-11-15*

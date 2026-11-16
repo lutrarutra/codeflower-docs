@@ -1,0 +1,150 @@
+---
+title: Reproduce an analysis
+description: Rerun a pipeline archive with codeflower reproduce and check that every result comes out the same.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+A [reproducible pipeline](/guides/reproducible-pipelines/) archive (`NAME.tar.gz`) holds an analysis's scripts,
+pinned packages, data or where to download it, and the results it must give. `codeflower reproduce` reruns it in a
+new sandbox and compares every result. It starts **no agent** and needs **no sign-in**: you only need the app and a
+container engine.
+
+## Rerun an archive
+
+<Steps>
+1. **Install the app** and a container engine (Docker, Podman or Apptainer): see [Install](/start/install/).
+   No configuration or agent login is needed.
+
+2. **Run it**, with a new folder for the results:
+   ```sh
+   codeflower reproduce smith2026.tar.gz --output ~/repro-smith2026
+   ```
+   `ARCHIVE` can be the file, a URL (`https://zenodo.org/records/…/smith2026.tar.gz`) or an unpacked folder.
+   If the authors packed an environment snapshot too, add it: `--snapshot smith2026-env-amd64.tar.gz`.
+
+3. **Read the outcome.** The terminal shows one line per step and the verdict:
+   ```
+   Reproducing PBMC 3k clustering with markers and cluster sizes
+     The author's run took 15 s on 4 cores, with up to 791 MB of memory.
+     1 input is in the archive.
+     Checking the archive…
+     Restoring the environment from the lockfiles (a few minutes for large ones)…
+     Running the pipeline without network…
+   Reproduced: 7 of 7 results match. Results and report in /home/ana/repro-smith2026
+   ```
+   The exit status is 0 when every result matches (see [Exit status](#exit-status)).
+</Steps>
+
+The first run downloads the sandbox image the archive names (a few GB, once). A run then takes about as long as
+the authors' run, plus installing the packages.
+
+## What happens
+
+1. The inputs the archive does not bundle are **downloaded** and each is checked against its sha256. They go to a
+   temporary folder that is removed afterwards; give `--cache DIR` to keep them for later runs.
+2. The archive's **sandbox image** is used: pulled by its digest when it is a published one.
+3. In a new sandbox with a new, empty project, the archive is **checked**: nothing changed since it was packed, no
+   paths of the authors' computer, every package pinned.
+4. The software environment is **restored** from the pinned packages (or unpacked from `--snapshot`).
+5. The pipeline **runs without network**, so it cannot depend on anything the archive does not name.
+6. Every result is **compared** with the recorded one: exactly, or within the tolerance the authors' two runs
+   showed for numbers in a table or pixels in a figure.
+
+Apart from the sandbox image, which your container engine keeps for the next run, nothing is kept outside the
+output folder: the project, the downloads and the environment are removed afterwards.
+
+## The output folder
+
+```
+repro-smith2026/
+  reproduce-report.md     the verdict: one row per result, with what differs
+  reproduce-report.json   the same, for scripts
+  results/                every result the pipeline made
+  logs/                   one log per step of the pipeline
+  run.json                time, peak memory and cores of this run
+  check.json              the archive check's errors and warnings
+  reproduce.log           everything the sandbox printed (also shown with --verbose)
+```
+
+`reproduce-report.md` looks like this:
+
+```markdown
+# Reproduction of PBMC 3k clustering with markers and cluster sizes
+
+7 of 7 results match.
+
+| Result | Comparison | Outcome |
+| --- | --- | --- |
+| `results/cells_per_cluster.png` | exact | matches |
+| `results/top5_markers_per_cluster.csv` | exact | matches |
+| `results/umap_leiden.png` | exact | matches |
+```
+
+When a result differs, its row says how: another checksum, numbers that differ by more than the tolerance, or the
+share of pixels that changed. Open the result in `results/` next to the paper's figure to judge it.
+
+## Options
+
+| Option | What it does |
+| --- | --- |
+| `-o, --output DIR` | the new folder for the results and the report (required) |
+| `--snapshot FILE` | restore the environment from the snapshot packed with the archive, without downloading packages |
+| `--validate` | only check the archive and download its data; do not run it |
+| `--cores N` | cores the pipeline may use (default: the archive's) |
+| `--cpus N`, `--memory SIZE` | limit the sandbox (Docker and Podman), e.g. `--memory 16g` |
+| `--engine NAME` | `docker`, `podman` or `apptainer` (default: the one found) |
+| `--image IMAGE` | run another image than the archive's; results can differ |
+| `--cache DIR` | keep downloaded archives and data there for later runs |
+| `-v, --verbose` | show the sandbox's output, not only in `reproduce.log` |
+| `--keep-state` | keep the throwaway project, to look into a failure |
+
+All options: [`codeflower reproduce`](/reference/cli/codeflower-reproduce/).
+
+## Exit status
+
+| Status | Meaning |
+| --- | --- |
+| 0 | every result matches |
+| 1 | the pipeline ran, but some results differ: see `reproduce-report.md` |
+| 2 | the archive is not valid: changed after packing, a file missing, an input's checksum wrong |
+| 3 | no container engine was found |
+| 4 | the environment could not be restored: a package no longer installs (try `--snapshot`) |
+| 5 | the pipeline failed: its steps' logs are in `logs/`, and the end of `reproduce.log` is shown |
+
+In scripts or CI, test the status: `codeflower reproduce smith2026.tar.gz -o out && echo reproduced`.
+
+## On a cluster
+
+`codeflower reproduce` runs with Apptainer in a batch job like any other command. The image is converted to a
+`.sif` file once, in `~/codeflower/images` (`CODEFLOWER_IMAGE_DIR` to change it):
+
+```sh
+#!/bin/bash
+#SBATCH --cpus-per-task=8 --mem=32G --time=02:00:00
+codeflower reproduce smith2026.tar.gz --engine apptainer --cores 8 --output "$HOME/repro-smith2026"
+```
+
+Compute nodes without internet: on a node that has it (the login node), run once with `--validate --cache DIR`,
+which downloads the image, the archive and its data; then run the job with the same `--cache DIR`. Restoring the
+environment needs the package indexes, so offline nodes also need the authors' `--snapshot`.
+
+## Network
+
+The pipeline itself always runs without network. Restoring the environment needs the package indexes: on Linux
+and with Apptainer, code flower lets the sandbox reach only those (PyPI, conda, CRAN and Posit Package Manager,
+Bioconductor, GitHub). Docker and Podman on macOS and Windows cannot restrict it, so the network is open while
+packages install, and the summary says so. With `--snapshot`, no network is used at all.
+
+## Troubleshooting
+
+- **The archive was made with a local build of the image**: the authors did not use a published image. Ask them
+  for an archive made with one, or run with `--image` and a recent published image (results can differ).
+- **The archive was made on linux/amd64 and runs here on linux/arm64** (a warning): numbers can differ in the last
+  digits, and a figure by a few pixels. Compare on the authors' platform when a result differs.
+- **Status 4, a package does not install**: it may have been removed from its index, or need a newer compiler.
+  Use the environment snapshot if the authors published one.
+- **Status 5, the pipeline failed**: the end of `reproduce.log` is shown; the failing step's log is in `logs/`.
+  Rerun with `--keep-state --verbose` to look at the work folder.
+- **Out of memory**: the summary's first lines show the memory the authors' run needed; give the sandbox at least
+  that much (`--memory` for Docker and Podman, the job's allocation on a cluster).

@@ -29,6 +29,7 @@ codeflower
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them
 - [`codeflower plugins`](/reference/cli/codeflower-plugins/): List, add, remove and fetch the agents' own plugins in a project
 - [`codeflower pull`](/reference/cli/codeflower-pull/): Download or update the sandbox image
+- [`codeflower reproduce`](/reference/cli/codeflower-reproduce/): Rerun a pipeline archive in a new sandbox and compare its results
 - [`codeflower run`](/reference/cli/codeflower-run/): Start a task in a session you can continue from VS Code
 - [`codeflower sandbox`](/reference/cli/codeflower-sandbox/): Start a sandbox (worker) to use from VS Code or the browser
 - [`codeflower task`](/reference/cli/codeflower-task/): Let the agent work on a task by itself, then stop

@@ -1,0 +1,152 @@
+---
+title: Reproducible pipelines
+description: Have the agent package an analysis as an archive that anyone reruns with one command and gets the same results.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+When an analysis is done, the agent can package it as a **reproducible pipeline**: one archive with the scripts,
+the order they run in, the exact package versions, the data or where to download it, and what every result must
+be. Anyone with code flower and a container engine reruns it with one command, **without an agent or a sign-in**,
+and code flower checks every result against the recorded one.
+
+Use it to publish an analysis with a paper (on Zenodo, for example), to send it to a reviewer or a colleague, or to
+rerun it yourself in a year. This page is for the person who makes the archive; to rerun one, see
+[Reproduce an analysis](/guides/reproduce-an-analysis/).
+
+## Make an archive
+
+<Steps>
+1. **Start the sandbox with an output folder**, so the archive lands on your computer: *Output folders* in the
+   app's window, or `--output` on the command line:
+   ```sh
+   codeflower sandbox --input ~/data/study42 --output ~/results/study42
+   ```
+
+2. **Do the analysis** in a chat as usual. The agent writes its steps as scripts and seeds random steps as it
+   goes, which makes the next step quick.
+
+3. **Ask for the pipeline.** In the chat, open **Tools** and choose **Reproducible pipeline**, or ask in your own
+   words ("make this reproducible for the paper").
+
+4. **Answer the agent's questions.** It asks only what the chat does not settle:
+   - a short **name** for the pipeline, e.g. `smith2026`
+   - which **results** it must reproduce: the figures and tables of the paper, not every exploratory plot
+   - for each input, whether it is **bundled** in the archive or **downloaded** from a URL (see
+     [Data](#data-bundled-or-downloaded))
+
+5. **Wait for the test.** The agent builds the pipeline, runs it twice from scratch, packs it and tests the packed
+   archive (see [What the agent does](#what-the-agent-does)). Depending on the analysis this takes from a few
+   minutes to as long as two runs of it.
+
+6. **Read its summary.** The agent tells you where the archive is on your computer, what the test showed, how
+   long a run takes and the command to reproduce it, e.g.:
+   ```sh
+   codeflower reproduce ~/results/study42/smith2026.tar.gz --output ~/repro-smith2026
+   ```
+   Run it once yourself: it is the final check, in a fresh sandbox (see
+   [Reproduce an analysis](/guides/reproduce-an-analysis/)).
+</Steps>
+
+The pipeline's source stays in the sandbox's workspace, in `pipelines/NAME/`. To change it later, ask the agent:
+it edits the pipeline, then freezes, packs and tests it again.
+
+## What the agent does
+
+It follows its `codeflower-reproduce` skill and uses the `codeflower-repro` command in the sandbox:
+
+1. **Builds the workflow.** It copies the scripts that made the chosen results into a
+   [Snakemake](https://snakemake.readthedocs.io) workflow, one rule per step, and leaves out dead ends. Paths and
+   parameters come from Snakemake and one `config.yaml`; the analysis itself is not changed.
+2. **Lists the inputs** with their checksums, and a URL for those that are downloaded.
+3. **Freezes it**: pins every Python, R and conda package with its hash, records the sandbox image and the
+   platform, and runs the workflow twice from scratch (one core, then several). Each result is recorded with how
+   it is compared: exactly, or within the small difference the two runs showed (numbers in a table, pixels in a
+   figure). A result that changes between runs is treated as a bug to fix.
+4. **Checks it**: every script exists and is used, no paths of this machine, every package pinned, every input
+   with a checksum, every random step seeded.
+5. **Packs it** into `NAME.tar.gz` in your output folder.
+6. **Tests the packed archive** the way `codeflower reproduce` will: unpacks it, installs a new environment from
+   the pinned packages only, runs it **without network** and compares every result. It hands over only when that
+   passes. The test cannot check the sandbox image itself; your run of `codeflower reproduce` does.
+
+## Same results on every run
+
+Random steps (subsampling, clustering, UMAP, permutation tests, model training) give other results on every run
+unless they are seeded. The agent gives each one an explicit seed in `workflow/config.yaml`, even where the
+library has a default, and lists them in the README's **Determinism** table: the step, the function and the seed.
+It also fixes threads to one, the time zone and locale, and `SOURCE_DATE_EPOCH`, which many tools (matplotlib
+among them) use as the date they write into PDFs and SVGs. The two clean runs show whether that worked.
+
+If you want a result to vary (a bootstrap you report as a distribution, say), tell the agent: it then records the
+result with a tolerance and says why in the README.
+
+## Data: bundled or downloaded
+
+Each input either travels **in the archive** or is **downloaded** from a URL when the pipeline is reproduced.
+
+| | Bundled | Downloaded |
+| --- | --- | --- |
+| Upload needed | none | the data must be on a lasting site first |
+| Archive size | as large as the data | a few MB |
+| Works when | always | while the URL works and the file is unchanged |
+| Good for | data only you have, small and medium inputs | public data: Zenodo, GEO, SRA, ArrayExpress, figshare, 10x |
+
+Either way, code flower checks every input's checksum before running. To get a single file that reproduces without
+any download, ask the agent to pack **with all data**: inputs with a URL are bundled too.
+
+When the agent bundles data, it bundles **only what the pipeline reads**, in a compact format: for example only
+the raw counts and the few cell annotations used from an AnnData file, not the embeddings, graphs and layers the
+pipeline recomputes; only the columns a table needs; only the region of a BAM file that is analysed. It makes that
+slim copy with a script it keeps in `workflow/prepare/`, records where the copy came from, and checks that the
+results stay the same. Above a few GB it suggests depositing the data instead.
+
+## Keeping it working for years
+
+- **Environment snapshot.** Packages can disappear from their indexes. Ask the agent to pack **with the
+  environment** and it also writes `NAME-env-ARCH.tar.gz`, the installed packages as they are (several GB, for one
+  processor type, `amd64` or `arm64`). Reproducing with it downloads no packages.
+- **Published image.** An archive names its sandbox image by digest. Use a released image (the default), not a
+  local build, for archives you share: a local build only exists on your computer.
+- **Platform.** Results made on `amd64` can differ in the last digits on `arm64`. For a paper, make the archive on
+  the platform most readers have (usually `amd64`, a Linux server or cluster).
+
+## Publish it
+
+<Steps>
+1. Run `codeflower reproduce` on the archive once yourself, ideally on another computer.
+2. Upload `NAME.tar.gz` (and `NAME-env-ARCH.tar.gz`, if you made one) to a repository with DOIs, such as
+   [Zenodo](https://zenodo.org).
+3. In the paper's data and code availability statement, give the DOI and the command:
+   ```sh
+   codeflower reproduce https://zenodo.org/records/<id>/files/NAME.tar.gz --output repro
+   ```
+</Steps>
+
+The archive is plain text apart from bundled data, so you can also unpack it into a GitHub repository. Its
+`README.md` explains how to run it without code flower: install the pinned packages, download the data and run
+`snakemake`.
+
+## What is in an archive
+
+```
+smith2026/
+  codeflower-repro.yaml   title, sandbox image, platform, seeds and threads, time and memory of a run
+  README.md               what it reproduces, the Determinism table, how to run it
+  workflow/Snakefile      the steps: which script makes which files from which files
+  workflow/config.yaml    every parameter and seed
+  workflow/scripts/       one script per step (Python, R, bash)
+  workflow/prepare/       how slim bundled inputs were made from the full data (not run)
+  env/                    the pinned Python, R and conda packages
+  data/                   bundled inputs, and manifest.tsv: each input's checksum, URL and source
+  expected/               each result's checksum and how it is compared
+  SHA256SUMS              the checksum of every file, to detect changes after packing
+```
+
+## Limits
+
+- Containers inside the pipeline are not supported (Snakemake's `container:` and `conda:` directives): the sandbox
+  is the environment.
+- GPU steps are not compared well yet: their results often differ from run to run.
+- System packages installed with `apt` are not recorded; the agent installs software with pip, uv, conda or R's
+  installers, which are.

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.0
+
+*2026-11-16*
+
+- An HTML file's tab switches between *Interactive*, *Static* and *Code* in place; a report opens interactive and comes back as it was when you switch back.
+
 ## v0.29.0
 
 *2026-11-15*

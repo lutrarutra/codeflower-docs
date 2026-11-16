@@ -22,6 +22,9 @@ It is built for (data) scientists, on workstations and on HPC clusters.
    your outputs and code read-write.
 4. **It reports what it found.** The agent writes its results as [reports](/guides/reports/): single HTML files
    with figures and interactive charts that open beside the chat and take your comments.
+5. **It packages the analysis to rerun.** On request, the agent turns the analysis into a
+   [reproducible pipeline](/guides/reproducible-pipelines/) archive, which anyone reruns with
+   `codeflower reproduce` and gets the same results, without an agent.
 
 ## The parts
 
