@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.1
+
+*2026-11-17*
+
+- The chat has the changes of ui 0.31.0: a *Shown files* menu in the header.
+
 ## v0.24.0
 
 *2026-11-16*

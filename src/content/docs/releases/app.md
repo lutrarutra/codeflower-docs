@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.36.0
+
+*2026-11-17*
+
+- `codeflower projects list` shows how much disk space each project takes (its folder, settings and environment, as `du` counts them) and where its folder is.
+- New sandboxes use sandbox 0.31.1.
+
 ## v0.35.1
 
 *2026-11-16*

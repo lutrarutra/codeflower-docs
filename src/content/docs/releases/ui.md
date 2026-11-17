@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.0
+
+*2026-11-17*
+
+- A *Shown files* menu in the chat's header lists every file the agent showed you in the chat, the latest first, so you can open one again without scrolling back or looking for it in the file tree.
+- The header's icon buttons line up.
+
 ## v0.30.0
 
 *2026-11-16*
