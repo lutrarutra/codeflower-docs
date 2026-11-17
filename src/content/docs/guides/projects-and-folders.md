@@ -44,9 +44,16 @@ environment: they can leave it broken. Several sandboxes using the environment a
 ### Environments on scratch
 
 Conda environments and download caches can grow to many gigabytes, more than a home quota on a cluster may allow.
-`--env-dir DIR` (or `env_dir:` in the settings; the flag beats the setting) keeps each project's software
-environment, download caches (including `~/.cache` in the sandbox) and the chats' browsers in `DIR/NAME` instead,
-for example on scratch, while its chats, sign-ins and workspace stay in the project:
+`--env-dir DIR` (or `env_dir:` in the settings; the flag beats the setting) keeps what each project can download or
+rebuild in `DIR/NAME` instead, for example on scratch, while its chats, sign-ins and workspace stay in the project:
+
+| In `DIR/NAME` | What it holds |
+| --- | --- |
+| `env/` | the software environment: venv, conda environments, R libraries, npm and cargo packages |
+| `cache/` | download caches of uv, pip, conda, npm and R |
+| `home/.cache/` | `~/.cache` in the sandbox, e.g. HuggingFace and torch models |
+| `browser/` | the chats' browsers: Chromium, and each chat's browser profile with its cookies and site logins |
+| `thumbnails/` | previews of the images the chats and the file tree show |
 
 ```yaml
 # ~/.codeflower/config.yaml
@@ -59,8 +66,10 @@ env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
 - The folder must be visible wherever the project's sandboxes run, so a node's local disk will not do.
 - `NAME` is the name of the project's folder. Projects whose folders have the same name, e.g. `--state /a/study`
   and `--state /b/study`, or `-p study` with two `--projects-dir`, share one environment there.
-- A project that already has an environment keeps it in the project folder, unused: delete `env/venv`,
-  `env/conda` and `cache/` there to free the space.
+- If scratch's clean-up deletes the browsers, the chats' browsers are signed out of the sites they had signed in to.
+- A project that started without an env folder keeps these folders in the project folder, unused: delete
+  everything in `env/` but `env/exports`, and `cache/`, `home/.cache/`, `browser/` and `thumbnails/` there to free the
+  space, while no sandbox of the project runs.
 
 :::note
 The project folder is only readable by you. It holds your agent sign-ins, so do not share it.
@@ -85,6 +94,10 @@ there.
 
 - **Flags given with `--continue`** replace a saved setting (`--port 8890`, `--engine apptainer`), or add folders
   to the saved ones (`-i ~/data/study42/batch2`). Either way they are saved for next time.
+- **`--create`** starts the project new, from the flags given, if it does not exist yet. A script can then always
+  use `--continue`: `codeflower sandbox --continue study42 --create -i ~/data/study42 -o ~/results/study42`
+  makes the project the first time and continues it after that (folders already saved are not added twice).
+  Without `--create`, a project name that does not exist is an error, which suggests the closest name.
 - **If the saved port is taken**, the sandbox does not start. Stop whatever uses the port, or give `--port 0` for
   any free one.
 - **To change or remove a setting**, such as a folder you no longer need, edit the file while the sandbox is
