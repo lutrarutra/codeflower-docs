@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.39.0
+
+*2026-11-17*
+
+- `--env NAME=VALUE` sets an environment variable in the sandbox; `--env NAME` alone takes its value from where you start it, so secrets stay out of saved files. See [Environment variables](/guides/engines/#environment-variables).
+- `--engine-args` passes container flags to the engine, such as `--gpus all` or `--shm-size 8g`, the same way on Docker, Podman and Apptainer. See [Engine flags](/guides/engines/#engine-flags) and [GPUs](/guides/engines/#gpus).
+- Ctrl+C on `codeflower sandbox` or `codeflower run` first asks the chats whose agent is working to save their work and wrap up, and stops at once when no agent works. Ctrl+C twice within 3 seconds stops it at once.
+- `sandbox` and `run` print where to open the sandbox as one table, each link alone on its line so Ctrl+click takes all of it, and no longer print the links twice.
+- A project started again without `--continue` keeps its saved port when it is free, so VS Code's saved connection still works.
+- `codeflower projects remove`, `copy` and `move` show their progress, are faster on projects with many files, and stop cleanly on Ctrl+C; run `projects remove NAME` again to finish a stopped removal.
+- Uses sandbox 0.32.0.
+
 ## v0.38.0
 
 *2026-11-17*

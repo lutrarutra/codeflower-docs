@@ -10,6 +10,8 @@ sidebar:
 
 Delete a project: its chats, agent logins, workspace and tasks, its settings, allowlist and env folder. Your input, output and code folders are not touched. It asks first, unless --yes is given.
 
+A removal that is stopped (Ctrl+C) or fails leaves the rest hidden next to the project (.PROJECT.removing); running the same command again finishes it.
+
 
 ## Usage
 

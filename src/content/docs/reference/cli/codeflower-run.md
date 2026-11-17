@@ -12,7 +12,7 @@ Start a sandbox and create a new chat session with TASK as its first prompt: the
 
 The session is saved in the project and appears in the extension's sessions list. If the agent is not signed in yet, the task waits until you connect and sign in.
 
-It prints a link to open in the browser while "codeflower client" runs on your computer, which adds the sandbox there; or, in VS Code, run "code flower: Connect to worker" and paste the codeflower://… line. Press Ctrl+C to stop.
+It prints a link to open in the browser while "codeflower client" runs on your computer, which adds the sandbox there; or, in VS Code, run "code flower: Connect to worker" and paste the codeflower://… line. Press Ctrl+C to stop: with no agent working, the sandbox stops at once; otherwise the chats whose agent (or a subagent) works are asked to save their work and wrap up first, and the sandbox stops when they are done, at most after 10 minutes ("client: &#123;wrap_up_minutes: N&#125;" in the config). Ctrl+C twice within 3 seconds stops it at once, and once more while it stops kills it.
 
 With --server the sandbox also serves its chat page on the same port and prints a link to it (http://HOST:PORT/?key=…), like Jupyter's: open it in any browser that reaches this machine, e.g. through ssh -L. Anyone with the link controls the agent, and plain HTTP carries the key and the chats unencrypted, so keep job logs private and prefer --host 127.0.0.1 with a tunnel on shared networks.
 
@@ -45,10 +45,12 @@ codeflower run (TASK | --prompt FILE) [flags]
 | `--config string` |  | config directory with config.yaml and skills (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
+| `--engine-args stringArray` |  | container engine flags, quoted as one value, e.g. '--gpus all --shm-size 8g': --gpus, --device, --shm-size, --ulimit, --cap-add, --cap-drop, --add-host, --dns (repeatable) |
+| `--env stringArray` |  | environment variable for the sandbox: NAME=VALUE, or NAME to take its value from here when the sandbox starts (repeatable) |
 | `--env-dir string` |  | folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
 | `--host string` | `0.0.0.0` | interface the worker listens on (Apptainer; Docker and Podman always publish on 127.0.0.1) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.31.2, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.31.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.32.0, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.32.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--memory string` |  | memory the agent may use, e.g. 32G (default: the batch job's allocation; Docker and Podman also enforce it) |

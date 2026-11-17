@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.32.0
+
+*2026-11-17*
+
+- A wrap-up, when the sandbox stops or its batch job ends, asks only the chats whose agent or a subagent is working; idle chats are left alone, and with none working the sandbox stops at once.
+- The worker prints its links as a table, each alone on its line, so a terminal's Ctrl+click takes the whole link.
+- The chat page the sandbox serves has the changes of ui 0.32.0: times on prompts and turns, and day separators.
+
 ## v0.31.2
 
 *2026-11-17*

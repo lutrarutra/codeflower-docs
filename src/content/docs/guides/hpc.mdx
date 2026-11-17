@@ -85,5 +85,7 @@ tunnel at a time; the next one takes over once it ends.
   fingerprint the line carries (`fp=…`); the token protects it. Sandboxes started with `--server` are the exception:
   plain HTTP. See the [security model](/security/security-model/).
 - Apptainer does not enforce `--cpus` and `--memory`: the job's allocation is the limit.
+- For GPUs, request them from the scheduler (e.g. `--gpus=1`) and add `--engine-args '--gpus all'`: the sandbox
+  then uses the job's GPUs ([GPUs](/guides/engines/#gpus)).
 - A project folder on a shared filesystem can be used from any node, but a chat is open in one sandbox at a time;
   another sandbox shows it read-only.

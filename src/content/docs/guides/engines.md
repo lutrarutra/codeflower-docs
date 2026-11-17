@@ -50,3 +50,61 @@ from npm, into `~/codeflower/agents` (or `CODEFLOWER_AGENTS_DIR`), and mounts it
 On Docker and Podman, `--cpus N` and `--memory 32G` limit the sandbox. Inside a batch job, code flower reads the
 job's allocation (Slurm, PBS Pro/OpenPBS/Torque, LSF, Grid Engine, HTCondor) and applies it. `--time-limit 8h`
 tells the agent how long it has; it is not enforced. The agent sees all of this with `codeflower-doctor`.
+
+## Environment variables
+
+`--env` sets a variable in the sandbox, on every engine. Give it once per variable:
+
+```sh
+codeflower sandbox -p study42 --env HF_HOME=/data/output/study42/hf --env WANDB_API_KEY
+```
+
+- `NAME=VALUE` sets it to that value.
+- `NAME` alone takes its value from where you start the sandbox, each time it starts; it is left out if it is not
+  set there. Use this for secrets: the project's settings then keep only the name.
+- Values never appear in the command line of the engine, so other users cannot read them with `ps`.
+- The app's own variables (`CODEFLOWER_…`, and those it sets for the sandbox, such as an isolated sandbox's proxy)
+  cannot be set.
+
+The variables are saved with the [project's settings](/guides/projects-and-folders/#starting-a-project-again). With
+`--continue`, `--env` adds to the saved ones, and replaces one of the same name.
+
+## Engine flags
+
+`--engine-args` passes container flags to the engine, quoted as one value. It takes these flags of `docker run`,
+and code flower gives each engine its own equivalent, so a project means the same on all three:
+
+| Flag | Docker | Podman | Apptainer |
+| --- | --- | --- | --- |
+| `--gpus all`, `--gpus device=0,1` | NVIDIA GPUs | NVIDIA GPUs, as CDI devices (`nvidia.com/gpu=…`) | `--nv`; `device=…` sets `CUDA_VISIBLE_DEVICES` |
+| `--device HOST[:CONTAINER][:rwm]` | ✓ | ✓ | not applied |
+| `--shm-size 8g` | ✓ | ✓ | not applied |
+| `--ulimit nofile=1024:2048` | ✓ | ✓ | not applied |
+| `--cap-add`, `--cap-drop` | ✓ | ✓ | not applied |
+| `--add-host HOST:IP`, `--dns IP` | ✓ | ✓ | not applied |
+
+```sh
+codeflower sandbox -p study42 --engine-args '--gpus all --shm-size 8g'
+```
+
+- A flag an engine cannot apply is left out with a note, and the sandbox still starts, so a project saved on
+  Podman also starts with Apptainer on a cluster. `--add-host` and `--dns` are also left out when the sandbox has no
+  network of its own (`--isolate-network`).
+- Any other flag is refused before the sandbox starts. Those that code flower sets itself say what to use
+  instead: `-v` and `--mount` → `--bind`, `-e` → `--env`, `--cpus`, `--memory`, `--network` →
+  `--isolate-network`. `--name`, `--user`, `--privileged` and `--security-opt` are not allowed, as the sandbox
+  depends on them.
+- `--engine-args` is saved with the project's settings. Given with `--continue`, it replaces the saved one, and
+  `--engine-args ''` removes it.
+
+### GPUs
+
+`--gpus` gives the sandbox NVIDIA GPUs. The host needs the NVIDIA driver, and:
+
+- **Docker**: the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+- **Podman**: the same toolkit, and a CDI specification made once with
+  `sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml`.
+- **Apptainer**: nothing more. `--nv` binds the host's driver into the sandbox. In a batch job, the sandbox uses the
+  job's GPUs (`CUDA_VISIBLE_DEVICES`).
+
+The image does not include CUDA: packages that need it, such as PyTorch, bring their own.

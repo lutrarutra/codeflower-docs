@@ -77,8 +77,8 @@ The project folder is only readable by you. It holds your agent sign-ins, so do 
 
 ### Starting a project again
 
-Each time `codeflower sandbox` starts a project, it saves how: the folders, engine, image, network, port, and the
-key and certificate its links carry. They go in `NAME.sandbox.yaml` next to the project folder. To start the
+Each time `codeflower sandbox` starts a project, it saves how: the folders, engine, image, network, port,
+[`--env` and `--engine-args`](/guides/engines/#environment-variables), and the key and certificate its links carry. They go in `NAME.sandbox.yaml` next to the project folder. To start the
 project again the same way, name it:
 
 ```sh
@@ -100,6 +100,9 @@ there.
   Without `--create`, a project name that does not exist is an error, which suggests the closest name.
 - **If the saved port is taken**, the sandbox does not start. Stop whatever uses the port, or give `--port 0` for
   any free one.
+- **Without `--continue`**, the project still keeps its key and certificate, and its saved port if it is free (else
+  it takes any free port, and VS Code needs the new link). So VS Code reconnects even when you start the project
+  with its folders given again, as long as no `--port` or `--new-key` changes them.
 - **To change or remove a setting**, such as a folder you no longer need, edit the file while the sandbox is
   stopped. It is YAML, and a comment explains each setting.
 - **`--new-key`** gives the project a new key and certificate, e.g. if a link leaked. Links saved before it stop
@@ -130,6 +133,12 @@ codeflower projects remove study42-v2        # asks first; --yes to skip the que
 A copy gets its own key and certificate, so the original's links do not open it, and any free port. A moved
 project keeps its key and port. Removing a project deletes its chats, sign-ins, environment and workspace, but not
 your input, output or code folders.
+
+Environments can hold millions of files, so copying, removing, or moving a project to another file system can take a
+while; the terminal shows how many files are done so far. Ctrl+C stops it cleanly: a stopped copy is removed, a
+stopped move puts everything back (or, once the project is in its new place, leaves the rest of the original
+hidden as `.NAME.removing`), and a stopped removal leaves `.NAME.removing` next to the project. Run
+`codeflower projects remove NAME` again to finish.
 
 ## Your folders
 

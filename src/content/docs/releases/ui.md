@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.32.0
+
+*2026-11-17*
+
+- Each prompt shows when you sent it, and the agent's last message of a turn shows when the turn ended and how long it ran; hover for the full date.
+- A line with the day sits above the first prompt of each day, in chats that go back before today.
+- A message sent while the agent worked counts towards that turn.
+
 ## v0.31.1
 
 *2026-11-17*

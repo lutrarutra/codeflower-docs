@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.25.0
+
+*2026-11-17*
+
+- Ctrl+click on a sandbox's `codeflower://` line or its VS Code link in VS Code's terminal connects to that sandbox (after asking), instead of searching for the text.
+- The chat has the changes of ui 0.32.0: times on prompts and turns, and day separators.
+
 ## v0.24.2
 
 *2026-11-17*
