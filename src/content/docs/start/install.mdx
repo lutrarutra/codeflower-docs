@@ -54,6 +54,27 @@ codeflower check
 It says which engines are ready, whether the sandbox image is downloaded, and how to set up what is missing.
 On a cluster, that usually means `module load apptainer`. See [Container engines](/guides/engines/).
 
+## Where the software goes
+
+:::caution[Choose a folder for environments before the first sandbox]
+By default, each project keeps everything the agent installs in `~/codeflower/projects/<project>`: conda
+environments, R libraries, Python packages, download caches and the chats' browsers. A single conda environment
+can take several gigabytes and hundreds of thousands of files, which quickly fills a home directory, and on a
+cluster can exceed its size or file-count quota.
+
+Before starting a sandbox, put them somewhere with room, e.g. scratch on a cluster or an external drive on your
+own computer, in `~/.codeflower/config.yaml`:
+
+```yaml
+env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
+```
+
+Each project gets a folder there, and its chats, sign-ins and workspace stay in `~/codeflower/projects`. On a
+cluster, the folder must be visible from every node that runs sandboxes. See
+[Environments on scratch](/guides/projects-and-folders/#environments-on-scratch), also for what to do with the
+projects you already have.
+:::
+
 ## The VS Code extension (optional)
 
 <Steps>
