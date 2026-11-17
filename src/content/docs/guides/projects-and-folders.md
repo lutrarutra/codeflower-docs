@@ -45,8 +45,8 @@ environment: they can leave it broken. Several sandboxes using the environment a
 
 Conda environments and download caches can grow to many gigabytes, more than a home quota on a cluster may allow.
 `--env-dir DIR` (or `env_dir:` in the settings; the flag beats the setting) keeps each project's software
-environment and caches in `DIR/NAME` instead, for example on scratch, while its chats, sign-ins and workspace stay
-in the project:
+environment, download caches (including `~/.cache` in the sandbox) and the chats' browsers in `DIR/NAME` instead,
+for example on scratch, while its chats, sign-ins and workspace stay in the project:
 
 ```yaml
 # ~/.codeflower/config.yaml
@@ -107,6 +107,7 @@ project.
 
 ```sh
 codeflower projects list                     # name, running or stopped, when it last started
+codeflower projects list --size              # also the disk space each takes (slow for large projects)
 codeflower projects show study42             # where its files are, and its saved folders and port
 codeflower projects copy study42 study42-v2  # try something without changing the original
 codeflower projects move study42 study42-old # rename it; also takes a folder elsewhere

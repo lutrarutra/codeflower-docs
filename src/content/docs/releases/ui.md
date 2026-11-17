@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.1
+
+*2026-11-17*
+
+- *Copy path* on the computer that runs the sandbox no longer gives a path inside the project for the chats' browsers, thumbnails and `~/.cache` when the project keeps them in an env folder (`--env-dir`).
+
 ## v0.31.0
 
 *2026-11-17*

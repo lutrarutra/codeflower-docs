@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.24.2
+
+*2026-11-17*
+
+- The chat has the changes of ui 0.31.1: *Copy path* follows the folders an env folder (`--env-dir`) now holds.
+
 ## v0.24.1
 
 *2026-11-17*

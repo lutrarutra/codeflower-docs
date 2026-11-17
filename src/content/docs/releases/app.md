@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.37.0
+
+*2026-11-17*
+
+- With `--env-dir` (or `env_dir:` in the config), the env folder now also holds the chats' browsers, image thumbnails and the sandbox's `~/.cache` (HuggingFace, torch and other tools' downloads), besides the software environment and download caches, so a project in your home folder keeps little more than its chats, sign-ins, workspace and environment recipes. See [Environments on scratch](/guides/projects-and-folders/#environments-on-scratch).
+- A project that already uses an env folder downloads the browser again on first use and starts with empty `~/.cache` and thumbnails. What those folders held stays in the project, hidden, and can be deleted (`browser/`, `thumbnails/` and `home/.cache/` in the project's folder) while no sandbox of it runs.
+- `codeflower projects list` is quick again: it shows each project's disk space only with `--size`, since counting it reads every file of large projects.
+- New sandboxes use sandbox 0.31.2.
+
 ## v0.36.0
 
 *2026-11-17*
