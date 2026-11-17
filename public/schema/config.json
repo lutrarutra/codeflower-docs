@@ -78,7 +78,7 @@
       "type": "string"
     },
     "env_dir": {
-      "description": "A folder for the projects' software environments and download caches, e.g. on scratch, when --env-dir is not given; each project gets a subfolder. Unset, they stay in the project.",
+      "description": "A folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, when --env-dir is not given; each project gets a subfolder. Unset, they stay in the project.",
       "type": "string"
     },
     "icons": {

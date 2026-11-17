@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.38.0
+
+*2026-11-17*
+
+- `codeflower sandbox --continue NAME --create` starts the project from the flags given if it does not exist yet, and continues it with its saved settings otherwise, so a script can always use the same command. `--create` only starts a project in a folder that is empty or missing.
+- When `--continue` names a project that does not exist, the error suggests the closest project name, in case of a typo.
+- The help of `--env-dir` and `env_dir:` says everything the env folder holds since 0.37.0.
+
 ## v0.37.0
 
 *2026-11-17*

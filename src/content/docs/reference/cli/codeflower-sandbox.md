@@ -37,6 +37,7 @@ codeflower sandbox [flags]
   codeflower sandbox --project study42 --input /data/study42
   codeflower sandbox --continue study42
   codeflower sandbox --continue study42 --input ~/data/study42-batch2
+  codeflower sandbox --continue study42 --create --input ~/data/study42 --output ~/results/study42
   codeflower sandbox --input ~/data/study42 --skills ~/my-skills --isolate-network
   codeflower sandbox --image ./codeflower-sandbox.sif --state ~/cf/study42 --bind /data/ref:/reference
 ```
@@ -52,8 +53,9 @@ codeflower sandbox [flags]
 | `--config string` |  | config directory with config.yaml and skills (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `--continue string` |  | start a project again with its saved settings: a project name, or a project folder (flags given replace settings, or add folders) |
 | `--cpus int` |  | CPUs the agent may use (default: the batch job's allocation; Docker and Podman also enforce it) |
+| `--create` |  | with --continue: start the project new from the flags given if it does not exist yet (a script can then always use --continue) |
 | `--engine string` | `auto` | container engine: auto, docker, podman, or apptainer (or set $CODEFLOWER_ENGINE) |
-| `--env-dir string` |  | folder for the projects' software environments and download caches, e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
+| `--env-dir string` |  | folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
 | `--host string` | `0.0.0.0` | interface the worker listens on (Apptainer; Docker and Podman always publish on 127.0.0.1) |
 | `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.31.2, downloaded on first use) |
 | `--image-tag string` |  | build of the published image to use instead of 0.31.2, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
