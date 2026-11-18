@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.0
+
+*2026-11-18*
+
+- Files the agent shows with `codeflower-show` are listed in the chat's shown files also when no window is connected, so you find them when you open the chat; the agent is told they were noted for later. Every window with the chat open lists them.
+- The sandbox reports which versions it runs (the app that started it, its image, its chat page, storyteller and the agents), which the app's window shows in the sandbox's *Manage* tab.
+- The chat page the sandbox serves has the changes of ui 0.33.0.
+
 ## v0.32.0
 
 *2026-11-17*

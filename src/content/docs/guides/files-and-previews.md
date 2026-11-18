@@ -9,6 +9,10 @@ When the agent has something to show (a figure, a table, a report), it runs `cod
 in tabs beside the chat, in the window you last sent a message from. Paths in the chat open the same way when you
 click them, and so do files in the sandbox's folder list.
 
+The chat also lists every file it showed, in every window that has the chat open. When no window is connected (the
+agent works on while you are away), nothing opens, but the chat still lists the files, so you find them when you
+open it.
+
 A preview follows its file: when the agent changes it, the tab updates.
 
 | Kind | Shown as |

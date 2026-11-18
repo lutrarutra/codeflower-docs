@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.40.0
+
+*2026-11-18*
+
+- A sandbox's *Manage* tab in the app's window has a *Versions* card: the version of the page and which computer serves it, the app that started the sandbox, its image, the page the image serves, storyteller and each agent's version. *Copy* gives them as text for a bug report.
+- The app's window has the changes of ui 0.33.0: files the agent shows are listed in the chat even when no window was open, and *Manage* and shell tabs open in view from the Server view.
+- Uses sandbox 0.33.0.
+
 ## v0.39.0
 
 *2026-11-17*

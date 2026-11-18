@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.0
+
+*2026-11-18*
+
+- Files the agent shows are listed in every window that has the chat open, and in the chat even when it was not open anywhere; feedback on such a file opens its chat.
+- In the app's window, a sandbox's *Manage* tab shows the versions at work, with *Copy* for a bug report.
+- *Manage*, a shell's button and a new shell opened while the Server view shows now bring the chats' grid into view with their tab.
+
 ## v0.32.0
 
 *2026-11-17*

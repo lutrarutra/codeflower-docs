@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.26.0
+
+*2026-11-18*
+
+- Files the agent shows are listed once in the chat, also in other windows that have it open, and also when they were shown while no window was connected (with sandbox 0.33.0 or later).
+
 ## v0.25.0
 
 *2026-11-17*
