@@ -101,5 +101,9 @@ computer itself, never through the tunnel. On the tunnel's account page you see 
   machine to start a sandbox takes over, within 90 seconds if the job was killed; browsers stay paired.
 - At least one paired computer must be on, with the app running, for the page to load; each computer's sandboxes
   show while it is.
+- The page comes from the app's client, which keeps running the release it started with, also after
+  `codeflower update`. `update` offers to restart it, `codeflower client restart` does so at any time, and
+  `codeflower sandbox` restarts an older client it finds in the background by itself. Sandboxes started in a
+  terminal or a batch job keep running; open pages offer to reload for the new page.
 
 How the encryption works, and what the tunnel's operator can see: [Security model](/security/security-model/#remote-access).

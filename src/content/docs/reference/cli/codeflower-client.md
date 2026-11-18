@@ -40,3 +40,7 @@ Also available as `codeflower gui`.
 | `--no-notifications` |  | do not notify the desktop when a chat waits for an answer or ends its turn |
 | `--no-tray` |  | do not show an icon in the system tray or menu bar |
 | `--port int` |  | port to serve the client on (default 7720, or any free port when that is taken; 0 selects any free port) |
+
+## Commands
+
+- [`codeflower client restart`](/reference/cli/codeflower-client-restart/): Restart the running client from this codeflower, e.g. after an update

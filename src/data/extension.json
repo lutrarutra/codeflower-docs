@@ -17,6 +17,11 @@
       "palette": false
     },
     {
+      "id": "codeflower.openShell",
+      "title": "Open shell in sandbox",
+      "palette": true
+    },
+    {
       "id": "codeflower.signIn",
       "title": "Sign in…",
       "palette": false

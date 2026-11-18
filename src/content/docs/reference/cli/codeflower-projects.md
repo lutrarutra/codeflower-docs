@@ -2,7 +2,7 @@
 title: "codeflower projects"
 description: "List, show, copy, move or remove projects"
 sidebar:
-  order: 13
+  order: 14
   label: "projects"
 ---
 

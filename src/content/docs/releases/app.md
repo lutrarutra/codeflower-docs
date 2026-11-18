@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.41.0
+
+*2026-11-18*
+
+- `codeflower sandbox` and `codeflower run` take `--forward-to HOST`: when the login node cannot reach a compute node's port, the sandbox opens an SSH tunnel back to HOST, so its `127.0.0.1` links work there. It reconnects when it drops and ends with the sandbox; `--continue` remembers it. See [HPC clusters](/guides/hpc/).
+- `codeflower client restart` restarts the running client from the installed release, so its page (also through the tunnel) is the new one; open pages reconnect and offer to reload. Sandboxes started in a terminal or a batch job keep running; with sandboxes the client started itself it asks for `--force`, which lets their chats wrap up first.
+- `codeflower update` offers to restart an older client (`--restart-client` restarts it without asking), and `codeflower sandbox` and `codeflower run` restart an older background client they find by themselves.
+- The app's window has the changes of ui 0.34.0: crisper terminals, a reload banner after an update, and clicked files that come into view in narrow windows and Focus.
+- Uses sandbox 0.33.1.
+
 ## v0.40.0
 
 *2026-11-18*

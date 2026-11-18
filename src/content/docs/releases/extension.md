@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.27.0
+
+*2026-11-18*
+
+- A connected sandbox's row in the sidebar has a button that opens a shell in it, and *code flower: Open shell in sandbox* in the command palette does the same, asking which sandbox when several are connected. The terminal is named after the sandbox's project.
+- The chat has the changes of ui 0.34.0: images the agent shows as tiles, and wider Markdown previews.
+
 ## v0.26.0
 
 *2026-11-18*

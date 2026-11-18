@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.34.0
+
+*2026-11-18*
+
+- Terminals in the app's window draw box-drawing characters without seams (htop's frames and meters), redraw full screens faster, give emoji their two columns, and no longer cut off their last row.
+- After the app was updated and its client restarted, the page offers to reload for the new version; *Later* puts it off until the next update.
+- A file you click in a chat comes into view in a narrow window, and in Focus it shows in the pane beside the chat.
+- Images the agent shows line up as equal tiles; long file names are cut short instead of overflowing. Markdown previews are wider. In Focus's pane the previous and next arrows stay at the ends of its header.
+
 ## v0.33.0
 
 *2026-11-18*

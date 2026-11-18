@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.1
+
+*2026-11-18*
+
+- The chat page the sandbox serves has the changes of ui 0.34.0.
+
 ## v0.33.0
 
 *2026-11-18*
