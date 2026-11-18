@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.4
+
+*2026-11-18*
+
+- Long paths in inline code, and long lines in the error of a section that failed to update, wrap inside their column instead of stretching it.
+- Prose is justified and hyphenated in wide columns, and no word is left alone on the last line of a paragraph, caption or heading.
+
 ## v0.6.3
 
 *2026-11-16*

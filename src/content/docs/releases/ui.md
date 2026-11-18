@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.35.0
+
+*2026-11-18*
+
+- A figure opened from a report to comment on can be downloaded from the overlay, as it was clicked, named after the report and the figure (`results-figure-2.svg`).
+- SVG figures made with matplotlib keep their labels and titles in the comment overlay.
+- The comment overlay takes the keyboard when it opens, so Esc and its shortcuts work without clicking into it first.
+
 ## v0.34.0
 
 *2026-11-18*

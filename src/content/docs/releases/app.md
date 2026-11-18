@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.41.1
+
+*2026-11-18*
+
+- The app's window has the changes of ui 0.35.0: a report's figure opened to comment on can be downloaded, keeps the text of matplotlib SVGs, and takes the keyboard at once.
+- Uses sandbox 0.33.2.
+
 ## v0.41.0
 
 *2026-11-18*

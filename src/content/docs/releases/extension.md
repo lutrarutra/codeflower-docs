@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.0
+
+*2026-11-18*
+
+- Under a sandbox, the sidebar groups its folders under *Files* and its chats under *Chats*, after *Agents*, so a long chat list no longer hides the rest. *Files* names its folders beside it; *Chats* says how many chats need you or are working, and has a button for a new chat. *Agents* opens by itself only while no agent can answer yet.
+- The chat has the changes of ui 0.35.0, and a report's figure opened to comment on can be saved with the overlay's download button.
+
 ## v0.27.0
 
 *2026-11-18*

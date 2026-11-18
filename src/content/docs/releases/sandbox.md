@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.2
+
+*2026-11-18*
+
+- Has storyteller 0.6.4: long paths and error messages wrap in reports, and prose is justified in wide columns.
+- The chat page the sandbox serves has the changes of ui 0.35.0.
+
 ## v0.33.1
 
 *2026-11-18*
