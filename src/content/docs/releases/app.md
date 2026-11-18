@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.41.2
+
+*2026-11-18*
+
+- The app's window has the changes of ui 0.36.0: code blocks have a copy button, and clicking inline code copies it.
+- Uses sandbox 0.34.0, whose `codeflower-doctor` tells the agent whether batch jobs can be submitted from the sandbox.
+
 ## v0.41.1
 
 *2026-11-18*

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.34.0
+
+*2026-11-18*
+
+- `codeflower-doctor` reports whether batch jobs can be submitted from the sandbox: which scheduler commands (`sbatch`, `qsub`, `bsub`, `condor_submit`) the site has made available, and for Slurm whether the controller answers and how many of your jobs are queued. It reminds the agent that jobs run outside the sandbox with your account's access, so they need host paths and the cluster's own software, and that it should ask you before submitting any.
+- The chat page the sandbox serves has the changes of ui 0.36.0.
+
 ## v0.33.2
 
 *2026-11-18*

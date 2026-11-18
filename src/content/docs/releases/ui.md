@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.36.0
+
+*2026-11-18*
+
+- Code blocks in messages have a copy button in their top right corner while the pointer is over them, and clicking inline code copies it (unless it is a file path, which still opens the file).
+
 ## v0.35.0
 
 *2026-11-18*

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.1
+
+*2026-11-18*
+
+- The chat has the changes of ui 0.36.0: code blocks have a copy button, and clicking inline code copies it.
+
 ## v0.28.0
 
 *2026-11-18*
