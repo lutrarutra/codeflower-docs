@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.35.1
+
+*2026-11-19*
+
+- The sandbox answers the search of the app's window (Ctrl+K): files by name in the workspace and the mounts, what files say (except in the inputs, whose data can be large), and what its chats say.
+- The chat page the sandbox serves has the changes of ui 0.37.0.
+- v0.35.0 was tagged but never published; use v0.35.1.
+
 ## v0.34.0
 
 *2026-11-18*

@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.42.0
+
+*2026-11-19*
+
+- The app's window has a search: press Ctrl+K (⌘K on a Mac) or click the magnifier in the rail to find chats and files in every sandbox, by name and by what they say. Searching files and chat text needs sandbox 0.35.1 or later; older sandboxes have their chat titles searched.
+- The app's window has the other changes of ui 0.37.0: copying code shows a green check.
+- Uses sandbox 0.35.1.
+
 ## v0.41.2
 
 *2026-11-18*

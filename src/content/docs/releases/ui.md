@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.37.0
+
+*2026-11-19*
+
+- The app's window has a search: press Ctrl+K (⌘K on a Mac) or click the magnifier in the rail. It finds chats by title and files by name in every sandbox, tolerating skipped letters, and from three letters also what chats and files say. With nothing typed it lists your latest chats. Arrow keys move through the results; Enter opens a chat, or a file beside the chat in front. Files and chat text are searched in the sandboxes the window is connected to that run sandbox 0.35.1 or later.
+- Copying code shows a green check: after copied inline code, and on a code block's copy button.
+
 ## v0.36.0
 
 *2026-11-18*

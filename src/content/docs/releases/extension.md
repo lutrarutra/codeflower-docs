@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.28.2
+
+*2026-11-19*
+
+- A chat tab shows the chat loading until its messages arrive, instead of briefly saying the chat is empty.
+- The chat has the changes of ui 0.37.0: copying code shows a green check.
+
 ## v0.28.1
 
 *2026-11-18*
