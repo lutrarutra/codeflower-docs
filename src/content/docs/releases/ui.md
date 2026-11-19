@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.38.0
+
+*2026-11-19*
+
+- With two or more messages queued, an **All together** switch above them sends them all in the agent's next turn, as one message, instead of one per turn. It starts off again each time a second message joins the queue. On a sandbox, this needs sandbox 0.36.0 or later.
+- With agents that cannot read a message while they work, *Send now* is called *Interrupt & send*, and its hints say that it stops the agent's turn and any command it is running.
+- The subagent badge beside the usage counts the subagents that are running (0 once none are); the ended ones stay in its list.
+
 ## v0.37.0
 
 *2026-11-19*

@@ -18,6 +18,8 @@ by side, each with its own models, modes and settings; the chat's header shows i
   starts a new line and the *Send* button sends.
 - **While the agent works**, <kbd>Enter</kbd> **queues** your message: it is sent when the agent is done, one per
   turn. Queued messages show above the box, where you can edit one (click it), remove it, or send it now.
+- With two or more queued, the **All together** switch above them sends them all in the agent's next turn, as one
+  message. It starts off each time a second message joins the queue.
 - Queued messages wait in the sandbox, not in your window: they are still sent if you close the tab or your laptop,
   and every window with the chat open shows the same queue.
 - If a turn ends without finishing normally (the agent refuses, hits its limit, or fails), the queue **pauses** so the

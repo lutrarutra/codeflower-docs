@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.29.0
+
+*2026-11-19*
+
+- The chat has the changes of ui 0.38.0: the **All together** switch on queued messages, *Interrupt & send* where sending now stops the agent, and a subagent badge that counts the running ones.
+- A sandbox shell opened in a VS Code terminal starts at the terminal's current size, even if it was resized while the shell started.
+
 ## v0.28.2
 
 *2026-11-19*

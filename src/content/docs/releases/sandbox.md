@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.36.0
+
+*2026-11-19*
+
+- The sandbox keeps the choice of the queue's **All together** switch, so all the queued messages of a chat can go in the agent's next turn as one message, also while no window is open.
+- Programs in a terminal (your shell, an agent's own terminal UI) follow the terminal's size: `htop`, `less`, `vim` and other full-screen programs no longer keep the size the terminal had when it opened.
+- The chat page the sandbox serves has the changes of ui 0.38.0.
+
 ## v0.35.1
 
 *2026-11-19*

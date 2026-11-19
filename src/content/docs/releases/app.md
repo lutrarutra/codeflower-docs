@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.42.1
+
+*2026-11-19*
+
+- The app's window has the changes of ui 0.38.0: the **All together** switch on queued messages, *Interrupt & send* where sending now stops the agent, and a subagent badge that counts the running ones.
+- Uses sandbox 0.36.0.
+
 ## v0.42.0
 
 *2026-11-19*
