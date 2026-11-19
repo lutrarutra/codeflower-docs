@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.30.0
+
+*2026-11-19*
+
+- Click a chat's title to list the other chats of its sandbox, latest message first, and switch to one: its tab comes to the front, or it opens in a new tab (ui 0.39.0).
+
 ## v0.29.0
 
 *2026-11-19*

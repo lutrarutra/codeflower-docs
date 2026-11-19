@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.39.0
+
+*2026-11-19*
+
+- A chat's title in its header opens a list of every chat in the same sandbox, the one with the latest message first, with its agent, its status and when it last had a message. Choosing one brings its tab to the front, or opens it in a new tab; the chat you are in is highlighted and cannot be chosen. With more than eight chats, a filter at the top narrows the list.
+
 ## v0.38.0
 
 *2026-11-19*

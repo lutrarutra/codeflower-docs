@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.36.1
+
+*2026-11-19*
+
+- The chat page the sandbox serves has the changes of ui 0.39.0: click a chat's title to switch to another chat of the sandbox.
+
 ## v0.36.0
 
 *2026-11-19*

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.42.2
+
+*2026-11-19*
+
+- The app's window has the changes of ui 0.39.0: click a chat's title to list the other chats of its sandbox, latest message first, and switch to one in its own tab.
+- Uses sandbox 0.36.1.
+
 ## v0.42.1
 
 *2026-11-19*
