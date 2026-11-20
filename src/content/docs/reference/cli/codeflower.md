@@ -27,6 +27,7 @@ codeflower
 - [`codeflower chats`](/reference/cli/codeflower-chats/): List a sandbox's chats, for codeflower attach
 - [`codeflower check`](/reference/cli/codeflower-check/): Check that this machine can run sandboxes, and how to set it up
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them
+- [`codeflower jobs`](/reference/cli/codeflower-jobs/): List, show, read and cancel the batch jobs of a project
 - [`codeflower plugins`](/reference/cli/codeflower-plugins/): List, add, remove and fetch the agents' own plugins in a project
 - [`codeflower projects`](/reference/cli/codeflower-projects/): List, show, copy, move or remove projects
 - [`codeflower pull`](/reference/cli/codeflower-pull/): Download or update the sandbox image

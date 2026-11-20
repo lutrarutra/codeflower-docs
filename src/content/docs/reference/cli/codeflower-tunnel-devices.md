@@ -2,7 +2,7 @@
 title: "codeflower tunnel devices"
 description: "List the paired browsers"
 sidebar:
-  order: 28
+  order: 34
   label: "tunnel devices"
 ---
 

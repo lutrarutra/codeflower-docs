@@ -44,3 +44,4 @@ Also available as `codeflower gui`.
 ## Commands
 
 - [`codeflower client restart`](/reference/cli/codeflower-client-restart/): Restart the running client from this codeflower, e.g. after an update
+- [`codeflower client stop`](/reference/cli/codeflower-client-stop/): Stop the running client, e.g. one started in the background

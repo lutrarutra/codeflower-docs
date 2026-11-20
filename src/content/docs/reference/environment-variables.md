@@ -21,4 +21,6 @@ The install scripts read `CODEFLOWER_VERSION` (a release to install instead of t
 `CODEFLOWER_INSTALL_DIR` (where to install).
 
 The app also reads batch schedulers' variables (Slurm, PBS, LSF, Grid Engine, HTCondor) to find a job's allocation,
-and passes it to the agent.
+and passes it to the agent. In a [batch job](/guides/batch-jobs/), `codeflower job-run` also reads the array task's
+index and passes the scheduler's variables its profile lists (`pass_env`) to the job's sandbox, where the job also
+finds `CODEFLOWER_JOB_ID`, `CODEFLOWER_JOB_NAME` and, in an array, `CODEFLOWER_JOB_INDEX`.

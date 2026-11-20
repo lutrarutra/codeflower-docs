@@ -37,6 +37,11 @@
       "palette": false
     },
     {
+      "id": "codeflower.editWorkerAddress",
+      "title": "Change address (host:port)…",
+      "palette": false
+    },
+    {
       "id": "codeflower.removeWorker",
       "title": "Remove worker",
       "palette": false

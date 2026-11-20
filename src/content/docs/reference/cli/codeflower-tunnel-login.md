@@ -2,7 +2,7 @@
 title: "codeflower tunnel login"
 description: "Sign this computer in to the tunnel"
 sidebar:
-  order: 29
+  order: 35
   label: "tunnel login"
 ---
 

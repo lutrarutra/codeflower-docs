@@ -2,7 +2,7 @@
 title: "codeflower projects move"
 description: "Rename a project, or move it to another folder"
 sidebar:
-  order: 17
+  order: 23
   label: "projects move"
 ---
 

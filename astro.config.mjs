@@ -53,6 +53,7 @@ export default defineConfig({
             'guides/sandbox-run-task',
             'guides/engines',
             'guides/hpc',
+            'guides/batch-jobs',
             'guides/network-isolation',
             'guides/inside-the-sandbox',
           ],

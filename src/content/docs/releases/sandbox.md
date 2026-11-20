@@ -7,6 +7,18 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.37.0
+
+*2026-11-20*
+
+:::caution
+Agents no longer find or use scheduler commands (`sbatch`, `qsub`) that a site mounted into the sandbox. Batch jobs now go through the app, which runs each one in a sandbox: turn them on in the app's config (`jobs.scheduler`). See [Batch jobs](/guides/batch-jobs/).
+:::
+
+- When the app has batch jobs on, the agent submits them with `codeflower-job`, and follows, waits for and cancels them. Unless the config says otherwise, you are asked in the chat to allow each job first. The chat gets a message when a job ends, and job output opens like a workspace file.
+- `codeflower-doctor` reports the jobs' scheduler, approval, defaults, limits and queues, and a new skill tells the agent how to use them.
+- The chat page the sandbox serves has the changes of ui 0.40.0.
+
 ## v0.36.1
 
 *2026-11-19*

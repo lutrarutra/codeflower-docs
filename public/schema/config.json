@@ -127,6 +127,311 @@
       "description": "Start the command line's sandboxes as with --isolate-network.",
       "type": "boolean"
     },
+    "jobs": {
+      "additionalProperties": false,
+      "description": "Lets the agents ask the app to submit batch jobs, each run in a sandbox of its own.",
+      "properties": {
+        "account": {
+          "description": "Charged for the jobs (Slurm's --account), when set.",
+          "type": "string"
+        },
+        "approve": {
+          "description": "Ask (the default) shows each submission in the chat for the user to allow or deny; never submits what is within the limits without asking, as unattended tasks need.",
+          "type": "string"
+        },
+        "codeflower": {
+          "description": "The app on the nodes jobs run on (default: this app's path, which must be on a folder they share).",
+          "type": "string"
+        },
+        "defaults": {
+          "additionalProperties": false,
+          "description": "What a job gets that does not ask for it.",
+          "properties": {
+            "cpus": {
+              "type": "integer"
+            },
+            "memory": {
+              "description": "Memory, e.g. 4G.",
+              "type": "string"
+            },
+            "queue": {
+              "type": "string"
+            },
+            "time": {
+              "description": "Time, e.g. 1h or 1-00:00:00.",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "engine": {
+          "description": "Runs the jobs' sandboxes: docker, podman or apptainer (default: the sandbox's own). Apptainer starts an image file on a shared folder fastest on clusters whose Podman keeps images per job.",
+          "type": "string"
+        },
+        "engine_args": {
+          "description": "Container engine flags for the jobs' sandboxes, as --engine-args takes them, e.g. '--gpus all'.",
+          "type": "string"
+        },
+        "env_writable": {
+          "description": "Lets jobs change the project's software environments; by default they mount them read-only, so jobs running at once cannot break them.",
+          "type": "boolean"
+        },
+        "extra": {
+          "description": "Scheduler options added to every job, as the profile's script writes them (Slurm: e.g. --export=NONE, --qos=normal).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "limits": {
+          "additionalProperties": false,
+          "description": "The most a job, and all of a project's jobs, may ask for.",
+          "properties": {
+            "active": {
+              "description": "Jobs of a project queued or running at once (default 20).",
+              "type": "integer"
+            },
+            "array": {
+              "description": "Tasks of one job array (default 100).",
+              "type": "integer"
+            },
+            "cpus": {
+              "type": "integer"
+            },
+            "gpus": {
+              "type": "integer"
+            },
+            "memory": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "notes": {
+          "description": "Told to the agent with the queues and limits: what to know about this cluster when submitting.",
+          "type": "string"
+        },
+        "on_stop": {
+          "description": "Keep (the default) leaves a project's jobs running when its sandbox stops, and the next sandbox of the project follows them again; cancel cancels them.",
+          "type": "string"
+        },
+        "poll": {
+          "description": "How often the jobs' states are asked for (default 1m, at least 15s).",
+          "type": "string"
+        },
+        "queues": {
+          "description": "Queues, when set, are the only queues (Slurm partitions) jobs may use, each with its own limits; they are listed to the agent.",
+          "items": {
+            "additionalProperties": false,
+            "description": "A queue jobs may use, with its own limits within Limits.",
+            "properties": {
+              "cpus": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              },
+              "gpu_types": {
+                "description": "The queue offers, if jobs may name one.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "gpus": {
+                "description": "A job of the queue may ask for; 0: none.",
+                "type": "integer"
+              },
+              "memory": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "time": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "scheduler": {
+          "description": "Off (the default), auto (the one whose commands are found here), slurm, local (background jobs on this computer), or the name of a profile under schedulers: or in \u003cconfig dir\u003e/schedulers/NAME.yaml.",
+          "type": "string"
+        },
+        "schedulers": {
+          "additionalProperties": {
+            "additionalProperties": false,
+            "description": "Tells the app how to use a batch scheduler: a template of the batch script, and the commands that submit, list, look up and cancel jobs. Each command is a list of arguments, each a template of its own; none goes through a shell.",
+            "properties": {
+              "array_index_env": {
+                "description": "The variable that holds an array task's index in the job.",
+                "type": "string"
+              },
+              "cancel": {
+                "additionalProperties": false,
+                "description": "One of a profile's commands.",
+                "properties": {
+                  "command": {
+                    "description": "The program and its arguments, each a template.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "description": "ID, for submit, is a regular expression whose first group is the job's id in the command's output (default: the whole first line).",
+                    "type": "string"
+                  },
+                  "line": {
+                    "description": "Line, for status and history, is a regular expression matched against each line of the output, with the named groups id and state (and index and exit for history).",
+                    "type": "string"
+                  },
+                  "stdin": {
+                    "description": "Feeds the batch script to the command (LSF's bsub \u003c script).",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "detect": {
+                "description": "Commands whose presence on PATH means this scheduler, for scheduler: auto.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "extends": {
+                "description": "Names a profile whose fields this one starts from, e.g. slurm.",
+                "type": "string"
+              },
+              "history": {
+                "additionalProperties": false,
+                "description": "History, optional, looks up finished jobs (Slurm's sacct).",
+                "properties": {
+                  "command": {
+                    "description": "The program and its arguments, each a template.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "description": "ID, for submit, is a regular expression whose first group is the job's id in the command's output (default: the whole first line).",
+                    "type": "string"
+                  },
+                  "line": {
+                    "description": "Line, for status and history, is a regular expression matched against each line of the output, with the named groups id and state (and index and exit for history).",
+                    "type": "string"
+                  },
+                  "stdin": {
+                    "description": "Feeds the batch script to the command (LSF's bsub \u003c script).",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "pass_env": {
+                "description": "The scheduler's variables the job's sandbox gets.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "script": {
+                "description": "The batch script, a Go text/template (docs/jobs.md lists its fields and functions).",
+                "type": "string"
+              },
+              "states": {
+                "additionalProperties": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "description": "Sort the scheduler's states into queued, running, done, failed and cancelled; a trailing * matches any rest, and \"*\" alone anything.",
+                "type": "object"
+              },
+              "status": {
+                "additionalProperties": false,
+                "description": "One of a profile's commands.",
+                "properties": {
+                  "command": {
+                    "description": "The program and its arguments, each a template.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "description": "ID, for submit, is a regular expression whose first group is the job's id in the command's output (default: the whole first line).",
+                    "type": "string"
+                  },
+                  "line": {
+                    "description": "Line, for status and history, is a regular expression matched against each line of the output, with the named groups id and state (and index and exit for history).",
+                    "type": "string"
+                  },
+                  "stdin": {
+                    "description": "Feeds the batch script to the command (LSF's bsub \u003c script).",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "submit": {
+                "additionalProperties": false,
+                "description": "One of a profile's commands.",
+                "properties": {
+                  "command": {
+                    "description": "The program and its arguments, each a template.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "description": "ID, for submit, is a regular expression whose first group is the job's id in the command's output (default: the whole first line).",
+                    "type": "string"
+                  },
+                  "line": {
+                    "description": "Line, for status and history, is a regular expression matched against each line of the output, with the named groups id and state (and index and exit for history).",
+                    "type": "string"
+                  },
+                  "stdin": {
+                    "description": "Feeds the batch script to the command (LSF's bsub \u003c script).",
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "submit_file": {
+                "description": "SubmitFile, when set, is a second template written next to the script (as .SubmitFile), for schedulers that take a description of the job (HTCondor) rather than a script.",
+                "type": "string"
+              },
+              "supports": {
+                "description": "What the script can express of array, after, gpus, account and queue; a job that asks for anything else is refused.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "description": "Profiles of other schedulers, by name: how to write their batch scripts and run their commands (docs/jobs.md).",
+          "type": "object"
+        },
+        "setup": {
+          "description": "Shell lines the batch script runs before the job's sandbox starts, e.g. `module load apptainer`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "mcp_servers": {
       "additionalProperties": {
         "additionalProperties": false,

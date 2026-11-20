@@ -1,0 +1,219 @@
+---
+title: Batch jobs
+description: Let the agent submit batch jobs to your cluster, each of which runs in a sandbox like its own.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+An agent sometimes needs more than its sandbox has: a hundred samples to align, a model to fit for a day. With
+**batch jobs** on, it can ask the code flower app to submit work to your cluster's scheduler. The agent never gets
+the scheduler itself: the app submits each job for it, within limits you set, after asking you in the chat.
+
+**Each job runs in a sandbox like the agent's own**:
+- the same image, `/data` folders, workspace and software environments, at the same paths;
+- the same network: isolated, with the same allowlist, if the sandbox is.
+
+So a job sees nothing the agent could not see, and the agent writes job scripts with the paths and software it
+already uses.
+
+Batch jobs are off until you name a scheduler. Slurm, and background jobs on the same computer (`local`), are
+built in. For other schedulers you describe them in a profile: [see below](#other-schedulers).
+
+## Turn them on
+
+<Steps>
+1. Add a `jobs:` section to [config.yaml](/reference/config/) on the computer that starts the sandbox (on a
+   cluster, in your home directory there):
+
+   ```yaml
+   jobs:
+     scheduler: slurm
+     defaults: {cpus: 1, memory: 4G, time: 1h, queue: shortq}
+     limits: {cpus: 32, memory: 256G, time: 3d, gpus: 2, active: 20, array: 100}
+   ```
+
+2. Check it on a node where you submit jobs:
+
+   ```sh
+   codeflower check
+   ```
+
+   It lists the scheduler's commands it found, and the app the jobs will run.
+
+3. Start a sandbox as usual. Its log has a `jobs` line, and the agent learns about jobs from `codeflower-doctor`.
+   `--jobs slurm` or `--jobs off` on `codeflower sandbox`, `run` or `task` overrides the config for one project,
+   and the project remembers it.
+</Steps>
+
+The app, your projects and the folders you mount must be on filesystems every node sees. Jobs run on whichever
+node the scheduler picks, and start the sandbox there.
+
+## What you see
+
+When the agent submits a job, the chat shows what it wants to run: the command, its folder, the resources and the
+queue. You choose:
+- **Submit**;
+- **Submit and allow for this chat**: the chat's later jobs go without asking;
+- **Deny**.
+
+With `approve: never`, jobs within the limits go without asking, as unattended runs (`codeflower task`) need.
+
+The chat's footer counts the jobs it has queued or running. Its list opens a job's output and cancels it. When a
+job ends, the agent is told, so it can look at the results without polling.
+
+From a terminal, also with no sandbox running:
+
+```sh
+codeflower jobs list study42           # this project's jobs; asks the scheduler about the active ones
+codeflower jobs show study42 j-3f2a1c  # what it runs, with what, and how it ended
+codeflower jobs log study42 j-3f2a1c   # its output (--index N for an array task, --scheduler for the scheduler's log)
+codeflower jobs cancel study42 j-3f2a1c
+```
+
+Jobs keep running when the sandbox stops (`on_stop: cancel` stops them instead), and the next sandbox of the
+project follows them again. A project with jobs queued or running cannot be moved or removed.
+
+## Settings
+
+| Key | Meaning |
+| --- | --- |
+| `scheduler` | `off` (default), `auto` (whichever scheduler's commands are found), `slurm`, `local`, an example (`pbs`, `lsf`, `sge`, `htcondor`) or a profile of yours |
+| `approve` | `ask` (default) or `never` |
+| `defaults` | what a job gets that does not ask: `cpus`, `memory`, `time`, `queue` (1 CPU, 4G, 1h) |
+| `limits` | the most a job may ask for (`cpus`, `memory`, `time`, `gpus`), how many jobs a project may have queued or running (`active`, default 20) and how many tasks an array may have (`array`, default 100) |
+| `queues` | the only queues jobs may use, each with its own `cpus`, `memory`, `time`, `gpus`, `gpu_types` and a `description` the agent reads |
+| `account` | the account jobs are charged to |
+| `extra` | options added to every job's script, e.g. `[--export=NONE, --qos=normal]` |
+| `setup` | shell lines run before the job's sandbox starts, e.g. `module load apptainer` |
+| `engine` | `docker`, `podman` or `apptainer` for the jobs' sandboxes (default: the sandbox's own) |
+| `codeflower` | the app on the jobs' nodes (default: this app's path) |
+| `notes` | what the agent should know about your cluster, e.g. "no default partition" |
+| `env_writable` | let jobs change the project's software environments (default: read-only, so jobs running at once cannot break them) |
+| `engine_args` | engine flags for the jobs' sandboxes, as `--engine-args` takes them |
+| `on_stop` | `keep` (default) or `cancel` |
+| `poll` | how often the scheduler is asked about the jobs (default `1m`) |
+
+### Images on the nodes
+
+Each job starts the image on its node:
+
+- **Apptainer** runs the image file, from `CODEFLOWER_IMAGE_DIR`. Put that folder on a shared filesystem, and
+  jobs start at once on any node. To use Apptainer for jobs while the sandbox itself runs with Podman, set
+  `engine: apptainer` and run `codeflower pull --engine apptainer` once.
+- **Podman** on clusters often keeps images per job. The app then saves the image once to
+  `CODEFLOWER_IMAGE_DIR` as an archive, and each job loads it from there.
+- **Docker** shares its images on a workstation.
+
+### A cluster's settings
+
+```yaml
+jobs:
+  scheduler: slurm
+  engine: apptainer
+  setup: module load apptainer
+  extra: [--export=NONE]
+  defaults: {cpus: 1, memory: 4G, time: 1h, queue: shortq}
+  limits: {cpus: 32, memory: 256G, time: 3d, gpus: 2, active: 50, array: 200}
+  queues:
+    - {name: tinyq, time: 2h, description: quick jobs; prefer it for anything under 2 h}
+    - {name: shortq, time: 12h}
+    - {name: longq, time: 30d, description: long runs; fewer nodes}
+    - {name: gpu, time: 3d, gpus: 2, gpu_types: [l4_gpu, h100pcie]}
+  notes: There is no default partition. Memory defaults to 8 GB per CPU.
+```
+
+## Other schedulers
+
+A **profile** tells the app how to use a scheduler:
+- `script`: a template of the batch script;
+- the commands that `submit`, list (`status`), look up (`history`, optional) and `cancel` jobs;
+- `states`: how to read the scheduler's states.
+
+Commands are lists of arguments, each a template, and never go through a shell.
+
+PBS (`pbs`), LSF (`lsf`), Grid Engine (`sge`) and HTCondor (`htcondor`) come as **example profiles**. They were not
+tested on a real cluster, so check the script of your first job with `codeflower jobs show`. To change one, put a
+profile under `jobs.schedulers` (or in `~/.codeflower/schedulers/NAME.yaml`), starting from it with `extends`. A
+profile may extend the built-in one of its own name:
+
+```yaml
+jobs:
+  scheduler: cluster
+  schedulers:
+    cluster:
+      extends: sge
+      script: |
+        #!/bin/bash
+        #$ -N {{.Name}}
+        #$ -j y
+        #$ -o {{.LogDir}}/scheduler.log
+        #$ -pe threads {{.CPUs}}
+        #$ -l mem_free={{gb .Memory}}G,h_rt={{hms .Time}}
+        {{with .Queue}}#$ -q {{.}}{{end}}
+        {{.Setup}}
+        exec {{.Run}}
+      supports: [queue]
+```
+
+A profile written from scratch:
+
+```yaml
+jobs:
+  scheduler: mysched
+  schedulers:
+    mysched:
+      detect: [msub]
+      script: |
+        #!/bin/bash
+        #MSUB -N {{.Name}} -c {{.CPUs}} -m {{mb .Memory}}M -t {{minutes .Time}}
+        #MSUB -o {{.Output}}
+        {{.Setup}}
+        exec {{.Run}}
+      submit:  {command: [msub, "{{.Script}}"], id: 'Job (\d+) submitted'}
+      status:  {command: [mstat, --user, "{{.User}}"], line: '^(?P<id>\d+)\s+(?P<state>\w+)'}
+      cancel:  {command: [mdel, "{{.ID}}"]}
+      states:
+        queued: [WAITING, HELD]
+        running: [RUNNING]
+        done: [DONE]
+        failed: ["*"]
+      supports: []
+```
+
+What the templates have:
+
+| Field | |
+| --- | --- |
+| `.Name`, `.JobID` | the job's name, and its codeflower id |
+| `.CPUs`, `.Memory`, `.Time`, `.GPUs`, `.GPUType` | what it asked for (`.Memory` in bytes, `.Time` a duration) |
+| `.Queue`, `.Account` | its queue, and the config's account |
+| `.Array` | an array: `.Spec`, `.Limit` (how many at once), `.Indices`, `.Count`, and `.First`, `.Last`, `.Step` when `.Simple` (one range) |
+| `.After` | the scheduler's ids of the jobs it waits for |
+| `.Extra`, `.Setup` | the config's `extra` and `setup` |
+| `.Run` | the command that starts the job's sandbox: the script must run it |
+| `.Script`, `.SubmitFile`, `.Directory` | the batch script, a submit file (`submit_file:`, for HTCondor) and their folder |
+| `.LogDir`, `.Output` | the job's folder in the project, and the scheduler's log there |
+| `.User`, `.IDs`, `.ID` | in commands: your user name, and the scheduler's ids |
+
+Functions:
+- `q` quotes for a shell.
+- `mb`, `gb` and `kb` convert sizes.
+- `dhms` writes a duration as `D-HH:MM:SS`, `hms` as `HH:MM:SS`; `minutes` and `seconds` give it in those units.
+- `join` and `div`.
+- `args` makes a list several arguments.
+- `fail "message"` refuses what the scheduler cannot express.
+
+`supports` lists what the script can express of `queue`, `account`, `gpus`, `array` and `after`. Jobs that ask
+for anything else are refused. How a job ended comes from its sandbox, not from the scheduler's accounting, so a
+profile needs only `script`, `submit`, `status` and `cancel`.
+
+## Security
+
+- **No scheduler commands in the sandbox.** The agent cannot submit anything itself.
+- **The app writes every batch script.** It checks each request against your limits and queues, and fills the
+  script with its own paths and your config's options.
+- **A job's sandbox gets no more than the agent's:** the same folders at most, the same network, and no API keys
+  or sign-ins of the agents.
+- **The agent can read and cancel only its project's jobs.**
+- **Keep the agent's mounts away from your config:** a job's sandbox could change jobs if it could write there.
+  The app refuses jobs whose bookkeeping folder (`PROJECT.jobs` next to the project) is inside a read-write mount.

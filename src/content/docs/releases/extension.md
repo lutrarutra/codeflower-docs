@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.31.0
+
+*2026-11-20*
+
+- **Change address** in a worker's menu, and beside a disconnected worker, points it at a new host:port (or only a new port), for a sandbox started again with `--continue` on another node or port. The worker keeps its place in the list, and its open chats connect to it there. The list, the chats' headers and the shell picker show the worker's current address.
+- A chat shows the batch jobs its agent asked for beside its usage, where you can open their output or cancel them (ui 0.40.0). The worker list says how many batch jobs are queued or running.
+
 ## v0.30.0
 
 *2026-11-19*

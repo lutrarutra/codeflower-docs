@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.40.0
+
+*2026-11-20*
+
+- A badge beside the usage counts the batch jobs the chat's agent asked for that are queued or running. Its list shows them, and those that ended in the last day: open a job's output, or cancel one that is still active. This needs sandbox 0.37.0 or later, with batch jobs on in the app's config.
+
 ## v0.39.0
 
 *2026-11-19*

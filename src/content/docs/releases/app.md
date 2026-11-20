@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.0
+
+*2026-11-20*
+
+- Agents can ask for **batch jobs**, which the app submits and runs each in a sandbox like the agent's own: the same image, data folders, workspace, software environments and network. Turn them on with `jobs.scheduler` in `config.yaml`, or `--jobs` on `codeflower sandbox`, `run` and `task`. Slurm and local runs are built in; PBS, LSF, Grid Engine and HTCondor come as example profiles, and you can define your own. The config sets defaults, limits, queues and whether you are asked in the chat for each job. See [Batch jobs](/guides/batch-jobs/).
+- `codeflower jobs` lists, shows, prints and cancels a project's batch jobs from your computer, and `codeflower check` says whether jobs can be submitted there. `codeflower projects move` and `remove` refuse while a project's jobs are queued or running, and move or remove its jobs with it.
+- `codeflower client stop` stops the client, also one running in the background. The sandboxes it started first ask their working chats to wrap up; `--now` stops them at once.
+- The app's window has the changes of ui 0.40.0: a chat's batch jobs beside its usage.
+- Uses sandbox 0.37.0.
+
 ## v0.42.2
 
 *2026-11-19*

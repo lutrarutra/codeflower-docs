@@ -2,7 +2,7 @@
 title: "codeflower projects copy"
 description: "Copy a project, e.g. to try something without changing it"
 sidebar:
-  order: 15
+  order: 21
   label: "projects copy"
 ---
 

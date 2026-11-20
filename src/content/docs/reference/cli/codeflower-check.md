@@ -21,6 +21,7 @@ codeflower check [flags]
 
 | Flag | Default | Description |
 | --- | --- | --- |
+| `--config string` |  | config directory whose jobs: settings to check (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
 | `--engine string` | `auto` | engine to check: auto, docker, podman, or apptainer |
 | `--image string` |  | sandbox image to look for |
-| `--image-tag string` |  | build of the published image to use instead of 0.36.1, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image-tag string` |  | build of the published image to use instead of 0.37.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
