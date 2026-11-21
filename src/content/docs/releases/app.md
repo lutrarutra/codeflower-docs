@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.1
+
+*2026-11-21*
+
+- The app's window has the changes of ui 0.41.0: take over a chat that is open in another sandbox, and closing a chat's last tab lets other sandboxes open it.
+- Uses sandbox 0.38.0.
+
 ## v0.43.0
 
 *2026-11-20*

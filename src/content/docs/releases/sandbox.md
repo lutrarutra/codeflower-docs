@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.38.0
+
+*2026-11-21*
+
+- A chat can be taken over from another sandbox: when a window of another sandbox asks for a chat open here, this sandbox lets go of it once the chat is idle (no turn, background work, question or batch job running), and the chat's windows here are told.
+- A chat no window has open lets go about a minute after it went idle, so another sandbox can open it without waiting for this one to stop.
+- Codex's remaining quota shown under the chat now updates after every turn, also after a turn that failed because it hit the limit, and after a turn typed in Codex's terminal UI.
+- The chat page the sandbox serves has the changes of ui 0.41.0.
+
 ## v0.37.0
 
 *2026-11-20*

@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.41.0
+
+*2026-11-21*
+
+- A chat that is open in another sandbox is no longer stuck read-only. Its notice has a **Take over** button, which asks the other sandbox to let go of the chat once its current turn ends; the chat then opens here by itself. It also opens here by itself whenever the other sandbox lets go of it.
+- When another sandbox takes a chat over, the chat turns read-only here, with Take over to move it back.
+- Closing a chat's last tab lets go of it, so another sandbox can open it about a minute later. This needs sandbox 0.38.0 or later.
+
 ## v0.40.0
 
 *2026-11-20*

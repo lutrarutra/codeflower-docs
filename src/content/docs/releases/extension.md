@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.32.0
+
+*2026-11-21*
+
+- A chat open on another worker shows **Take over**, which asks that worker to let go of the chat once its turn ends; the chat then opens here by itself. A chat another worker took over turns read-only, with Take over to move it back (ui 0.41.0, needs sandbox 0.38.0 or later).
+- Closing a chat's panel lets go of the chat on the worker, so another worker can open it about a minute later.
+
 ## v0.31.0
 
 *2026-11-20*
