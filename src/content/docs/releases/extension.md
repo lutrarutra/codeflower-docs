@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.33.0
+
+*2026-11-22*
+
+- A tab that shows a batch job's output says whether more is coming, streams it while the job runs, and says how the job ended. A queued job's output opens before the job has written anything.
+- The jobs list shows an array's tasks by state and opens each one's output, and asks before cancelling a job. Messages that code flower sends the agent by itself are shown apart from yours (ui 0.42.0).
+- New chats no longer take the mode the extension remembered: the worker starts them with the mode, model and effort you chose last in the project, in VS Code and the app alike (needs sandbox 0.39.0 or later).
+
 ## v0.32.0
 
 *2026-11-21*

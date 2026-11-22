@@ -61,6 +61,10 @@ through the modes. What each agent offers is its own: code flower shows its choi
 OpenCode's hundreds of models, has a search box (every word you type must match; <kbd>Enter</kbd> takes the first
 match). Pin the models you use with the pin beside each: pinned ones come first, for every chat of that agent.
 
+New chats start with the mode, model and effort you chose last for that agent in the project, in VS Code or the app
+alike, where the agent still offers them. Each chat keeps its own settings, also when you open it again after the
+sandbox restarted.
+
 With OpenCode, each mode (build, plan) keeps its own model: the model you choose is the one for the chat's mode, and
 switching modes switches to that mode's model. New chats start on build's. The choices are saved in the project, in
 `codeflower-models.json` beside OpenCode's `opencode.jsonc`, so OpenCode's [terminal UI](/guides/terminal-ui/) uses them

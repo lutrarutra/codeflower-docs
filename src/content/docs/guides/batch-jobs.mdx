@@ -58,6 +58,27 @@ queue. You choose:
 
 With `approve: never`, jobs within the limits go without asking, as unattended runs (`codeflower task`) need.
 
+### An example
+
+You ask: *"Align the 48 samples in `/data/input/fastq` to GRCh38."* The agent tries one sample in its own
+sandbox, then submits the rest as an array, a few samples per task:
+
+```sh
+# what the agent runs in its sandbox
+codeflower-job submit --name align --array 1-12%6 --cpus 8 --memory 32G --time 3h \
+  -- ./scripts/align_chunk.sh            # task N aligns samples 4N-3 … 4N
+codeflower-job submit --name merge --after j-3f2a1c --cpus 2 --memory 8G --time 30m \
+  -- python scripts/merge_counts.py
+```
+
+The chat asks you about each, and the agent ends its turn. When the jobs end, it is told, reads their logs
+(`codeflower-job log j-3f2a1c --index 7`), and goes on. It can check any job with `codeflower-job status ID`
+(the `j-…` id or Slurm's) or `codeflower-job list`.
+
+The agent is told to keep small work in its own sandbox, and to group small pieces into tasks that run for a while:
+each job waits in the queue and starts a sandbox first. It is also told that work limited by reading and writing
+files does not get faster with more tasks on a shared filesystem. Tell it more about your cluster with `notes`.
+
 The chat's footer counts the jobs it has queued or running. Its list opens a job's output and cancels it. When a
 job ends, the agent is told, so it can look at the results without polling.
 
@@ -97,11 +118,11 @@ project follows them again. A project with jobs queued or running cannot be move
 
 Each job starts the image on its node:
 
-- **Apptainer** runs the image file, from `CODEFLOWER_IMAGE_DIR`. Put that folder on a shared filesystem, and
-  jobs start at once on any node. To use Apptainer for jobs while the sandbox itself runs with Podman, set
-  `engine: apptainer` and run `codeflower pull --engine apptainer` once.
-- **Podman** on clusters often keeps images per job. The app then saves the image once to
-  `CODEFLOWER_IMAGE_DIR` as an archive, and each job loads it from there.
+- **Apptainer** runs the image file from the image folder (`image_dir`, or `CODEFLOWER_IMAGE_DIR`). Put that
+  folder on a shared filesystem, and jobs start at once on any node. To use Apptainer for jobs while the sandbox
+  itself runs with Podman, set `engine: apptainer` and run `codeflower pull --engine apptainer` once.
+- **Podman** on clusters often keeps images per job. The app then saves the image once to the image folder as an
+  archive, and each job loads it from there: a few GB per job, so Apptainer starts jobs faster.
 - **Docker** shares its images on a workstation.
 
 ### A cluster's settings
@@ -118,7 +139,7 @@ jobs:
     - {name: tinyq, time: 2h, description: quick jobs; prefer it for anything under 2 h}
     - {name: shortq, time: 12h}
     - {name: longq, time: 30d, description: long runs; fewer nodes}
-    - {name: gpu, time: 3d, gpus: 2, gpu_types: [l4_gpu, h100pcie]}
+    - {name: gpu, time: 3d, gpus: 2, gpu_types: [l4, h100]}
   notes: There is no default partition. Memory defaults to 8 GB per CPU.
 ```
 

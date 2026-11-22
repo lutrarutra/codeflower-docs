@@ -96,6 +96,10 @@
       "description": "The sandbox image (a Docker/Podman image name or an Apptainer .sif file) for the sandboxes the command line starts when neither --image nor $CODEFLOWER_IMAGE is set.",
       "type": "string"
     },
+    "image_dir": {
+      "description": "The folder of the images the app downloads, when $CODEFLOWER_IMAGE_DIR is not set (default ~/codeflower/images): Apptainer's .sif files, and the copy (.tar) batch jobs' nodes load. Set (here or in the variable), Podman also saves a copy of each build of the published image it downloads there, and loads it instead of downloading again, for machines whose Podman storage does not last (per job on clusters).",
+      "type": "string"
+    },
     "images": {
       "additionalProperties": false,
       "description": "Configures the image model codeflower-sketch generates icons with.",

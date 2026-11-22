@@ -12,32 +12,115 @@ On a cluster, a sandbox is a batch job: Apptainer runs it on a compute node, and
 
 <Steps>
 1. [Install the app](/start/install/) in your home directory on the cluster.
-2. Load Apptainer and check:
+
+2. **Choose where the big folders go**, before the first download. By default everything lands in your home
+   directory, which on most clusters is too small:
+
+   | What | Size | Setting | Default |
+   | --- | --- | --- | --- |
+   | Sandbox images, and Claude Code next to them (`../agents`) | a few GB per release | `image_dir` | `~/codeflower/images` |
+   | Each project's conda/R/Python environments and caches | GBs and many files per project | `env_dir` | in the project |
+   | Projects: chats, sign-ins, workspace | small | `projects_dir` | `~/codeflower/projects` |
+
+   Every node that runs sandboxes or [batch jobs](/guides/batch-jobs/) must see these folders. Put them in
+   `~/.codeflower/config.yaml` on the cluster:
+
+   ```yaml
+   engine: apptainer
+   image_dir: /groups/mylab/codeflower/images   # shared by the group: one download for everyone
+   env_dir: /scratch/$USER/codeflower           # ~ and $VARIABLES are expanded
+   ```
+
+   Or set the same in your shell, e.g. in `~/.bashrc` (the variables win over the file):
+
+   ```sh
+   export CODEFLOWER_ENGINE=apptainer
+   export CODEFLOWER_IMAGE_DIR=/groups/mylab/codeflower/images
+   ```
+
+   `env_dir` has no variable; `--env-dir` sets it per project. See
+   [Environments on scratch](/guides/projects-and-folders/#environments-on-scratch).
+
+3. Load Apptainer and check:
    ```sh
    module load apptainer   # the module's name varies per site
-   codeflower check
+   codeflower check        # engines, the image and its folder, batch jobs
    ```
-3. Download the sandbox image **on the login node**, as compute nodes often have no internet:
+
+4. Download the sandbox image **on the login node**, as compute nodes often have no internet:
    ```sh
    codeflower pull --engine apptainer
    ```
-   This also downloads Claude Code. Set `CODEFLOWER_IMAGE_DIR` to keep images on a project or scratch
-   filesystem shared by your group.
-4. Sign the agent in once, from an interactive session (see below), so batch jobs start signed in.
+   This also downloads Claude Code.
+
+5. Sign the agent in once, from an interactive session (see below), so batch jobs start signed in.
 </Steps>
+
+:::tip[Podman instead of Apptainer]
+Clusters whose Podman keeps images per job download the image again in every job. With `image_dir` (or
+`CODEFLOWER_IMAGE_DIR`) set, Podman saves a copy there (`codeflower-sandbox_<tag>.tar`) after downloading, and
+later jobs load it instead.
+:::
+
+### A complete config
+
+A cluster config with sandboxes, the app on the login node, and [batch jobs](/guides/batch-jobs/):
+
+```yaml
+# ~/.codeflower/config.yaml
+# yaml-language-server: $schema=https://docs.codeflower.app/schema/config.json
+engine: apptainer
+image_dir: /groups/mylab/codeflower/images
+env_dir: /scratch/$USER/codeflower
+skills: [/groups/mylab/codeflower/skills]   # the lab's skills, in every sandbox
+
+client:
+  connect_only: true          # the app on the login node never starts sandboxes there
+
+jobs:
+  scheduler: slurm
+  setup: module load apptainer
+  extra: [--export=NONE]
+  defaults: {cpus: 1, memory: 4G, time: 1h, queue: short}
+  limits: {cpus: 32, memory: 256G, time: 3d, gpus: 2, active: 50, array: 200}
+  queues:
+    - {name: short, time: 12h}
+    - {name: long, time: 14d, description: long runs; fewer nodes}
+    - {name: gpu, time: 3d, gpus: 2}
+  notes: >-
+    There is no default partition. Each job takes a minute or two to start:
+    group small tasks so each runs for at least half an hour.
+```
+
+Every key is in the [config reference](/reference/config/).
 
 ## Start a sandbox as a job
 
+Write a batch script once per project:
+
 ```sh
-mkdir -p ~/.codeflower-logs && chmod 700 ~/.codeflower-logs
-sbatch --cpus-per-task=8 --mem=32G --time=8:00:00 --signal=B:TERM@120 \
-  --output=$HOME/.codeflower-logs/%j.out \
-  --wrap "codeflower sandbox -p study42 \
-          --input /data/study42 --output ~/results/study42"
+#!/bin/bash
+# study42.sbatch
+#SBATCH --job-name=study42
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=8:00:00
+#SBATCH --signal=B:TERM@120
+module load apptainer
+exec codeflower sandbox -p study42 \
+  --input /data/study42 \
+  --output ~/results/study42
 ```
 
-The job's log shows the sandbox's address, `codeflower://10.20.3.17:41234?token=…` (the node's address), and a
-link that adds it to the app on your computer.
+and submit it with a private log:
+
+```sh
+mkdir -p ~/.codeflower-logs && chmod 700 ~/.codeflower-logs
+sbatch --output=$HOME/.codeflower-logs/%j.out study42.sbatch
+```
+
+The log shows the sandbox's address, `codeflower://10.20.3.17:41234?token=…` (the node's address), and a link that
+adds it to the app on your computer.
 
 :::caution[Keep job logs private]
 Anyone with the address controls the agent. Keep the log folder readable only by you, as above. The same address
@@ -45,15 +128,34 @@ is also written to a private file in the project's `instances/` folder, for scri
 :::
 
 - `--signal=B:TERM@120` lets the sandbox shut down cleanly before the job's time runs out.
-- **15 minutes before the job ends**, chats that are still working are told to wrap up: stop starting new work,
-  save progress and write down what is left. Your windows show a warning.
+- **15 minutes before the job ends**, chats that are still working are told to wrap up. Your windows show a warning.
 - The agent is told what the job may use (CPUs, memory, GPUs, when it ends), read from Slurm, PBS, LSF, Grid
   Engine or HTCondor.
 
-For unattended work, use [`codeflower task`](/guides/sandbox-run-task/#task) in the job instead.
+### Variations
 
-The agent can also submit **batch jobs** of its own, each running in a sandbox like its own, when you turn them on:
-see [Batch jobs](/guides/batch-jobs/).
+Change the last line of the script:
+
+```sh
+# Start the project again as it last started (same folders and settings)
+exec codeflower sandbox --continue study42
+
+# With a GPU: also add  #SBATCH --gpus=1
+exec codeflower sandbox -p study42 --input /data/study42 --engine-args '--gpus all'
+
+# Cut off from the network, except for the agent's services and an allowlist
+exec codeflower sandbox -p study42 --input /data/study42 --isolate-network
+
+# Without batch jobs for this project, even if the config turns them on
+exec codeflower sandbox -p study42 --input /data/study42 --jobs off
+
+# Unattended: work on a task, write a report, stop
+exec codeflower task -p study42 -i /data/study42 -o ~/results/study42 --timeout 7h \
+  "Run QC on all samples and summarise the failures."
+```
+
+See [`sandbox`, `run` and `task`](/guides/sandbox-run-task/), [network isolation](/guides/network-isolation/) and
+[GPUs](/guides/engines/#gpus).
 
 ## Connect to it
 
@@ -61,47 +163,39 @@ see [Batch jobs](/guides/batch-jobs/).
 nodes: *Connect to worker…* and paste the address.
 
 If the login node cannot reach the sandbox's port (with Podman or Docker the sandbox listens on the compute node's
-`127.0.0.1` only, and some clusters block ports between nodes), add `--forward-to` with the node you connect from:
+`127.0.0.1` only, and some clusters block ports between nodes), forward it back to the node you submitted from:
 
 ```sh
-sbatch … --wrap "codeflower sandbox -p study42 --input /data/study42 --forward-to \$SLURM_SUBMIT_HOST"
+exec codeflower sandbox -p study42 --input /data/study42 --forward-to $SLURM_SUBMIT_HOST
 ```
 
-The sandbox then opens an SSH tunnel back to that node (`ssh -R`), so `127.0.0.1:PORT` there reaches it, and the
-`codeflower://127.0.0.1:…` address in the log works as it is. The compute node must log in to it with an SSH key,
-without a password (test with `ssh -o BatchMode=yes LOGIN-NODE true` from a job), and the port must be free there.
-Name the node itself, not a load-balanced alias that may land on another one. The tunnel connects again when it
-drops and ends with the sandbox; the job's log says when it is open, or why not.
+The sandbox then opens `ssh -R` to that node, so the `codeflower://127.0.0.1:…` address in the log works there. The
+compute node must log in to it with a key and no password (test with `ssh -o BatchMode=yes LOGIN-NODE true` from a
+job), and the port must be free there. Name the node itself, not a load-balanced alias. The tunnel reconnects when
+it drops; the job's log says when it is open, or why not.
 
-**The app on your computer.** If the app on your computer can reach compute nodes (e.g. on the site's VPN), paste
-the address into **+** → *Connect one running elsewhere* in its rail. Otherwise run the app on the login node and open its page through SSH:
+**The app on your computer.** If it can reach compute nodes (e.g. on the site's VPN), paste the address into
+**+** → *Connect one running elsewhere*. Otherwise run the app on the login node and open its page through SSH:
 
 ```sh
 ssh -L 7720:127.0.0.1:7720 login.cluster.example
 codeflower client --no-browser       # on the login node; prints the page's address
 ```
 
-With `client.connect_only: true` in [config.yaml](/reference/config/), the app on a login node only connects to
-sandboxes and never starts one there.
+**A browser, directly.** `codeflower sandbox --server` serves the chat page and prints a link. It is plain HTTP:
+add `--host 127.0.0.1` and reach it with `ssh -L`, or put a TLS reverse proxy in front
+([how](/guides/sandbox-run-task/#a-browser-directly)).
 
-**A browser, directly.** `codeflower sandbox --server` makes the sandbox serve its chat page and print a link.
-It is plain HTTP, and so is that sandbox's connection for VS Code: add `--host 127.0.0.1` and reach it with `ssh -L`,
-or put a TLS reverse proxy in front ([how](/guides/sandbox-run-task/#a-browser-directly)).
-
-**Your phone, or any browser, through the tunnel.** Sign in and pair once, on the login node or in a job
-([Remote access](/guides/remote-access/)). From then on, each `codeflower sandbox` job, on whichever node it
-lands, connects the tunnel itself and prints the sandbox's address through it in the job's log. One job holds the
-tunnel at a time; the next one takes over once it ends.
+**Your phone, or any browser, through the tunnel.** Sign in and pair once ([Remote access](/guides/remote-access/)).
+From then on each sandbox job connects the tunnel itself and prints its address through it in the log. One job holds
+the tunnel at a time; the next takes over once it ends.
 
 ## Good to know
 
 - Address the sandbox prints: the node's IPv4 address with Apptainer. `--advertise-host` changes it; `--host` and
   `--port` change where it listens.
-- The connection between your window and the sandbox is encrypted with TLS, pinned to the certificate whose
-  fingerprint the line carries (`fp=…`); the token protects it. Sandboxes started with `--server` are the exception:
-  plain HTTP. See the [security model](/security/security-model/).
+- The connection is encrypted with TLS, pinned to the certificate in the address (`fp=…`); the token protects it.
+  `--server` sandboxes are the exception: plain HTTP. See the [security model](/security/security-model/).
 - Apptainer does not enforce `--cpus` and `--memory`: the job's allocation is the limit.
-- For GPUs, request them from the scheduler (e.g. `--gpus=1`) and add `--engine-args '--gpus all'`: the sandbox
-  then uses the job's GPUs ([GPUs](/guides/engines/#gpus)).
 - A project folder on a shared filesystem can be used from any node, but a chat is open in one sandbox at a time;
   another sandbox shows it read-only.

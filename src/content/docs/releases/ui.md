@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.42.0
+
+*2026-11-22*
+
+- A tab that shows a batch job's output says whether more is coming: while the job is queued or running it streams the output as it is written, and once the job ended it says how, with a button to open the scheduler's log when a time or memory limit or a cancel stopped it. A queued job's output opens before the job has written anything, and fills in once it does.
+- The jobs list shows how far an array job is, its tasks by state in a bar, and lists its tasks so you can open each one's output. This needs app 0.44.0 or later.
+- Cancelling a batch job now asks first, as it cannot be undone.
+- Messages that code flower sends the agent by itself, such as a batch job that ended, the wrap-up before the sandbox stops, or the browser handed back, no longer look like yours: the chat shows them on a line of their own, with a title and a short summary, and the full text folded. This needs sandbox 0.39.0 or later.
+- New chats in the app's window no longer take the mode from the browser: the sandbox now starts them with your last choices (sandbox 0.39.0).
+
 ## v0.41.0
 
 *2026-11-21*

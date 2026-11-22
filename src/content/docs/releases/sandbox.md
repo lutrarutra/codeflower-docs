@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.39.0
+
+*2026-11-22*
+
+- New chats start with the mode, model and effort you chose last for that agent in the project, in VS Code and the app alike, where the agent still offers them.
+- Each chat keeps its own settings: opened again, also after the sandbox restarted, it gets back its mode, model and effort instead of falling back to the agent's defaults.
+- Messages the sandbox sends the agent by itself (a batch job that was submitted or ended, the wrap-up, the browser handed back) carry a title and a summary, so the chat shows them apart from yours.
+- The agent is told when batch jobs are worth their cost: to keep small work in its own sandbox, to group small pieces into array tasks that run for at least half an hour, and that work limited by reading and writing files does not get faster with more tasks on a shared filesystem.
+- The chat page the sandbox serves has the changes of ui 0.42.0.
+
 ## v0.38.0
 
 *2026-11-21*

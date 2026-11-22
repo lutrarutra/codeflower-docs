@@ -11,8 +11,8 @@ description: Where code flower keeps projects, images, settings and state on you
 | `~/codeflower/projects/NAME.sandbox.yaml` | the project's [saved settings](/guides/projects-and-folders/#starting-a-project-again), for `codeflower sandbox --continue` (private to you: it holds the sandbox's key) |
 | `~/codeflower/projects/NAME.allowed-hosts.txt` | the project's [network allowlist](/guides/network-isolation/#the-allowlist-file) |
 | `~/codeflower/projects/NAME/tasks/ID/` | a [task](/guides/sandbox-run-task/#task)'s runs, for `--continue` |
-| `~/codeflower/images/` | Apptainer images (`CODEFLOWER_IMAGE_DIR`) |
-| `~/codeflower/agents/` | Claude Code, downloaded for the sandbox (`CODEFLOWER_AGENTS_DIR`) |
+| `~/codeflower/images/` | Apptainer images, and Podman's saved copies when you choose the folder (`image_dir`, `CODEFLOWER_IMAGE_DIR`) |
+| `~/codeflower/agents/` | Claude Code, downloaded for the sandbox; next to the image folder (`CODEFLOWER_AGENTS_DIR`) |
 | `~/.codeflower/` | the config directory: [config.yaml](/reference/config/), `skills/`, `icons/`, `tunnel/` |
 
 ## In the system's settings folder

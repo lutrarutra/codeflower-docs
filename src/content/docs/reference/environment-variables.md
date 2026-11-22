@@ -12,8 +12,8 @@ Command-line flags win over these, and these over [config.yaml](/reference/confi
 | `CODEFLOWER_ENGINE` | the default `--engine`: `auto`, `docker`, `podman` or `apptainer` |
 | `CODEFLOWER_IMAGE` | the default `--image` |
 | `CODEFLOWER_IMAGE_TAG` | the default `--image-tag` |
-| `CODEFLOWER_IMAGE_DIR` | where Apptainer images are kept (default `~/codeflower/images`) |
-| `CODEFLOWER_AGENTS_DIR` | where Claude Code is downloaded to (default `~/codeflower/agents`) |
+| `CODEFLOWER_IMAGE_DIR` | the image folder, as `image_dir`: Apptainer images, and Podman's saved copies (default `~/codeflower/images`, where Podman saves none) |
+| `CODEFLOWER_AGENTS_DIR` | where Claude Code is downloaded to (default `agents` next to the image folder) |
 | `DOCKER_HOST` | the Docker engine to use |
 | `HTTPS_PROXY`, `HTTP_PROXY` | the proxy a [network-isolated](/guides/network-isolation/) sandbox's traffic goes through |
 

@@ -13,6 +13,8 @@ are an error, so a typo does not go unnoticed. On a cluster, it is the file on t
 # ~/.codeflower/config.yaml
 # yaml-language-server: $schema=https://docs.codeflower.app/schema/config.json
 engine: apptainer
+image_dir: /groups/mylab/codeflower/images
+env_dir: /scratch/$USER/codeflower
 skills: [~/lab-skills]
 agents:
   claude:
@@ -22,8 +24,6 @@ agents:
     effort: high
 client:
   wrap_up_minutes: 15
-tunnel:
-  eu_only: true
 mcp_servers:
   docs:
     url: https://mcp.example.org/mcp
@@ -36,6 +36,8 @@ Code's YAML extension. The schema is at [/schema/config.json](/schema/config.jso
 
 When the file holds a secret (`api_key`, or MCP `env` or `headers`), it must not be readable by other users:
 `chmod 600 ~/.codeflower/config.yaml`.
+
+For a cluster's config with batch jobs, see [HPC clusters](/guides/hpc/#a-complete-config).
 
 ## All keys
 

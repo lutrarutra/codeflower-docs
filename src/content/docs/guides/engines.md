@@ -36,13 +36,16 @@ tested with, and downloads it on first use. [Compatibility](/reference/compatibi
   its newest patch) or a commit (`sha-abc1234`).
 - `--image NAME` uses another image entirely, e.g. one you built, or a `.sif` file. It is never downloaded.
 
-Apptainer images are kept as files in `~/codeflower/images` (or `CODEFLOWER_IMAGE_DIR`), named after their
-release and commit. Jobs that start at the same time wait for one download.
+Apptainer images are kept as files in the image folder, named after their release and commit: `image_dir` in
+[config.yaml](/reference/config/), else `CODEFLOWER_IMAGE_DIR`, else `~/codeflower/images`. Jobs that start at the
+same time wait for one download. When you choose the folder (`image_dir` or the variable), Podman also keeps a copy
+of each image it downloads there (`codeflower-sandbox_<tag>.tar`) and loads it instead of downloading again, for
+clusters where Podman's storage lasts only for a job.
 
 ### Claude Code
 
 Claude Code's license does not allow passing it on in an image, so the app downloads the version the image needs
-from npm, into `~/codeflower/agents` (or `CODEFLOWER_AGENTS_DIR`), and mounts it read-only into the sandbox.
+from npm, into `agents` next to the image folder (`~/codeflower/agents`, or `CODEFLOWER_AGENTS_DIR`), and mounts it read-only into the sandbox.
 `codeflower pull` downloads it too.
 
 ## Resources

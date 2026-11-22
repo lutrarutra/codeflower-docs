@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.44.0
+
+*2026-11-22*
+
+- `image_dir` in `config.yaml` sets the folder for the images the app downloads, besides `CODEFLOWER_IMAGE_DIR`, which still wins. When you choose a folder, Podman also keeps a copy of each image it downloads there and loads it instead of downloading again, for clusters where Podman's storage lasts only for a job. See [Engines](/guides/engines/).
+- Array jobs report the state of each task while they run, so the chat shows how far an array is. A cancelled array's tasks that had already ended keep how they did.
+- On PBS and Grid Engine, each task of an array writes its own scheduler log (`scheduler-INDEX.log`), as on LSF and HTCondor.
+- The app's window has the changes of ui 0.42.0: batch job output tabs that say whether more is coming, an array's tasks in the jobs list, and the sandbox's own messages shown apart from yours.
+- Uses sandbox 0.39.0.
+
 ## v0.43.1
 
 *2026-11-21*
