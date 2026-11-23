@@ -2,7 +2,7 @@
 title: "codeflower run"
 description: "Start a task in a session you can continue from VS Code"
 sidebar:
-  order: 28
+  order: 29
   label: "run"
 ---
 
@@ -52,8 +52,8 @@ codeflower run (TASK | --prompt FILE) [flags]
 | `--env-dir string` |  | folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
 | `--forward-to HOST` |  | also open the worker's port on HOST's 127.0.0.1 through ssh -R while the sandbox runs, e.g. the login node a compute node's port cannot be reached from (in a batch job: "$SLURM_SUBMIT_HOST") |
 | `--host string` | `0.0.0.0` | interface the worker listens on (Apptainer; Docker and Podman always publish on 127.0.0.1) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.39.0, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.39.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.40.0, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.40.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--jobs string` |  | let the agent ask for batch jobs, each run in a sandbox like this one: slurm, local, auto, a scheduler profile of the config, or off (default: the config's jobs.scheduler) |
@@ -68,3 +68,4 @@ codeflower run (TASK | --prompt FILE) [flags]
 | `-s, --skills stringArray` |  | folder with a skill (a SKILL.md) or with skill folders, mounted read-only at /data/skills/NAME (repeatable) |
 | `--state string` |  | project directory, instead of --project (created with owner-only permissions) |
 | `--time-limit string` |  | time the agent has, e.g. 8h or 1-12:00:00 (default: the batch job's time limit); reported, not enforced |
+| `--workspace-dir string` |  | folder for a new project's workspace (the agent's scripts, downloads and results), e.g. on group storage, in a subfolder per project; a project keeps where its workspace is, and codeflower projects move-workspace moves it (or workspace_dir in the config; default: in the project) |

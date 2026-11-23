@@ -2,7 +2,7 @@
 title: "codeflower projects show"
 description: "Show where a project's files are and how it starts"
 sidebar:
-  order: 25
+  order: 26
   label: "projects show"
 ---
 

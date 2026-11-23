@@ -28,6 +28,7 @@ codeflower projects
   codeflower projects show study42
   codeflower projects copy study42 study42-v2
   codeflower projects move study42 /scratch/me/study42
+  codeflower projects move-workspace study42 /groups/lab/me/workspaces
   codeflower projects remove study42-v2
 ```
 
@@ -44,5 +45,6 @@ codeflower projects
 - [`codeflower projects copy`](/reference/cli/codeflower-projects-copy/): Copy a project, e.g. to try something without changing it
 - [`codeflower projects list`](/reference/cli/codeflower-projects-list/): List the projects in the projects directory
 - [`codeflower projects move`](/reference/cli/codeflower-projects-move/): Rename a project, or move it to another folder
+- [`codeflower projects move-workspace`](/reference/cli/codeflower-projects-move-workspace/): Move a project's workspace to another folder, e.g. one with more room
 - [`codeflower projects remove`](/reference/cli/codeflower-projects-remove/): Delete a project and everything in it
 - [`codeflower projects show`](/reference/cli/codeflower-projects-show/): Show where a project's files are and how it starts

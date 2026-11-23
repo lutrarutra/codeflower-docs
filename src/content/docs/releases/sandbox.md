@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.40.0
+
+*2026-11-23*
+
+- With a workspace kept outside the project (`workspace_dir`, app 0.45.0), the agent's `codeflower-path` and `codeflower-doctor` give the workspace's real folder on your computer, so the agent tells you where its results are.
+- The chat page the sandbox serves has the changes of ui 0.43.0.
+
 ## v0.39.0
 
 *2026-11-22*

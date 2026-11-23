@@ -2,7 +2,7 @@
 title: "codeflower task"
 description: "Let the agent work on a task by itself, then stop"
 sidebar:
-  order: 30
+  order: 31
   label: "task"
 ---
 
@@ -62,8 +62,8 @@ codeflower task (TASK | --prompt FILE) | task --continue TASK_DIR [FOLLOW_UP | -
 | `--engine-args stringArray` |  | container engine flags, quoted as one value, e.g. '--gpus all --shm-size 8g': --gpus, --device, --shm-size, --ulimit, --cap-add, --cap-drop, --add-host, --dns (repeatable) |
 | `--env stringArray` |  | environment variable for the sandbox: NAME=VALUE, or NAME to take its value from here when the sandbox starts (repeatable) |
 | `--env-dir string` |  | folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.39.0, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.39.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.40.0, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.40.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--jobs string` |  | let the agent ask for batch jobs, each run in a sandbox like this one: slurm, local, auto, a scheduler profile of the config, or off (default: the config's jobs.scheduler) |
@@ -81,3 +81,4 @@ codeflower task (TASK | --prompt FILE) | task --continue TASK_DIR [FOLLOW_UP | -
 | `--state string` |  | project directory, instead of --project (created with owner-only permissions) |
 | `--time-limit string` |  | time the agent has, e.g. 8h or 1-12:00:00 (default: the batch job's time limit); reported, not enforced |
 | `--timeout duration` |  | stop the task after this long, e.g. 90m or 7h30m (default: no limit) |
+| `--workspace-dir string` |  | folder for a new project's workspace (the agent's scripts, downloads and results), e.g. on group storage, in a subfolder per project; a project keeps where its workspace is, and codeflower projects move-workspace moves it (or workspace_dir in the config; default: in the project) |

@@ -41,6 +41,35 @@ Do not let two sandboxes of a project install packages at the same time, e.g. tw
 environment: they can leave it broken. Several sandboxes using the environment at once is fine.
 :::
 
+### Workspaces on larger storage
+
+The workspace is where the agent keeps its scripts and the data it downloads, intermediate results and processed
+data, so it can outgrow a home quota even with the environments in an [env folder](#environments-on-scratch).
+`--workspace-dir DIR` (or `workspace_dir:` in the settings) keeps a new project's workspace in `DIR/NAME` instead,
+for example on group storage, while its chats, sign-ins and settings stay in the project:
+
+```yaml
+# ~/.codeflower/config.yaml
+workspace_dir: /groups/mylab/$USER/workspaces   # ~ and $VARIABLES are expanded
+```
+
+- Inside the sandbox nothing changes: the workspace is at the same path, and *Copy path* gives its place on your
+  computer.
+- Choose storage that is kept, such as a group or project share, not scratch that is cleaned up: unlike an env
+  folder, a workspace holds what cannot be made again.
+- The folder must be visible wherever the project's sandboxes and [batch jobs](/guides/batch-jobs/) run.
+- The project remembers where its workspace is, in its settings (`NAME.sandbox.yaml`), so changing
+  `workspace_dir:` later does not move it.
+- **Projects you already have keep their workspace in the project.** Move one, while none of its sandboxes runs:
+
+  ```sh
+  codeflower projects move-workspace study42 /groups/mylab/$USER/workspaces
+  ```
+
+  Its files go to `/groups/mylab/$USER/workspaces/study42`, and its sandboxes mount them from there from then on.
+  `--into-project` moves a workspace back. `--workspace-dir` on an existing project does not move its workspace:
+  it is refused unless the workspace is still empty.
+
 ### Environments on scratch
 
 Conda environments and download caches can grow to many gigabytes, more than a home quota on a cluster may allow.
@@ -118,8 +147,8 @@ its next sandbox mounts.
 ### Managing projects
 
 `codeflower projects` lists projects and copies, moves or removes them. Each command includes the folder's
-settings, allowlist and [environment on scratch](#environments-on-scratch), and refuses while a sandbox uses the
-project.
+settings, allowlist, [environment on scratch](#environments-on-scratch) and
+[workspace folder](#workspaces-on-larger-storage), and refuses while a sandbox uses the project.
 
 ```sh
 codeflower projects list                     # name, running or stopped, when it last started
@@ -127,6 +156,7 @@ codeflower projects list --size              # also the disk space each takes (s
 codeflower projects show study42             # where its files are, and its saved folders and port
 codeflower projects copy study42 study42-v2  # try something without changing the original
 codeflower projects move study42 study42-old # rename it; also takes a folder elsewhere
+codeflower projects move-workspace study42 /groups/mylab/me/workspaces  # its workspace only
 codeflower projects remove study42-v2        # asks first; --yes to skip the question
 ```
 

@@ -2,7 +2,7 @@
 title: "codeflower tunnel verify"
 description: "Check that the tunnel serves the browser code this code flower expects"
 sidebar:
-  order: 43
+  order: 44
   label: "tunnel verify"
 ---
 

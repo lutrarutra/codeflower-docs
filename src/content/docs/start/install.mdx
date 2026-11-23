@@ -54,26 +54,32 @@ codeflower check
 It says which engines are ready, whether the sandbox image is downloaded, and how to set up what is missing.
 On a cluster, that usually means `module load apptainer`. See [Container engines](/guides/engines/).
 
-## Where the software goes
+## Where the software and data go
 
-:::caution[Choose a folder for environments before the first sandbox]
-By default, each project keeps everything the agent installs in `~/codeflower/projects/<project>`: conda
-environments, R libraries, Python packages, download caches and the chats' browsers. A single conda environment
-can take several gigabytes and hundreds of thousands of files, which quickly fills a home directory, and on a
-cluster can exceed its size or file-count quota.
+:::caution[Choose folders for environments and workspaces before the first sandbox]
+By default, each project keeps everything in `~/codeflower/projects/<project>`: what the agent installs (conda
+environments, R libraries, Python packages, download caches and the chats' browsers) and its workspace, where the
+agent keeps its scripts and the data it downloads, intermediate results and processed data. A single conda
+environment can take several gigabytes and hundreds of thousands of files, and a workspace grows with the
+analysis, which quickly fills a home directory, and on a cluster can exceed its size or file-count quota.
 
-Before starting a sandbox, put them somewhere with room, e.g. scratch on a cluster or an external drive on your
-own computer, in `~/.codeflower/config.yaml`:
+Before starting a sandbox, put them somewhere with room, in `~/.codeflower/config.yaml`:
 
 ```yaml
-env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
+env_dir: /scratch/$USER/codeflower           # can be installed again: scratch is fine
+workspace_dir: /groups/mylab/$USER/workspaces # the agent's data and results: storage that is kept
 ```
 
-Each project gets a folder there, and its chats, sign-ins and workspace stay in `~/codeflower/projects`. On a
-cluster, the folder must be visible from every node that runs sandboxes, and the sandbox images need a place too:
-see [HPC clusters: set up once](/guides/hpc/#set-up-once). See
-[Environments on scratch](/guides/projects-and-folders/#environments-on-scratch), also for what to do with the
-projects you already have.
+`~` and `$VARIABLES` are expanded, and each project gets a folder in each. `env_dir` holds only what can be
+downloaded or installed again, so scratch on a cluster or an external drive on your own computer will do.
+`workspace_dir` holds what cannot be made again, so put it on storage that is not cleaned up, such as a group or
+project share. The chats, sign-ins and settings, which are small, stay in `~/codeflower/projects`. On a cluster,
+both folders must be visible from every node that runs sandboxes, and the sandbox images need a place too: see
+[HPC clusters: set up once](/guides/hpc/#set-up-once).
+
+`workspace_dir` is for new projects: the projects you already have keep their workspace where it is. See
+[Workspaces on larger storage](/guides/projects-and-folders/#workspaces-on-larger-storage) to move theirs, and
+[Environments on scratch](/guides/projects-and-folders/#environments-on-scratch) for their environments.
 :::
 
 ## The VS Code extension (optional)

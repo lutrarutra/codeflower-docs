@@ -2,7 +2,7 @@
 title: "codeflower tunnel revoke"
 description: "Unpair a browser, by its name or fingerprint (as \"devices\" lists them); its open chats close at once"
 sidebar:
-  order: 40
+  order: 41
   label: "tunnel revoke"
 ---
 

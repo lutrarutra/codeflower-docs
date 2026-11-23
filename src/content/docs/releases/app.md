@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.45.0
+
+*2026-11-23*
+
+- `workspace_dir` in `config.yaml` (or `--workspace-dir`) keeps the workspace of new projects, where the agent keeps its scripts, downloads and results, in a folder of its own, e.g. on group storage when your home directory has a quota. The chats, sign-ins and settings stay in the project, and inside the sandbox and its batch jobs the workspace is at the same path. Each project remembers where its workspace is, so changing `workspace_dir` later does not move existing ones. See [Workspaces on larger storage](/guides/projects-and-folders/#workspaces-on-larger-storage).
+- `codeflower projects move-workspace PROJECT DIR` moves an existing project's workspace there, and `--into-project` moves it back. `projects show`, `copy`, `move` and `remove` take the workspace folder along.
+- Moving a project to a folder of the same name elsewhere keeps its env folder where it is, and a copy that would share the original's env or workspace folder is refused.
+- The app's window has the changes of ui 0.43.0: a button to start a new chat from the list of the sandbox's chats, and Copy path for files in a workspace kept elsewhere.
+- Uses sandbox 0.40.0.
+
 ## v0.44.0
 
 *2026-11-22*

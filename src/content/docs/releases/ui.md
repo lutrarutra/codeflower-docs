@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.0
+
+*2026-11-23*
+
+- The list of the sandbox's chats in a chat's header has a **+** button that starts a new chat in the same sandbox, with the same agent.
+- *Copy path* gives the right folder on your computer for files in a workspace kept outside the project (`workspace_dir`; needs sandbox 0.40.0 and app 0.45.0 or later).
+- Batch jobs in the jobs list use the row's full width for their details and progress bar.
+
 ## v0.42.0
 
 *2026-11-22*

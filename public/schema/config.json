@@ -503,7 +503,7 @@
       "type": "object"
     },
     "projects_dir": {
-      "description": "The folder of projects started by name, when --projects-dir is not given (default ~/codeflower/projects). ~ and $VARIABLES are expanded in it and EnvDir, and relative paths are in the config directory.",
+      "description": "The folder of projects started by name, when --projects-dir is not given (default ~/codeflower/projects). ~ and $VARIABLES are expanded in it, EnvDir and WorkspaceDir, and relative paths are in the config directory.",
       "type": "string"
     },
     "skills": {
@@ -535,6 +535,10 @@
         }
       },
       "type": "object"
+    },
+    "workspace_dir": {
+      "description": "A folder for the workspaces of new projects (the agent's scripts, downloads, intermediate and processed data), e.g. on group storage, when --workspace-dir is not given; each project gets a subfolder. Unlike env_dir, it holds what cannot be made again, so not on scratch that is cleaned up. A project keeps where its workspace is in its settings: this only chooses for new projects (codeflower projects move-workspace moves an existing one's). Unset, it is in the project.",
+      "type": "string"
     }
   },
   "title": "code flower config.yaml",

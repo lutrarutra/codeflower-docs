@@ -20,15 +20,18 @@ On a cluster, a sandbox is a batch job: Apptainer runs it on a compute node, and
    | --- | --- | --- | --- |
    | Sandbox images, and Claude Code next to them (`../agents`) | a few GB per release | `image_dir` | `~/codeflower/images` |
    | Each project's conda/R/Python environments and caches | GBs and many files per project | `env_dir` | in the project |
-   | Projects: chats, sign-ins, workspace | small | `projects_dir` | `~/codeflower/projects` |
+   | Each project's workspace: the agent's scripts, downloads, intermediate results and processed data | grows with the analysis | `workspace_dir` | in the project |
+   | Projects: chats, sign-ins, settings | small | `projects_dir` | `~/codeflower/projects` |
 
-   Every node that runs sandboxes or [batch jobs](/guides/batch-jobs/) must see these folders. Put them in
-   `~/.codeflower/config.yaml` on the cluster:
+   Every node that runs sandboxes or [batch jobs](/guides/batch-jobs/) must see these folders. Environments can
+   be installed again, so scratch is fine for `env_dir`; workspaces cannot, so put `workspace_dir` on storage that
+   is not cleaned up, such as a group or project share. Put them in `~/.codeflower/config.yaml` on the cluster:
 
    ```yaml
    engine: apptainer
-   image_dir: /groups/mylab/codeflower/images   # shared by the group: one download for everyone
-   env_dir: /scratch/$USER/codeflower           # ~ and $VARIABLES are expanded
+   image_dir: /groups/mylab/codeflower/images            # shared by the group: one download for everyone
+   env_dir: /scratch/$USER/codeflower                    # ~ and $VARIABLES are expanded
+   workspace_dir: /groups/mylab/$USER/workspaces         # kept, not purged
    ```
 
    Or set the same in your shell, e.g. in `~/.bashrc` (the variables win over the file):
@@ -38,7 +41,10 @@ On a cluster, a sandbox is a batch job: Apptainer runs it on a compute node, and
    export CODEFLOWER_IMAGE_DIR=/groups/mylab/codeflower/images
    ```
 
-   `env_dir` has no variable; `--env-dir` sets it per project. See
+   `env_dir` and `workspace_dir` have no variable; `--env-dir` and `--workspace-dir` set them per command.
+   `workspace_dir` is for new projects; see
+   [Workspaces on larger storage](/guides/projects-and-folders/#workspaces-on-larger-storage) to move the
+   workspaces of the projects you already have, and
    [Environments on scratch](/guides/projects-and-folders/#environments-on-scratch).
 
 3. Load Apptainer and check:
@@ -72,6 +78,7 @@ A cluster config with sandboxes, the app on the login node, and [batch jobs](/gu
 engine: apptainer
 image_dir: /groups/mylab/codeflower/images
 env_dir: /scratch/$USER/codeflower
+workspace_dir: /groups/mylab/$USER/workspaces
 skills: [/groups/mylab/codeflower/skills]   # the lab's skills, in every sandbox
 
 client:
