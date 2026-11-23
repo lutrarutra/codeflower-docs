@@ -66,16 +66,20 @@ analysis, which quickly fills a home directory, and on a cluster can exceed its 
 Before starting a sandbox, put them somewhere with room, in `~/.codeflower/config.yaml`:
 
 ```yaml
-env_dir: /scratch/$USER/codeflower           # can be installed again: scratch is fine
-workspace_dir: /groups/mylab/$USER/workspaces # the agent's data and results: storage that is kept
+env_dir: /scratch/$USER/codeflower/envs             # ~ and $VARIABLES are expanded
+workspace_dir: /scratch/$USER/codeflower/workspaces
 ```
 
-`~` and `$VARIABLES` are expanded, and each project gets a folder in each. `env_dir` holds only what can be
-downloaded or installed again, so scratch on a cluster or an external drive on your own computer will do.
-`workspace_dir` holds what cannot be made again, so put it on storage that is not cleaned up, such as a group or
-project share. The chats, sign-ins and settings, which are small, stay in `~/codeflower/projects`. On a cluster,
-both folders must be visible from every node that runs sandboxes, and the sandbox images need a place too: see
-[HPC clusters: set up once](/guides/hpc/#set-up-once).
+Each project gets a folder in each, so give them different folders. Scratch on a cluster, or an external drive on
+your own computer, will do for both. The chats, sign-ins and settings are small, and stay in
+`~/codeflower/projects`. On a cluster, both folders must be visible from every node that runs sandboxes, and the
+sandbox images need a place too: see [HPC clusters: set up once](/guides/hpc/#set-up-once).
+
+- `env_dir` holds only what can be downloaded or installed again, so any scratch will do.
+- `workspace_dir` holds the agent's scripts and results, which cannot be made again. If your cluster's scratch
+  deletes files after a while, put it on storage that keeps them, such as a group or project share. Scratch is
+  usually not backed up: keep final results in an [output folder](/guides/projects-and-folders/#your-folders)
+  (`-o`) on storage that is.
 
 `workspace_dir` is for new projects: the projects you already have keep their workspace where it is. See
 [Workspaces on larger storage](/guides/projects-and-folders/#workspaces-on-larger-storage) to move theirs, and

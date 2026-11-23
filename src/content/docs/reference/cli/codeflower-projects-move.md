@@ -10,14 +10,22 @@ sidebar:
 
 Rename a project, or move it to another folder, with its settings, allowlist, env folder and workspace folder. NEW is a name in the projects directory, or a folder elsewhere. It keeps its key and port, so its links still connect.
 
+Between file systems the folders are copied, keeping modification times (which make, Snakemake and the like go by) and hard links, several files at a time. A copy that is stopped (Ctrl+C) or fails keeps what it copied, hidden; the same command again continues it, copying only what is missing, and --abort drops it. Until it is complete, the project stays as it was.
+
 
 ## Usage
 
 ```sh
-codeflower projects move PROJECT NEW
+codeflower projects move PROJECT NEW [flags]
 ```
 
 Also available as `codeflower projects mv`, `rename`.
+
+## Flags
+
+| Flag | Default | Description |
+| --- | --- | --- |
+| `--abort` |  | drop an unfinished move: delete what it copied so far |
 
 ## Inherited flags
 

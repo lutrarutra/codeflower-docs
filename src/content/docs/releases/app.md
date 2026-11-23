@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.46.0
+
+*2026-11-23*
+
+- Copying a project, or moving it or its workspace to another file system, can be stopped and continued. A copy stopped with Ctrl+C, or one that fails, keeps what it copied: run the same command again to continue it, copying only what is missing or changed, or add `--abort` to drop it. Until it is complete, the project stays as it was. `codeflower projects show` lists an unfinished one, and a sandbox started meanwhile says so.
+- These copies keep modification times (which make and Snakemake go by) and hard links, and copy several files at a time, which is much faster on network file systems. The terminal shows bytes and speed as well as files, and `move-workspace` shows how much is left.
+- A project's workspace folder and env folder must be apart: starting a sandbox, or `move-workspace`, refuses a `workspace_dir` that is, holds or is in the `env_dir` folder.
+
 ## v0.45.0
 
 *2026-11-23*

@@ -12,14 +12,22 @@ Copy a project, with its chats, agent logins, workspace, tasks, settings, allowl
 
 The copy gets its own key and certificate, so the original's links do not open it, and takes any free port when it starts.
 
+Between file systems the folders are copied, keeping modification times (which make, Snakemake and the like go by) and hard links, several files at a time. A copy that is stopped (Ctrl+C) or fails keeps what it copied, hidden; the same command again continues it, copying only what is missing, and --abort drops it. Until it is complete, the project stays as it was.
+
 
 ## Usage
 
 ```sh
-codeflower projects copy PROJECT NEW
+codeflower projects copy PROJECT NEW [flags]
 ```
 
 Also available as `codeflower projects cp`.
+
+## Flags
+
+| Flag | Default | Description |
+| --- | --- | --- |
+| `--abort` |  | drop an unfinished copy: delete what it copied so far |
 
 ## Inherited flags
 

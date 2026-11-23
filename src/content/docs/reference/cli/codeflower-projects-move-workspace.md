@@ -10,7 +10,9 @@ sidebar:
 
 Move a project's workspace (the agent's scripts, downloads, intermediate and processed data) to DIR/PROJECT, e.g. on group storage when the home directory has a quota, or back into the project with --into-project. The project keeps its chats, logins and settings where they are, and records where its workspace is in its settings, so its sandboxes mount it from there; inside the sandbox the workspace's path stays the same.
 
-The config's workspace_dir only chooses for new projects: this moves an existing one's. What is on another file system is copied, and the original is removed once the copy is complete. Refused while a sandbox uses the project.
+The config's workspace_dir only chooses for new projects: this moves an existing one's. Refused while a sandbox uses the project.
+
+Between file systems the folders are copied, keeping modification times (which make, Snakemake and the like go by) and hard links, several files at a time. A copy that is stopped (Ctrl+C) or fails keeps what it copied, hidden; the same command again continues it, copying only what is missing, and --abort drops it. Until it is complete, the project stays as it was. The copy shows how much is left once its files are counted, which runs alongside.
 
 
 ## Usage
@@ -30,6 +32,7 @@ codeflower projects move-workspace PROJECT [DIR] [flags]
 
 | Flag | Default | Description |
 | --- | --- | --- |
+| `--abort` |  | drop an unfinished move of the workspace: delete what it copied so far |
 | `--into-project` |  | move the workspace back into the project folder |
 
 ## Inherited flags

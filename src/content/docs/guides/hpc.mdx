@@ -21,18 +21,26 @@ On a cluster, a sandbox is a batch job: Apptainer runs it on a compute node, and
    | Sandbox images, and Claude Code next to them (`../agents`) | a few GB per release | `image_dir` | `~/codeflower/images` |
    | Each project's conda/R/Python environments and caches | GBs and many files per project | `env_dir` | in the project |
    | Each project's workspace: the agent's scripts, downloads, intermediate results and processed data | grows with the analysis | `workspace_dir` | in the project |
-   | Projects: chats, sign-ins, settings | small | `projects_dir` | `~/codeflower/projects` |
+   | Projects: chats, sign-ins, settings | small | `projects_dir` (optional) | `~/codeflower/projects` |
 
-   Every node that runs sandboxes or [batch jobs](/guides/batch-jobs/) must see these folders. Environments can
-   be installed again, so scratch is fine for `env_dir`; workspaces cannot, so put `workspace_dir` on storage that
-   is not cleaned up, such as a group or project share. Put them in `~/.codeflower/config.yaml` on the cluster:
+   Every node that runs sandboxes or [batch jobs](/guides/batch-jobs/) must see these folders. Scratch suits
+   `env_dir` and `workspace_dir`; give each its own folder. The projects themselves are small and can stay in your
+   home directory. Put them in `~/.codeflower/config.yaml` on the cluster:
 
    ```yaml
    engine: apptainer
    image_dir: /groups/mylab/codeflower/images            # shared by the group: one download for everyone
-   env_dir: /scratch/$USER/codeflower                    # ~ and $VARIABLES are expanded
-   workspace_dir: /groups/mylab/$USER/workspaces         # kept, not purged
+   env_dir: /scratch/$USER/codeflower/envs               # ~ and $VARIABLES are expanded
+   workspace_dir: /scratch/$USER/codeflower/workspaces
    ```
+
+   :::caution[Scratch that is cleaned up, or not backed up]
+   The workspace holds the agent's scripts and results, which cannot be made again. If your cluster's scratch
+   deletes files that were not used for a while, put `workspace_dir` on storage that keeps them, such as a group or
+   project share; environments on such scratch are fine, as they can be installed again. Scratch is usually not
+   backed up either: keep final results in an [output folder](/guides/projects-and-folders/#your-folders) (`-o`) on
+   storage that is.
+   :::
 
    Or set the same in your shell, e.g. in `~/.bashrc` (the variables win over the file):
 
@@ -77,8 +85,8 @@ A cluster config with sandboxes, the app on the login node, and [batch jobs](/gu
 # yaml-language-server: $schema=https://docs.codeflower.app/schema/config.json
 engine: apptainer
 image_dir: /groups/mylab/codeflower/images
-env_dir: /scratch/$USER/codeflower
-workspace_dir: /groups/mylab/$USER/workspaces
+env_dir: /scratch/$USER/codeflower/envs
+workspace_dir: /scratch/$USER/codeflower/workspaces
 skills: [/groups/mylab/codeflower/skills]   # the lab's skills, in every sandbox
 
 client:

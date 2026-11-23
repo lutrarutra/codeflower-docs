@@ -46,27 +46,29 @@ environment: they can leave it broken. Several sandboxes using the environment a
 The workspace is where the agent keeps its scripts and the data it downloads, intermediate results and processed
 data, so it can outgrow a home quota even with the environments in an [env folder](#environments-on-scratch).
 `--workspace-dir DIR` (or `workspace_dir:` in the settings) keeps a new project's workspace in `DIR/NAME` instead,
-for example on group storage, while its chats, sign-ins and settings stay in the project:
+for example on scratch, while its chats, sign-ins and settings stay in the project:
 
 ```yaml
 # ~/.codeflower/config.yaml
-workspace_dir: /groups/mylab/$USER/workspaces   # ~ and $VARIABLES are expanded
+workspace_dir: /scratch/$USER/codeflower/workspaces   # ~ and $VARIABLES are expanded
 ```
 
 - Inside the sandbox nothing changes: the workspace is at the same path, and *Copy path* gives its place on your
   computer.
-- Choose storage that is kept, such as a group or project share, not scratch that is cleaned up: unlike an env
-  folder, a workspace holds what cannot be made again.
+- Unlike an env folder, a workspace holds what cannot be made again. If your scratch deletes files that were not
+  used for a while, choose storage that keeps them, such as a group or project share. Scratch is usually not
+  backed up: keep final results in an [output folder](#your-folders) on storage that is.
+- Give it a different folder from `env_dir`: each project gets a folder named after it in both.
 - The folder must be visible wherever the project's sandboxes and [batch jobs](/guides/batch-jobs/) run.
 - The project remembers where its workspace is, in its settings (`NAME.sandbox.yaml`), so changing
   `workspace_dir:` later does not move it.
 - **Projects you already have keep their workspace in the project.** Move one, while none of its sandboxes runs:
 
   ```sh
-  codeflower projects move-workspace study42 /groups/mylab/$USER/workspaces
+  codeflower projects move-workspace study42 /scratch/$USER/codeflower/workspaces
   ```
 
-  Its files go to `/groups/mylab/$USER/workspaces/study42`, and its sandboxes mount them from there from then on.
+  Its files go to `/scratch/$USER/codeflower/workspaces/study42`, and its sandboxes mount them from there from then on.
   `--into-project` moves a workspace back. `--workspace-dir` on an existing project does not move its workspace:
   it is refused unless the workspace is still empty.
 
@@ -86,7 +88,7 @@ rebuild in `DIR/NAME` instead, for example on scratch, while its chats, sign-ins
 
 ```yaml
 # ~/.codeflower/config.yaml
-env_dir: /scratch/$USER/codeflower   # ~ and $VARIABLES are expanded
+env_dir: /scratch/$USER/codeflower/envs   # ~ and $VARIABLES are expanded
 ```
 
 - Inside the sandbox nothing changes: the agent installs with uv, pip, conda, R or npm as before.
@@ -156,7 +158,7 @@ codeflower projects list --size              # also the disk space each takes (s
 codeflower projects show study42             # where its files are, and its saved folders and port
 codeflower projects copy study42 study42-v2  # try something without changing the original
 codeflower projects move study42 study42-old # rename it; also takes a folder elsewhere
-codeflower projects move-workspace study42 /groups/mylab/me/workspaces  # its workspace only
+codeflower projects move-workspace study42 /scratch/me/workspaces  # its workspace only
 codeflower projects remove study42-v2        # asks first; --yes to skip the question
 ```
 
@@ -164,11 +166,22 @@ A copy gets its own key and certificate, so the original's links do not open it,
 project keeps its key and port. Removing a project deletes its chats, sign-ins, environment and workspace, but not
 your input, output or code folders.
 
-Environments can hold millions of files, so copying, removing, or moving a project to another file system can take a
-while; the terminal shows how many files are done so far. Ctrl+C stops it cleanly: a stopped copy is removed, a
-stopped move puts everything back (or, once the project is in its new place, leaves the rest of the original
-hidden as `.NAME.removing`), and a stopped removal leaves `.NAME.removing` next to the project. Run
-`codeflower projects remove NAME` again to finish.
+Moving a project or its workspace within a file system is instant. To another file system, its folders are
+copied, several files at a time, keeping modification times (which make, Snakemake and similar tools go by) and hard
+links, and the originals are removed once everything is copied. That, and removing a project, can take a while: the
+terminal shows how many files and bytes are done, and for `move-workspace`, which counts its files alongside, how many
+are left.
+
+Ctrl+C stops it cleanly, and the project stays as it was:
+
+- **A stopped copy or move keeps what it copied**, in hidden folders next to where it goes. Run the same command again
+  to continue: it copies only what is missing or changed since, as rsync does. Add `--abort` (e.g.
+  `codeflower projects move-workspace study42 --abort`) to drop it and delete what it copied.
+  `codeflower projects show` lists an unfinished one, and a sandbox started meanwhile says so.
+- **A move stopped while removing the originals** has already moved the project. For `move-workspace`, run it again
+  to finish; for `move`, the rest is hidden as `.NAME.removing`: run `codeflower projects remove NAME` to finish.
+- **A stopped removal** leaves `.NAME.removing` next to the project. Run `codeflower projects remove NAME` again to
+  finish.
 
 ## Your folders
 
