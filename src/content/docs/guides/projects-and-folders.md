@@ -154,8 +154,9 @@ settings, allowlist, [environment on scratch](#environments-on-scratch) and
 
 ```sh
 codeflower projects list                     # name, running or stopped, when it last started
-codeflower projects list --size              # also the disk space each takes (slow for large projects)
+codeflower projects list --size              # also the disk space each takes, without env and workspace elsewhere (slow)
 codeflower projects show study42             # where its files are, and its saved folders and port
+codeflower projects show study42 --size      # also the disk space of the project, its env and its workspace
 codeflower projects copy study42 study42-v2  # try something without changing the original
 codeflower projects move study42 study42-old # rename it; also takes a folder elsewhere
 codeflower projects move-workspace study42 /scratch/me/workspaces  # its workspace only

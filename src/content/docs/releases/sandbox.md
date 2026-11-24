@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.40.1
+
+*2026-11-24*
+
+- Reports use storyteller 0.6.5.
+
 ## v0.40.0
 
 *2026-11-23*

@@ -7,6 +7,19 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.47.0
+
+*2026-11-24*
+
+- `codeflower projects show --size` gives the disk space of the project and of its env and workspace folders kept elsewhere. `projects list --size` now counts only the project itself, without those folders.
+- A project started with a `workspace_dir` that is refused, for example because it is the env folder, no longer keeps that choice: fixing `config.yaml` fixes the next start.
+- A new project no longer takes a workspace folder that already has files in it, such as the workspace of another project with the same name elsewhere.
+- `--workspace-dir` naming the project's workspace folder through a link is no longer taken for a move.
+- Projects started by `codeflower run`, `task` or the window with `workspace_dir` set no longer look as if they had saved settings to `sandbox --continue` and `projects list`.
+- After `move-workspace --into-project`, starting the project no longer suggests moving the workspace out again.
+- A copy or move continued after it was stopped removes what was deleted or renamed in the original since, and a copy that fails at the end can still be continued. `--abort` drops only an unfinished operation of its own command.
+- Sandboxes run sandbox 0.40.1.
+
 ## v0.46.0
 
 *2026-11-23*

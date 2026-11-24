@@ -10,7 +10,7 @@ sidebar:
 
 List the projects in the projects directory.
 
---size adds the disk space each project takes (its folder, settings, allowlist and env folder). It reads every file in them, which can take a while for large projects.
+--size adds the disk space each project itself takes: its folder, settings, allowlist and batch jobs, not an env or workspace folder kept elsewhere (`codeflower projects show PROJECT --size` tells those). It reads every file, which can take a while for large projects.
 
 
 ## Usage
@@ -25,7 +25,7 @@ Also available as `codeflower projects ls`.
 
 | Flag | Default | Description |
 | --- | --- | --- |
-| `--size` |  | also show the disk space each project takes (slow for large projects) |
+| `--size` |  | also show the disk space each project itself takes, without env and workspace folders elsewhere (slow for large projects) |
 
 ## Inherited flags
 

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.6.5
+
+*2026-11-24*
+
+- Text and captions take the column's full width, like the figures and tables beside them.
+- A section moved with `move()` also moves in a report that is open, without reloading it.
+
 ## v0.6.4
 
 *2026-11-18*
