@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.1
+
+*2026-11-25*
+
+- Paper audits use codeflower-audit 0.2.0: each result that did not reproduce says what differs from the paper and why, first in the report, and the agent reads other audits of the paper only after you reviewed its own outcomes.
+- The chat page the sandbox serves has the changes of ui 0.46.1.
+
 ## v0.43.0
 
 *2026-11-25*

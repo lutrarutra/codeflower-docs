@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.37.1
+
+*2026-11-25*
+
+- In Roots, zooming with Ctrl and a mouse wheel moves in even steps (ui 0.46.1).
+
 ## v0.37.0
 
 *2026-11-25*

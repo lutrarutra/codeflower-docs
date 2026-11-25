@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.49.1
+
+*2026-11-25*
+
+- Sandboxes run sandbox 0.43.1 (codeflower-audit 0.2.0 in paper audits), `codeflower audit` is codeflower-audit 0.2.0, and the window has the changes of ui 0.46.1.
+
 ## v0.49.0
 
 *2026-11-25*

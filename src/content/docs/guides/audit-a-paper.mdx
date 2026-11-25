@@ -54,7 +54,8 @@ auditors.
    folder. When data needs registration or approval, it asks you, and records each such step.
 
 4. **Go through the outcomes (checkpoint 2).** For each result the agent shows what the paper reports, what it
-   got, the outcome and what was missing. Challenge it where you disagree. It changes an outcome only for a
+   got, the outcome and, where they differ, why: an unstated parameter, other data than described, a
+   contradiction in the paper, or a result the published method does not give. Challenge it where you disagree. It changes an outcome only for a
    reason it accepts, such as a passage in the methods or a bug in its pipeline, and records the change
    (`revised`). If you still disagree, its outcome stands and your view is recorded as a **dissent**, which
    the report shows. Wanting a better score is not a reason.
@@ -76,7 +77,7 @@ auditors.
 | File | What it is |
 |---|---|
 | `README.md` | the headline, the auditor (agent, model, and the sandbox's CPUs, memory, GPUs and batch jobs), and every score with what it means; GitHub shows it on the repository's page |
-| `report/index.html` | the report: the scorecard on top, then one section per result, the assumptions, gaps, earlier audits and how to rerun |
+| `report/index.html` | the report: the scorecard on top, then what differs from the paper (each result the agent could not reproduce or verify, with what the paper reports, what the audit found and why, linking to its own section), one section per such result, a table of those that reproduced, the assumptions, gaps, other audits and how to rerun |
 | `audit.json` | every fact and score, machine readable ([schema](https://docs.codeflower.app/schema/audit.json)) |
 | `targets.tsv` | one row per result checked, for spreadsheets |
 | `pipeline/`, `pipeline.tar.gz` | what the audit ran, as a [reproducible pipeline](/guides/reproducible-pipelines/) without data or image: rerun it with `codeflower reproduce pipeline.tar.gz --output DIR` |
@@ -165,7 +166,10 @@ The same scores, each with what it means, are in `audit.json` under `scores.rows
 
 ## Earlier audits
 
-At the start, the agent looks for earlier audits of the paper: repositories you name, and GitHub repositories
-with the topic `codeflower-audit` that mention the DOI. Until its own run is done, it reads only which results
-they checked and what blocked them. That way it uses the same names for the same results, but its findings
-stay independent. Afterwards, it compares outcomes and values with theirs, and investigates every difference.
+Other people may have audited the same paper: repositories you name, GitHub repositories with the topic
+`codeflower-audit` that mention the DOI, and audits in the registry. The agent does not read them until its own
+audit is done and you have gone through its outcomes, so it is not swayed by them: `codeflower-audit compare`
+refuses before that, and keeps the outcomes as they were then. Only then does it read the other audits (looking
+again for any uploaded meanwhile), compare outcomes and values, and investigate every difference, marking it
+explained or unexplained; that sets the **Consistency** score. It changes one of its own outcomes only for a
+mistake of its own the comparison revealed, recorded as a revision, and the report shows it.

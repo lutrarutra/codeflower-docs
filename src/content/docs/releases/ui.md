@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.46.1
+
+*2026-11-25*
+
+- In Roots, zooming with Ctrl and a mouse wheel moves in even steps instead of jumping, while a trackpad pinch stays as fast.
+
 ## v0.46.0
 
 *2026-11-25*

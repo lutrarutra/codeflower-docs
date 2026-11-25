@@ -393,6 +393,42 @@
               "skipped"
             ]
           },
+          "finding": {
+            "type": "object",
+            "description": "What differs from the paper and why: required for consistent, inconsistent and failed results",
+            "required": [
+              "paper",
+              "audit",
+              "why",
+              "cause"
+            ],
+            "properties": {
+              "paper": {
+                "type": "string",
+                "description": "what the paper reports or concludes"
+              },
+              "audit": {
+                "type": "string",
+                "description": "what this audit found instead"
+              },
+              "why": {
+                "type": "string",
+                "description": "why they differ, as far as the auditor could tell, and what supports it"
+              },
+              "cause": {
+                "enum": [
+                  "method-unspecified",
+                  "software-versions",
+                  "randomness",
+                  "data-differs",
+                  "data-missing",
+                  "paper-inconsistent",
+                  "not-reproduced",
+                  "unknown"
+                ]
+              }
+            }
+          },
           "gaps": {
             "type": "array",
             "items": {
