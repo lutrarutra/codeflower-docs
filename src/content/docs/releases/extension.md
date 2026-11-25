@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.37.0
+
+*2026-11-25*
+
+- The chat's footer shows the agent's watches, to open their output, run them now or stop them (ui 0.46.0, needs sandbox 0.43.0).
+
 ## v0.36.0
 
 *2026-11-25*

@@ -2,7 +2,7 @@
 title: "codeflower projects list"
 description: "List the projects in the projects directory"
 sidebar:
-  order: 27
+  order: 30
   label: "projects list"
 ---
 

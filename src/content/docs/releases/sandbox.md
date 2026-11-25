@@ -7,6 +7,20 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.0
+
+*2026-11-25*
+
+- **Watches**: to wait for something (a pull request merged, a result file written, a server up), agents start a watch with `codeflower-watch` and end their turn. The sandbox runs its command every so often until the condition holds, then tells the chat, also with no window connected. A watch started for an idea in Roots blocks it until the condition holds.
+- *Send now* with Claude Code no longer stops a command it is running: the command moves to the background and goes on, and Claude stops it only if your message asks for that.
+- A new chat action, *Update Roots map*, brings the project's map of ideas up to date with the chat's work.
+- DeepSeek Harness 0.2.2-rc.5, on Node 24: its reasoning effort is a setting of its own, and chats started on 0.1 continue with their full context. Models on an OpenAI-compatible endpoint keep the earlier default limits (256K context, 32K output).
+- The chat page the sandbox serves has the changes of ui 0.46.0.
+
+:::caution
+A DeepSeek Harness chat continued in this release opens read-only, with an error, in an older sandbox image.
+:::
+
 ## v0.42.0
 
 *2026-11-25*

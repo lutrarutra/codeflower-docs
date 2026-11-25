@@ -2,7 +2,7 @@
 title: "codeflower jobs list"
 description: "List a project's jobs, asking the scheduler about those still active"
 sidebar:
-  order: 15
+  order: 18
   label: "jobs list"
 ---
 

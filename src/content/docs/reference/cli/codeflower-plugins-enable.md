@@ -2,7 +2,7 @@
 title: "codeflower plugins enable"
 description: "Switch a plugin on for a project"
 sidebar:
-  order: 21
+  order: 24
   label: "plugins enable"
 ---
 

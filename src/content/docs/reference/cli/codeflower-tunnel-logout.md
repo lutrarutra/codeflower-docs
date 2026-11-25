@@ -2,7 +2,7 @@
 title: "codeflower tunnel logout"
 description: "Sign this computer out of the tunnel and forget its key and paired browsers"
 sidebar:
-  order: 42
+  order: 45
   label: "tunnel logout"
 ---
 

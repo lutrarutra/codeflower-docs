@@ -953,5 +953,24 @@
       "dsh": "0.1.6-alpha.2",
       "opencode": "1.19.6"
     }
+  },
+  {
+    "app": "v0.49.0",
+    "sandbox": "v0.43.0",
+    "sandboxImage": "ghcr.io/lutrarutra/codeflower-sandbox:0.43.0",
+    "ui": "v0.46.0",
+    "storyteller": "v0.7.0",
+    "extension": "v0.37.0",
+    "tunnel": "dev",
+    "tunnelProtocol": 1,
+    "claudeAgentSdk": "0.3.330",
+    "audit": "v0.1.0",
+    "agents": {
+      "claude": "0.110.1",
+      "codex": "0.171.0",
+      "codexAcp": "2.11.0",
+      "dsh": "0.2.2-rc.5",
+      "opencode": "1.19.6"
+    }
   }
 ]

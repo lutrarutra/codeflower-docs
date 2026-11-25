@@ -2,7 +2,7 @@
 title: "codeflower plugins list"
 description: "List an agent's plugins in a project and whether they are fetched"
 sidebar:
-  order: 23
+  order: 26
   label: "plugins list"
 ---
 

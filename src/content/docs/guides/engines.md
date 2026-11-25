@@ -42,6 +42,15 @@ same time wait for one download. When you choose the folder (`image_dir` or the 
 of each image it downloads there (`codeflower-sandbox_<tag>.tar`) and loads it instead of downloading again, for
 clusters where Podman's storage lasts only for a job.
 
+### Removing old images
+
+Each app update runs a newer release and leaves the older image behind, a few GB each. `codeflower images list`
+shows the images the engine has and whether each is still needed; `codeflower images prune` removes the unused ones
+after asking (`--dry-run` only shows them, `--yes` does not ask). It keeps the release this app runs, images a
+sandbox or container uses (running or stopped), images a project's saved settings, the window, `image` in
+config.yaml or `CODEFLOWER_IMAGE`/`CODEFLOWER_IMAGE_TAG` choose, and anything newer than the app's release. With
+Podman it also reviews the saved copies in the image folder. `--engine` picks the engine, as for `pull`.
+
 ### Claude Code
 
 Claude Code's license does not allow passing it on in an image, so the app downloads the version the image needs

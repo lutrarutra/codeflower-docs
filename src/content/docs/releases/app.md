@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.49.0
+
+*2026-11-25*
+
+- `codeflower images list` shows the sandbox images the engine has and whether each is still needed; `codeflower images prune` removes the unused ones after asking (`--dry-run`, `--yes`). It keeps the release the app runs and newer ones, images a sandbox or container uses, and those a project, the window, the config or the environment choose.
+- Sandboxes run sandbox 0.43.0 (watches, Claude Code commands that survive *Send now*, DeepSeek Harness 0.2), and the window has the changes of ui 0.46.0.
+
 ## v0.48.0
 
 *2026-11-25*

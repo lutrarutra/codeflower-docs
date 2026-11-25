@@ -2,7 +2,7 @@
 title: "codeflower terminals"
 description: "List the agent's terminal UIs and the shells running in a sandbox, or quit one"
 sidebar:
-  order: 37
+  order: 40
   label: "terminals"
 ---
 

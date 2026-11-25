@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.46.0
+
+*2026-11-25*
+
+- **Watches**: an eye at the right of the chat's footer counts the watches its agent left running (needs sandbox 0.43.0). Its list shows each one's command, condition and runs; open a watch's output in a tab, run it now, or stop it. A tab with a watch's output says whether more is coming or how the watch ended.
+- In Roots, a watch can be one of an idea's needs: the card shows the eye and what the idea waits for, and the idea's panel links to the watch's output.
+
 ## v0.45.0
 
 *2026-11-25*

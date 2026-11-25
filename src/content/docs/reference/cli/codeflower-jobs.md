@@ -2,7 +2,7 @@
 title: "codeflower jobs"
 description: "List, show, read and cancel the batch jobs of a project"
 sidebar:
-  order: 13
+  order: 16
   label: "jobs"
 ---
 

@@ -24,8 +24,10 @@ by side, each with its own models, modes and settings; the chat's header shows i
   and every window with the chat open shows the same queue.
 - If a turn ends without finishing normally (the agent refuses, hits its limit, or fails), the queue **pauses** so the
   rest does not run unattended. It says why above the box; choose *Resume* to go on, or remove what you no longer want.
-- <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> **sends now**. With Claude Code and Codex, the agent reads it right away
-  and keeps going (steering); with the others, its turn stops first.
+- <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> **sends now**. With Claude Code and Codex, the agent reads it while it
+  works and keeps going (steering). A command Claude Code is running moves to the background and goes on, and it stops
+  it only if your message asks for that; Codex reads the message at its next step. With the others, the turn stops
+  first, and a command running in it stops too.
 - *Stop* ends the agent's turn. Your queued messages go back into the box; queued actions and preview feedback stay,
   paused, until you choose *Resume*.
 
@@ -138,3 +140,27 @@ Agents can work with the project's other chats through `codeflower-chat`:
 Each fork or new chat an agent wants asks you first, in its chat, with the agent, the title and the first message.
 If you allow it, the new chat starts working on its own and shows in the list of chats, where you can open it.
 
+
+## Waiting for something
+
+When the agent has to wait for something, such as a pull request to be merged, a result file to appear or a
+server to start, it starts a **watch** instead of keeping its turn busy. A watch is a command the sandbox runs every
+so often, for example `gh pr view 12` every 2 minutes, until a condition holds. Then the chat gets a message with
+the command's output, and the agent goes on from there. Watches keep running when you close every window, so a
+sandbox on a server can wait for hours with no one connected.
+
+Ask for one in your own words, for example "tell me when PR 12 is merged" or "carry on once the pipeline's
+summary file is there".
+
+The eye icon at the right of the chat's footer, next to background commands, batch jobs and subagents, counts
+the chat's running watches. Click it to list them, with each one's command, condition and number of runs:
+
+- Click a watch to open its output in a tab. The tab shows every run's output, and new runs as they come.
+- Stop a running watch with its stop button. The agent is told that you stopped it.
+
+A watch also ends on its own when its command fails three times in a row, or after its time limit (a day unless
+the agent asks for longer). The agent is told either way. Watches stop when the sandbox stops.
+
+In Roots, the project's map of ideas, a watch can be one of an idea's needs: the idea shows as blocked, with the
+eye icon and what it waits for, and becomes active again when the watch's condition holds. Click the need in the
+idea's panel to open the watch's output.

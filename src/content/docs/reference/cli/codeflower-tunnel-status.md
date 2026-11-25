@@ -2,7 +2,7 @@
 title: "codeflower tunnel status"
 description: "Show the tunnel connection, this computer's key and the tunnel's compatibility"
 sidebar:
-  order: 48
+  order: 51
   label: "tunnel status"
 ---
 
