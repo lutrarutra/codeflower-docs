@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.43.2
+
+*2026-11-25*
+
+- The chat page the sandbox serves has the changes of ui 0.47.0: a Roots button in the chat's header.
+
 ## v0.43.1
 
 *2026-11-25*

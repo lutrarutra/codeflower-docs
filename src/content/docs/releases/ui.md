@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.47.0
+
+*2026-11-25*
+
+- A Roots button in the chat's header shows the sandbox's map of ideas: it brings the Roots tab to the front, or opens one.
+
 ## v0.46.1
 
 *2026-11-25*

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.38.0
+
+*2026-11-25*
+
+- A Roots button in the chat's header shows the worker's map of ideas (ui 0.47.0).
+
 ## v0.37.1
 
 *2026-11-25*
