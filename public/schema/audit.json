@@ -1,0 +1,990 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.codeflower.app/schema/audit.json",
+  "title": "code flower paper audit (audit.json)",
+  "description": "The scorecard of a paper audit, written by `codeflower audit score`: the facts the auditor recorded on fixed scales, and `scores` derived from them by rubric `rubric`, including `scores.rows`, the scorecard with what each value means. `codeflower audit verify` recomputes them.",
+  "type": "object",
+  "required": [
+    "audit",
+    "rubric",
+    "paper",
+    "availability",
+    "artefacts",
+    "assumptions",
+    "interventions",
+    "targets",
+    "consistency",
+    "scores"
+  ],
+  "properties": {
+    "audit": {
+      "const": 1
+    },
+    "rubric": {
+      "const": 1
+    },
+    "paper": {
+      "type": "object",
+      "required": [
+        "doi"
+      ],
+      "properties": {
+        "doi": {
+          "type": "string",
+          "pattern": "^10\\.\\d{4,9}/\\S+$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "year": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "journal": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "audited": {
+      "type": "string",
+      "description": "The date the audit started (YYYY-MM-DD)."
+    },
+    "auditor": {
+      "type": "object",
+      "description": "Who audited, on what. agent, model and resources are recorded by `codeflower audit score` (the bridge's session info and codeflower-doctor --json) when it runs in the sandbox.",
+      "properties": {
+        "agent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resources": {
+          "type": "object",
+          "properties": {
+            "cpus": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "memory_gib": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "gpus": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allocation": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "time_limit_end": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "batch_jobs": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "engine": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "pipeline": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "availability": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3,
+          "description": "0 none or on request, 1 controlled access only, 2 processed data public, 3 raw data public with persistent ids"
+        },
+        "code": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3,
+          "description": "0 none, 1 fragments, 2 complete but does not run as published, 3 runs as published"
+        },
+        "environment": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3,
+          "description": "0 none, 1 tool names, 2 tool versions, 3 lockfile or container"
+        },
+        "methods": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3,
+          "description": "0 key steps missing, 1 parameters mostly missing, 2 parameters mostly given, 3 fully specified"
+        }
+      },
+      "required": [
+        "data",
+        "code",
+        "environment",
+        "methods"
+      ]
+    },
+    "availability_notes": {
+      "type": "object"
+    },
+    "artefacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "access",
+          "license"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "code",
+              "data",
+              "software"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "access": {
+            "enum": [
+              "controlled",
+              "not-found",
+              "on-request",
+              "open",
+              "open-source",
+              "proprietary",
+              "registration",
+              "source-available"
+            ]
+          },
+          "license": {
+            "type": "string",
+            "description": "An SPDX id, none or custom."
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "needed_by": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "what",
+          "why",
+          "impact"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "what": {},
+          "why": {},
+          "alternatives_tried": {
+            "type": "array"
+          },
+          "impact": {
+            "enum": [
+              "none",
+              "minor",
+              "major",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "interventions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "download",
+              "access",
+              "fix",
+              "revision",
+              "dissent",
+              "other"
+            ]
+          },
+          "what": {
+            "type": "string"
+          },
+          "when": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "effort": {
+      "type": "object"
+    },
+    "independence": {
+      "type": "object"
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "where",
+          "statement",
+          "importance",
+          "outcome",
+          "review"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+          },
+          "kind": {
+            "enum": [
+              "figure",
+              "table",
+              "number",
+              "claim"
+            ]
+          },
+          "where": {
+            "type": "string"
+          },
+          "statement": {
+            "type": "string"
+          },
+          "importance": {
+            "enum": [
+              "key",
+              "supporting"
+            ]
+          },
+          "reported": {},
+          "tolerance": {
+            "oneOf": [
+              {
+                "const": "reported-precision"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relative": {
+                    "type": "number"
+                  },
+                  "absolute": {
+                    "type": "number"
+                  }
+                }
+              }
+            ]
+          },
+          "tolerance_reason": {
+            "type": "string"
+          },
+          "starting_point": {
+            "enum": [
+              "raw",
+              "processed",
+              "author-intermediate",
+              "reported-values"
+            ]
+          },
+          "method_source": {
+            "enum": [
+              "paper",
+              "author-code",
+              "assumed"
+            ]
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outcome": {
+            "enum": [
+              "exact",
+              "close",
+              "consistent",
+              "inconsistent",
+              "failed",
+              "blocked",
+              "skipped"
+            ]
+          },
+          "gaps": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "data-unavailable",
+                "data-controlled-access",
+                "data-broken-link",
+                "data-license-restrictive",
+                "code-missing",
+                "code-broken",
+                "code-no-license",
+                "code-restrictive-license",
+                "proprietary-software-required",
+                "parameter-unspecified",
+                "version-unspecified",
+                "randomness-unseeded",
+                "compute-too-large",
+                "results-differ",
+                "other"
+              ]
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "values": {
+                "type": "object"
+              },
+              "report": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          },
+          "review": {
+            "oneOf": [
+              {
+                "enum": [
+                  "agreed",
+                  "revised",
+                  "dissent"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "agreed",
+                      "revised",
+                      "dissent"
+                    ]
+                  },
+                  "from": {
+                    "enum": [
+                      "exact",
+                      "close",
+                      "consistent",
+                      "inconsistent",
+                      "failed",
+                      "blocked",
+                      "skipped"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "user_view": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            ]
+          },
+          "note": {
+            "type": "string"
+          },
+          "limited_by": {
+            "enum": [
+              "resources",
+              "time",
+              "data-access",
+              "choice",
+              "paper"
+            ],
+            "description": "Why the target was audited below full depth (not from raw data) or skipped."
+          },
+          "compute": {
+            "type": "object",
+            "description": "What reproducing the target from raw data needs.",
+            "properties": {
+              "level": {
+                "enum": [
+                  "laptop",
+                  "workstation",
+                  "gpu",
+                  "cluster",
+                  "supercomputer"
+                ]
+              },
+              "basis": {
+                "enum": [
+                  "measured",
+                  "estimated"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "level",
+              "basis"
+            ]
+          }
+        }
+      }
+    },
+    "consistency": {
+      "type": "object",
+      "properties": {
+        "attempts": {
+          "type": "array"
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "target",
+              "attempt",
+              "kind"
+            ],
+            "properties": {
+              "target": {
+                "type": "string"
+              },
+              "attempt": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "disagree-outcome",
+                  "disagree-values"
+                ]
+              },
+              "resolution": {
+                "enum": [
+                  "explained",
+                  "unexplained"
+                ]
+              },
+              "explanation": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "headline",
+        "counts",
+        "reproduced",
+        "coverage",
+        "agreement",
+        "completeness",
+        "ease",
+        "availability",
+        "openness",
+        "consistency",
+        "review",
+        "badges",
+        "rows",
+        "depth",
+        "compute",
+        "auditor"
+      ],
+      "properties": {
+        "headline": {
+          "type": "string"
+        },
+        "counts": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "object",
+              "properties": {
+                "exact": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "close": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "consistent": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "inconsistent": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "failed": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blocked": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skipped": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "exact",
+                "close",
+                "consistent",
+                "inconsistent",
+                "failed",
+                "blocked",
+                "skipped"
+              ],
+              "additionalProperties": false
+            },
+            "all": {
+              "type": "object",
+              "properties": {
+                "exact": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "close": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "consistent": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "inconsistent": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "failed": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blocked": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skipped": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "exact",
+                "close",
+                "consistent",
+                "inconsistent",
+                "failed",
+                "blocked",
+                "skipped"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "reproduced": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "integer"
+            },
+            "key_total": {
+              "type": "integer"
+            }
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "all": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "agreement": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "completeness": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "ease": {
+          "type": "object",
+          "properties": {
+            "band": {
+              "enum": [
+                "easy",
+                "moderate",
+                "hard",
+                "very hard"
+              ]
+            },
+            "points": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "availability": {
+          "type": "object"
+        },
+        "openness": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "enum": [
+                "not-found",
+                "proprietary",
+                "on-request",
+                "source-available",
+                "open-source"
+              ]
+            },
+            "data": {
+              "enum": [
+                "not-found",
+                "on-request",
+                "controlled",
+                "registration",
+                "open",
+                null
+              ]
+            },
+            "licenses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "counts": {
+              "type": "object"
+            },
+            "data_counts": {
+              "type": "object"
+            }
+          }
+        },
+        "consistency": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "none",
+                "agree",
+                "explained",
+                "unexplained"
+              ]
+            },
+            "attempts": {
+              "type": "integer"
+            },
+            "flags": {
+              "type": "integer"
+            },
+            "unexplained": {
+              "type": "integer"
+            }
+          }
+        },
+        "review": {
+          "type": "object",
+          "properties": {
+            "agreed": {
+              "type": "integer"
+            },
+            "revised": {
+              "type": "integer"
+            },
+            "dissent": {
+              "type": "integer"
+            }
+          }
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "good",
+                  "warning",
+                  "critical",
+                  "info"
+                ]
+              }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "description": "The scorecard in its fixed order, with what each value means: what the report draws.",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "kind",
+              "label"
+            ],
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "stacked",
+                  "bar",
+                  "steps"
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "null: not applicable (note says why). For steps, the index of the level reached."
+              },
+              "max": {
+                "type": "number"
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The levels, worst to best."
+              },
+              "display": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "good",
+                  "warning",
+                  "critical",
+                  "info",
+                  null
+                ]
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "segments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "enum": [
+                        "exact",
+                        "close",
+                        "consistent",
+                        "inconsistent",
+                        "failed",
+                        "blocked",
+                        "skipped"
+                      ]
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "tone": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "depth": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "string"
+            },
+            "reason": {},
+            "counts": {
+              "type": "object"
+            },
+            "limited_by": {
+              "type": "object"
+            }
+          }
+        },
+        "compute": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "enum": [
+                "laptop",
+                "workstation",
+                "gpu",
+                "cluster",
+                "supercomputer",
+                null
+              ]
+            },
+            "measured": {
+              "type": "integer"
+            },
+            "estimated": {
+              "type": "integer"
+            },
+            "counts": {
+              "type": "object"
+            }
+          }
+        },
+        "auditor": {
+          "type": "string",
+          "description": "Who audited on what, in words: agent (model) on the sandbox's resources."
+        }
+      }
+    },
+    "depth": {
+      "type": "object",
+      "description": "How deep the audit set out to go, agreed with the user at the first checkpoint.",
+      "properties": {
+        "level": {
+          "enum": [
+            "results",
+            "processed",
+            "full"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

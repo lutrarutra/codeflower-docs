@@ -125,6 +125,8 @@ write('versions.json', {
   tunnel: release(path('tunnel')),
   tunnelProtocol: Number(protocol),
   claudeAgentSdk: /ARG CLAUDE_AGENT_SDK_VERSION=([\w.-]+)/.exec(dockerfile)?.[1] ?? 'unknown',
+  // codeflower-audit as the image builds it; the ship skill keeps the app's go.mod at the same release.
+  audit: /ARG CODEFLOWER_AUDIT_VERSION=([\w.-]+)/.exec(dockerfile)?.[1] ?? 'none',
   agents: {
     claude: runtimes['@agentclientprotocol/claude-agent-acp'],
     codex: runtimes['@openai/codex'],

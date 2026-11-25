@@ -2,7 +2,7 @@
 title: "codeflower client"
 description: "Open the code flower client to start sandboxes and connect to them"
 sidebar:
-  order: 5
+  order: 10
   label: "client"
 ---
 

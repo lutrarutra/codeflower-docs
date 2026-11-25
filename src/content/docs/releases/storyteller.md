@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.7.0
+
+*2026-11-25*
+
+- `r.scores()` draws a scorecard: one bar per row on a fixed scale, with steps, stacked counts, n/a rows and badges, in the order given, so reports in a series line up.
+- `r.ideas()` draws a map of ideas from code flower's Roots (`codeflower-roots tree --json`) as a tree, with each idea's status, todos, files, conclusion and comments.
+
 ## v0.6.5
 
 *2026-11-24*

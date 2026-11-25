@@ -1,0 +1,171 @@
+---
+title: Audit a paper
+description: Check how much of a published paper reproduces, get a report and a scorecard, and publish them sealed on GitHub.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+An **audit** finds out how much of a published paper's results can be reproduced from what the authors
+published, and how hard that was. The agent finds the paper's data, code and software, reruns what it
+reports figure by figure, and records what came out. You get a report, a machine-readable scorecard and a
+pipeline anyone can rerun. You push them unchanged to GitHub so others can find, check and build on them.
+
+The agent never writes a score, nor which agent, model and resources did the audit: `codeflower-audit
+score` records those itself. It records **facts** on fixed scales, such as "Fig. 2B: close, from processed
+data, with the authors' code" or "code: public, MIT licence". Then `codeflower-audit score` derives every
+number from those facts with a versioned rubric. That keeps audits comparable across papers, fields and
+auditors.
+
+## Start an audit
+
+<Steps>
+1. **Start a sandbox for the paper**, with an output folder for the results:
+   ```sh
+   codeflower sandbox --audit 10.1038/s41586-020-2649-2 --output ~/audits
+   ```
+   The project is called `audit-10-1038-s41586-020-2649-2`; give `--project` to choose a name. In an existing
+   sandbox, use the chat action **Audit a paper** instead and give the DOI when asked.
+
+   With `--isolate-network`, a new project's allowlist gets the presets an audit needs: `@literature` (doi.org,
+   Crossref, OpenAlex, Europe PMC, Zenodo, figshare, arXiv, bioRxiv), `@github`, `@ncbi` and `@ebi`. Add the
+   hosts of other data archives the paper uses when the agent asks.
+
+2. **Open a chat** and sign in with the agent you prefer. Ask it to audit the paper, or run **Audit a paper**
+   from the Tools menu.
+
+3. **Agree on what to check, and how deep (checkpoint 1).** The agent reads the paper and its data and code
+   availability statements, then lists the results it will check: every figure panel, table and stated number
+   the conclusions rest on. **Key** results are those behind the abstract's claims. For each result, it
+   estimates what reproducing it from raw data needs, compares that with what the sandbox has (CPUs, memory,
+   GPUs, time left, and whether it may submit [batch jobs](/guides/batch-jobs/)), and proposes a **depth**:
+
+   | Depth | Starts from |
+   |---|---|
+   | raw data | the raw data, e.g. sequencing reads |
+   | processed | the deposited processed data, e.g. count matrices or tables |
+   | results | the authors' own intermediate or final tables, re-plotted and re-tested |
+
+   You choose the depth, overall and per result. Aligning reads on a 2-CPU sandbox is not a plan: the agent
+   proposes batch jobs or a lower depth instead. Every result done below full depth, or skipped, records
+   why: resources, time, data access, your choice, or that the paper itself starts there. The report's
+   **Scope and resources** section explains it.
+
+   Without an open-access full text, the agent asks you for the PDF and supplements: put them in an input
+   folder. When data needs registration or approval, it asks you, and records each such step.
+
+4. **Go through the outcomes (checkpoint 2).** For each result the agent shows what the paper reports, what it
+   got, the outcome and what was missing. Challenge it where you disagree. It changes an outcome only for a
+   reason it accepts, such as a passage in the methods or a bug in its pipeline, and records the change
+   (`revised`). If you still disagree, its outcome stands and your view is recorded as a **dissent**, which
+   the report shows. Wanting a better score is not a reason.
+
+   Throughout, the agent keeps its plan in Roots, the map of ideas next to the chat: one idea for the audit, one per line of work
+   (each dataset, the environment, each group of results), with todos it checks off and a conclusion for each.
+   Open the Roots tab to follow it, and comment on an idea to steer the work.
+
+5. **Seal.** The agent writes the report, packs the pipeline and runs `codeflower-audit seal`. The report ends
+   with the plan as it stood ("How the audit went"), and the sealed folder keeps it in `provenance/roots.json`.
+   Before sealing, the agent tells you that the sealed folder, including the transcript of the chat and the plan
+   with your comments, will be public.
+</Steps>
+
+## What you get
+
+`audit-SLUG/` in the output folder:
+
+| File | What it is |
+|---|---|
+| `README.md` | the headline, the auditor (agent, model, and the sandbox's CPUs, memory, GPUs and batch jobs), and every score with what it means; GitHub shows it on the repository's page |
+| `report/index.html` | the report: the scorecard on top, then one section per result, the assumptions, gaps, earlier audits and how to rerun |
+| `audit.json` | every fact and score, machine readable ([schema](https://docs.codeflower.app/schema/audit.json)) |
+| `targets.tsv` | one row per result checked, for spreadsheets |
+| `pipeline/`, `pipeline.tar.gz` | what the audit ran, as a [reproducible pipeline](/guides/reproducible-pipelines/) without data or image: rerun it with `codeflower reproduce pipeline.tar.gz --output DIR` |
+| `provenance/` | the agent and model, the image, your interventions, revisions and dissents, and the chat's transcript: your messages, the agent's, and the tools it ran, by name only. Home folders, tokens and e-mail addresses are removed |
+| `SEAL.json` | the sha256 of every file |
+
+The audit leaves out datasets, the paper's own files and the authors' code, unless the code's licence allows
+copying it. The pipeline downloads them instead.
+
+## Publish it
+
+Push the folder **unchanged** to a new, empty GitHub repository and give it the topic `codeflower-audit`, so
+others auditing the same paper find it:
+
+```sh
+cd ~/audits/audit-10-1038-s41586-020-2649-2
+gh repo create audit-10-1038-s41586-020-2649-2 --public --source . --push
+```
+
+Any edit breaks the seal. To change an audit, reopen the project (`codeflower sandbox --continue PROJECT`),
+discuss the change with the agent, and let it score and seal again. The new seal names the one it replaces.
+
+## Check an audit
+
+Anyone can check a sealed audit, for example a clone of its repository:
+
+```sh
+codeflower audit verify audit-10-1038-s41586-020-2649-2
+```
+
+Without code flower, use [codeflower-audit](https://github.com/lutrarutra/codeflower-audit), the same checks on
+their own: download its binary for your system from its releases, or with Go:
+
+```sh
+go install github.com/lutrarutra/codeflower-audit/cmd/codeflower-audit@latest
+codeflower-audit verify audit-10-1038-s41586-020-2649-2
+```
+
+It checks that:
+- every file matches `SEAL.json`;
+- the scores follow from the facts with the rubric;
+- the report's scorecard comes from this `audit.json`;
+- the report runs no code of its own and loads nothing from outside the file;
+- every revised or disputed outcome appears in the transcript.
+
+A seal makes edits **detectable**, not impossible: whoever ran the sandbox could have changed things before
+sealing. Trust comes from rerunning the pipeline (`codeflower reproduce`) and from independent audits of the
+same paper that agree.
+
+## Reading a scorecard
+
+Every report opens with the same scorecard, in the same order:
+
+- **Key results / All results**: how many results came out each way:
+
+  | Outcome | Meaning |
+  |---|---|
+  | **exact** | equal at the paper's precision |
+  | **close** | within a stated tolerance |
+  | **consistent** | same conclusion, different numbers |
+  | **inconsistent** | a different conclusion |
+  | **failed** | attempted, not produced |
+  | **blocked** | not possible, e.g. controlled data or proprietary software |
+  | **skipped** | left out by agreement |
+
+- **Reproduced**: exact and close count 1, consistent ½, over the key results attempted.
+- **Coverage**: the share of key results that could be attempted.
+- **Completeness**: the share of results that did not rely on a major or untested assumption.
+- **Depth audited**: the depth you agreed on, with how many results were checked from raw data, processed
+  data or results, and why some went less deep.
+- **Compute needed**: what reproducing the key results from raw data needs. Levels: laptop; workstation (a
+  powerful computer, up to about 64 cores and 256 GB); gpu; cluster; supercomputer. It is measured where the
+  audit ran it, estimated otherwise. It is neither good nor bad, and doesn't count in the other scores: it
+  tells you what you'd need to redo the work.
+- **Ease**: easy to very hard. It is counted from the assumptions the agent had to make, your interventions,
+  the kinds of gaps, and key results that were blocked or failed. It is not counted from compute time, which
+  depends on the field.
+- **Data availability, Code availability, Environment, Methods**: 0 to 3 each, from "none" to "raw data
+  public", "runs as published", "lockfile or container" and "fully specified".
+- **Code openness**: the least open code or software the key results need, from open-source to not-found,
+  with the licences.
+- **Consistency**: how this audit compares with earlier audits of the paper. Differences are investigated and
+  marked explained or unexplained.
+
+The same scores, each with what it means, are in `audit.json` under `scores.rows`.
+
+## Earlier audits
+
+At the start, the agent looks for earlier audits of the paper: repositories you name, and GitHub repositories
+with the topic `codeflower-audit` that mention the DOI. Until its own run is done, it reads only which results
+they checked and what blocked them. That way it uses the same names for the same results, but its findings
+stay independent. Afterwards, it compares outcomes and values with theirs, and investigates every difference.

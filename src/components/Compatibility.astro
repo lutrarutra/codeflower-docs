@@ -11,7 +11,7 @@ const rows: Row[] = [versions, ...(history as Row[]).filter((row) => row.app !==
 <table>
   <thead>
     <tr>
-      <th>App</th><th>Sandbox image</th><th>ui</th><th>storyteller</th><th>Extension</th><th>Tunnel protocol</th>
+      <th>App</th><th>Sandbox image</th><th>ui</th><th>storyteller</th><th>codeflower-audit</th><th>Extension</th><th>Tunnel protocol</th>
       <th>Claude Code SDK</th><th>Codex</th><th>DeepSeek Harness</th><th>OpenCode</th>
     </tr>
   </thead>
@@ -23,6 +23,7 @@ const rows: Row[] = [versions, ...(history as Row[]).filter((row) => row.app !==
           <td><code>{row.sandboxImage.split(':').pop()}</code></td>
           <td>{row.ui}</td>
           <td>{row.storyteller}</td>
+          <td>{(row as { audit?: string }).audit ?? '–'}</td>
           <td>{row.extension}</td>
           <td>{row.tunnelProtocol}</td>
           <td>{row.claudeAgentSdk}</td>

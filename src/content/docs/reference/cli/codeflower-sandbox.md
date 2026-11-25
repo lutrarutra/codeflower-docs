@@ -2,7 +2,7 @@
 title: "codeflower sandbox"
 description: "Start a sandbox (worker) to use from VS Code or the browser"
 sidebar:
-  order: 30
+  order: 35
   label: "sandbox"
 ---
 
@@ -21,6 +21,8 @@ Each start saves how the project started in PROJECT.sandbox.yaml next to the pro
 With --server the sandbox also serves its chat page on the same port and prints a link to it (http://HOST:PORT/?key=…), like Jupyter's: open it in any browser that reaches this machine, e.g. through ssh -L. Anyone with the link controls the agent, and plain HTTP carries the key and the chats unencrypted, so keep job logs private and prefer --host 127.0.0.1 with a tunnel on shared networks.
 
 With --forward-to HOST the app also opens the worker's port on HOST's 127.0.0.1 through a reverse SSH tunnel (ssh -R) while the sandbox runs, so VS Code or the client on HOST connects with the 127.0.0.1 link: for a sandbox on a compute node whose port the login node cannot reach (Docker and Podman publish it on the compute node's 127.0.0.1 only). This node must log in to HOST without a password (an SSH key), and the port must be free there. In a batch job, --forward-to "$SLURM_SUBMIT_HOST" names the node it was submitted from. The tunnel connects again when it drops and stops with the sandbox.
+
+With --audit DOI the sandbox audits that paper's reproducibility: the agent follows the codeflower-audit skill (or the "Audit a paper" action), and the project is named audit-SLUG unless --project is given. With --isolate-network, a new allowlist gets the @literature, @github, @ncbi and @ebi presets. The sealed result lands in the output folder; check it with "codeflower audit verify".
 
 To start a session with an initial task and continue it in VS Code, see "codeflower run". To let the agent work on a task by itself instead, see "codeflower task".
 
@@ -43,6 +45,7 @@ codeflower sandbox [flags]
   codeflower sandbox --input ~/data/study42 --skills ~/my-skills --isolate-network
   codeflower sandbox --project study42 --input /data/study42 --forward-to "$SLURM_SUBMIT_HOST"
   codeflower sandbox --image ./codeflower-sandbox.sif --state ~/cf/study42 --bind /data/ref:/reference
+  codeflower sandbox --audit 10.1038/s41586-020-2649-2 --output ~/audits
 ```
 
 ## Flags
@@ -51,6 +54,7 @@ codeflower sandbox [flags]
 | --- | --- | --- |
 | `--advertise-host string` |  | address printed for VS Code and the page link (default: this node's IPv4 address; 127.0.0.1 with Docker or Podman) |
 | `--allowlist string` |  | file of hosts an isolated sandbox may reach, one per line (default: PROJECT.allowed-hosts.txt next to the project) |
+| `--audit string` |  | audit a paper's reproducibility (the codeflower-audit skill): its DOI; names the project audit-SLUG unless --project is given |
 | `--bind stringArray` |  | more mounts: SOURCE[:TARGET[:ro\|rw]] (repeatable; default target /data/input/NAME, read-only) |
 | `-c, --code stringArray` |  | repository or package the agent develops, mounted read-write at /data/code/NAME (repeatable) |
 | `--config string` |  | config directory with config.yaml and skills (or set $CODEFLOWER_CONFIG; default ~/.codeflower) |
@@ -63,8 +67,8 @@ codeflower sandbox [flags]
 | `--env-dir string` |  | folder for what the projects can download or rebuild (software environments, caches, the chats' browsers), e.g. on scratch, in a subfolder per project (or env_dir in the config; default: in the project) |
 | `--forward-to HOST` |  | also open the worker's port on HOST's 127.0.0.1 through ssh -R while the sandbox runs, e.g. the login node a compute node's port cannot be reached from (in a batch job: "$SLURM_SUBMIT_HOST") |
 | `--host string` | `0.0.0.0` | interface the worker listens on (Apptainer; Docker and Podman always publish on 127.0.0.1) |
-| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.41.0, downloaded on first use) |
-| `--image-tag string` |  | build of the published image to use instead of 0.41.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
+| `--image string` |  | sandbox image: a Docker/Podman image name, or an Apptainer .sif file (or set $CODEFLOWER_IMAGE; default ghcr.io/lutrarutra/codeflower-sandbox:0.42.0, downloaded on first use) |
+| `--image-tag string` |  | build of the published image to use instead of 0.42.0, the release this app is made for: latest, another release (0.2.1, or 0.2 for its newest patch) or a commit (sha-abc1234) (or set $CODEFLOWER_IMAGE_TAG) |
 | `-i, --input stringArray` |  | folder with your data, mounted read-only at /data/input/NAME (repeatable) |
 | `--isolate-network` |  | cut the sandbox off the network except for its agents' services and the hosts in the allowlist (Linux) |
 | `--jobs string` |  | let the agent ask for batch jobs, each run in a sandbox like this one: slurm, local, auto, a scheduler profile of the config, or off (default: the config's jobs.scheduler) |

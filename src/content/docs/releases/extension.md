@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.36.0
+
+*2026-11-25*
+
+- Fork a chat from any of your messages, or all of it, into a new tab (ui 0.45.0, needs sandbox 0.42.0).
+- An agent can open the Roots tab for you, on one idea, and the tab's title follows the sandbox's project after a reload.
+
 ## v0.35.0
 
 *2026-11-25*

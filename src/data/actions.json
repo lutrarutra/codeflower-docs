@@ -25,8 +25,18 @@
     "mode": "queue"
   },
   {
+    "title": "Update Roots map",
+    "description": "Bring the project's map of ideas up to date with this chat's work.",
+    "mode": "queue"
+  },
+  {
     "title": "Reproducible pipeline",
     "description": "Package this work as a pipeline anyone can rerun and verify.",
+    "mode": "queue"
+  },
+  {
+    "title": "Audit a paper",
+    "description": "Check how much of a published paper reproduces, and seal the results for GitHub.",
     "mode": "queue"
   },
   {

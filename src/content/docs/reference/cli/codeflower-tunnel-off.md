@@ -2,7 +2,7 @@
 title: "codeflower tunnel off"
 description: "Turn remote access off at once (pairings are kept)"
 sidebar:
-  order: 38
+  order: 43
   label: "tunnel off"
 ---
 

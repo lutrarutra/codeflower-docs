@@ -7,6 +7,15 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.48.0
+
+*2026-11-25*
+
+- **Paper audits**: `codeflower sandbox --audit DOI` starts a sandbox whose agent audits how much of that paper reproduces, in a project named `audit-…` unless you give `--project`. `--continue` keeps auditing the same paper, and with `--isolate-network` a new allowlist gets the hosts an audit needs.
+- `codeflower audit` checks, scores, seals and verifies audits on your computer, with the same code as the sandbox (codeflower-audit 0.1.0): `codeflower audit verify` tells whether a sealed audit was changed.
+- A new `@literature` allowlist preset: doi.org, Crossref, OpenAlex, Europe PMC, Zenodo, figshare, arXiv and bioRxiv.
+- Sandboxes run sandbox 0.42.0, and the window has the changes of ui 0.45.0: forking chats, agents that read, fork and start chats, and the Roots map as a tree.
+
 ## v0.47.1
 
 *2026-11-25*

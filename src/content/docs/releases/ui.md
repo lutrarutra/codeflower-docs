@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.45.0
+
+*2026-11-25*
+
+- **Fork a chat** from any of your messages, or all of it, into a new chat with that message ready to send again (needs sandbox 0.42.0). A forked chat, or one an agent started, says at the top where it came from.
+- The Roots map is laid out as a tree, each idea below the ones it builds on, and a card lists every chat that worked on it. An agent can open the map for you, on one idea.
+
 ## v0.44.0
 
 *2026-11-25*

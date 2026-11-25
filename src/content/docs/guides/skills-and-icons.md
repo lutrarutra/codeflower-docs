@@ -30,7 +30,8 @@ Each folder can be one skill (it has a `SKILL.md`) or a folder of skills.
 
 The sandbox also brings its own skills: reports (storyteller), the icon gallery, MCP setup, the
 [Single-cell best practices](https://www.sc-best-practices.org/) book with its references,
-[reproducible pipelines](/guides/reproducible-pipelines/), and, when isolated, the network allowlist.
+[reproducible pipelines](/guides/reproducible-pipelines/), [paper audits](/guides/audit-a-paper/), and, when
+isolated, the network allowlist.
 
 ## Icons for figures
 

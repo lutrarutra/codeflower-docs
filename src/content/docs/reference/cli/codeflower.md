@@ -24,6 +24,7 @@ codeflower
 ## Commands
 
 - [`codeflower attach`](/reference/cli/codeflower-attach/): Open a sandbox's chat in the agent's own terminal UI
+- [`codeflower audit`](/reference/cli/codeflower-audit/): Check, score, seal and verify paper audits
 - [`codeflower chats`](/reference/cli/codeflower-chats/): List a sandbox's chats, for codeflower attach
 - [`codeflower check`](/reference/cli/codeflower-check/): Check that this machine can run sandboxes, and how to set it up
 - [`codeflower client`](/reference/cli/codeflower-client/): Open the code flower client to start sandboxes and connect to them

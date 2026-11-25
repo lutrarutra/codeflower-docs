@@ -60,6 +60,7 @@ The agent uses these by itself; you can also run them with a `!` command in the 
 | `codeflower-env-export` | records the installed environments |
 | `codeflower-network [check HOST]` | in an [isolated](/guides/network-isolation/) sandbox: what it may reach |
 | `codeflower-sketch` | the [icon gallery](/guides/skills-and-icons/#icons-for-figures) for scientific figures |
+| `codeflower-chat` | the project's other chats: reads them, and [forks or starts](/guides/chatting/#agents-and-other-chats) chats once you allow it |
 
 When the sandbox starts, it also writes a snapshot of its environment and an inventory of your input folders,
 which the agent reads first.

@@ -2,7 +2,7 @@
 title: "codeflower jobs cancel"
 description: "Cancel jobs of a project"
 sidebar:
-  order: 9
+  order: 14
   label: "jobs cancel"
 ---
 

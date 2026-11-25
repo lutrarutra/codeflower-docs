@@ -90,5 +90,23 @@
       "www.ebi.ac.uk",
       "ftp.ebi.ac.uk"
     ]
+  },
+  {
+    "name": "literature",
+    "description": "papers and their data: doi.org, Crossref, OpenAlex, Europe PMC, Zenodo, figshare, arXiv, bioRxiv",
+    "hosts": [
+      "doi.org",
+      "api.crossref.org",
+      "api.openalex.org",
+      "europepmc.org",
+      "www.ebi.ac.uk",
+      "zenodo.org",
+      "figshare.com",
+      "ndownloader.figshare.com",
+      "arxiv.org",
+      "export.arxiv.org",
+      "api.biorxiv.org",
+      "www.biorxiv.org"
+    ]
   }
 ]

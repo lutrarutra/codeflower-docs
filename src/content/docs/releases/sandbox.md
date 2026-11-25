@@ -7,6 +7,17 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.42.0
+
+*2026-11-25*
+
+- **Paper audits**: the image has `codeflower-audit` 0.1.0 and its skill. A sandbox started with `--audit DOI` audits that paper, and *Audit a paper* joins the chat actions. A sealed audit keeps the chat's transcript and the plan kept in Roots.
+- **Fork a chat**, all of it or from before one of your messages, to try another way. A whole Claude or Codex chat is forked by the agent itself; otherwise the new chat gets the earlier history with its first message.
+- Agents can work with the project's other chats through `codeflower-chat`: read any chat's history, and fork a chat or start a new one (on any agent) once you allow it.
+- Roots: `codeflower-roots todos` lists what is left across the map, and `codeflower-roots open` shows you the map next to the chat. Ideas name the OpenCode, DeepSeek Harness and subagent chats that worked on them.
+- Agents now see the codeflower-batch-jobs skill, which the image had but did not offer them.
+- The chat page the sandbox serves has the changes of ui 0.45.0, and reports can use storyteller 0.7.0's scorecard and idea map.
+
 ## v0.41.0
 
 *2026-11-25*

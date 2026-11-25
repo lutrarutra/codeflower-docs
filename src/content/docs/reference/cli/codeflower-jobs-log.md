@@ -2,7 +2,7 @@
 title: "codeflower jobs log"
 description: "Print a job's output"
 sidebar:
-  order: 11
+  order: 16
   label: "jobs log"
 ---
 

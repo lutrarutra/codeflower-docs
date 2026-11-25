@@ -74,7 +74,7 @@ export default defineConfig({
         },
         {
           label: 'Reproducible pipelines',
-          items: ['guides/reproducible-pipelines', 'guides/reproduce-an-analysis'],
+          items: ['guides/reproducible-pipelines', 'guides/reproduce-an-analysis', 'guides/audit-a-paper'],
         },
         {
           label: 'Remote access',

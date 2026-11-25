@@ -111,3 +111,30 @@ follows; the chat says so while it is.
 
 Each chat is saved in the project, named after its first message. Rename or delete it from the sandbox's list (a
 chat that is working cannot be deleted). A chat open in another sandbox of the same project shows read-only.
+
+## Forking a chat
+
+A fork is a copy of a chat to try another way from, while the original stays as it is.
+
+- **Fork from here**: hover over one of your messages and click *Fork from here*. The fork has the chat up to
+  before that message, and opens with the message in its box: send it as it is, or change it first.
+- **Fork the whole chat**: open the list of chats under the chat's title and click the fork button.
+
+A forked chat says at the top which chat it came from; click the name to open that chat. When you fork a whole
+chat, Claude Code and Codex copy it themselves, so the fork keeps everything the agent knew, its tools' output
+included. A fork from before a message, and any fork of another agent's chat, is a new chat that gets a summary of
+the earlier one's messages and tool calls with your first message to it.
+
+## Agents and other chats
+
+Agents can work with the project's other chats through `codeflower-chat`:
+
+- **Read** any chat of the project, any agent's, to see what was done there. Ask, for example, "what did we
+  decide in the QC chat?". Reading changes nothing and needs no permission.
+- **Fork** a chat, this one or another, to try an alternative, and send the fork its first message.
+- **Start a new chat**, named, with its first message, with the same agent or another one. For example, "ask
+  Codex in a new chat to review the clustering".
+
+Each fork or new chat an agent wants asks you first, in its chat, with the agent, the title and the first message.
+If you allow it, the new chat starts working on its own and shows in the list of chats, where you can open it.
+

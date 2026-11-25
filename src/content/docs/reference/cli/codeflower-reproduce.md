@@ -2,7 +2,7 @@
 title: "codeflower reproduce"
 description: "Rerun a pipeline archive in a new sandbox and compare its results"
 sidebar:
-  order: 28
+  order: 33
   label: "reproduce"
 ---
 

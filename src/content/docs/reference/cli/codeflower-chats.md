@@ -2,7 +2,7 @@
 title: "codeflower chats"
 description: "List a sandbox's chats, for codeflower attach"
 sidebar:
-  order: 3
+  order: 8
   label: "chats"
 ---
 
