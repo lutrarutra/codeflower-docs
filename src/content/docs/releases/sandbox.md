@@ -7,6 +7,21 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.41.0
+
+*2026-11-25*
+
+- **Roots**, a map of the project's ideas: agents record each line of work in the workspace's `roots/` folder with `codeflower-roots`, with what it builds on, its todos, its files and its conclusion, so several chats and subagents keep track of each other. Your comments on an idea reach the chat working on it.
+- Claude Code: Claude ACP adapter 0.110.1 (Agent SDK 0.3.330), with Fable 5.2 (1M context) as the default Fable model, effort and fast mode in the chat settings, and the output of Bash commands while they run.
+- Codex 0.171.0 with its ACP adapter 2.11.0: GPT-6.1 Terra and GPT-6.2 Sol and Astra (Sol is the default), each with its own reasoning efforts; subagents and plans show live.
+- OpenCode 1.19.6: chats with many images no longer fail with oversized requests.
+- Asking to submit a batch job lists its resources a line each, and for an array how many tasks run and how many at once.
+- The chat page the sandbox serves has the changes of ui 0.44.0.
+
+:::caution
+New Claude chats now start in Auto mode, the adapter's new default. Pick another mode in the chat's settings if you want to approve more of what the agent does.
+:::
+
 ## v0.40.1
 
 *2026-11-24*

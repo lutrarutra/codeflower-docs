@@ -50,8 +50,9 @@ node the scheduler picks, and start the sandbox there.
 
 ## What you see
 
-When the agent submits a job, the chat shows what it wants to run: the command, its folder, the resources and the
-queue. You choose:
+When the agent submits a job, the chat shows what it wants to run: the command, its folder, the queue, CPUs,
+memory and time (those it leaves unset are your scheduler's defaults), and GPUs if it asks for any. For an array it
+also shows how many tasks, how many may run at once, and that the resources are each task's. You choose:
 - **Submit**;
 - **Submit and allow for this chat**: the chat's later jobs go without asking;
 - **Deny**.

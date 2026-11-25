@@ -32,6 +32,11 @@
       "palette": false
     },
     {
+      "id": "codeflower.roots",
+      "title": "Roots: map of ideas",
+      "palette": false
+    },
+    {
       "id": "codeflower.reconnectWorker",
       "title": "Reconnect",
       "palette": false

@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.44.0
+
+*2026-11-25*
+
+- **Roots**: a sandbox that keeps a map of the project's ideas (sandbox 0.41.0) shows it as a tree, where you check off todos, change an idea's status, comment on it (the chat working on it is told) or start a new chat on it. In the app's window it opens from the sidebar as a Roots tab.
+- Asking to submit a batch job says what the job asks for: its queue, CPUs, memory, time and GPUs, and for an array how many tasks.
+
 ## v0.43.0
 
 *2026-11-23*

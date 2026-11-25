@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.47.1
+
+*2026-11-25*
+
+- Sandboxes run sandbox 0.41.0: Roots, a map of the project's ideas, and newer Claude Code, Codex and OpenCode.
+- The window has the changes of ui 0.44.0, including the Roots tab.
+
 ## v0.47.0
 
 *2026-11-24*

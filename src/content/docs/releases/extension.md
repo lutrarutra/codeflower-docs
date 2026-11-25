@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.35.0
+
+*2026-11-25*
+
+- A **Roots** button on each connected sandbox in the workers view opens the project's map of ideas in a tab (needs sandbox 0.41.0), where *New chat on this idea* starts a chat about it.
+- Asking to submit a batch job lists its resources (ui 0.44.0).
+
 ## v0.34.0
 
 *2026-11-23*
