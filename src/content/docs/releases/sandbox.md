@@ -7,6 +7,17 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.46.0
+
+*2026-11-27*
+
+- Orchestrators come as pairs with an executor chat of their own, which works in its own folder with a short prompt for executors, one step at a time, and asks about anything a step leaves open. Orchestrators attached to an existing chat are disconnected. See [Sensitive data and orchestrators](/guides/orchestrator/).
+- The orchestrator checks every step: each reply carries the commands' outcome and exit code (never their output), a count of what the step did, the scripts it wrote, which the orchestrator can read, and the files it showed. A figure or report shown during a step asks you to share it, and the orchestrator waits for your answer.
+- A message you send the orchestrator while the executor works reaches it after the current step, not at the end of its turn.
+- The orchestrator writes reports and keeps its plan and decisions in Roots, seeing only the ideas it started; the executor builds the report and rechecks its claims against the data, as it does for an answer that concludes an analysis.
+- DeepSeek Harness runs with full access, as Codex does: the sandbox is the boundary.
+- The page shows orchestrated pairs (ui 0.50.0).
+
 ## v0.45.0
 
 *2026-11-27*

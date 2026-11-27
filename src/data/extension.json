@@ -17,6 +17,11 @@
       "palette": false
     },
     {
+      "id": "codeflower.newOrchestratedSession",
+      "title": "New orchestrated session",
+      "palette": false
+    },
+    {
       "id": "codeflower.openShell",
       "title": "Open shell in sandbox",
       "palette": true

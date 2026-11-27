@@ -5,6 +5,9 @@
     "mode": "queue"
   },
   {
+    "mode": "queue"
+  },
+  {
     "title": "Update report",
     "description": "Bring an existing report up to date.",
     "mode": "queue"

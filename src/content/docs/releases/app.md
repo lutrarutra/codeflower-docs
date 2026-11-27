@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.49.5
+
+*2026-11-27*
+
+- Sandboxes run sandbox 0.46.0, with orchestrated pairs: an orchestrator and an executor chat made together, checked step by step. The window has the changes of ui 0.50.0.
+
 ## v0.49.4
 
 *2026-11-27*

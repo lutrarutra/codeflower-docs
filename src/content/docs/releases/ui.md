@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.50.0
+
+*2026-11-27*
+
+- Orchestrated chats: tick *Orchestrated* in the *New chat* dialog to make a pair, a Claude orchestrator that plans and checks without seeing the data, and an executor on the agent you choose, which works with the data one step at a time. *Add an orchestrator* is gone from the Tools menu.
+- The executor chat has a line under its header naming its orchestrator and what it got (a short prompt, and fewer tools where its agent allows); your messages to it come before the orchestrator's.
+- The orchestrator's footer lists what was shared with it and what waits for you to share. Two more settings: *Code* (it may read the executor's scripts) and *Roots* (it keeps the plan and its decisions in the map of ideas).
+- *Generate report* in an executor chat goes to its orchestrator, which writes the report.
+- The chat list marks orchestrators and executors with a compass.
+
 ## v0.49.0
 
 *2026-11-27*

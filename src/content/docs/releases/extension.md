@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.40.0
+
+*2026-11-27*
+
+- *New orchestrated session* in a sandbox's menu makes an orchestrator and an executor chat of its own; attaching an orchestrator to an existing chat is gone.
+- The chat views of ui 0.50.0: the executor's line, the orchestrator's list of shared files, and compass marks in the chat list.
+
 ## v0.39.0
 
 *2026-11-27*
