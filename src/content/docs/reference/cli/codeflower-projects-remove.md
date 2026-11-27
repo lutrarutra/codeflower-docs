@@ -2,7 +2,7 @@
 title: "codeflower projects remove"
 description: "Delete a project and everything in it"
 sidebar:
-  order: 33
+  order: 35
   label: "projects remove"
 ---
 

@@ -2,7 +2,7 @@
 title: "codeflower images"
 description: "List the sandbox images on this computer, or remove those no longer needed"
 sidebar:
-  order: 13
+  order: 15
   label: "images"
 ---
 
@@ -10,7 +10,7 @@ sidebar:
 
 List the builds of the sandbox image (ghcr.io/lutrarutra/codeflower-sandbox) the engine keeps here, or remove those no longer needed.
 
-Each update of the app runs a newer release of the image and leaves the older one behind, a few GB each. An image is kept when:   - it is the release this app runs (0.43.2)   - a sandbox or container uses it, running or stopped   - a project's saved settings, the client window, the config's image or     $CODEFLOWER_IMAGE / $CODEFLOWER_IMAGE_TAG choose it   - it is not older than the release this app runs (a newer release or     latest you downloaded to try) The others are unused: older releases and commits' builds, and older downloads a newer one of their tag replaced. With Podman, the copies saved in the image folder (image_dir) are reviewed the same way.
+Each update of the app runs a newer release of the image and leaves the older one behind, a few GB each. An image is kept when:   - it is the release this app runs (0.44.0)   - a sandbox or container uses it, running or stopped   - a project's saved settings, the client window, the config's image or     $CODEFLOWER_IMAGE / $CODEFLOWER_IMAGE_TAG choose it   - it is not older than the release this app runs (a newer release or     latest you downloaded to try) The others are unused: older releases and commits' builds, and older downloads a newer one of their tag replaced. With Podman, the copies saved in the image folder (image_dir) are reviewed the same way.
 
 
 ## Usage

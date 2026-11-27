@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.48.0
+
+*2026-11-27*
+
+- Roots has a find bar (Find button, or Ctrl+F / ⌘F): the ideas whose title, conclusion, comments, todos, needs or files hold the text are highlighted, and Enter steps through them.
+- Watches show two new ends: failed (the output showed the failure pattern) and exited (the processes the watch followed ended).
+
 ## v0.47.0
 
 *2026-11-25*

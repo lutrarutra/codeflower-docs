@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.7.1
+
+*2026-11-27*
+
+- `storyteller pdf` prints with code flower's own Chromium in the sandbox, so a paper audit can seal its report as a PDF.
+
 ## v0.7.0
 
 *2026-11-25*

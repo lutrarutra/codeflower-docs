@@ -7,6 +7,14 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.3.0
+
+*2026-11-27*
+
+- Before sealing, the agent goes through a review checklist (`codeflower-audit review`, which records it in `audit/pre-seal.yaml`); `check --final` and `seal` refuse an audit whose checklist is missing or older than its `audit.json`, report or archive. `check --final` also checks more: impacts need the alternatives that were rerun, the depth on the scorecard must be one the audit reached, and reported values that do not fit an outcome are warned about.
+- A seal now covers the report printed as a PDF (`report/report.pdf`, seal version 2). Audits sealed with earlier releases still verify.
+- The report's safety check reads HTML the way a browser does, closing ways a script or link could slip past it.
+
 ## v0.2.0
 
 *2026-11-25*

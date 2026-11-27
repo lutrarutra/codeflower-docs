@@ -2,7 +2,7 @@
 title: "codeflower audit score"
 description: "Derive the scores and write audit.json"
 sidebar:
-  order: 5
+  order: 6
   label: "audit score"
 ---
 

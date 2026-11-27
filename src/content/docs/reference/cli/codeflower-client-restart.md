@@ -2,7 +2,7 @@
 title: "codeflower client restart"
 description: "Restart the running client from this codeflower, e.g. after an update"
 sidebar:
-  order: 11
+  order: 13
   label: "client restart"
 ---
 

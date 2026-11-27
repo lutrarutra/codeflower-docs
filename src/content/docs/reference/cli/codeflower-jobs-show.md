@@ -2,7 +2,7 @@
 title: "codeflower jobs show"
 description: "Show a job: what it runs, with what, and how it ended"
 sidebar:
-  order: 20
+  order: 22
   label: "jobs show"
 ---
 

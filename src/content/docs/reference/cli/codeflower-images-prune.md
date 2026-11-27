@@ -2,7 +2,7 @@
 title: "codeflower images prune"
 description: "Remove the sandbox images no longer needed"
 sidebar:
-  order: 15
+  order: 17
   label: "images prune"
 ---
 

@@ -2,7 +2,7 @@
 title: "codeflower projects move-workspace"
 description: "Move a project's workspace to another folder, e.g. one with more room"
 sidebar:
-  order: 32
+  order: 34
   label: "projects move-workspace"
 ---
 

@@ -13,13 +13,15 @@ Paper audits record how much of a published paper's results reproduce, and how h
 ```sh
 check   validate the facts against the rubric's vocabularies and rules
 score   derive the scores with the rubric and write audit.json
+review  start or record the auditor's review before sealing
 seal    check the deliverables, assemble the public folder and stamp it
 verify  check a sealed folder: hashes, scores, report and transcript
+submit  upload a sealed folder to the audit registry
 ```
 
 In the sandbox, codeflower-audit init, text, lookup and compare gather the facts (they run codeflower-audit-gather, which needs Python and the network).
 
-The agent never writes a score: it records facts on fixed scales, and score derives the numbers. A sealed folder is meant to be pushed unchanged to GitHub; any edit breaks the seal, which verify reports.
+The agent never writes a score: it records facts on fixed scales, and score derives the numbers. A sealed folder is published unchanged, with submit or in a GitHub repository; any edit breaks the seal, which verify reports.
 
 
 ## Usage
@@ -31,6 +33,8 @@ codeflower audit
 ## Commands
 
 - [`codeflower audit check`](/reference/cli/codeflower-audit-check/): Validate an audit's facts
+- [`codeflower audit review`](/reference/cli/codeflower-audit-review/): Start or record the review before sealing
 - [`codeflower audit score`](/reference/cli/codeflower-audit-score/): Derive the scores and write audit.json
 - [`codeflower audit seal`](/reference/cli/codeflower-audit-seal/): Assemble an audit's public folder and stamp it
+- [`codeflower audit submit`](/reference/cli/codeflower-audit-submit/): Upload a sealed audit folder to the audit registry
 - [`codeflower audit verify`](/reference/cli/codeflower-audit-verify/): Check a sealed audit folder

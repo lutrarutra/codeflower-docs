@@ -7,6 +7,16 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.44.0
+
+*2026-11-27*
+
+- `codeflower-watch start` takes `--fail match:REGEX`, so a watch ends as failed as soon as the output shows a failure, and `--pid PID`, so it ends when a process does, with one last run for the output. Several words after `--` stay one command and its arguments, `start` prints the exact line it runs, and a first run that says the command is wrong (usage error, file not found) does not start the watch.
+- Claude Code may run a background command for up to 7 days (unless you set `BASH_MAX_TIMEOUT_MS` yourself), so agents run long pipelines in the background and hear when they end, rather than with `nohup`.
+- Stop on a running Claude Code subagent stops it.
+- A message you send while a stopped turn is still winding down is sent once it ended, rather than waiting in a paused queue.
+- Paper audits use codeflower-audit 0.3.0 (a review before sealing, and the report sealed as a PDF) and storyteller 0.7.1; the chat page has the changes of ui 0.48.0.
+
 ## v0.43.2
 
 *2026-11-25*

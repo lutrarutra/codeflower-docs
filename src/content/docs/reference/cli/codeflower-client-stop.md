@@ -2,7 +2,7 @@
 title: "codeflower client stop"
 description: "Stop the running client, e.g. one started in the background"
 sidebar:
-  order: 12
+  order: 14
   label: "client stop"
 ---
 

@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.38.1
+
+*2026-11-27*
+
+- Roots has a find bar (Ctrl+F / ⌘F), and watches show when they failed or the processes they followed ended (ui 0.48.0).
+
 ## v0.38.0
 
 *2026-11-25*
