@@ -64,6 +64,7 @@ export default defineConfig({
             'guides/vscode',
             'guides/app-window',
             'guides/chatting',
+            'guides/orchestrator',
             'guides/terminal-ui',
             'guides/files-and-previews',
             'guides/reports',

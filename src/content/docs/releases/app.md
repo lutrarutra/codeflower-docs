@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.49.4
+
+*2026-11-27*
+
+- Sandboxes run sandbox 0.45.0, with orchestrators: a Claude chat that directs a chat on your own model without seeing its data. The window has the changes of ui 0.49.0, which shows them, also in Focus.
+
 ## v0.49.3
 
 *2026-11-27*

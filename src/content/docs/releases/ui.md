@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.49.0
+
+*2026-11-27*
+
+- *Add an orchestrator* in a chat's Tools menu starts a Claude chat that directs this one without seeing its data. Its messages show as cards of their own, and under each reply a line unfolds to exactly what went to it. The chat's footer lists its orchestrators, where you set what each may do (web, file names, figures, reports, approving each message) or disconnect it, and files the chat shows can be shared with it.
+- Focus shows an orchestrator and the chat it directs in one row, and the directed chat beside the orchestrator, where its permission requests are answered.
+
 ## v0.48.0
 
 *2026-11-27*

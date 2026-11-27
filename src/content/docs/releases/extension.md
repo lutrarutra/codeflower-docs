@@ -7,6 +7,12 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.39.0
+
+*2026-11-27*
+
+- Orchestrators in VS Code: start one from a chat's Tools menu, follow it and the chat it directs, change what it may do, and share figures and reports with it.
+
 ## v0.38.1
 
 *2026-11-27*

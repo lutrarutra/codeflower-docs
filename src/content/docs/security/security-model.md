@@ -22,6 +22,9 @@ of the agent's environment.
 What remains possible: anything with the mounted data and the network it has. Mount only what the task needs, mount
 data read-only, and isolate the network for sensitive data. Every allowed host is a place data could be sent to.
 
+An [orchestrator](/guides/orchestrator/) lets a hosted model direct a model on your cluster without being given the
+data, but only as long as both follow their instructions: it is no boundary against a determined agent.
+
 ## Who can control a sandbox
 
 A sandbox listens for windows (VS Code, the app) and requires its **token**: 32 random bytes, new each time the

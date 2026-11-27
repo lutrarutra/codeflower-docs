@@ -7,6 +7,13 @@ sidebar:
 
 <!-- The ship skill adds an entry for each release, newest first. -->
 
+## v0.45.0
+
+*2026-11-27*
+
+- Orchestrators: a Claude Code chat can direct another chat of the project that runs on a model you may send your data to, and check its work without seeing the data. It asks that chat to do things and gets back its final message and the commands it ran, answers its questions (`codeflower-orchestrator ask`), lists the names of the files it works with, and sees the figures and reports you allow. Both are told what they may send. See [Sensitive data and orchestrators](/guides/orchestrator/).
+- The page shows orchestrators (ui 0.49.0).
+
 ## v0.44.0
 
 *2026-11-27*
